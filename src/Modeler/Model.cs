@@ -25,6 +25,11 @@ public abstract class Model
 
         return type;
     }
+
+    public List<Entity> GetEntities()
+    {
+        return _entities.ToList();
+    }
     
     public Entity GetEntity<T>() where T: Entity
     {

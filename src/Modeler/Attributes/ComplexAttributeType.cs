@@ -2,7 +2,7 @@ namespace Modeler.Attributes;
 
 public abstract class ComplexAttributeType : AttributeType
 {
-    protected List<Attribute> Attributes { get; }
+    public List<Attribute> Attributes { get; }
     
     protected ComplexAttributeType()
     {

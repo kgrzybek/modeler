@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ConceptualModel.Sam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ConceptualModel.UnitTests", "Modeler.ConceptualModel.UnitTests\Modeler.ConceptualModel.UnitTests.csproj", "{78F86FDF-1E9B-436E-A6D7-3D835E47FE49}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ConceptualModel.Views.PlantUml", "Modeler.ConceptualModel.Views.PlantUml\Modeler.ConceptualModel.Views.PlantUml.csproj", "{24DFB9FC-604A-4ED7-9EE8-4DBB5A736ADA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{78F86FDF-1E9B-436E-A6D7-3D835E47FE49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78F86FDF-1E9B-436E-A6D7-3D835E47FE49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78F86FDF-1E9B-436E-A6D7-3D835E47FE49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24DFB9FC-604A-4ED7-9EE8-4DBB5A736ADA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24DFB9FC-604A-4ED7-9EE8-4DBB5A736ADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24DFB9FC-604A-4ED7-9EE8-4DBB5A736ADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24DFB9FC-604A-4ED7-9EE8-4DBB5A736ADA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
