@@ -1,0 +1,78 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class Concept {
+    Name: Text {unique}
+}
+
+abstract class AttributeType {
+}
+
+class Attribute {
+    Name: Text
+    Type: AttributeType
+    IsRequired: Boolean
+    IsUnique: Boolean
+}
+
+class Entity {
+}
+
+class Enumeration {
+}
+
+abstract class Relationship {
+}
+
+class AssociationRelationship {
+}
+
+class EnumerationLiteral {
+    Value: Text
+}
+
+class PrimitiveType {
+}
+
+class GeneralizationRelationship {
+
+}
+
+class AssociationDirectedRelationship {
+    Name: Text
+    Multiplicity: RelationshipMultiplicity
+}
+
+abstract class RelationshipMultiplicity {
+}
+
+class ConceptualModel {
+    
+}
+
+Entity --|>  Concept
+Enumeration --|>  AttributeType
+PrimitiveType --|>  AttributeType
+
+Enumeration "1" --> "1..*" EnumerationLiteral
+AttributeType --|>  Concept
+Entity "1" --> "0..*" Attribute : has
+
+AssociationRelationship --|> Relationship
+GeneralizationRelationship --|> Relationship
+GeneralizationRelationship --> Entity : general
+GeneralizationRelationship --> Entity : specific
+
+
+AssociationRelationship --> AssociationDirectedRelationship : source_to_target
+AssociationRelationship --> AssociationDirectedRelationship : target_to_source
+
+AssociationDirectedRelationship "0..*" --> "1" Entity : from
+AssociationDirectedRelationship "0..*" --> "1" Entity : to
+
+AttributeType "1" --> "0..*" Attribute : has
+
+ConceptualModel "1" --> "1..*" Relationship
+ConceptualModel "1" --> "1..*" Concept
+
+@enduml
