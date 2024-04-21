@@ -6,14 +6,27 @@ using Attribute = Modeler.Attributes.Attribute;
 
 namespace Modeler.ConceptualModel.Views.PlantUml.PlantUml;
 
-public static class PlantUmlGenerator
+public class PlantUmlGenerator
 {
-    public static void Generate(
-        Model model,
-        int indentSize,
-        List<PlantUmlView> views,
-        MultiplicityTranslator multiplicityTranslator,
-        IViewsOutput viewsOutput)
+    private readonly IViewTranslator _viewTranslator;
+
+    private readonly IViewsOutput _viewsOutput;
+
+    private readonly Model _model;
+
+    private string _indentText = string.Empty;
+
+    public PlantUmlGenerator(Model model, int indentSize, IViewTranslator viewTranslator, IViewsOutput viewsOutput)
+    {
+        _viewTranslator = viewTranslator;
+        _viewsOutput = viewsOutput;
+        _model = model;
+        
+        SetIndentText(indentSize);
+    }
+
+    public void Generate(
+        List<PlantUmlView> views)
     {
         var outputItems = new List<ViewOutputItem>();
         foreach (var view in views)
@@ -23,11 +36,11 @@ public static class PlantUmlGenerator
             sb.AppendLine("@startuml");
             sb.AppendLine();
 
-            GenerateEntities(sb, model, indentSize, view);
+            GenerateEntities(sb, view);
 
-            GenerateTypes(sb, model, indentSize, view);
+            GenerateNonPrimitiveTypes(sb, view);
 
-            GenerateRelationships(sb, model, view, multiplicityTranslator);
+            GenerateRelationships(sb, view);
 
             sb.AppendLine();
             sb.AppendLine("@enduml");
@@ -38,21 +51,23 @@ public static class PlantUmlGenerator
             outputItems.Add(new ViewOutputItem(view, content));
         }
         
-        viewsOutput.Execute(outputItems);
+        _viewsOutput.Execute(outputItems);
     }
 
-    private static void GenerateTypes(StringBuilder sb, Model model, int indentSize, PlantUmlView view)
+    private void SetIndentText(int indentSize)
     {
-        var indent = string.Empty;
         for (int i = 0; i < indentSize; i++)
         {
-            indent += " ";
+            _indentText += " ";
         }
+    }
 
+    private void GenerateNonPrimitiveTypes(StringBuilder sb, PlantUmlView view)
+    {
         var toGenerate = new List<AttributeType>();
-        foreach (var entity in model.GetEntities().OrderBy(x => x.Name))
+        foreach (var entity in _model.GetEntities().OrderBy(x => x.Name))
         {
-            var viewConcept = view.Entities.SingleOrDefault(x => x.Concept == entity);
+            var viewConcept = view.Entities.SingleOrDefault(x => x.Entity == entity);
             if (viewConcept == null)
             {
                 continue;
@@ -71,45 +86,43 @@ public static class PlantUmlGenerator
             
             if (attributeType is ComplexAttributeType complexAttributeType)
             {
-                GenerateComplexAttributeType(sb, complexAttributeType, indent);
+                GenerateComplexAttributeType(sb, complexAttributeType);
                 generated.Add(attributeType);
             }
 
             if (attributeType is EnumerationType enumerationType)
             {
-                GenerateEnumerationType(sb, indent, enumerationType);
+                GenerateEnumerationType(sb, enumerationType);
                 generated.Add(attributeType);
             }
         }
     }
 
-    private static void GenerateEnumerationType(
+    private void GenerateEnumerationType(
         StringBuilder sb,
-        string indent,
         EnumerationType enumerationType)
     {
         sb.AppendLine($"enum \"{enumerationType.Name}\"" + " {");
         
         foreach (var literal in enumerationType.Values.OrderBy(x => x.Value))
         {
-            sb.AppendLine($"{indent}{literal.Value}");
+            sb.AppendLine($"{_indentText}{literal.Value}");
         }
 
         sb.AppendLine("}");
         sb.AppendLine();
     }
 
-    private static void GenerateComplexAttributeType(
+    private void GenerateComplexAttributeType(
         StringBuilder sb,
-        ComplexAttributeType complexAttributeType,
-        string indent)
+        ComplexAttributeType complexAttributeType)
     {
         sb.AppendLine($"class \"{complexAttributeType.Name}\"" + " {");
 
         foreach (var attribute in complexAttributeType.Attributes.OrderBy(x => x.Name))
         {
             var isRequiredString = attribute.IsRequired ? string.Empty : " [0..1]";
-            sb.AppendLine($"{indent}{attribute.Name}: {attribute.Type.Name}{isRequiredString}");
+            sb.AppendLine($"{_indentText}{attribute.Name}: {attribute.Type.Name}{isRequiredString}");
         }
 
         sb.AppendLine("}");
@@ -137,12 +150,11 @@ public static class PlantUmlGenerator
         return toGenerate;
     }
 
-    private static void GenerateRelationships(StringBuilder sb, Model model, PlantUmlView view,
-        MultiplicityTranslator multiplicityTranslator)
+    private void GenerateRelationships(StringBuilder sb, PlantUmlView view)
     {
-        foreach (var relationship in model.GetRelationships())
+        foreach (var relationship in _model.GetRelationships())
         {
-            if (view.Entities.All(x => !relationship.ForEntity(x.Concept)))
+            if (view.Entities.All(x => !relationship.ForEntity(x.Entity)))
             {
                 continue;
             }
@@ -151,30 +163,25 @@ public static class PlantUmlGenerator
             {
                 GenerateForGeneralization(
                     sb,
-                    generalizationRelationship,
-                    model);
+                    generalizationRelationship);
             }
 
             if (relationship is AssociationRelationship associationRelationship)
             {
                 GenerateForAssociation(
                     sb,
-                    associationRelationship,
-                    model,
-                    multiplicityTranslator);
+                    associationRelationship);
             }
         }
     }
 
-    private static void GenerateForGeneralization(StringBuilder sb, GeneralizationRelationship relationship,
-        Model model)
+    private static void GenerateForGeneralization(StringBuilder sb, GeneralizationRelationship relationship)
     {
         sb.AppendLine(
             $"\"{relationship.General.Name}\" --|> \"{relationship.Specific.Name}\" ");
     }
 
-    private static void GenerateForAssociation(StringBuilder sb, AssociationRelationship relationship, Model model,
-        MultiplicityTranslator multiplicityTranslator)
+    private void GenerateForAssociation(StringBuilder sb, AssociationRelationship relationship)
     {
         string relationshipLabel = relationship.SourceToTarget.Name;
         if (!string.IsNullOrEmpty(relationship.TargetToSource.Name))
@@ -183,42 +190,33 @@ public static class PlantUmlGenerator
         }
 
         sb.AppendLine(
-            $"\"{relationship.SourceToTarget.From.Name}\" \"{multiplicityTranslator.Translate(relationship.TargetToSource.Multiplicity)}" +
-            $"\" --> \"{multiplicityTranslator.Translate(relationship.SourceToTarget.Multiplicity)}\" \"{relationship.SourceToTarget.To.Name}\" : \"{relationshipLabel}\" ");
+            $"\"{relationship.SourceToTarget.From.Name}\" \"{_viewTranslator.TranslateMultiplicity(relationship.TargetToSource.Multiplicity)}" +
+            $"\" --> \"{_viewTranslator.TranslateMultiplicity(relationship.SourceToTarget.Multiplicity)}\" \"{relationship.SourceToTarget.To.Name}\" : \"{relationshipLabel}\" ");
     }
 
 
-    private static void GenerateEntities(
+    private void GenerateEntities(
         StringBuilder sb,
-        Model model,
-        int indentSize,
         PlantUmlView view)
     {
-        var indent = string.Empty;
-        for (int i = 0; i < indentSize; i++)
+        foreach (var entity in _model.GetEntities().OrderBy(x => x.Name))
         {
-            indent += " ";
-        }
-
-        foreach (var entity in model.GetEntities().OrderBy(x => x.Name))
-        {
-            var viewConcept = view.Entities.SingleOrDefault(x => x.Concept == entity);
+            var viewConcept = view.Entities.SingleOrDefault(x => x.Entity == entity);
             if (viewConcept == null)
             {
                 continue;
             }
 
-            GenerateConcept(sb, entity, viewConcept, indent);
+            GenerateEntity(sb, entity, viewConcept);
 
             sb.AppendLine();
         }
     }
 
-    private static void GenerateConcept(
+    private void GenerateEntity(
         StringBuilder sb,
         Entity entity,
-        VisibleEntity viewEntity,
-        string indent)
+        VisibleEntity viewEntity)
     {
         sb.AppendLine($"entity \"{entity.Name}\"" + " {");
 
@@ -227,7 +225,7 @@ public static class PlantUmlGenerator
             foreach (var attribute in entity.Attributes.OrderBy(x => x.Name))
             {
                 var isRequiredString = attribute.IsRequired ? string.Empty : " [0..1]";
-                sb.AppendLine($"{indent}{attribute.Name}: {attribute.Type.Name}{isRequiredString}");
+                sb.AppendLine($"{_indentText}{attribute.Name}: {attribute.Type.Name}{isRequiredString}");
             }
         }
 

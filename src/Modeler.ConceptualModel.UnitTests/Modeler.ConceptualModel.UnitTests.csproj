@@ -23,4 +23,10 @@
       <ProjectReference Include="..\Modeler\Modeler.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="Views\OrganizationStructure_snapshot.puml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>

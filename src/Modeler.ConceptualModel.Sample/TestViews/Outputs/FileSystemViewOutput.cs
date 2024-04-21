@@ -1,6 +1,6 @@
 using Modeler.ConceptualModel.Views.PlantUml.PlantUml;
 
-namespace Modeler.ConceptualModel.Sample.TestViews;
+namespace Modeler.ConceptualModel.Sample.TestViews.Outputs;
 
 public class FileSystemViewOutput : IViewsOutput
 {

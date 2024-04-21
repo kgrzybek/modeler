@@ -2,13 +2,13 @@ namespace Modeler.ConceptualModel.Views.PlantUml.PlantUml;
 
 public class VisibleEntity
 {
-    public VisibleEntity(Entity concept, bool showAttributes = true)
+    public VisibleEntity(Entity entity, bool showAttributes = true)
     {
-        Concept = concept;
+        Entity = entity;
         ShowAttributes = showAttributes;
     }
 
-    public Entity Concept { get; } 
+    public Entity Entity { get; } 
     
     public bool ShowAttributes { get; }
 }

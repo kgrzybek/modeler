@@ -1,0 +1,36 @@
+@startuml
+
+entity "Employee" {
+    FirstName: Text
+    Gender: Gender
+    LastName: Text
+    ResidentialAddress: Address
+}
+
+entity "Manager" {
+}
+
+entity "Organization Unit" {
+    Address: Address
+    Name: Text
+}
+
+enum "Gender" {
+    Female
+    Male
+}
+
+class "Address" {
+    ApartmentNumber: Text
+    City: Text
+    Country: Text
+    HouseNumber: Text
+    Street: Text
+}
+
+"Employee" "0..*" --> "1" "Organization Unit" : "works_in / hires" 
+"Employee" --|> "Manager" 
+"Manager" "1" --> "1" "Organization Unit" : "manages / is_managed_by" 
+
+@enduml
+

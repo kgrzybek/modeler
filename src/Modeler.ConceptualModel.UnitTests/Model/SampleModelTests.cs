@@ -1,7 +1,7 @@
 using FluentAssertions;
 using Modeler.ConceptualModel.Sample.TestModel;
 
-namespace Modeler.ConceptualModel.UnitTests;
+namespace Modeler.ConceptualModel.UnitTests.Model;
 
 public class SampleModelTests
 {
