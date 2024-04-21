@@ -1,4 +1,4 @@
-using FluentAssertions;
+using System.Reflection;
 using Modeler.ConceptualModel.Sample.TestModel;
 using Modeler.ConceptualModel.Sample.TestViews;
 using Modeler.ConceptualModel.Views.PlantUml.PlantUml;
@@ -12,7 +12,9 @@ public class ViewsTests
     public void Test()
     {
         var model = OrganizationStructureConceptualModel.GetInstance();
-        var views = OrganizationStructurePlantUmlModelViewsFactory.GetInstance();
+        var viewsFactory = new PlantUmlModelViewsFactory(
+            model,
+            Assembly.GetAssembly(typeof(OrganizationStructureView))!);
 
         var dictionary = new MultiplicityTranslator();
         dictionary.AddTranslation(new One(), "1");
@@ -22,7 +24,7 @@ public class ViewsTests
             AppDomain.CurrentDomain.BaseDirectory, 
             model, 
             4, 
-            views.Views,
+            viewsFactory.GetViews(),
             dictionary);
     }
 }

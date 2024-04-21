@@ -1,7 +1,6 @@
 ﻿using System.Text;
 using Modeler.Attributes;
 using Modeler.Relationships.Associations;
-using Modeler.Relationships.Associations.Multiplicity;
 using Modeler.Relationships.Generalizations;
 using Attribute = Modeler.Attributes.Attribute;
 

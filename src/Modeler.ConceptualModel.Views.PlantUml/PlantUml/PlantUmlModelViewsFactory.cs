@@ -2,20 +2,26 @@
 
 namespace Modeler.ConceptualModel.Views.PlantUml.PlantUml;
 
-public abstract class PlantUmlModelViewsFactory
+public class PlantUmlModelViewsFactory
 {
-    private static PlantUmlModelViewsFactory? _instance;
+    private readonly List<PlantUmlView> _views;
 
-    protected PlantUmlModelViewsFactory()
+    private readonly Model _model;
+
+    public PlantUmlModelViewsFactory(
+        Model model,
+        Assembly viewsAssembly)
     {
-        Views = new List<PlantUmlView>();
-        InitializeViews();
+        _model = model;
+        _views = new List<PlantUmlView>();
+        InitializeViews(viewsAssembly);
     }
 
-    private void InitializeViews()
+    public List<PlantUmlView> GetViews() => _views.ToList();
+
+    private void InitializeViews(Assembly viewsAssembly)
     {
-        var assembly = Assembly.GetAssembly(this.GetType())!;
-        var types = assembly
+        var types = viewsAssembly
             .GetTypes()
             .Where(t =>
                 typeof(PlantUmlViewFactory).IsAssignableFrom(t))
@@ -27,11 +33,9 @@ public abstract class PlantUmlModelViewsFactory
 
             if (staticMethod != null)
             {
-                var plantUmlView = staticMethod.Invoke(null, null);
-                Views.Add((PlantUmlView) plantUmlView!);
+                var plantUmlView = staticMethod.Invoke(null, new object?[] {_model});
+                _views.Add((PlantUmlView) plantUmlView!);
             }
         }
     }
-
-    public List<PlantUmlView> Views { get; }
 }

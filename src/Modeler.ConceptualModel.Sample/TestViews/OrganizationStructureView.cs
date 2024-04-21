@@ -5,11 +5,9 @@ namespace Modeler.ConceptualModel.Sample.TestViews;
 
 public class OrganizationStructureView : PlantUmlViewFactory
 {
-    public static PlantUmlView Create()
+    public static PlantUmlView Create(OrganizationStructureConceptualModel model)
     {
         var concepts = new List<VisibleEntity>();
-
-        var model = OrganizationStructureConceptualModel.GetInstance();
         
         concepts.Add(new VisibleEntity(model.GetEntity<Employee>()));
         concepts.Add(new VisibleEntity(model.GetEntity<OrganizationUnit>()));
