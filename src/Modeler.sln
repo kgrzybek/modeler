@@ -10,6 +10,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ConceptualModel.Uni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ConceptualModel.Views.PlantUml", "Modeler.ConceptualModel.Views.PlantUml\Modeler.ConceptualModel.Views.PlantUml.csproj", "{24DFB9FC-604A-4ED7-9EE8-4DBB5A736ADA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ConceptualModel.Views.Mermaid", "Modeler.ConceptualModel.Views.Mermaid\Modeler.ConceptualModel.Views.Mermaid.csproj", "{D4AD66AB-BC94-4B1A-B476-3B2C29211806}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ConceptualModel.Views.Shared", "Modeler.ConceptualModel.Views.Shared\Modeler.ConceptualModel.Views.Shared.csproj", "{A21745CD-21DF-48A3-9CF1-7BE0314A9DEB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +40,13 @@ Global
 		{24DFB9FC-604A-4ED7-9EE8-4DBB5A736ADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24DFB9FC-604A-4ED7-9EE8-4DBB5A736ADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24DFB9FC-604A-4ED7-9EE8-4DBB5A736ADA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4AD66AB-BC94-4B1A-B476-3B2C29211806}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4AD66AB-BC94-4B1A-B476-3B2C29211806}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4AD66AB-BC94-4B1A-B476-3B2C29211806}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4AD66AB-BC94-4B1A-B476-3B2C29211806}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A21745CD-21DF-48A3-9CF1-7BE0314A9DEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A21745CD-21DF-48A3-9CF1-7BE0314A9DEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A21745CD-21DF-48A3-9CF1-7BE0314A9DEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A21745CD-21DF-48A3-9CF1-7BE0314A9DEB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

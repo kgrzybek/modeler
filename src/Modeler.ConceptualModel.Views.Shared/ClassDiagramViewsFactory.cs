@@ -1,30 +1,30 @@
 ﻿using System.Reflection;
 
-namespace Modeler.ConceptualModel.Views.PlantUml.PlantUml;
+namespace Modeler.ConceptualModel.Views.Shared;
 
-public class PlantUmlModelViewsFactory
+public class ClassDiagramViewsFactory
 {
-    private readonly List<PlantUmlView> _views;
+    private readonly List<ClassDiagramView> _views;
 
     private readonly Model _model;
 
-    public PlantUmlModelViewsFactory(
+    public ClassDiagramViewsFactory(
         Model model,
         Assembly viewsAssembly)
     {
         _model = model;
-        _views = new List<PlantUmlView>();
+        _views = new List<ClassDiagramView>();
         InitializeViews(viewsAssembly);
     }
 
-    public List<PlantUmlView> GetViews() => _views.ToList();
+    public List<ClassDiagramView> GetViews() => _views.ToList();
 
     private void InitializeViews(Assembly viewsAssembly)
     {
         var types = viewsAssembly
             .GetTypes()
             .Where(t =>
-                typeof(PlantUmlViewFactory).IsAssignableFrom(t))
+                typeof(ClassDiagramViewDefinition).IsAssignableFrom(t))
             .ToList();
 
         foreach (var type in types)
@@ -34,7 +34,7 @@ public class PlantUmlModelViewsFactory
             if (staticMethod != null)
             {
                 var plantUmlView = staticMethod.Invoke(null, new object?[] {_model});
-                _views.Add((PlantUmlView) plantUmlView!);
+                _views.Add((ClassDiagramView) plantUmlView!);
             }
         }
     }

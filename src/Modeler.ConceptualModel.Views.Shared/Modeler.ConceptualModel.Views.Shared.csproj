@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Modeler.ConceptualModel.Views.Shared\Modeler.ConceptualModel.Views.Shared.csproj" />
       <ProjectReference Include="..\Modeler\Modeler.csproj" />
     </ItemGroup>
 

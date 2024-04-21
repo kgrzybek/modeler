@@ -1,13 +1,13 @@
 using Modeler.ConceptualModel.Sample.TestModel;
-using Modeler.ConceptualModel.Views.PlantUml.PlantUml;
+using Modeler.ConceptualModel.Views.Shared;
 
 namespace Modeler.ConceptualModel.Sample.TestViews;
 
-public class OrganizationStructureView : PlantUmlViewFactory
+public class OrganizationStructureView : ClassDiagramViewDefinition
 {
     public const string Id = "OrganizationStructure";
     
-    public static PlantUmlView Create(OrganizationStructureConceptualModel model)
+    public static ClassDiagramView Create(OrganizationStructureConceptualModel model)
     {
         var concepts = new List<VisibleEntity>();
         
@@ -15,7 +15,7 @@ public class OrganizationStructureView : PlantUmlViewFactory
         concepts.Add(new VisibleEntity(model.GetEntity<OrganizationUnit>()));
         concepts.Add(new VisibleEntity(model.GetEntity<Manager>()));
         
-        var view = new PlantUmlView(Id, concepts);
+        var view = new ClassDiagramView(Id, concepts);
 
         return view;
     }

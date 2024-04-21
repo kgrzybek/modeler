@@ -20,11 +20,15 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Modeler.ConceptualModel.Sample\Modeler.ConceptualModel.Sample.csproj" />
+      <ProjectReference Include="..\Modeler.ConceptualModel.Views.Mermaid\Modeler.ConceptualModel.Views.Mermaid.csproj" />
       <ProjectReference Include="..\Modeler\Modeler.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="Views\OrganizationStructure_snapshot.puml">
+      <None Update="Views\PlantUml\OrganizationStructure_snapshot.puml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Views\Mermaid\OrganizationStructure_snapshot.mmd">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>

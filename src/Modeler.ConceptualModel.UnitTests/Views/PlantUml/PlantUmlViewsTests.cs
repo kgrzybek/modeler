@@ -5,24 +5,25 @@ using Modeler.ConceptualModel.Sample.TestViews;
 using Modeler.ConceptualModel.Sample.TestViews.Outputs;
 using Modeler.ConceptualModel.Sample.TestViews.Translations;
 using Modeler.ConceptualModel.Views.PlantUml.PlantUml;
+using Modeler.ConceptualModel.Views.Shared;
 
-namespace Modeler.ConceptualModel.UnitTests.Views;
+namespace Modeler.ConceptualModel.UnitTests.Views.PlantUml;
 
 [TestFixture]
-public class ViewsTests
+public class PlantUmlViewsTests
 {
     [Test]
     public void FileSystemOutput_Test()
     {
         // Given
         var model = OrganizationStructureConceptualModel.GetInstance();
-        var viewsFactory = new PlantUmlModelViewsFactory(
+        var viewsFactory = new ClassDiagramViewsFactory(
             model,
             Assembly.GetAssembly(typeof(OrganizationStructureView))!);
 
         var viewTranslator = new ViewTranslator();
 
-        var generator = new PlantUmlGenerator(
+        var generator = new PlantUmlClassDiagramViewGenerator(
             model, 
             4, 
             viewTranslator,
@@ -33,7 +34,7 @@ public class ViewsTests
         
         // Then
         var fileContent = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "OrganizationStructure.puml"));
-        var snapshot = File.ReadAllText("Views/OrganizationStructure_snapshot.puml");
+        var snapshot = File.ReadAllText("Views/PlantUml/OrganizationStructure_snapshot.puml");
         fileContent.Should().Be(snapshot);
     }
     
@@ -42,14 +43,14 @@ public class ViewsTests
     {
         // Given
         var model = OrganizationStructureConceptualModel.GetInstance();
-        var viewsFactory = new PlantUmlModelViewsFactory(
+        var viewsFactory = new ClassDiagramViewsFactory(
             model,
             Assembly.GetAssembly(typeof(OrganizationStructureView))!);
 
         var viewTranslator = new ViewTranslator();
 
         var memoryViewOutput = new MemoryViewOutput();
-        var generator = new PlantUmlGenerator(
+        var generator = new PlantUmlClassDiagramViewGenerator(
             model, 
             4, 
             viewTranslator,
@@ -61,7 +62,7 @@ public class ViewsTests
         // Then
         var views = memoryViewOutput.GetViews();
         views.Should().HaveCount(1);
-        var snapshot = File.ReadAllText("Views/OrganizationStructure_snapshot.puml");
+        var snapshot = File.ReadAllText("Views/PlantUml/OrganizationStructure_snapshot.puml");
         views[0].Content.Should().Be(snapshot);
     }
 }

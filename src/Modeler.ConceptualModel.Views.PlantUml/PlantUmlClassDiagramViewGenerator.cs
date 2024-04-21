@@ -1,12 +1,13 @@
 ﻿using System.Text;
 using Modeler.Attributes;
+using Modeler.ConceptualModel.Views.Shared;
 using Modeler.Relationships.Associations;
 using Modeler.Relationships.Generalizations;
 using Attribute = Modeler.Attributes.Attribute;
 
 namespace Modeler.ConceptualModel.Views.PlantUml.PlantUml;
 
-public class PlantUmlGenerator
+public class PlantUmlClassDiagramViewGenerator
 {
     private readonly IViewTranslator _viewTranslator;
 
@@ -16,7 +17,7 @@ public class PlantUmlGenerator
 
     private string _indentText = string.Empty;
 
-    public PlantUmlGenerator(Model model, int indentSize, IViewTranslator viewTranslator, IViewsOutput viewsOutput)
+    public PlantUmlClassDiagramViewGenerator(Model model, int indentSize, IViewTranslator viewTranslator, IViewsOutput viewsOutput)
     {
         _viewTranslator = viewTranslator;
         _viewsOutput = viewsOutput;
@@ -26,7 +27,7 @@ public class PlantUmlGenerator
     }
 
     public void Generate(
-        List<PlantUmlView> views)
+        List<ClassDiagramView> views)
     {
         var outputItems = new List<ViewOutputItem>();
         foreach (var view in views)
@@ -62,7 +63,7 @@ public class PlantUmlGenerator
         }
     }
 
-    private void GenerateNonPrimitiveTypes(StringBuilder sb, PlantUmlView view)
+    private void GenerateNonPrimitiveTypes(StringBuilder sb, ClassDiagramView view)
     {
         var toGenerate = new List<AttributeType>();
         foreach (var entity in _model.GetEntities().OrderBy(x => x.Name))
@@ -150,7 +151,7 @@ public class PlantUmlGenerator
         return toGenerate;
     }
 
-    private void GenerateRelationships(StringBuilder sb, PlantUmlView view)
+    private void GenerateRelationships(StringBuilder sb, ClassDiagramView view)
     {
         foreach (var relationship in _model.GetRelationships())
         {
@@ -197,7 +198,7 @@ public class PlantUmlGenerator
 
     private void GenerateEntities(
         StringBuilder sb,
-        PlantUmlView view)
+        ClassDiagramView view)
     {
         foreach (var entity in _model.GetEntities().OrderBy(x => x.Name))
         {

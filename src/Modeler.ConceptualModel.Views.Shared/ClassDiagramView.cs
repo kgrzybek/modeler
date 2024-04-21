@@ -1,8 +1,8 @@
-﻿namespace Modeler.ConceptualModel.Views.PlantUml.PlantUml;
+﻿namespace Modeler.ConceptualModel.Views.Shared;
 
-public class PlantUmlView
+public class ClassDiagramView
 {
-    public PlantUmlView(
+    public ClassDiagramView(
         string id,
         List<VisibleEntity> entities,
         List<RelationshipNote>? relationshipNotes = null)

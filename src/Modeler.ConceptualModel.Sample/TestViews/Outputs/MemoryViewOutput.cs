@@ -1,4 +1,5 @@
 using Modeler.ConceptualModel.Views.PlantUml.PlantUml;
+using Modeler.ConceptualModel.Views.Shared;
 
 namespace Modeler.ConceptualModel.Sample.TestViews.Outputs;
 

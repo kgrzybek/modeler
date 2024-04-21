@@ -1,4 +1,4 @@
-﻿namespace Modeler.ConceptualModel.Views.PlantUml.PlantUml;
+﻿namespace Modeler.ConceptualModel.Views.Shared;
 
 public class RelationshipNote
 {

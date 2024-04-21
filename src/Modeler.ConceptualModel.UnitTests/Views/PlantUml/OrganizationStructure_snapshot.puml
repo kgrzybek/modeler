@@ -10,7 +10,7 @@ entity "Employee" {
 entity "Manager" {
 }
 
-entity "Organization Unit" {
+entity "Organization_Unit" {
     Address: Address
     Name: Text
 }
@@ -28,9 +28,9 @@ class "Address" {
     Street: Text
 }
 
-"Employee" "0..*" --> "1" "Organization Unit" : "works_in / hires" 
+"Employee" "0..*" --> "1" "Organization_Unit" : "works_in / hires" 
 "Employee" --|> "Manager" 
-"Manager" "1" --> "1" "Organization Unit" : "manages / is_managed_by" 
+"Manager" "1" --> "1" "Organization_Unit" : "manages / is_managed_by" 
 
 @enduml
 

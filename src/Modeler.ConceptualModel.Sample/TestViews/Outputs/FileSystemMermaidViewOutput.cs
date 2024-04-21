@@ -3,18 +3,18 @@ using Modeler.ConceptualModel.Views.Shared;
 
 namespace Modeler.ConceptualModel.Sample.TestViews.Outputs;
 
-public class FileSystemViewOutput : IViewsOutput
+public class FileSystemMermaidViewOutput : IViewsOutput
 {
     private readonly string _absoluteDirectoryPath;
 
     private readonly IDictionary<string, string> _relativePaths;
 
-    public FileSystemViewOutput(string absoluteDirectoryPath)
+    public FileSystemMermaidViewOutput(string absoluteDirectoryPath)
     {
         _absoluteDirectoryPath = absoluteDirectoryPath;
 
         _relativePaths = new Dictionary<string, string>();
-        _relativePaths.Add(OrganizationStructureView.Id, "OrganizationStructure.puml");
+        _relativePaths.Add(OrganizationStructureView.Id, "OrganizationStructure.mmd");
     }
 
     public void Execute(List<ViewOutputItem> views)
