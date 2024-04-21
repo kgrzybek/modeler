@@ -5,6 +5,8 @@ namespace Modeler.ConceptualModel.Sample.TestViews;
 
 public class OrganizationStructureView : PlantUmlViewFactory
 {
+    public const string Id = "OrganizationStructure";
+    
     public static PlantUmlView Create(OrganizationStructureConceptualModel model)
     {
         var concepts = new List<VisibleEntity>();
@@ -13,7 +15,7 @@ public class OrganizationStructureView : PlantUmlViewFactory
         concepts.Add(new VisibleEntity(model.GetEntity<OrganizationUnit>()));
         concepts.Add(new VisibleEntity(model.GetEntity<Manager>()));
         
-        var view = new PlantUmlView(concepts, "OrganizationStructure.puml");
+        var view = new PlantUmlView(Id, concepts);
 
         return view;
     }

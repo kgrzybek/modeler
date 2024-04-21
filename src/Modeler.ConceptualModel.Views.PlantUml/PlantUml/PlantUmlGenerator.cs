@@ -9,12 +9,13 @@ namespace Modeler.ConceptualModel.Views.PlantUml.PlantUml;
 public static class PlantUmlGenerator
 {
     public static void Generate(
-        string absoluteModelsPath,
         Model model,
         int indentSize,
         List<PlantUmlView> views,
-        MultiplicityTranslator multiplicityTranslator)
+        MultiplicityTranslator multiplicityTranslator,
+        IViewsOutput viewsOutput)
     {
+        var outputItems = new List<ViewOutputItem>();
         foreach (var view in views)
         {
             var sb = new StringBuilder();
@@ -33,17 +34,11 @@ public static class PlantUmlGenerator
             sb.AppendLine();
 
             var content = sb.ToString();
-
-            var path = Path.Combine(absoluteModelsPath, view.Path);
-            var directoryPath = Path.GetDirectoryName(path)!;
-
-            if (!Directory.Exists(directoryPath))
-            {
-                Directory.CreateDirectory(directoryPath);
-            }
-
-            File.WriteAllText(path, content);
+            
+            outputItems.Add(new ViewOutputItem(view, content));
         }
+        
+        viewsOutput.Execute(outputItems);
     }
 
     private static void GenerateTypes(StringBuilder sb, Model model, int indentSize, PlantUmlView view)

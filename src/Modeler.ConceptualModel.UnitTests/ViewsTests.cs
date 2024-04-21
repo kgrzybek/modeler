@@ -9,7 +9,7 @@ namespace Modeler.ConceptualModel.UnitTests;
 public class ViewsTests
 {
     [Test]
-    public void Test()
+    public void FileSystemOutput_Test()
     {
         var model = OrganizationStructureConceptualModel.GetInstance();
         var viewsFactory = new PlantUmlModelViewsFactory(
@@ -21,10 +21,10 @@ public class ViewsTests
         dictionary.AddTranslation(new ZeroOrMany(), "0..*");
         
         PlantUmlGenerator.Generate(
-            AppDomain.CurrentDomain.BaseDirectory, 
             model, 
             4, 
             viewsFactory.GetViews(),
-            dictionary);
+            dictionary,
+            new FileSystemViewOutput(AppDomain.CurrentDomain.BaseDirectory));
     }
 }

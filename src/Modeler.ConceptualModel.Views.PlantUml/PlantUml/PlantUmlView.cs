@@ -3,18 +3,18 @@
 public class PlantUmlView
 {
     public PlantUmlView(
+        string id,
         List<VisibleEntity> entities,
-        string path, 
         List<RelationshipNote>? relationshipNotes = null)
     {
         Entities = entities;
-        Path = path;
         RelationshipNotes = relationshipNotes ?? new List<RelationshipNote>();
+        Id = id;
     }
+    
+    public string Id { get; }
 
     public List<VisibleEntity> Entities { get; }
     
     public List<RelationshipNote> RelationshipNotes { get; }
-
-    public string Path { get; }
 }
