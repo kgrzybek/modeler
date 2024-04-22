@@ -58,6 +58,14 @@ public abstract class Model
     public List<GeneralizationRelationship> GetGeneralizations() => _relationships.OfType<GeneralizationRelationship>().ToList();
     
     public List<Relationship> GetRelationships() => _relationships.ToList();
+
+    public Entity? GetGeneralizationEntity(Entity entity)
+    {
+        var generalizationRelationship = GetGeneralizations().SingleOrDefault(x => x.Specific == entity);
+
+        return generalizationRelationship?.General;
+    }
+        
     
     private void InitializeRelationshipsModels()
     {

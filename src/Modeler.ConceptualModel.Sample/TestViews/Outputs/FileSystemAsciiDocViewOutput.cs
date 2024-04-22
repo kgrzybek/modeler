@@ -1,20 +1,19 @@
-using Modeler.ConceptualModel.Views.PlantUml.PlantUml;
 using Modeler.ConceptualModel.Views.Shared;
 
 namespace Modeler.ConceptualModel.Sample.TestViews.Outputs;
 
-public class FileSystemMermaidViewOutput<T>: IViewsOutput<T>
+public class FileSystemAsciiDocViewOutput<T>: IViewsOutput<T>
 {
     private readonly string _absoluteDirectoryPath;
 
     private readonly IDictionary<string, string> _relativePaths;
 
-    public FileSystemMermaidViewOutput(string absoluteDirectoryPath)
+    public FileSystemAsciiDocViewOutput(string absoluteDirectoryPath)
     {
         _absoluteDirectoryPath = absoluteDirectoryPath;
 
         _relativePaths = new Dictionary<string, string>();
-        _relativePaths.Add(OrganizationStructureView.Id, "OrganizationStructure.mmd");
+        _relativePaths.Add(EmployeeAsciiDocView.Id, "Employee.adoc");
     }
 
     public void Execute(List<ViewOutputItem<T>> views)

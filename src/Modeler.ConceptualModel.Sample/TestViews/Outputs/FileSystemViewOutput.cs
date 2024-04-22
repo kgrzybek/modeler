@@ -3,7 +3,7 @@ using Modeler.ConceptualModel.Views.Shared;
 
 namespace Modeler.ConceptualModel.Sample.TestViews.Outputs;
 
-public class FileSystemViewOutput : IViewsOutput
+public class FileSystemViewOutput<T> : IViewsOutput<T>
 {
     private readonly string _absoluteDirectoryPath;
 
@@ -17,7 +17,7 @@ public class FileSystemViewOutput : IViewsOutput
         _relativePaths.Add(OrganizationStructureView.Id, "OrganizationStructure.puml");
     }
 
-    public void Execute(List<ViewOutputItem> views)
+    public void Execute(List<ViewOutputItem<T>> views)
     {
         if (!Directory.Exists(_absoluteDirectoryPath))
         {
@@ -26,7 +26,7 @@ public class FileSystemViewOutput : IViewsOutput
         
         foreach (var outputItem in views)
         {
-            var relativePath = _relativePaths[outputItem.View.Id];
+            var relativePath = _relativePaths[outputItem.Id];
             var path = Path.Combine(_absoluteDirectoryPath, relativePath);
 
             File.WriteAllText(path, outputItem.Content);

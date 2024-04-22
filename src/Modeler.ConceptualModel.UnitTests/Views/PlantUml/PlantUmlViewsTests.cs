@@ -27,7 +27,7 @@ public class PlantUmlViewsTests
             model, 
             4, 
             viewTranslator,
-            new FileSystemViewOutput(AppDomain.CurrentDomain.BaseDirectory));
+            new FileSystemViewOutput<ClassDiagramView>(AppDomain.CurrentDomain.BaseDirectory));
         
         // When
         generator.Generate(viewsFactory.GetViews());
@@ -49,7 +49,7 @@ public class PlantUmlViewsTests
 
         var viewTranslator = new ViewTranslator();
 
-        var memoryViewOutput = new MemoryViewOutput();
+        var memoryViewOutput = new MemoryViewOutput<ClassDiagramView>();
         var generator = new PlantUmlClassDiagramViewGenerator(
             model, 
             4, 

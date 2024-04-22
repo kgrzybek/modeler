@@ -11,13 +11,13 @@ public class PlantUmlClassDiagramViewGenerator
 {
     private readonly IViewTranslator _viewTranslator;
 
-    private readonly IViewsOutput _viewsOutput;
+    private readonly IViewsOutput<ClassDiagramView> _viewsOutput;
 
     private readonly Model _model;
 
     private string _indentText = string.Empty;
 
-    public PlantUmlClassDiagramViewGenerator(Model model, int indentSize, IViewTranslator viewTranslator, IViewsOutput viewsOutput)
+    public PlantUmlClassDiagramViewGenerator(Model model, int indentSize, IViewTranslator viewTranslator, IViewsOutput<ClassDiagramView> viewsOutput)
     {
         _viewTranslator = viewTranslator;
         _viewsOutput = viewsOutput;
@@ -29,7 +29,7 @@ public class PlantUmlClassDiagramViewGenerator
     public void Generate(
         List<ClassDiagramView> views)
     {
-        var outputItems = new List<ViewOutputItem>();
+        var outputItems = new List<ViewOutputItem<ClassDiagramView>>();
         foreach (var view in views)
         {
             var sb = new StringBuilder();
@@ -49,7 +49,7 @@ public class PlantUmlClassDiagramViewGenerator
 
             var content = sb.ToString();
             
-            outputItems.Add(new ViewOutputItem(view, content));
+            outputItems.Add(new ViewOutputItem<ClassDiagramView>(view.Id, view, content));
         }
         
         _viewsOutput.Execute(outputItems);

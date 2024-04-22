@@ -27,7 +27,7 @@ public class MermaidUmlViewsTests
             model, 
             4, 
             viewTranslator,
-            new FileSystemMermaidViewOutput(AppDomain.CurrentDomain.BaseDirectory));
+            new FileSystemMermaidViewOutput<ClassDiagramView>(AppDomain.CurrentDomain.BaseDirectory));
         
         // When
         generator.Generate(viewsFactory.GetViews());
@@ -49,7 +49,7 @@ public class MermaidUmlViewsTests
     
         var viewTranslator = new ViewTranslator();
     
-        var memoryViewOutput = new MemoryViewOutput();
+        var memoryViewOutput = new MemoryViewOutput<ClassDiagramView>();
         var generator = new MermaidClassDiagramViewGenerator(
             model, 
             4, 

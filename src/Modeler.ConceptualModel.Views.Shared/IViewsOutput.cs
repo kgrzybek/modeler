@@ -1,8 +1,8 @@
 ﻿namespace Modeler.ConceptualModel.Views.Shared;
 
-public interface IViewsOutput
+public interface IViewsOutput<T>
 {
-    public void Execute(List<ViewOutputItem> views);
+    public void Execute(List<ViewOutputItem<T>> views);
 }
 
-public record ViewOutputItem(ClassDiagramView View, string Content);
+public record ViewOutputItem<T>(string Id, T View, string Content);
