@@ -4,7 +4,12 @@ namespace Modeler.Relationships.Associations;
 
 public class AssociationDirectedRelationship
 {
-    public AssociationDirectedRelationship(string name, Entity from, RelationshipMultiplicity multiplicity, Entity to, string? description = null)
+    public AssociationDirectedRelationship(
+        string name,
+        Entity from,
+        RelationshipMultiplicity multiplicity,
+        Entity to,
+        string? description = null)
     {
         Name = name;
         From = from;

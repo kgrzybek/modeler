@@ -2,18 +2,8 @@ namespace Modeler.Attributes;
 
 public abstract class ComplexAttributeType : AttributeType
 {
-    public List<Attribute> Attributes { get; }
-    
-    protected ComplexAttributeType()
-    {
-        Attributes = new List<Attribute>();
-    }
-    
-    protected ComplexAttributeType(string name) : base(name)
-    {
-        Attributes = new List<Attribute>();
-    }
-    
+    public List<Attribute> Attributes { get; } = new List<Attribute>();
+
     public ComplexAttributeType WithAttribute(
         string name,
         AttributeType type,

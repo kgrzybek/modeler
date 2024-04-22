@@ -10,9 +10,9 @@ public abstract class Model
 {
     private List<Entity> _entities;
 
-    private List<AttributeType> _types;
+    private readonly List<AttributeType> _types;
 
-    private List<Relationship> _relationships;
+    private readonly List<Relationship> _relationships;
     
     public AttributeType GetType<T>() where T: AttributeType
     {
