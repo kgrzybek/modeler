@@ -2,6 +2,7 @@ using System.Reflection;
 using FluentAssertions;
 using Modeler.ConceptualModel.Sample.TestModel;
 using Modeler.ConceptualModel.Sample.TestViews;
+using Modeler.ConceptualModel.Sample.TestViews.AsciDocViews;
 using Modeler.ConceptualModel.Sample.TestViews.Outputs;
 using Modeler.ConceptualModel.Sample.TestViews.Translations;
 using Modeler.ConceptualModel.Views.AsciiDoc;
@@ -32,8 +33,39 @@ public class AsciiDocViewsTests
         generator.Generate(viewsFactory.GetViews());
         
         // Then
-        var fileContent = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "OrganizationStructure.mmd"));
-        var snapshot = File.ReadAllText("Views/Mermaid/OrganizationStructure_snapshot.mmd");
+        var fileContent = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Employee.adoc"));
+        var snapshot = File.ReadAllText("Views/AsciiDoc/Employee_snapshot.adoc");
         fileContent.Should().Be(snapshot);
+    }
+    
+    [Test]
+    public void MemoryOutput_Test()
+    {
+        // Given
+        var model = OrganizationStructureConceptualModel.GetInstance();
+        var viewsFactory = new AsciiDocViewsFactory(
+            model,
+            Assembly.GetAssembly(typeof(OrganizationStructureView))!);
+    
+        var viewTranslator = new ViewTranslator();
+    
+        var memoryViewOutput = new MemoryViewOutput<AsciiDocView>();
+        var generator = new AsciiDocViewsGenerator(
+            model, 
+            viewTranslator,
+            memoryViewOutput);
+        
+        // When
+        generator.Generate(viewsFactory.GetViews());
+        
+        // Then
+        var views = memoryViewOutput.GetViews();
+        views.Should().HaveCount(2);
+        
+        var employeeSnapshot = File.ReadAllText("Views/AsciiDoc/Employee_snapshot.adoc");
+        views.Single(x => x.Id == EmployeeAsciiDocView.Id).Content.Should().Be(employeeSnapshot);
+        
+        var managerSnapshot = File.ReadAllText("Views/AsciiDoc/Manager_snapshot.adoc");
+        views.Single(x => x.Id == ManagerAsciiDocView.Id).Content.Should().Be(managerSnapshot);
     }
 }

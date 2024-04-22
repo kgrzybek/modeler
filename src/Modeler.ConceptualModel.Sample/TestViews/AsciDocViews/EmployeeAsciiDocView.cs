@@ -1,8 +1,7 @@
 using Modeler.ConceptualModel.Sample.TestModel;
 using Modeler.ConceptualModel.Views.AsciiDoc;
-using Modeler.ConceptualModel.Views.Shared;
 
-namespace Modeler.ConceptualModel.Sample.TestViews;
+namespace Modeler.ConceptualModel.Sample.TestViews.AsciDocViews;
 
 public class EmployeeAsciiDocView : AsciiDocViewDefinition
 {

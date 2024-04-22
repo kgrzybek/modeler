@@ -28,7 +28,13 @@
       <None Update="Views\PlantUml\OrganizationStructure_snapshot.puml">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+      <None Update="Views\AsciiDoc\Employee_snapshot.adoc">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
       <None Update="Views\Mermaid\OrganizationStructure_snapshot.mmd">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Views\AsciiDoc\Manager_snapshot.adoc">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>

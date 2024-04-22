@@ -179,7 +179,7 @@ public class PlantUmlClassDiagramViewGenerator
     private static void GenerateForGeneralization(StringBuilder sb, GeneralizationRelationship relationship)
     {
         sb.AppendLine(
-            $"\"{relationship.General.Name}\" --|> \"{relationship.Specific.Name}\" ");
+            $"\"{relationship.Specific.Name}\" --|> \"{relationship.General.Name}\" ");
     }
 
     private void GenerateForAssociation(StringBuilder sb, AssociationRelationship relationship)

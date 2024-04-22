@@ -29,7 +29,7 @@ class "Address" {
 }
 
 "Employee" "0..*" --> "1" "Organization_Unit" : "works_in / hires" 
-"Employee" --|> "Manager" 
+"Manager" --|> "Employee" 
 "Manager" "1" --> "1" "Organization_Unit" : "manages / is_managed_by" 
 
 @enduml
