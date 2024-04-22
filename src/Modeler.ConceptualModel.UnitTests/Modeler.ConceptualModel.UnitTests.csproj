@@ -37,6 +37,12 @@
       <None Update="Views\AsciiDoc\Manager_snapshot.adoc">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+      <None Update="Views\AsciiDoc\Gender_snapshot.adoc">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Views\AsciiDoc\Address_snapshot.adoc">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

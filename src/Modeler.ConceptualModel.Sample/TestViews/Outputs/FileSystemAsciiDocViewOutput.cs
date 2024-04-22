@@ -1,4 +1,4 @@
-using Modeler.ConceptualModel.Sample.TestViews.AsciDocViews;
+using Modeler.ConceptualModel.Sample.TestViews.AsciiDocViews;
 using Modeler.ConceptualModel.Views.Shared;
 
 namespace Modeler.ConceptualModel.Sample.TestViews.Outputs;
@@ -16,6 +16,8 @@ public class FileSystemAsciiDocViewOutput<T>: IViewsOutput<T>
         _relativePaths = new Dictionary<string, string>();
         _relativePaths.Add(EmployeeAsciiDocView.Id, "Employee.adoc");
         _relativePaths.Add(ManagerAsciiDocView.Id, "Manager.adoc");
+        _relativePaths.Add(GenderAsciiDocView.Id, "Gender.adoc");
+        _relativePaths.Add(AddressAsciiDocView.Id, "Address.adoc");
     }
 
     public void Execute(List<ViewOutputItem<T>> views)

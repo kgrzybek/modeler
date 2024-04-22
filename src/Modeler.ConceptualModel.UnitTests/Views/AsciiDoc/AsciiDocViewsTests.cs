@@ -2,7 +2,7 @@ using System.Reflection;
 using FluentAssertions;
 using Modeler.ConceptualModel.Sample.TestModel;
 using Modeler.ConceptualModel.Sample.TestViews;
-using Modeler.ConceptualModel.Sample.TestViews.AsciDocViews;
+using Modeler.ConceptualModel.Sample.TestViews.AsciiDocViews;
 using Modeler.ConceptualModel.Sample.TestViews.Outputs;
 using Modeler.ConceptualModel.Sample.TestViews.Translations;
 using Modeler.ConceptualModel.Views.AsciiDoc;
@@ -60,12 +60,18 @@ public class AsciiDocViewsTests
         
         // Then
         var views = memoryViewOutput.GetViews();
-        views.Should().HaveCount(2);
+        views.Should().HaveCount(4);
         
         var employeeSnapshot = File.ReadAllText("Views/AsciiDoc/Employee_snapshot.adoc");
         views.Single(x => x.Id == EmployeeAsciiDocView.Id).Content.Should().Be(employeeSnapshot);
         
         var managerSnapshot = File.ReadAllText("Views/AsciiDoc/Manager_snapshot.adoc");
         views.Single(x => x.Id == ManagerAsciiDocView.Id).Content.Should().Be(managerSnapshot);
+        
+        var genderSnapshot = File.ReadAllText("Views/AsciiDoc/Gender_snapshot.adoc");
+        views.Single(x => x.Id == GenderAsciiDocView.Id).Content.Should().Be(genderSnapshot);
+        
+        var addressSnapshot = File.ReadAllText("Views/AsciiDoc/Address_snapshot.adoc");
+        views.Single(x => x.Id == AddressAsciiDocView.Id).Content.Should().Be(addressSnapshot);
     }
 }
