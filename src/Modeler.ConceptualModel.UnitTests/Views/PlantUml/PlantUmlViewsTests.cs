@@ -4,7 +4,7 @@ using Modeler.ConceptualModel.Sample.TestModel;
 using Modeler.ConceptualModel.Sample.TestViews;
 using Modeler.ConceptualModel.Sample.TestViews.Outputs;
 using Modeler.ConceptualModel.Sample.TestViews.Translations;
-using Modeler.ConceptualModel.Views.PlantUml.PlantUml;
+using Modeler.ConceptualModel.Views.PlantUml;
 using Modeler.ConceptualModel.Views.Shared;
 
 namespace Modeler.ConceptualModel.UnitTests.Views.PlantUml;

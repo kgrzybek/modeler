@@ -61,7 +61,7 @@ public abstract class Model
 
     public Entity? GetGeneralizationEntity(Entity entity)
     {
-        var generalizationRelationship = GetGeneralizations().SingleOrDefault(x => x.Specific == entity);
+        var generalizationRelationship = GetGeneralizations().SingleOrDefault(x => Equals(x.Specific, entity));
 
         return generalizationRelationship?.General;
     }

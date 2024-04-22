@@ -2,13 +2,8 @@
 
 public abstract class EnumerationType : AttributeType
 {
-    public List<EnumerationLiteral> Values { get; private set; }
+    public List<EnumerationLiteral> Values { get; private set; } = new List<EnumerationLiteral>();
 
-    protected EnumerationType()
-    {
-        Values = new List<EnumerationLiteral>();
-    }
-    
     protected EnumerationType WithName(
         string name)
     {

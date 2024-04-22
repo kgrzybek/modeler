@@ -5,12 +5,7 @@ namespace Modeler;
 
 public abstract class Entity : Concept
 {
-    public List<Attribute> Attributes { get; }
-    
-    protected Entity()
-    {
-        Attributes = new List<Attribute>();
-    }
+    public List<Attribute> Attributes { get; } = new List<Attribute>();
 
     public Entity WithAttribute(string name, AttributeType type, bool isRequired = true)
     {

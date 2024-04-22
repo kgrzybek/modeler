@@ -1,5 +1,4 @@
-﻿using Modeler.ConceptualModel.Views.PlantUml.PlantUml;
-using Modeler.ConceptualModel.Views.Shared;
+﻿using Modeler.ConceptualModel.Views.Shared;
 using Modeler.Relationships.Associations.Multiplicity;
 
 namespace Modeler.ConceptualModel.Sample.TestViews.Translations;

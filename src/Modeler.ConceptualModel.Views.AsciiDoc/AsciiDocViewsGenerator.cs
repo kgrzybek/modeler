@@ -13,7 +13,7 @@ public class AsciiDocViewsGenerator
 
     private readonly Model _model;
 
-    private AsciiDocViewTranslationDictionary _translationDictionary;
+    private readonly AsciiDocViewTranslationDictionary _translationDictionary;
 
     public AsciiDocViewsGenerator(
         Model model,
@@ -126,7 +126,7 @@ public class AsciiDocViewsGenerator
     private Entity? GetGeneralizationConcept(Entity entityConcept)
     {
         var generalizationConcept = _model.GetGeneralizations()
-            .Where(x => x.Specific == entityConcept)
+            .Where(x => Equals(x.Specific, entityConcept))
             .Select(x => x.General)
             .SingleOrDefault();
 
@@ -154,16 +154,16 @@ public class AsciiDocViewsGenerator
     private void GenerateRelationsForConcept(Entity concept, StringBuilder sb, bool inherited)
     {
         var relationships =
-            _model.GetAssociations().Where(x => x.SourceToTarget.From == concept ||
-                                               x.TargetToSource.From == concept).ToList();
+            _model.GetAssociations().Where(x => Equals(x.SourceToTarget.From, concept) ||
+                                               Equals(x.TargetToSource.From, concept)).ToList();
         if (inherited)
         {
             var generalizationEntity = _model.GetGeneralizationEntity(concept);
             if (generalizationEntity != null)
             {
                 var generalizationRelationships =
-                    _model.GetAssociations().Where(x => x.SourceToTarget.From == generalizationEntity ||
-                                                        x.TargetToSource.From == generalizationEntity);
+                    _model.GetAssociations().Where(x => Equals(x.SourceToTarget.From, generalizationEntity) ||
+                                                        Equals(x.TargetToSource.From, generalizationEntity));
                 relationships.AddRange(generalizationRelationships);
             }
         }
@@ -173,7 +173,7 @@ public class AsciiDocViewsGenerator
             AssociationDirectedRelationship firstRelation;
             AssociationDirectedRelationship secondRelation;
 
-            if (relationship.SourceToTarget.From == concept)
+            if (Equals(relationship.SourceToTarget.From, concept))
             {
                 firstRelation = relationship.SourceToTarget;
                 secondRelation = relationship.TargetToSource;
