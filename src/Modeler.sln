@@ -1,20 +1,26 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler", "Modeler\Modeler.csproj", "{2BD18EA1-D90F-4676-ACA2-3D104B004848}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ConceptualModel", "Conceptual\ConceptualModel\Modeler.ConceptualModel.csproj", "{2BD18EA1-D90F-4676-ACA2-3D104B004848}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.Documentation", "Modeler.Documentation\Modeler.Documentation.csproj", "{8BA0C906-7E65-4659-8F63-2DAABBA06F1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ConceptualModel.Sample", "Modeler.ConceptualModel.Sample\Modeler.ConceptualModel.Sample.csproj", "{6D92CFB0-4D66-44E4-B50D-A13B04DC6FD6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ConceptualModel.Sample", "Conceptual\Tests\Sample\Modeler.ConceptualModel.Sample.csproj", "{6D92CFB0-4D66-44E4-B50D-A13B04DC6FD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ConceptualModel.UnitTests", "Modeler.ConceptualModel.UnitTests\Modeler.ConceptualModel.UnitTests.csproj", "{78F86FDF-1E9B-436E-A6D7-3D835E47FE49}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ConceptualModel.UnitTests", "Conceptual\Tests\UnitTests\Modeler.ConceptualModel.UnitTests.csproj", "{78F86FDF-1E9B-436E-A6D7-3D835E47FE49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ConceptualModel.Views.PlantUml", "Modeler.ConceptualModel.Views.PlantUml\Modeler.ConceptualModel.Views.PlantUml.csproj", "{24DFB9FC-604A-4ED7-9EE8-4DBB5A736ADA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ConceptualModel.Views.PlantUml", "Conceptual\Views\PlantUml\Modeler.ConceptualModel.Views.PlantUml.csproj", "{24DFB9FC-604A-4ED7-9EE8-4DBB5A736ADA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ConceptualModel.Views.Mermaid", "Modeler.ConceptualModel.Views.Mermaid\Modeler.ConceptualModel.Views.Mermaid.csproj", "{D4AD66AB-BC94-4B1A-B476-3B2C29211806}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ConceptualModel.Views.Mermaid", "Conceptual\Views\Mermaid\Modeler.ConceptualModel.Views.Mermaid.csproj", "{D4AD66AB-BC94-4B1A-B476-3B2C29211806}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ConceptualModel.Views.Shared", "Modeler.ConceptualModel.Views.Shared\Modeler.ConceptualModel.Views.Shared.csproj", "{A21745CD-21DF-48A3-9CF1-7BE0314A9DEB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ConceptualModel.Views.Shared", "Conceptual\Views\Shared\Modeler.ConceptualModel.Views.Shared.csproj", "{A21745CD-21DF-48A3-9CF1-7BE0314A9DEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ConceptualModel.Views.AsciiDoc", "Modeler.ConceptualModel.Views.AsciiDoc\Modeler.ConceptualModel.Views.AsciiDoc.csproj", "{B11CFAE9-DF53-484A-94AA-FF6AFDD8851B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ConceptualModel.Views.AsciiDoc", "Conceptual\Views\AsciiDoc\Modeler.ConceptualModel.Views.AsciiDoc.csproj", "{B11CFAE9-DF53-484A-94AA-FF6AFDD8851B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Conceptual", "Conceptual", "{2F8FCD8A-040B-41CA-AC74-310512C691EF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6AFF374D-C870-43E2-98E2-A63F42D0983E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Views", "Views", "{A2350489-B216-451D-9EA4-7B8BC0F99175}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,5 +60,16 @@ Global
 		{B11CFAE9-DF53-484A-94AA-FF6AFDD8851B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B11CFAE9-DF53-484A-94AA-FF6AFDD8851B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B11CFAE9-DF53-484A-94AA-FF6AFDD8851B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6AFF374D-C870-43E2-98E2-A63F42D0983E} = {2F8FCD8A-040B-41CA-AC74-310512C691EF}
+		{A2350489-B216-451D-9EA4-7B8BC0F99175} = {2F8FCD8A-040B-41CA-AC74-310512C691EF}
+		{78F86FDF-1E9B-436E-A6D7-3D835E47FE49} = {6AFF374D-C870-43E2-98E2-A63F42D0983E}
+		{6D92CFB0-4D66-44E4-B50D-A13B04DC6FD6} = {6AFF374D-C870-43E2-98E2-A63F42D0983E}
+		{B11CFAE9-DF53-484A-94AA-FF6AFDD8851B} = {A2350489-B216-451D-9EA4-7B8BC0F99175}
+		{D4AD66AB-BC94-4B1A-B476-3B2C29211806} = {A2350489-B216-451D-9EA4-7B8BC0F99175}
+		{24DFB9FC-604A-4ED7-9EE8-4DBB5A736ADA} = {A2350489-B216-451D-9EA4-7B8BC0F99175}
+		{A21745CD-21DF-48A3-9CF1-7BE0314A9DEB} = {A2350489-B216-451D-9EA4-7B8BC0F99175}
+		{2BD18EA1-D90F-4676-ACA2-3D104B004848} = {2F8FCD8A-040B-41CA-AC74-310512C691EF}
 	EndGlobalSection
 EndGlobal
