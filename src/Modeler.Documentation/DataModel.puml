@@ -1,0 +1,59 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class StructureElement {
+    Name: Text
+    Schema: Schema
+}
+
+abstract class Column {
+    Name: Text
+    Type: ColumnType
+}
+
+class TableColumn {
+    IsNull: Bool
+    IsPrimaryKey: Bool
+}
+
+abstract class Schema {
+    Name: Text
+}
+
+
+abstract class ColumnType {
+    Name: Text
+}
+
+class Table {
+    
+}
+
+class StructureElementRelationship {
+    FromColumnName: Text
+    FromMultiplicity: RelationshipMultiplicity
+    ToColumnName: Text
+    ToMultiplicity: RelationshipMultiplicity
+}
+
+abstract class RelationshipMultiplicity {
+}
+
+class View {
+}
+
+class ViewColumn {
+}
+
+TableColumn --|>  Column
+Table --|>  StructureElement
+View --|>  StructureElement
+ViewColumn --|>  Column
+
+Table "1" --> "1..*" TableColumn
+View "1" --> "1..*" ViewColumn
+
+StructureElementRelationship "0..*" --> "1" StructureElement: from
+StructureElementRelationship "0..*" --> "1" StructureElement: to
+
+@enduml
