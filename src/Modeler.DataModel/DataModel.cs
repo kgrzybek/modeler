@@ -112,10 +112,10 @@ public class DataModel
     }
 
     public void AddRelationship(
-        StructureElement from,
+        Table from,
         string fromColumnName,
         RelationshipMultiplicity fromMultiplicity,
-        StructureElement to,
+        Table to,
         string toColumnName,
         RelationshipMultiplicity toMultiplicity)
     {

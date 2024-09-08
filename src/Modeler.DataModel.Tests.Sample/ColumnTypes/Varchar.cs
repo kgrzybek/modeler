@@ -5,7 +5,7 @@ namespace Modeler.DataModel.Tests.Sample.ColumnTypes;
 public class Varchar : ColumnType
 {
     public Varchar(int length) 
-        : base($"VARCHAR[{length}]")
+        : base($"VARCHAR({length})")
     {
     }
 }

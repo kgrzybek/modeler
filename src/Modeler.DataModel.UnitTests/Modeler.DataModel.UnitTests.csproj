@@ -19,8 +19,15 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Modeler.DataModel.PostgreSQL.Views\Modeler.DataModel.PostgreSQL.Views.csproj" />
       <ProjectReference Include="..\Modeler.DataModel.Tests.Sample\Modeler.DataModel.Tests.Sample.csproj" />
       <ProjectReference Include="..\Modeler.DataModel\Modeler.DataModel.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="Views\employees.sql">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

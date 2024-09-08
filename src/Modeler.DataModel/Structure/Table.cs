@@ -43,6 +43,9 @@ public abstract class Table : StructureElement
     
     public TableColumn GetColumn(string name)
     {
-        return Columns.OfType<TableColumn>().Single(x => x.Name == name);
+        return Columns.Single(x => x.Name == name);
     }
+    
+    public List<TableColumn> Columns { get; protected init; } = new List<TableColumn>();
+    
 }

@@ -6,7 +6,7 @@ public class View : StructureElement
     {
         var name = this.GetType().Name;
         this.Name = name.Substring(0, name.Length - 7);
-        Columns = new List<Column>();
+        Columns = new List<ViewColumn>();
     }
     
     public View WithName(
@@ -25,4 +25,6 @@ public class View : StructureElement
 
         return this;
     }
+    
+    public List<ViewColumn> Columns { get; protected init; }
 }

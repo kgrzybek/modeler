@@ -6,10 +6,10 @@ namespace Modeler.DataModel.Relationships;
 public class StructureElementRelationship
 {
     public StructureElementRelationship(
-        StructureElement from,
+        Table from,
         string fromColumnName,
         RelationshipMultiplicity fromMultiplicity,
-        StructureElement to,
+        Table to,
         string toColumnName,
         RelationshipMultiplicity toMultiplicity)
     {
@@ -31,13 +31,13 @@ public class StructureElementRelationship
         FromMultiplicity = fromMultiplicity;
     }
 
-    public StructureElement From { get; }
+    public Table From { get; }
     
     public string FromColumnName { get; }
     
     public RelationshipMultiplicity FromMultiplicity { get; }
     
-    public StructureElement To { get; }
+    public Table To { get; }
     
     public string ToColumnName { get; }
     
