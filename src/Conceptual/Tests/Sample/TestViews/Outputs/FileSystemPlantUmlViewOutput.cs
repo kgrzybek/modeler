@@ -2,13 +2,13 @@ using Modeler.ConceptualModel.Views.Shared;
 
 namespace Modeler.ConceptualModel.Sample.TestViews.Outputs;
 
-public class FileSystemViewOutput<T> : IViewsOutput<T>
+public class FileSystemPlantUmlViewOutput<T> : IViewsOutput<T>
 {
     private readonly string _absoluteDirectoryPath;
 
     private readonly IDictionary<string, string> _relativePaths;
 
-    public FileSystemViewOutput(string absoluteDirectoryPath)
+    public FileSystemPlantUmlViewOutput(string absoluteDirectoryPath)
     {
         _absoluteDirectoryPath = absoluteDirectoryPath;
 

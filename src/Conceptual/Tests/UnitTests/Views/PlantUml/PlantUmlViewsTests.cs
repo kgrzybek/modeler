@@ -27,7 +27,7 @@ public class PlantUmlViewsTests
             model, 
             4, 
             viewTranslator,
-            new FileSystemViewOutput<ClassDiagramView>(AppDomain.CurrentDomain.BaseDirectory));
+            new FileSystemPlantUmlViewOutput<ClassDiagramView>(AppDomain.CurrentDomain.BaseDirectory));
         
         // When
         generator.Generate(viewsFactory.GetViews());

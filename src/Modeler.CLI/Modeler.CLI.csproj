@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Conceptual\ConceptualModel\Modeler.ConceptualModel.csproj" />
+      <ProjectReference Include="..\Conceptual\Tests\Sample\Modeler.ConceptualModel.Sample.csproj" />
+      <ProjectReference Include="..\Conceptual\Views\AsciiDoc\Modeler.ConceptualModel.Views.AsciiDoc.csproj" />
+      <ProjectReference Include="..\Conceptual\Views\Mermaid\Modeler.ConceptualModel.Views.Mermaid.csproj" />
+      <ProjectReference Include="..\Conceptual\Views\PlantUml\Modeler.ConceptualModel.Views.PlantUml.csproj" />
+      <ProjectReference Include="..\Conceptual\Views\Shared\Modeler.ConceptualModel.Views.Shared.csproj" />
+      <ProjectReference Include="..\Modeler.DataModel.PostgreSQL.Views\Modeler.DataModel.PostgreSQL.Views.csproj" />
+      <ProjectReference Include="..\Modeler.DataModel.Tests.Sample\Modeler.DataModel.Tests.Sample.csproj" />
+      <ProjectReference Include="..\Modeler.DataModel\Modeler.DataModel.csproj" />
+    </ItemGroup>
+
+</Project>

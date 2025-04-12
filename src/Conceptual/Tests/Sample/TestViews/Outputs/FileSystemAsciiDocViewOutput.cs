@@ -18,6 +18,7 @@ public class FileSystemAsciiDocViewOutput<T>: IViewsOutput<T>
         _relativePaths.Add(ManagerAsciiDocView.Id, "Manager.adoc");
         _relativePaths.Add(GenderAsciiDocView.Id, "Gender.adoc");
         _relativePaths.Add(AddressAsciiDocView.Id, "Address.adoc");
+        _relativePaths.Add(OrganizationUnitAsciiDocView.Id, "OrganizationUnit.adoc");
     }
 
     public void Execute(List<ViewOutputItem<T>> views)

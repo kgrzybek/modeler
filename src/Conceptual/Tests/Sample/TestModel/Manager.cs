@@ -3,5 +3,6 @@
 public class Manager : Entity
 {
     public static Entity Create() => new Manager()
-        .WithName("Manager");
+        .WithName("Manager")
+        .WithAttribute("ManagesFromDate", Date.Create());
 }
