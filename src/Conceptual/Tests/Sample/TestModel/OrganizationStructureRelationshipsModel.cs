@@ -8,16 +8,16 @@ public class OrganizationStructureRelationshipsModel : RelationshipsModel
 {
     public static void Create(OrganizationStructureConceptualModel model)
     {
-        var person = model.GetEntity<Employee>();
+        var employee = model.GetEntity<Employee>();
         var manager = model.GetEntity<Manager>();
         var organizationUnit = model.GetEntity<OrganizationUnit>();
 
         model.AddAssociation(
             AssociationBuilder
-                .Where(person, "works_in", new One(), organizationUnit)
+                .Where(employee, "works_in", new One(), organizationUnit)
                 .AndInOpposite("hires", new ZeroOrMany()));
         
-        model.AddGeneralization(person, manager);
+        model.AddGeneralization(employee, manager);
         
         model.AddAssociation(
             AssociationBuilder
