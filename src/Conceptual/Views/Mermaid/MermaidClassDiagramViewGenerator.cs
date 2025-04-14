@@ -152,7 +152,16 @@ public class MermaidClassDiagramViewGenerator
     {
         foreach (var relationship in _model.GetRelationships())
         {
-            if (view.Entities.All(x => !relationship.ForEntity(x.Entity)))
+            var shouldBeVisible = true;
+            foreach (var entity in relationship.BetweenEntities())
+            {
+                if (view.Entities.All(x => !Equals(x.Entity, entity)))
+                {
+                    shouldBeVisible = false;
+                    break;
+                }
+            }
+            if (!shouldBeVisible)
             {
                 continue;
             }

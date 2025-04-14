@@ -20,7 +20,7 @@ public class AssociationRelationship : Relationship
     
     public AssociationDirectedRelationship TargetToSource { get; }
 
-    protected override List<Entity> BetweenEntities()
+    public override List<Entity> BetweenEntities()
     {
         return _entities;
     }

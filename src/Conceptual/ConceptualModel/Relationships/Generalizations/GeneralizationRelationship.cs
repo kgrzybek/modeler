@@ -20,7 +20,7 @@ public class GeneralizationRelationship : Relationship
     
     public Entity Specific { get; }
 
-    protected override List<Entity> BetweenEntities()
+    public override List<Entity> BetweenEntities()
     {
         return _entities;
     }

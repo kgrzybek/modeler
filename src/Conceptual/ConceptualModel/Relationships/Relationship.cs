@@ -2,7 +2,7 @@
 
 public abstract class Relationship
 {
-    protected abstract List<Entity> BetweenEntities();
+    public abstract List<Entity> BetweenEntities();
     
     public bool ForEntity(Entity entity)
     {
