@@ -31,13 +31,13 @@ public class StructureElementRelationship
         FromMultiplicity = fromMultiplicity;
     }
 
-    public Table From { get; }
+    public StructureElement From { get; }
     
     public string FromColumnName { get; }
     
     public RelationshipMultiplicity FromMultiplicity { get; }
     
-    public Table To { get; }
+    public StructureElement To { get; }
     
     public string ToColumnName { get; }
     

@@ -67,10 +67,26 @@ void GenerateConceptualModels(string path)
 
 void GenerateDataModels(string path)
 {
+    // Get model
     var model = OrganizationStructureDataModel.GetInstance();
-
+    
+    // Generate database scripts
     var dataModelPath = Path.Combine(path, "Models/Data");
     var fileSystemOutput = new FileSystemOutput(dataModelPath);
-        
     new PostgreSqlStructureViewsGenerator(model, fileSystemOutput).Generate();
+
+    // Generate data model diagrams
+    var plantUmlDataModelViewsFactory = new PlantUmlDataModelViewsFactory(model);
+    plantUmlDataModelViewsFactory.Initialize(Assembly.GetAssembly(typeof(EmployeesTable))!);
+    var viewTranslator = new Modeler.DataModel.Tests.Sample.Views.Translations.ViewTranslator();
+    
+    PlantUmlDataModelGenerator.Generate(
+        path,
+        model, 
+        4,
+        plantUmlDataModelViewsFactory.Views,
+        viewTranslator);
+    
+    // Generate ascii doc tables
+    DataModelAsciiDocGenerator.Generate(dataModelPath, "organizations", model, viewTranslator);
 }
