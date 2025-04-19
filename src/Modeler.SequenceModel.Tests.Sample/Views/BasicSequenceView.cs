@@ -9,7 +9,7 @@ public class BasicSequenceView : SequenceDiagramViewDefinition
     
     public static SequenceDiagramView Create(SequencesModel model)
     {
-        var view = new SequenceDiagramView(Id, model.GetSequence<BasicSequence>());
+        var view = new SequenceDiagramView(Id, model.GetSequence<BasicSequence>(), autonumberMessages: true);
 
         return view;
     }
