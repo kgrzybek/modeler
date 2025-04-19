@@ -53,7 +53,7 @@ public class PlantUmlSequenceDiagramViewGenerator
         foreach (var message in view.Sequence.GetMessages())
         {
             string messageArrow = string.Empty;
-            if (message.Type is SynchronousRequestMessage)
+            if (message.Type is SynchronousRequestMessage or SelfMessage)
             {
                 messageArrow = "->";
             }

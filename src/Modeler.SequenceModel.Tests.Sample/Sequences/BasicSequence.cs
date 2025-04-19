@@ -16,10 +16,13 @@ public class BasicSequence : Sequence
 
         builder.AddSynchronousRequestMessage(user, "doSomething", new StringMessageParameter("123"), system);
         builder.AddSynchronousRequestMessage(system, "getData", new StringMessageParameter("123"), systemTwo);
-        builder.AddSynchronousRequestMessage(systemTwo, "getData", new StringMessageParameter("SQL"), databaseParticipant);
         
+        builder.AddSynchronousRequestMessage(systemTwo, "getData", new StringMessageParameter("SQL"), databaseParticipant);
         builder.AddSynchronousResponseMessage(databaseParticipant, "OK", new StringMessageParameter("data"), systemTwo);
+        
         builder.AddSynchronousResponseMessage(systemTwo, "OK", new StringMessageParameter("data"), system);
+        
+        builder.AddSelfMessage(system, "Process", new StringMessageParameter("data"));
         builder.AddSynchronousResponseMessage(system, "OK", new NoMessageParameters(), user);
 
         var sequence = builder.Build();

@@ -17,6 +17,12 @@ public class SequenceBuilder<T> where T : Sequence, new()
         _messages.Add(message);
     }
     
+    public void AddSelfMessage(Participant sender, string name, MessageParameters parameters)
+    {
+        var message = new Message(name, sender, sender, parameters, new SelfMessage());
+        _messages.Add(message);
+    }
+    
     public void AddSynchronousResponseMessage(Participant sender, string name, MessageParameters parameters, Participant recipient)
     {
         var message = new Message(name, sender, recipient, parameters, new SynchronousResponseMessage());
