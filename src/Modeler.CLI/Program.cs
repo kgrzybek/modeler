@@ -12,6 +12,9 @@ using Modeler.ConceptualModel.Views.PlantUml;
 using Modeler.ConceptualModel.Views.Shared;
 using Modeler.DataModel.PostgreSQL.Views.Generator;
 using Modeler.DataModel.Tests.Sample;
+using Modeler.SequenceModel.Tests.Sample;
+using Modeler.SequenceModel.Tests.Sample.Views;
+using Modeler.SequenceModel.Views.PlantUml;
 
 Console.WriteLine("Docs generation...");
 
@@ -20,6 +23,8 @@ const string documentationPath = "C:\\Modeler_sample_docs";
 GenerateConceptualModels(documentationPath);
 
 GenerateDataModels(documentationPath);
+
+GenerateSequenceModels(documentationPath);
 
 Console.WriteLine("Docs generated...");
 
@@ -45,7 +50,7 @@ void GenerateConceptualModels(string path)
         model,
         4,
         viewTranslator,
-        new FileSystemPlantUmlViewOutput<ClassDiagramView>(modelsPath)).Generate(classDiagramViews);
+        new Modeler.ConceptualModel.Sample.TestViews.Outputs.FileSystemPlantUmlViewOutput<ClassDiagramView>(modelsPath)).Generate(classDiagramViews);
 
     // Mermaid
     new MermaidClassDiagramViewGenerator(
@@ -89,4 +94,23 @@ void GenerateDataModels(string path)
     
     // Generate ascii doc tables
     DataModelAsciiDocGenerator.Generate(dataModelPath, "organizations", model, viewTranslator);
+}
+
+void GenerateSequenceModels(string path)
+{
+    // Get model
+    var model = SequencesModel.GetInstance();
+    
+    // Get views
+    var sequenceDiagramViews = new SequenceDiagramViewsFactory(
+        model,
+        Assembly.GetAssembly(typeof(BasicSequenceView))!).GetViews();
+    
+    // Set views path
+    var sequencesModelPath = Path.Combine(path, "Models/Sequences");
+    
+    // Generate views
+    var fileSystemOutput = new FileSystemSequencesPlantUmlViewOutput<SequenceDiagramView>(sequencesModelPath);
+    var viewTranslator = new PlantUmlSequenceDiagramViewTranslator();
+    new PlantUmlSequenceDiagramViewGenerator(fileSystemOutput, viewTranslator).Generate(sequenceDiagramViews);
 }
