@@ -32,7 +32,7 @@ public class PlantUmlSequenceDiagramViewGenerator
 
             sb.AppendLine();
 
-            GenerateParticipants(sb, view);
+            GenerateParticipants(sb, view, _viewTranslator);
 
             GenerateMessages(sb, view);
 
@@ -81,11 +81,13 @@ public class PlantUmlSequenceDiagramViewGenerator
 
     private static void GenerateParticipants(
         StringBuilder sb,
-        SequenceDiagramView view)
+        SequenceDiagramView view,
+        IPlantUmlSequenceDiagramViewTranslator viewTranslator)
     {
-        foreach (var entity in view.Sequence.GetParticipants().OrderBy(x => x.Name))
+        var participants = view.Sequence.GetParticipants().OrderBy(x => view.ParticipantsOrder[x.GetType()]); 
+        foreach (var participant in participants)
         {
-            GenerateParticipant(sb, entity);
+            GenerateParticipant(sb, participant, viewTranslator);
 
             sb.AppendLine();
         }
@@ -93,8 +95,10 @@ public class PlantUmlSequenceDiagramViewGenerator
 
     private static void GenerateParticipant(
         StringBuilder sb,
-        Participant participant)
+        Participant participant,
+        IPlantUmlSequenceDiagramViewTranslator viewTranslator)
     {
-        sb.AppendLine($"participant {participant.Name}");
+        var participantType = viewTranslator.TranslateParticipantType(participant.Type);
+        sb.AppendLine($"{participantType} {participant.Name}");
     }
 }

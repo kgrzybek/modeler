@@ -10,13 +10,16 @@ public class BasicSequence : Sequence
         var user = model.GetParticipant<UserParticipant>();
         var system = model.GetParticipant<SystemOneParticipant>();
         var systemTwo = model.GetParticipant<SystemTwoParticipant>();
+        var databaseParticipant = model.GetParticipant<DatabaseParticipant>();
 
         var builder = new SequenceBuilder<BasicSequence>("Basic");
 
         builder.AddSynchronousRequestMessage(user, "doSomething", new StringMessageParameter("123"), system);
-        builder.AddSynchronousRequestMessage(system, "doSomethingMore", new StringMessageParameter("123"), systemTwo);
+        builder.AddSynchronousRequestMessage(system, "getData", new StringMessageParameter("123"), systemTwo);
+        builder.AddSynchronousRequestMessage(systemTwo, "getData", new StringMessageParameter("SQL"), databaseParticipant);
         
-        builder.AddSynchronousResponseMessage(systemTwo, "OK", new NoMessageParameters(), system);
+        builder.AddSynchronousResponseMessage(databaseParticipant, "OK", new StringMessageParameter("data"), systemTwo);
+        builder.AddSynchronousResponseMessage(systemTwo, "OK", new StringMessageParameter("data"), system);
         builder.AddSynchronousResponseMessage(system, "OK", new NoMessageParameters(), user);
 
         var sequence = builder.Build();

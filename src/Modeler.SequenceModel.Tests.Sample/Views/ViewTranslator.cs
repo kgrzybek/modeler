@@ -1,4 +1,5 @@
 ﻿using Modeler.SequenceModel.Tests.Sample.Parameters;
+using Modeler.SequenceModel.Tests.Sample.ParticipantTypes;
 using Modeler.SequenceModel.Views.PlantUml;
 
 namespace Modeler.SequenceModel.Tests.Sample.Views;
@@ -18,5 +19,15 @@ public class PlantUmlSequenceDiagramViewTranslator : IPlantUmlSequenceDiagramVie
         }
         
         throw new ArgumentException($"Invalid message parameter type {messageParameters.GetType()}");
+    }
+
+    public string TranslateParticipantType(ParticipantType participantType)
+    {
+        return participantType switch
+        {
+            Actor => "actor",
+            Database => "database",
+            _ => "participant"
+        };
     }
 }
