@@ -47,7 +47,30 @@ public class PlantUmlSequenceDiagramViewGenerator
     {
         foreach (var message in view.Sequence.GetMessages())
         {
-            sb.AppendLine($"{message.Sender.Name} -> {message.Receiver.Name} : {message.Name} {_viewTranslator.TranslateMessageParameters(message.Parameters)}");
+            string messageArrow = string.Empty;
+            if (message.Type is SynchronousRequestMessage)
+            {
+                messageArrow = "->";
+            }
+
+            if (message.Type is SynchronousResponseMessage)
+            {
+                messageArrow = "-->";
+            }
+            
+            sb.AppendLine($"{message.Sender.Name} {messageArrow} {message.Receiver.Name} : {message.Name} {_viewTranslator.TranslateMessageParameters(message.Parameters)}");
+            
+            if (message.Type is SynchronousRequestMessage)
+            {
+                sb.AppendLine($"activate {message.Receiver.Name}");
+                sb.AppendLine();
+            }
+
+            if (message.Type is SynchronousResponseMessage)
+            {
+                sb.AppendLine($"deactivate {message.Sender.Name}");
+                sb.AppendLine();
+            }
         }
     }
 

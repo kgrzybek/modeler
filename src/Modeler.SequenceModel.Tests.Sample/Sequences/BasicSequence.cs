@@ -13,11 +13,11 @@ public class BasicSequence : Sequence
 
         var builder = new SequenceBuilder<BasicSequence>("Basic");
 
-        builder.AddMessage(user, "hello system one", new StringMessageParameter("hi"), system);
-        builder.AddMessage(system, "welcome from system one", new NoMessageParameters(), user);
+        builder.AddSynchronousRequestMessage(user, "doSomething", new StringMessageParameter("123"), system);
+        builder.AddSynchronousRequestMessage(system, "doSomethingMore", new StringMessageParameter("123"), systemTwo);
         
-        builder.AddMessage(user, "hello two", new StringMessageParameter("input"), systemTwo);
-        builder.AddMessage(systemTwo, "welcome from system two", new NoMessageParameters(), user);
+        builder.AddSynchronousResponseMessage(systemTwo, "OK", new NoMessageParameters(), system);
+        builder.AddSynchronousResponseMessage(system, "OK", new NoMessageParameters(), user);
 
         var sequence = builder.Build();
         model.AddSequence(sequence);

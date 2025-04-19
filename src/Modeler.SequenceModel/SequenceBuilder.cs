@@ -11,9 +11,15 @@ public class SequenceBuilder<T> where T : Sequence, new()
         _messages = new List<Message>();
     }
     
-    public void AddMessage(Participant sender, string name, MessageParameters parameters, Participant recipient)
+    public void AddSynchronousRequestMessage(Participant sender, string name, MessageParameters parameters, Participant recipient)
     {
-        var message = new Message(name, sender, recipient, parameters);
+        var message = new Message(name, sender, recipient, parameters, new SynchronousRequestMessage());
+        _messages.Add(message);
+    }
+    
+    public void AddSynchronousResponseMessage(Participant sender, string name, MessageParameters parameters, Participant recipient)
+    {
+        var message = new Message(name, sender, recipient, parameters, new SynchronousResponseMessage());
         _messages.Add(message);
     }
 
