@@ -63,17 +63,17 @@ public class PlantUmlSequenceDiagramViewGenerator
                 messageArrow = "-->";
             }
             
-            sb.AppendLine($"{message.Sender.Name} {messageArrow} {message.Receiver.Name} : {message.Name} {_viewTranslator.TranslateMessageParameters(message.Parameters)}");
+            sb.AppendLine($"{message.Sender.Id} {messageArrow} {message.Receiver.Id} : {message.Name} {_viewTranslator.TranslateMessageParameters(message.Parameters)}");
             
             if (message.Type is SynchronousRequestMessage)
             {
-                sb.AppendLine($"activate {message.Receiver.Name}");
+                sb.AppendLine($"activate {message.Receiver.Id}");
                 sb.AppendLine();
             }
 
             if (message.Type is SynchronousResponseMessage)
             {
-                sb.AppendLine($"deactivate {message.Sender.Name}");
+                sb.AppendLine($"deactivate {message.Sender.Id}");
                 sb.AppendLine();
             }
         }
@@ -99,6 +99,6 @@ public class PlantUmlSequenceDiagramViewGenerator
         IPlantUmlSequenceDiagramViewTranslator viewTranslator)
     {
         var participantType = viewTranslator.TranslateParticipantType(participant.Type);
-        sb.AppendLine($"{participantType} {participant.Name}<<{viewTranslator.TranslateParticipantStereoType(participant.Type)}>>");
+        sb.AppendLine($"{participantType} \"{participant.Name}\" as {participant.Id} <<{viewTranslator.TranslateParticipantStereoType(participant.Type)}>>");
     }
 }
