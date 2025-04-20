@@ -14,6 +14,7 @@ public class FileSystemSequencesPlantUmlViewOutput<T> : IViewsOutput<T>
 
         _relativePaths = new Dictionary<string, string>();
         _relativePaths.Add(BasicSequenceView.Id, "BasicSequence.puml");
+        _relativePaths.Add(BasicSequencePartView.Id, "BasicSequencePart.puml");
     }
 
     public void Execute(List<ViewOutputItem<T>> views)

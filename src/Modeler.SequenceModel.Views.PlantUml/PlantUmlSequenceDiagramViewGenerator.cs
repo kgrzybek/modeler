@@ -52,6 +52,11 @@ public class PlantUmlSequenceDiagramViewGenerator
     {
         foreach (var message in view.Sequence.GetMessages())
         {
+            if (view.ParticipantsToShow.All(x => x != message.Sender) || view.ParticipantsToShow.All(x => x != message.Receiver))
+            {
+                continue;
+            }
+            
             string messageArrow = string.Empty;
             if (message.Type is SynchronousRequestMessage or SelfMessage)
             {
@@ -84,8 +89,7 @@ public class PlantUmlSequenceDiagramViewGenerator
         SequenceDiagramView view,
         IPlantUmlSequenceDiagramViewTranslator viewTranslator)
     {
-        var participants = view.Sequence.GetParticipants().OrderBy(x => view.ParticipantsOrder[x.GetType()]); 
-        foreach (var participant in participants)
+        foreach (var participant in view.ParticipantsToShow)
         {
             GenerateParticipant(sb, participant, viewTranslator);
 

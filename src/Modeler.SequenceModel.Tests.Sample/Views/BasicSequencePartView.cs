@@ -5,9 +5,9 @@ using Type = System.Type;
 
 namespace Modeler.SequenceModel.Tests.Sample.Views;
 
-public class BasicSequenceView : SequenceDiagramViewDefinition
+public class BasicSequencePartView : SequenceDiagramViewDefinition
 {
-    public const string Id = "BasicSequence";
+    public const string Id = "BasicSequencePart";
     
     public static SequenceDiagramView Create(SequencesModel model)
     {
@@ -15,8 +15,7 @@ public class BasicSequenceView : SequenceDiagramViewDefinition
         {
             model.GetParticipant<UserParticipant>(),
             model.GetParticipant<FrontendParticipant>(),
-            model.GetParticipant<BackendParticipant>(),
-            model.GetParticipant<BackendDatabaseParticipant>()
+            model.GetParticipant<BackendParticipant>()
         };
         var view = new SequenceDiagramView(
             Id,

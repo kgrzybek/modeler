@@ -5,12 +5,12 @@ public class SequenceDiagramView
     public SequenceDiagramView(
         string id,
         Sequence sequence,
-        IDictionary<Type, int> participantsOrder,
+        List<Participant> participantsToShow,
         bool autonumberMessages = false)
     {
         Id = id;
         Sequence = sequence;
-        ParticipantsOrder = participantsOrder;
+        ParticipantsToShow = participantsToShow;
         AutonumberMessages = autonumberMessages;
     }
     
@@ -20,5 +20,5 @@ public class SequenceDiagramView
     
     public bool AutonumberMessages { get; }
 
-    public IDictionary<Type, int> ParticipantsOrder { get; }
+    public List<Participant> ParticipantsToShow { get; }
 }
