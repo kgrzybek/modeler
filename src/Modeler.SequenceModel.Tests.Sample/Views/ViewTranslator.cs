@@ -30,4 +30,15 @@ public class PlantUmlSequenceDiagramViewTranslator : IPlantUmlSequenceDiagramVie
             _ => "participant"
         };
     }
+
+    public string TranslateParticipantStereoType(ParticipantType participantType)
+    {
+        return participantType switch
+        {
+            Actor => "Actor",
+            Database => "Database",
+            System => "System",
+            _ => throw new ArgumentException($"Invalid participant type {participantType}")
+        };
+    }
 }

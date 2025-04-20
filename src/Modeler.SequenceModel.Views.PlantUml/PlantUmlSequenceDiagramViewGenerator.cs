@@ -99,6 +99,6 @@ public class PlantUmlSequenceDiagramViewGenerator
         IPlantUmlSequenceDiagramViewTranslator viewTranslator)
     {
         var participantType = viewTranslator.TranslateParticipantType(participant.Type);
-        sb.AppendLine($"{participantType} {participant.Name}");
+        sb.AppendLine($"{participantType} {participant.Name}<<{viewTranslator.TranslateParticipantStereoType(participant.Type)}>>");
     }
 }

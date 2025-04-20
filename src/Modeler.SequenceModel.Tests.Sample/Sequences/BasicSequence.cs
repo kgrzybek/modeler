@@ -8,22 +8,22 @@ public class BasicSequence : Sequence
     public static void Create(SequencesModel model)
     {
         var user = model.GetParticipant<UserParticipant>();
-        var system = model.GetParticipant<SystemOneParticipant>();
-        var systemTwo = model.GetParticipant<SystemTwoParticipant>();
-        var databaseParticipant = model.GetParticipant<DatabaseParticipant>();
+        var frontend = model.GetParticipant<FrontendParticipant>();
+        var backend = model.GetParticipant<BackendParticipant>();
+        var backendDatabase = model.GetParticipant<BackendDatabaseParticipant>();
 
         var builder = new SequenceBuilder<BasicSequence>("Basic");
 
-        builder.AddSynchronousRequestMessage(user, "doSomething", new StringMessageParameter("123"), system);
-        builder.AddSynchronousRequestMessage(system, "getData", new StringMessageParameter("123"), systemTwo);
+        builder.AddSynchronousRequestMessage(user, "doSomething", new StringMessageParameter("123"), frontend);
+        builder.AddSynchronousRequestMessage(frontend, "getData", new StringMessageParameter("123"), backend);
         
-        builder.AddSynchronousRequestMessage(systemTwo, "getData", new StringMessageParameter("SQL"), databaseParticipant);
-        builder.AddSynchronousResponseMessage(databaseParticipant, "OK", new StringMessageParameter("data"), systemTwo);
+        builder.AddSynchronousRequestMessage(backend, "getData", new StringMessageParameter("SQL"), backendDatabase);
+        builder.AddSynchronousResponseMessage(backendDatabase, "OK", new StringMessageParameter("data"), backend);
         
-        builder.AddSynchronousResponseMessage(systemTwo, "OK", new StringMessageParameter("data"), system);
+        builder.AddSynchronousResponseMessage(backend, "OK", new StringMessageParameter("data"), frontend);
         
-        builder.AddSelfMessage(system, "Process", new StringMessageParameter("data"));
-        builder.AddSynchronousResponseMessage(system, "OK", new NoMessageParameters(), user);
+        builder.AddSelfMessage(frontend, "Process", new StringMessageParameter("data"));
+        builder.AddSynchronousResponseMessage(frontend, "OK", new NoMessageParameters(), user);
 
         var sequence = builder.Build();
         model.AddSequence(sequence);

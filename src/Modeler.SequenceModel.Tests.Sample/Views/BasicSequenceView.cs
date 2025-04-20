@@ -14,9 +14,9 @@ public class BasicSequenceView : SequenceDiagramViewDefinition
         var order = new Dictionary<Type, int>
         {
             {typeof(UserParticipant), 1},
-            {typeof(SystemOneParticipant), 2},
-            {typeof(SystemTwoParticipant), 3},
-            {typeof(DatabaseParticipant), 4}
+            {typeof(FrontendParticipant), 2},
+            {typeof(BackendParticipant), 3},
+            {typeof(BackendDatabaseParticipant), 4}
         };
         var view = new SequenceDiagramView(
             Id,
