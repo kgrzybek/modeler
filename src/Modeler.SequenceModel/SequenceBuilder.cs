@@ -28,6 +28,12 @@ public class SequenceBuilder<T> where T : Sequence, new()
         var message = new Message(name, sender, recipient, parameters, new SynchronousResponseMessage());
         _messages.Add(message);
     }
+    
+    public void AddEventMessage(Participant sender, string name, MessageParameters parameters, Participant recipient)
+    {
+        var message = new Message(name, sender, recipient, parameters, new EventMessage());
+        _messages.Add(message);
+    }
 
     public T Build()
     {

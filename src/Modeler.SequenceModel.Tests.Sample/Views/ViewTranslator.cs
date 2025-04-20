@@ -37,7 +37,8 @@ public class PlantUmlSequenceDiagramViewTranslator : IPlantUmlSequenceDiagramVie
         {
             Actor => "Actor",
             Database => "Database",
-            System => "System",
+            ParticipantTypes.System => "System",
+            ExternalSystem => "ExternalSystem",
             _ => throw new ArgumentException($"Invalid participant type {participantType}")
         };
     }

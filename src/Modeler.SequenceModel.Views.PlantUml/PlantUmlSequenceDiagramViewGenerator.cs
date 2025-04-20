@@ -56,8 +56,8 @@ public class PlantUmlSequenceDiagramViewGenerator
             {
                 continue;
             }
-            
-            string messageArrow = string.Empty;
+
+            string? messageArrow = null;
             if (message.Type is SynchronousRequestMessage or SelfMessage)
             {
                 messageArrow = "->";
@@ -66,6 +66,16 @@ public class PlantUmlSequenceDiagramViewGenerator
             if (message.Type is SynchronousResponseMessage)
             {
                 messageArrow = "-->";
+            }
+            
+            if (message.Type is EventMessage)
+            {
+                messageArrow = "->>";
+            }
+
+            if (messageArrow == null)
+            {
+                throw new Exception("Unknown message type");
             }
             
             sb.AppendLine($"{message.Sender.Id} {messageArrow} {message.Receiver.Id} : {message.Name} {_viewTranslator.TranslateMessageParameters(message.Parameters)}");

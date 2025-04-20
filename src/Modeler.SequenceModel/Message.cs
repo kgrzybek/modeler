@@ -30,4 +30,6 @@ public class SynchronousRequestMessage : MessageType {}
 
 public class SynchronousResponseMessage : MessageType {}
 
+public class EventMessage : MessageType {}
+
 public class SelfMessage : MessageType {}

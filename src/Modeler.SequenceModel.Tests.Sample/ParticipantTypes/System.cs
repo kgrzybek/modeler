@@ -1,4 +1,4 @@
-﻿namespace Modeler.SequenceModel.Tests.Sample;
+﻿namespace Modeler.SequenceModel.Tests.Sample.ParticipantTypes;
 
 public class System : ParticipantType
 {
