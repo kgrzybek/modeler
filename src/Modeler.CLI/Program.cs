@@ -112,5 +112,6 @@ void GenerateSequenceModels(string path)
     // Generate views
     var fileSystemOutput = new FileSystemSequencesPlantUmlViewOutput<SequenceDiagramView>(sequencesModelPath);
     var viewTranslator = new PlantUmlSequenceDiagramViewTranslator();
-    new PlantUmlSequenceDiagramViewGenerator(fileSystemOutput, viewTranslator).Generate(sequenceDiagramViews);
+    var viewLayout = new DefaultViewLayout();
+    new PlantUmlSequenceDiagramViewGenerator(fileSystemOutput, viewTranslator, viewLayout).Generate(sequenceDiagramViews);
 }

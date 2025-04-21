@@ -6,13 +6,16 @@ public class PlantUmlSequenceDiagramViewGenerator
 {
     private readonly IViewsOutput<SequenceDiagramView> _viewsOutput;
     private readonly IPlantUmlSequenceDiagramViewTranslator _viewTranslator;
+    private readonly IPlantUmlSequenceDiagramViewLayout _viewLayout;
 
     public PlantUmlSequenceDiagramViewGenerator(
         IViewsOutput<SequenceDiagramView> viewsOutput,
-        IPlantUmlSequenceDiagramViewTranslator viewTranslator)
+        IPlantUmlSequenceDiagramViewTranslator viewTranslator, 
+        IPlantUmlSequenceDiagramViewLayout viewLayout)
     {
         _viewsOutput = viewsOutput;
         _viewTranslator = viewTranslator;
+        _viewLayout = viewLayout;
     }
 
     public void Generate(
@@ -32,7 +35,7 @@ public class PlantUmlSequenceDiagramViewGenerator
 
             sb.AppendLine();
 
-            GenerateParticipants(sb, view, _viewTranslator);
+            GenerateParticipants(sb, view, _viewTranslator, _viewLayout);
 
             GenerateMessages(sb, view);
 
@@ -94,25 +97,25 @@ public class PlantUmlSequenceDiagramViewGenerator
         }
     }
 
-    private static void GenerateParticipants(
-        StringBuilder sb,
+    private static void GenerateParticipants(StringBuilder sb,
         SequenceDiagramView view,
-        IPlantUmlSequenceDiagramViewTranslator viewTranslator)
+        IPlantUmlSequenceDiagramViewTranslator viewTranslator,
+        IPlantUmlSequenceDiagramViewLayout viewLayout)
     {
         foreach (var participant in view.ParticipantsToShow)
         {
-            GenerateParticipant(sb, participant, viewTranslator);
+            GenerateParticipant(sb, participant, viewTranslator, viewLayout);
 
             sb.AppendLine();
         }
     }
 
-    private static void GenerateParticipant(
-        StringBuilder sb,
+    private static void GenerateParticipant(StringBuilder sb,
         Participant participant,
-        IPlantUmlSequenceDiagramViewTranslator viewTranslator)
+        IPlantUmlSequenceDiagramViewTranslator viewTranslator,
+        IPlantUmlSequenceDiagramViewLayout viewLayout)
     {
         var participantType = viewTranslator.TranslateParticipantType(participant.Type);
-        sb.AppendLine($"{participantType} \"{participant.Name}\" as {participant.Id} <<{viewTranslator.TranslateParticipantStereoType(participant.Type)}>>");
+        sb.AppendLine($"{participantType} \"{participant.Name}\" as {participant.Id} <<{viewTranslator.TranslateParticipantStereoType(participant.Type)}>> {viewLayout.GetParticipantColor(participant.Type)}");
     }
 }
