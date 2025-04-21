@@ -1,10 +1,11 @@
 ﻿using System.Drawing;
 using Modeler.SequenceModel.Tests.Sample.ParticipantTypes;
 using Modeler.SequenceModel.Views.PlantUml;
+using Modeler.SequenceModel.Views.Shared;
 
 namespace Modeler.SequenceModel.Tests.Sample.Views;
 
-public class DefaultViewLayout : IPlantUmlSequenceDiagramViewLayout
+public class DefaultViewLayout : ISequenceDiagramViewLayout
 {
     public string GetParticipantColor(ParticipantType participantType)
     {

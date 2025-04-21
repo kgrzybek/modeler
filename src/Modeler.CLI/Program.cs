@@ -14,7 +14,9 @@ using Modeler.DataModel.PostgreSQL.Views.Generator;
 using Modeler.DataModel.Tests.Sample;
 using Modeler.SequenceModel.Tests.Sample;
 using Modeler.SequenceModel.Tests.Sample.Views;
+using Modeler.SequenceModel.Views.Mermaid;
 using Modeler.SequenceModel.Views.PlantUml;
+using Modeler.SequenceModel.Views.Shared;
 
 Console.WriteLine("Docs generation...");
 
@@ -50,7 +52,7 @@ void GenerateConceptualModels(string path)
         model,
         4,
         viewTranslator,
-        new Modeler.ConceptualModel.Sample.TestViews.Outputs.FileSystemPlantUmlViewOutput<ClassDiagramView>(modelsPath)).Generate(classDiagramViews);
+        new FileSystemPlantUmlViewOutput<ClassDiagramView>(modelsPath)).Generate(classDiagramViews);
 
     // Mermaid
     new MermaidClassDiagramViewGenerator(
@@ -110,8 +112,14 @@ void GenerateSequenceModels(string path)
     var sequencesModelPath = Path.Combine(path, "Models/Sequences");
     
     // Generate views
-    var fileSystemOutput = new FileSystemSequencesPlantUmlViewOutput<SequenceDiagramView>(sequencesModelPath);
-    var viewTranslator = new PlantUmlSequenceDiagramViewTranslator();
+    var fileSystemOutput = new FileSystemSequencesPlantUmlSequenceDiagramViewOutput<SequenceDiagramView>(sequencesModelPath);
+    var viewTranslator = new SequenceDiagramViewTranslator();
     var viewLayout = new DefaultViewLayout();
+    
+    // Generate PlantUml views
     new PlantUmlSequenceDiagramViewGenerator(fileSystemOutput, viewTranslator, viewLayout).Generate(sequenceDiagramViews);
+    
+    // Generate Mermaid views
+    var mermaidFilesOutput = new FileSystemSequencesMermaidSequenceDiagramViewOutput<SequenceDiagramView>(sequencesModelPath);
+    new MermaidSequenceDiagramViewGenerator(mermaidFilesOutput, viewTranslator).Generate(sequenceDiagramViews);
 }

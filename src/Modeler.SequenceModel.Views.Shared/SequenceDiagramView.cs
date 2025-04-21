@@ -1,4 +1,4 @@
-﻿namespace Modeler.SequenceModel.Views.PlantUml;
+﻿namespace Modeler.SequenceModel.Views.Shared;
 
 public class SequenceDiagramView
 {

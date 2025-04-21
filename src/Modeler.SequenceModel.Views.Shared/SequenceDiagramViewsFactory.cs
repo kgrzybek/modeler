@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Modeler.SequenceModel.Views.PlantUml;
+namespace Modeler.SequenceModel.Views.Shared;
 
 public class SequenceDiagramViewsFactory
 {

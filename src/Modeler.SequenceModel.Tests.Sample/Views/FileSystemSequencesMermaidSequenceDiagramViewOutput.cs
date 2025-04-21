@@ -1,23 +1,23 @@
-using Modeler.SequenceModel.Views.PlantUml;
+using Modeler.SequenceModel.Views.Shared;
 
 namespace Modeler.SequenceModel.Tests.Sample.Views;
 
-public class FileSystemSequencesPlantUmlViewOutput<T> : IViewsOutput<T>
+public class FileSystemSequencesMermaidSequenceDiagramViewOutput<T> : ISequenceDiagramViewsOutput<T>
 {
     private readonly string _absoluteDirectoryPath;
 
     private readonly IDictionary<string, string> _relativePaths;
 
-    public FileSystemSequencesPlantUmlViewOutput(string absoluteDirectoryPath)
+    public FileSystemSequencesMermaidSequenceDiagramViewOutput(string absoluteDirectoryPath)
     {
         _absoluteDirectoryPath = absoluteDirectoryPath;
 
         _relativePaths = new Dictionary<string, string>();
-        _relativePaths.Add(BasicSequenceView.Id, "BasicSequence.puml");
-        _relativePaths.Add(BasicSequencePartView.Id, "BasicSequencePart.puml");
+        _relativePaths.Add(BasicSequenceView.Id, "BasicSequence.mmd");
+        _relativePaths.Add(BasicSequencePartView.Id, "BasicSequencePart.mmd");
     }
 
-    public void Execute(List<ViewOutputItem<T>> views)
+    public void Execute(List<SequenceDiagramViewOutputItem<T>> views)
     {
         if (!Directory.Exists(_absoluteDirectoryPath))
         {

@@ -48,6 +48,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.SequenceModel.Tests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.SequenceModel.Views.PlantUml", "Modeler.SequenceModel.Views.PlantUml\Modeler.SequenceModel.Views.PlantUml.csproj", "{DAEB6240-5A0E-41B7-B695-CAEB065E7942}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.SequenceModel.Views.Shared", "Modeler.SequenceModel.Views.Shared\Modeler.SequenceModel.Views.Shared.csproj", "{B438228D-1E4B-4570-BEAC-56E02D277731}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.SequenceModel.Views.Mermaid", "Modeler.SequenceModel.Views.Mermaid\Modeler.SequenceModel.Views.Mermaid.csproj", "{AE37E3EB-4E2F-4ADD-BAEA-AF6BB232AA82}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -122,6 +126,14 @@ Global
 		{DAEB6240-5A0E-41B7-B695-CAEB065E7942}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DAEB6240-5A0E-41B7-B695-CAEB065E7942}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DAEB6240-5A0E-41B7-B695-CAEB065E7942}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B438228D-1E4B-4570-BEAC-56E02D277731}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B438228D-1E4B-4570-BEAC-56E02D277731}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B438228D-1E4B-4570-BEAC-56E02D277731}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B438228D-1E4B-4570-BEAC-56E02D277731}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE37E3EB-4E2F-4ADD-BAEA-AF6BB232AA82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE37E3EB-4E2F-4ADD-BAEA-AF6BB232AA82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE37E3EB-4E2F-4ADD-BAEA-AF6BB232AA82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE37E3EB-4E2F-4ADD-BAEA-AF6BB232AA82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6AFF374D-C870-43E2-98E2-A63F42D0983E} = {2F8FCD8A-040B-41CA-AC74-310512C691EF}
@@ -143,5 +155,7 @@ Global
 		{4CC61A4F-0E5F-4735-AA20-7F3535A029EC} = {71A2CD03-47BD-4E76-B513-ADE7C74CB566}
 		{12267116-48CC-426F-A6F7-A7EEEC626A4B} = {71A2CD03-47BD-4E76-B513-ADE7C74CB566}
 		{DAEB6240-5A0E-41B7-B695-CAEB065E7942} = {71A2CD03-47BD-4E76-B513-ADE7C74CB566}
+		{B438228D-1E4B-4570-BEAC-56E02D277731} = {71A2CD03-47BD-4E76-B513-ADE7C74CB566}
+		{AE37E3EB-4E2F-4ADD-BAEA-AF6BB232AA82} = {71A2CD03-47BD-4E76-B513-ADE7C74CB566}
 	EndGlobalSection
 EndGlobal

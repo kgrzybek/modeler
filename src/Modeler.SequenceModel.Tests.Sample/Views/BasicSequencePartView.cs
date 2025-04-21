@@ -1,6 +1,7 @@
 using Modeler.SequenceModel.Tests.Sample.Participants;
 using Modeler.SequenceModel.Tests.Sample.Sequences;
 using Modeler.SequenceModel.Views.PlantUml;
+using Modeler.SequenceModel.Views.Shared;
 using Type = System.Type;
 
 namespace Modeler.SequenceModel.Tests.Sample.Views;

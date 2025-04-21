@@ -1,10 +1,11 @@
 ﻿using Modeler.SequenceModel.Tests.Sample.Parameters;
 using Modeler.SequenceModel.Tests.Sample.ParticipantTypes;
 using Modeler.SequenceModel.Views.PlantUml;
+using Modeler.SequenceModel.Views.Shared;
 
 namespace Modeler.SequenceModel.Tests.Sample.Views;
 
-public class PlantUmlSequenceDiagramViewTranslator : IPlantUmlSequenceDiagramViewTranslator
+public class SequenceDiagramViewTranslator : ISequenceDiagramViewTranslator
 {
     public string TranslateMessageParameters(MessageParameters messageParameters)
     {

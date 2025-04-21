@@ -1,6 +1,6 @@
-﻿namespace Modeler.SequenceModel.Views.PlantUml;
+﻿namespace Modeler.SequenceModel.Views.Shared;
 
-public interface IPlantUmlSequenceDiagramViewTranslator
+public interface ISequenceDiagramViewTranslator
 {
     public string TranslateMessageParameters(MessageParameters messageParameters);
     
