@@ -1,6 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using System.Reflection;
+using Modeler.ComponentsModel.Tests.Sample;
+using Modeler.ComponentsModel.Views.PlantUml;
 using Modeler.ConceptualModel.Sample.TestModel;
 using Modeler.ConceptualModel.Sample.TestViews;
 using Modeler.ConceptualModel.Sample.TestViews.AsciiDocViews;
@@ -28,6 +30,8 @@ GenerateDataModels(documentationPath);
 
 GenerateSequenceModels(documentationPath);
 
+GenerateComponentsModels(documentationPath);
+
 Console.WriteLine("Docs generated...");
 
 
@@ -52,7 +56,7 @@ void GenerateConceptualModels(string path)
         model,
         4,
         viewTranslator,
-        new FileSystemPlantUmlViewOutput<ClassDiagramView>(modelsPath)).Generate(classDiagramViews);
+        new Modeler.ConceptualModel.Sample.TestViews.Outputs.FileSystemPlantUmlViewOutput<ClassDiagramView>(modelsPath)).Generate(classDiagramViews);
 
     // Mermaid
     new MermaidClassDiagramViewGenerator(
@@ -122,4 +126,22 @@ void GenerateSequenceModels(string path)
     // Generate Mermaid views
     var mermaidFilesOutput = new FileSystemSequencesMermaidSequenceDiagramViewOutput<SequenceDiagramView>(sequencesModelPath);
     new MermaidSequenceDiagramViewGenerator(mermaidFilesOutput, viewTranslator).Generate(sequenceDiagramViews);
+}
+
+void GenerateComponentsModels(string path)
+{
+    var model = SystemComponentsModel.GetInstance();
+    
+    // Get views
+    var sequenceDiagramViews = new ComponentsDiagramViewsFactory(
+        model,
+        Assembly.GetAssembly(typeof(SystemComponentsView))!).GetViews();
+    
+    // Set views path
+    var componentsModelPath = Path.Combine(path, "Models/Components");
+    
+    // Generate views
+    var fileSystemOutput = new FileSystemPlantUmlComponentsDiagramViewOutput<ComponentsDiagramView>(componentsModelPath);
+    new PlantComponentsDiagramViewGenerator(model, fileSystemOutput).Generate(sequenceDiagramViews);
+
 }

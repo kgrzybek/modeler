@@ -52,6 +52,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.SequenceModel.Views
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.SequenceModel.Views.Mermaid", "Modeler.SequenceModel.Views.Mermaid\Modeler.SequenceModel.Views.Mermaid.csproj", "{AE37E3EB-4E2F-4ADD-BAEA-AF6BB232AA82}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Component", "Component", "{102A88CC-355E-4F45-9D30-55453A5189FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ComponentsModel", "Modeler.ComponentsModel\Modeler.ComponentsModel.csproj", "{8C0E4D00-5516-4248-9015-8700A5D8DA5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ComponentsModel.Views.PlantUml", "Modeler.ComponentsModel.Views.PlantUml\Modeler.ComponentsModel.Views.PlantUml.csproj", "{F4290A87-DD65-4BDD-AE6E-4C03609BE497}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ComponentsModel.Tests.Sample", "Modeler.ComponentsModel.Tests.Sample\Modeler.ComponentsModel.Tests.Sample.csproj", "{DC2C42D3-0858-4FCF-BCD0-21CE0BC7F0AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ComponentsModel.Tests.UnitTests", "Modeler.ComponentsModel.Tests.UnitTests\Modeler.ComponentsModel.Tests.UnitTests.csproj", "{55CBC9DC-9D94-4099-BF8A-67C1A569D6A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -134,6 +144,22 @@ Global
 		{AE37E3EB-4E2F-4ADD-BAEA-AF6BB232AA82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE37E3EB-4E2F-4ADD-BAEA-AF6BB232AA82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE37E3EB-4E2F-4ADD-BAEA-AF6BB232AA82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C0E4D00-5516-4248-9015-8700A5D8DA5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C0E4D00-5516-4248-9015-8700A5D8DA5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C0E4D00-5516-4248-9015-8700A5D8DA5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C0E4D00-5516-4248-9015-8700A5D8DA5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4290A87-DD65-4BDD-AE6E-4C03609BE497}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4290A87-DD65-4BDD-AE6E-4C03609BE497}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4290A87-DD65-4BDD-AE6E-4C03609BE497}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4290A87-DD65-4BDD-AE6E-4C03609BE497}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC2C42D3-0858-4FCF-BCD0-21CE0BC7F0AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC2C42D3-0858-4FCF-BCD0-21CE0BC7F0AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC2C42D3-0858-4FCF-BCD0-21CE0BC7F0AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC2C42D3-0858-4FCF-BCD0-21CE0BC7F0AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55CBC9DC-9D94-4099-BF8A-67C1A569D6A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55CBC9DC-9D94-4099-BF8A-67C1A569D6A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55CBC9DC-9D94-4099-BF8A-67C1A569D6A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55CBC9DC-9D94-4099-BF8A-67C1A569D6A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6AFF374D-C870-43E2-98E2-A63F42D0983E} = {2F8FCD8A-040B-41CA-AC74-310512C691EF}
@@ -157,5 +183,9 @@ Global
 		{DAEB6240-5A0E-41B7-B695-CAEB065E7942} = {71A2CD03-47BD-4E76-B513-ADE7C74CB566}
 		{B438228D-1E4B-4570-BEAC-56E02D277731} = {71A2CD03-47BD-4E76-B513-ADE7C74CB566}
 		{AE37E3EB-4E2F-4ADD-BAEA-AF6BB232AA82} = {71A2CD03-47BD-4E76-B513-ADE7C74CB566}
+		{8C0E4D00-5516-4248-9015-8700A5D8DA5A} = {102A88CC-355E-4F45-9D30-55453A5189FE}
+		{F4290A87-DD65-4BDD-AE6E-4C03609BE497} = {102A88CC-355E-4F45-9D30-55453A5189FE}
+		{DC2C42D3-0858-4FCF-BCD0-21CE0BC7F0AB} = {102A88CC-355E-4F45-9D30-55453A5189FE}
+		{55CBC9DC-9D94-4099-BF8A-67C1A569D6A5} = {102A88CC-355E-4F45-9D30-55453A5189FE}
 	EndGlobalSection
 EndGlobal

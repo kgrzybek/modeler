@@ -14,6 +14,9 @@
       <ProjectReference Include="..\Conceptual\Views\Mermaid\Modeler.ConceptualModel.Views.Mermaid.csproj" />
       <ProjectReference Include="..\Conceptual\Views\PlantUml\Modeler.ConceptualModel.Views.PlantUml.csproj" />
       <ProjectReference Include="..\Conceptual\Views\Shared\Modeler.ConceptualModel.Views.Shared.csproj" />
+      <ProjectReference Include="..\Modeler.ComponentsModel.Tests.Sample\Modeler.ComponentsModel.Tests.Sample.csproj" />
+      <ProjectReference Include="..\Modeler.ComponentsModel.Views.PlantUml\Modeler.ComponentsModel.Views.PlantUml.csproj" />
+      <ProjectReference Include="..\Modeler.ComponentsModel\Modeler.ComponentsModel.csproj" />
       <ProjectReference Include="..\Modeler.DataModel.PostgreSQL.Views\Modeler.DataModel.PostgreSQL.Views.csproj" />
       <ProjectReference Include="..\Modeler.DataModel.Tests.Sample\Modeler.DataModel.Tests.Sample.csproj" />
       <ProjectReference Include="..\Modeler.DataModel\Modeler.DataModel.csproj" />
