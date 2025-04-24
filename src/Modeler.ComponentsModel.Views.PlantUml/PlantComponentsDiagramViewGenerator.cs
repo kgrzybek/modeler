@@ -27,6 +27,7 @@ public class PlantComponentsDiagramViewGenerator
             sb.AppendLine();
 
             GenerateComponents(sb, view);
+            GenerateRelationships(sb, view);
             
             sb.AppendLine();
             sb.AppendLine("@enduml");
@@ -57,7 +58,7 @@ public class PlantComponentsDiagramViewGenerator
     {
         foreach (var component in view.Components.OrderBy(x => x.Name))
         {
-            GenerateComponent(sb, component, 0);
+            GenerateComponent(sb, component, -1);
 
             sb.AppendLine();
         }
@@ -68,14 +69,88 @@ public class PlantComponentsDiagramViewGenerator
         Component component,
         int indentLevel)
     {
+        indentLevel += 1;
         var indentText = GetIndentText(indentLevel);
         sb.AppendLine($"{indentText}component \"{component.Name}\"" + " {");
 
         foreach (var subComponent in component.SubComponents)
         {
-            GenerateComponent(sb, subComponent, ++indentLevel);
+            GenerateComponent(sb, subComponent, indentLevel);
         }
 
         sb.AppendLine($"{indentText}}}");
+    }
+    
+    private void GenerateRelationships(StringBuilder sb, ComponentsDiagramView view)
+    {
+        foreach (var relationship in _model.GetRelationships())
+        {
+            bool showSource = false;
+            
+            if (view.Components.Contains(relationship.Source))
+            {
+                showSource = true;
+            }
+            else
+            {
+                foreach (var viewComponent in view.Components)
+                {
+                    if(viewComponent.GetAll().Contains(relationship.Source))
+                    {
+                        showSource = true;
+                    }
+                }
+            }
+            
+            bool showTarget = false;
+            
+            if (view.Components.Contains(relationship.Target))
+            {
+                showTarget = true;
+            }
+            else
+            {
+                foreach (var viewComponent in view.Components)
+                {
+                    if(viewComponent.GetAll().Contains(relationship.Target))
+                    {
+                        showTarget = true;
+                    }
+                }
+            }
+            
+            if (!showSource || !showTarget)
+            {
+                continue;
+            }
+
+            if (relationship is UsageComponentRelationship usageComponentRelationship)
+            {
+                GenerateForUsage(
+                    sb,
+                    usageComponentRelationship);
+            }
+            
+            if (relationship is DependencyComponentRelationship dependencyComponentRelationship)
+            {
+                GenerateForDependency(
+                    sb,
+                    dependencyComponentRelationship);
+            }
+        }
+    }
+    
+    private static void GenerateForUsage(StringBuilder sb, UsageComponentRelationship relationship)
+    {
+        string label = "use";
+        sb.AppendLine(
+            $"{relationship.Source.Name} --> {relationship.Target.Name} : {label}");
+    }
+    
+    private static void GenerateForDependency(StringBuilder sb, DependencyComponentRelationship relationship)
+    {
+        string label = "dependency";
+        sb.AppendLine(
+            $"{relationship.Source.Name} ..> {relationship.Target.Name} : {label}");
     }
 }

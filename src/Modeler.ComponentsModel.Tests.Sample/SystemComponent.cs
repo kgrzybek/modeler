@@ -9,9 +9,12 @@ public class SystemComponent : Component
     public static Component Create() => ComponentBuilder
         .Create(new SystemComponent("System"))
         .AddChild(new BackendComponent("Backend"), backendComponent => backendComponent
-            .AddChild(new ApiComponent("Api"), apiComponent => apiComponent
-                .AddChild(new ModuleComponent("Module"))))
+            .AddChild(new ApiComponent("Api"))
+            .AddChild(new DomainComponent("Domain"))
+            .AddChild(new InfrastructureComponent("Infrastructure"))
+            .AddChild(new ApplicationComponent("Application")))
         .AddChild(new FrontendComponent("Frontend"))
+        .AddChild(new DatabaseComponent("Database"))
         .Build();
 }
 
@@ -22,9 +25,23 @@ public class ApiComponent : Component
     }
 }
 
-public class ModuleComponent : Component
+public class DomainComponent : Component
 {
-    public ModuleComponent(string name) : base(name)
+    public DomainComponent(string name) : base(name)
+    {
+    }
+}
+
+public class ApplicationComponent : Component
+{
+    public ApplicationComponent(string name) : base(name)
+    {
+    }
+}
+
+public class InfrastructureComponent : Component
+{
+    public InfrastructureComponent(string name) : base(name)
     {
     }
 }
@@ -39,6 +56,13 @@ public class BackendComponent : Component
 public class FrontendComponent : Component
 {
     public FrontendComponent(string name) : base(name)
+    {
+    }
+}
+
+public class DatabaseComponent : Component
+{
+    public DatabaseComponent(string name) : base(name)
     {
     }
 }

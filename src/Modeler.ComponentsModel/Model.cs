@@ -17,6 +17,7 @@ public abstract class Model
         _componentTypes = new List<ComponentType>();
         RegisterTypes<ComponentType>();
         InitializeComponents();
+        InitializeRelationshipsModels();
     }
     
     public List<Component> GetComponents() => _components.ToList();
@@ -66,7 +67,7 @@ public abstract class Model
     
     public void AddDependencyRelationship(Component source, Component target)
     {
-        _relationships.Add(new UsageComponentRelationship(source, target));
+        _relationships.Add(new DependencyComponentRelationship(source, target));
     }
 
     private void InitializeComponents()
@@ -86,6 +87,26 @@ public abstract class Model
             {
                 var component = staticMethod.Invoke(null, null) as Component;
                 _components.Add(component!);
+            }
+        }
+    }
+    
+    private void InitializeRelationshipsModels()
+    {
+        var assembly = Assembly.GetAssembly(this.GetType())!;
+        var types = assembly
+            .GetTypes()
+            .Where(t =>
+                typeof(RelationshipsModel).IsAssignableFrom(t))
+            .ToList();
+
+        foreach (var type in types)
+        {
+            var staticMethod = type.GetMethod("Create", BindingFlags.Static | BindingFlags.Public);
+
+            if (staticMethod != null)
+            {
+                staticMethod.Invoke(null, new object?[]{ this });
             }
         }
     }
@@ -111,4 +132,5 @@ public abstract class Model
             }
         }
     }
+    public List<ComponentRelationship> GetRelationships() => _relationships.ToList();
 }

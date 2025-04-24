@@ -20,4 +20,16 @@ public abstract class Component
 
         return this;
     }
+
+    public List<Component> GetAll()
+    {
+        var allComponents = new List<Component>();
+        foreach (var subComponent in SubComponents)
+        {
+            allComponents.Add(subComponent);
+            allComponents.AddRange(subComponent.GetAll());
+        }
+
+        return allComponents;
+    }
 }

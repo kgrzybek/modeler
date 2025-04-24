@@ -8,7 +8,7 @@ public class Tests
     public void Test1()
     {
         var model = SystemComponentsModel.GetInstance();
-        var module = model.GetComponent<ModuleComponent>();
+        var module = model.GetComponent<DomainComponent>();
         var backend = model.GetComponent<BackendComponent>();
     }
 }
