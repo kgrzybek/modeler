@@ -25,7 +25,9 @@ public class PlantUmlStateMachineViewGenerator
 
             sb.AppendLine();
 
-            GenerateParticipants(sb, view);
+            GenerateStates(sb, view);
+            
+            GenerateTransitions(sb, view);
 
             sb.AppendLine();
             sb.AppendLine("@enduml");
@@ -39,18 +41,29 @@ public class PlantUmlStateMachineViewGenerator
         _stateMachineViewsOutput.Execute(outputItems);
     }
 
-    private static void GenerateParticipants(StringBuilder sb,
+    private static void GenerateTransitions(StringBuilder sb, StateMachineView view)
+    {
+        foreach (var transition in view.StateMachine.GetTransitions())
+        {
+            var fromStateId = transition.FromState is InitialState ? "[*]" : transition.FromState.Id;
+            var toStateId = transition.ToState is EndState ? "[*]" : transition.ToState.Id;
+            string transitionName = transition.Event.Name != string.Empty ? $" : {transition.Event.Name}" : string.Empty;
+            sb.AppendLine($"{fromStateId} --> {toStateId}{transitionName}");
+        }
+    }
+
+    private static void GenerateStates(StringBuilder sb,
         StateMachineView view)
     {
         foreach (var state in view.StateMachine.GetStates())
         {
-            GenerateParticipant(sb, state);
+            GenerateState(sb, state);
 
             sb.AppendLine();
         }
     }
 
-    private static void GenerateParticipant(StringBuilder sb,
+    private static void GenerateState(StringBuilder sb,
         State state)
     {
         sb.AppendLine($"state \"{state.Name}\" as {state.Id}");

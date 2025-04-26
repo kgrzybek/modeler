@@ -1,3 +1,5 @@
+using System.Collections;
+
 namespace Modeler.StateModel;
 
 public abstract class StateMachine
@@ -37,4 +39,6 @@ public abstract class StateMachine
         
         return fromStates.Concat(toStates).Distinct().ToList();
     }
+
+    public List<Transition> GetTransitions() => _transitions.ToList();
 }

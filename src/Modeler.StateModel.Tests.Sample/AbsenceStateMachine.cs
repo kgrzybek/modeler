@@ -15,7 +15,7 @@ public class AbsenceStateMachine : StateMachine
         var sentToDecisionEvent = model.GetEvent<SentToDecisionEvent>();
         var acceptedEvent =  model.GetEvent<AcceptedEvent>();
         var rejectedEvent = model.GetEvent<RejectedEvent>();
-        var answeredEvent = model.GetEvent<AnsweredEvent>();
+        var answeredEvent = model.GetEvent<ClarificationRequestedEvent>();
         
         stateMachine.StartFrom(registeredState);
         stateMachine.AddTransition(registeredState, sentToDecisionEvent, toDecideState);
@@ -32,7 +32,7 @@ public class AbsenceStateMachine : StateMachine
 
 public class ToDecide : State
 {
-    public ToDecide() : base("ToDecide")
+    public ToDecide() : base("To Decide")
     {
     }
 }
