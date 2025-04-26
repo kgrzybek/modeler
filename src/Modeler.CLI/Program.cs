@@ -20,6 +20,9 @@ using Modeler.SequenceModel.Views.Mermaid;
 using Modeler.SequenceModel.Views.PlantUml;
 using Modeler.SequenceModel.Views.Shared;
 using Modeler.StateModel.Tests.Sample;
+using Modeler.StateModel.Tests.Sample.Views.AsciiDoc;
+using Modeler.StateModel.Tests.Sample.Views.PlantUml;
+using Modeler.StateModel.Views.AsciiDoc;
 using Modeler.StateModel.Views.PlantUml;
 
 Console.WriteLine("Docs generation...");
@@ -34,7 +37,9 @@ GenerateSequenceModels(documentationPath);
 
 GenerateComponentsModels(documentationPath);
 
-GenerateStateMachineModels(documentationPath);
+GeneratePlantUmlStateMachineViews(documentationPath);
+
+GenerateAsciiDocStateMachineTableViews(documentationPath);
 
 Console.WriteLine("Docs generated...");
 
@@ -150,14 +155,14 @@ void GenerateComponentsModels(string path)
 
 }
 
-void GenerateStateMachineModels(string path)
+void GeneratePlantUmlStateMachineViews(string path)
 {
     var model = OrganizationsStateModel.GetInstance();
     
     // Get views
     var sequenceDiagramViews = new StateMachineViewsFactory(
         model,
-        Assembly.GetAssembly(typeof(AbsenceStateMachineViewDefinition))!).GetViews();
+        Assembly.GetAssembly(typeof(AbsenceStateMachinePlantUmlViewDefinition))!).GetViews();
     
     // Set views path
     var componentsModelPath = Path.Combine(path, "Models/StateMachines");
@@ -165,4 +170,21 @@ void GenerateStateMachineModels(string path)
     // Generate views
     var fileSystemOutput = new FileSystemPlantUmlStateMachineDiagramViewOutput<StateMachineView>(componentsModelPath);
     new PlantUmlStateMachineViewGenerator(fileSystemOutput).Generate(sequenceDiagramViews);
+}
+
+void GenerateAsciiDocStateMachineTableViews(string path)
+{
+    var model = OrganizationsStateModel.GetInstance();
+    
+    // Get views
+    var sequenceDiagramViews = new StateMachineAsciiDocTableViewsFactory(
+        model,
+        Assembly.GetAssembly(typeof(AbsenceStateMachineAsciiDocTableViewDefinition))!).GetViews();
+    
+    // Set views path
+    var componentsModelPath = Path.Combine(path, "Models/StateMachines");
+    
+    // Generate views
+    var fileSystemOutput = new FileSystemAsciiDocStateMachineTableViewOutput<StateMachineAsciiDocTableView>(componentsModelPath);
+    new StateMachineAsciiDocTableViewGenerator(fileSystemOutput).Generate(sequenceDiagramViews);
 }

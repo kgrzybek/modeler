@@ -1,6 +1,6 @@
 using Modeler.StateModel.Views.PlantUml;
 
-namespace Modeler.StateModel.Tests.Sample;
+namespace Modeler.StateModel.Tests.Sample.Views.PlantUml;
 
 public class FileSystemPlantUmlStateMachineDiagramViewOutput<T> : IStateMachineViewsOutput<T>
 {
@@ -13,7 +13,7 @@ public class FileSystemPlantUmlStateMachineDiagramViewOutput<T> : IStateMachineV
         _absoluteDirectoryPath = absoluteDirectoryPath;
 
         _relativePaths = new Dictionary<string, string>();
-        _relativePaths.Add(AbsenceStateMachineViewDefinition.Id, "AbsenceStateMachine.puml");
+        _relativePaths.Add(AbsenceStateMachinePlantUmlViewDefinition.Id, "AbsenceStateMachine.puml");
     }
 
     public void Execute(List<StateMachineViewOutputItem<T>> views)

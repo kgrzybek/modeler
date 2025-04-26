@@ -1,8 +1,8 @@
 ﻿using Modeler.StateModel.Views.PlantUml;
 
-namespace Modeler.StateModel.Tests.Sample;
+namespace Modeler.StateModel.Tests.Sample.Views.PlantUml;
 
-public class AbsenceStateMachineViewDefinition : StateMachineViewDefinition
+public class AbsenceStateMachinePlantUmlViewDefinition : StateMachineViewDefinition
 {
     public const string Id = "AbsenceStateMachine";
     

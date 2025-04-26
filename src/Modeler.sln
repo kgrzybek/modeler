@@ -70,6 +70,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.StateModel.Tests.Sa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.StateModel.Views.PlantUml", "Modeler.StateModel.Views.PlantUml\Modeler.StateModel.Views.PlantUml.csproj", "{1126B14A-614D-4010-AD96-3BB9EC38D067}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.StateModel.Views.AsciiDoc", "Modeler.StateModel.Views.AsciiDoc\Modeler.StateModel.Views.AsciiDoc.csproj", "{2C997C23-0511-4C8B-ACEB-A85F88398EBB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -180,6 +182,10 @@ Global
 		{1126B14A-614D-4010-AD96-3BB9EC38D067}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1126B14A-614D-4010-AD96-3BB9EC38D067}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1126B14A-614D-4010-AD96-3BB9EC38D067}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C997C23-0511-4C8B-ACEB-A85F88398EBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C997C23-0511-4C8B-ACEB-A85F88398EBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C997C23-0511-4C8B-ACEB-A85F88398EBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C997C23-0511-4C8B-ACEB-A85F88398EBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{6AFF374D-C870-43E2-98E2-A63F42D0983E} = {2F8FCD8A-040B-41CA-AC74-310512C691EF}
@@ -210,5 +216,6 @@ Global
 		{7353F136-B17E-4DC8-9107-C30CF480B64A} = {8292A41C-D2D8-40E6-B410-9231FCBBBE87}
 		{68E9ABDF-427B-43E3-9FCA-01BCE56DA9FA} = {8292A41C-D2D8-40E6-B410-9231FCBBBE87}
 		{1126B14A-614D-4010-AD96-3BB9EC38D067} = {8292A41C-D2D8-40E6-B410-9231FCBBBE87}
+		{2C997C23-0511-4C8B-ACEB-A85F88398EBB} = {8292A41C-D2D8-40E6-B410-9231FCBBBE87}
 	EndGlobalSection
 EndGlobal

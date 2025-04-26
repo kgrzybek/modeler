@@ -7,8 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Modeler.StateModel.Views.AsciiDoc\Modeler.StateModel.Views.AsciiDoc.csproj" />
-      <ProjectReference Include="..\Modeler.StateModel.Views.PlantUml\Modeler.StateModel.Views.PlantUml.csproj" />
       <ProjectReference Include="..\Modeler.StateModel\Modeler.StateModel.csproj" />
     </ItemGroup>
 

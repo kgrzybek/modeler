@@ -41,4 +41,9 @@ public abstract class StateMachine
     }
 
     public List<Transition> GetTransitions() => _transitions.ToList();
+
+    public List<TransitionEvent> GetTransitionEvents()
+    {
+        return _transitions.Select(x => x.Event).Where(x => x is not Description).Distinct().ToList();
+    }
 }
