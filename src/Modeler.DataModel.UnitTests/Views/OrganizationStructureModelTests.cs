@@ -1,6 +1,8 @@
 using FluentAssertions;
 using Modeler.DataModel.PostgreSQL.Views.SQL.Generator;
 using Modeler.DataModel.Sample;
+using Modeler.DataModel.Sample.Structure;
+using Modeler.DataModel.Sample.Views.Outputs;
 
 namespace Modeler.DataModel.UnitTests.Views;
 

@@ -1,4 +1,5 @@
-﻿using Modeler.StateModel.Views.PlantUml;
+﻿using Modeler.StateModel.Sample.Models;
+using Modeler.StateModel.Views.PlantUml;
 
 namespace Modeler.StateModel.Sample.Views.PlantUml;
 

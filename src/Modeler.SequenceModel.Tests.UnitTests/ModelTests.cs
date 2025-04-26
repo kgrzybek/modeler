@@ -1,5 +1,5 @@
 using FluentAssertions;
-using Modeler.SequenceModel.Tests.Sample;
+using Modeler.SequenceModel.Sample.Models;
 
 namespace Modeler.SequenceModel.Tests.UnitTests;
 

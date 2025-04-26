@@ -1,4 +1,5 @@
 using Modeler.DataModel.PostgreSQL.Views.PlantUml;
+using Modeler.DataModel.Sample.Structure.Tables;
 
 namespace Modeler.DataModel.Sample.Views;
 

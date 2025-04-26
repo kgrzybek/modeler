@@ -1,4 +1,5 @@
-﻿using Modeler.StateModel.Views.AsciiDoc;
+﻿using Modeler.StateModel.Sample.Models;
+using Modeler.StateModel.Views.AsciiDoc;
 
 namespace Modeler.StateModel.Sample.Views.AsciiDoc;
 

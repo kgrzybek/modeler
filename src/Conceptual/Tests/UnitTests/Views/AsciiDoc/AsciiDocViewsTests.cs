@@ -1,10 +1,10 @@
 using System.Reflection;
 using FluentAssertions;
-using Modeler.ConceptualModel.Sample.TestModel;
-using Modeler.ConceptualModel.Sample.TestViews;
-using Modeler.ConceptualModel.Sample.TestViews.AsciiDocViews;
-using Modeler.ConceptualModel.Sample.TestViews.Outputs;
-using Modeler.ConceptualModel.Sample.TestViews.Translations;
+using Modeler.ConceptualModel.Sample.Concepts;
+using Modeler.ConceptualModel.Sample.Views;
+using Modeler.ConceptualModel.Sample.Views.AsciiDocViews;
+using Modeler.ConceptualModel.Sample.Views.Outputs;
+using Modeler.ConceptualModel.Sample.Views.Translations;
 using Modeler.ConceptualModel.Views.AsciiDoc;
 
 namespace Modeler.ConceptualModel.UnitTests.Views.AsciiDoc;

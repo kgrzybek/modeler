@@ -1,5 +1,7 @@
 using FluentAssertions;
 using Modeler.DataModel.Sample;
+using Modeler.DataModel.Sample.Structure;
+using Modeler.DataModel.Sample.Structure.Tables;
 
 namespace Modeler.DataModel.UnitTests;
 

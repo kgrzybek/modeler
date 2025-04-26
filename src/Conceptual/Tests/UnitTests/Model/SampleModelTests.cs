@@ -1,5 +1,6 @@
 using FluentAssertions;
-using Modeler.ConceptualModel.Sample.TestModel;
+using Modeler.ConceptualModel.Sample.Concepts;
+using Modeler.ConceptualModel.Sample.Concepts.Entities;
 
 namespace Modeler.ConceptualModel.UnitTests.Model;
 

@@ -1,10 +1,9 @@
-using Modeler.SequenceModel.Tests.Sample.Participants;
-using Modeler.SequenceModel.Tests.Sample.Sequences;
-using Modeler.SequenceModel.Views.PlantUml;
+using Modeler.SequenceModel.Sample.Models;
+using Modeler.SequenceModel.Sample.Models.Participants;
+using Modeler.SequenceModel.Sample.Models.Sequences;
 using Modeler.SequenceModel.Views.Shared;
-using Type = System.Type;
 
-namespace Modeler.SequenceModel.Tests.Sample.Views;
+namespace Modeler.SequenceModel.Sample.Views;
 
 public class BasicSequenceView : SequenceDiagramViewDefinition
 {
