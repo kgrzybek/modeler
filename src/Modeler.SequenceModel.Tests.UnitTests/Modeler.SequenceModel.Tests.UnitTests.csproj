@@ -19,7 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Modeler.SequenceModel.Tests.Sample\Modeler.SequenceModel.Tests.Sample.csproj" />
+      <ProjectReference Include="..\Modeler.SequenceModel.Sample\Modeler.SequenceModel.Sample.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using System.Reflection;
-using Modeler.ComponentsModel.Tests.Sample;
+using Modeler.ComponentsModel.Sample;
 using Modeler.ComponentsModel.Views.PlantUml;
 using Modeler.ConceptualModel.Sample.TestModel;
 using Modeler.ConceptualModel.Sample.TestViews;
@@ -12,16 +12,18 @@ using Modeler.ConceptualModel.Views.AsciiDoc;
 using Modeler.ConceptualModel.Views.Mermaid;
 using Modeler.ConceptualModel.Views.PlantUml;
 using Modeler.ConceptualModel.Views.Shared;
-using Modeler.DataModel.PostgreSQL.Views.Generator;
-using Modeler.DataModel.Tests.Sample;
+using Modeler.DataModel.PostgreSQL.Views.AsciiDoc;
+using Modeler.DataModel.PostgreSQL.Views.PlantUml;
+using Modeler.DataModel.PostgreSQL.Views.SQL.Generator;
+using Modeler.DataModel.Sample;
 using Modeler.SequenceModel.Tests.Sample;
 using Modeler.SequenceModel.Tests.Sample.Views;
 using Modeler.SequenceModel.Views.Mermaid;
 using Modeler.SequenceModel.Views.PlantUml;
 using Modeler.SequenceModel.Views.Shared;
-using Modeler.StateModel.Tests.Sample;
-using Modeler.StateModel.Tests.Sample.Views.AsciiDoc;
-using Modeler.StateModel.Tests.Sample.Views.PlantUml;
+using Modeler.StateModel.Sample;
+using Modeler.StateModel.Sample.Views.AsciiDoc;
+using Modeler.StateModel.Sample.Views.PlantUml;
 using Modeler.StateModel.Views.AsciiDoc;
 using Modeler.StateModel.Views.PlantUml;
 
@@ -98,7 +100,7 @@ void GenerateDataModels(string path)
     // Generate data model diagrams
     var plantUmlDataModelViewsFactory = new PlantUmlDataModelViewsFactory(model);
     plantUmlDataModelViewsFactory.Initialize(Assembly.GetAssembly(typeof(EmployeesTable))!);
-    var viewTranslator = new Modeler.DataModel.Tests.Sample.Views.Translations.ViewTranslator();
+    var viewTranslator = new Modeler.DataModel.Sample.Views.Translations.ViewTranslator();
     
     PlantUmlDataModelGenerator.Generate(
         path,

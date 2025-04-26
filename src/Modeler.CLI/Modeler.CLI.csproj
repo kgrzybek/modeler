@@ -14,16 +14,17 @@
       <ProjectReference Include="..\Conceptual\Views\Mermaid\Modeler.ConceptualModel.Views.Mermaid.csproj" />
       <ProjectReference Include="..\Conceptual\Views\PlantUml\Modeler.ConceptualModel.Views.PlantUml.csproj" />
       <ProjectReference Include="..\Conceptual\Views\Shared\Modeler.ConceptualModel.Views.Shared.csproj" />
-      <ProjectReference Include="..\Modeler.ComponentsModel.Tests.Sample\Modeler.ComponentsModel.Tests.Sample.csproj" />
+      <ProjectReference Include="..\Modeler.ComponentsModel.Sample\Modeler.ComponentsModel.Sample.csproj" />
       <ProjectReference Include="..\Modeler.ComponentsModel.Views.PlantUml\Modeler.ComponentsModel.Views.PlantUml.csproj" />
       <ProjectReference Include="..\Modeler.ComponentsModel\Modeler.ComponentsModel.csproj" />
-      <ProjectReference Include="..\Modeler.DataModel.PostgreSQL.Views\Modeler.DataModel.PostgreSQL.Views.csproj" />
-      <ProjectReference Include="..\Modeler.DataModel.Tests.Sample\Modeler.DataModel.Tests.Sample.csproj" />
+      <ProjectReference Include="..\Modeler.DataModel.PostgreSQL.Views.AsciiDoc\Modeler.DataModel.PostgreSQL.Views.AsciiDoc.csproj" />
+      <ProjectReference Include="..\Modeler.DataModel.PostgreSQL.Views.SQL\Modeler.DataModel.PostgreSQL.Views.SQL.csproj" />
+      <ProjectReference Include="..\Modeler.DataModel.Sample\Modeler.DataModel.Sample.csproj" />
       <ProjectReference Include="..\Modeler.DataModel\Modeler.DataModel.csproj" />
-      <ProjectReference Include="..\Modeler.SequenceModel.Tests.Sample\Modeler.SequenceModel.Tests.Sample.csproj" />
+      <ProjectReference Include="..\Modeler.SequenceModel.Sample\Modeler.SequenceModel.Sample.csproj" />
       <ProjectReference Include="..\Modeler.SequenceModel.Views.Mermaid\Modeler.SequenceModel.Views.Mermaid.csproj" />
       <ProjectReference Include="..\Modeler.SequenceModel.Views.PlantUml\Modeler.SequenceModel.Views.PlantUml.csproj" />
-      <ProjectReference Include="..\Modeler.StateModel.Tests.Sample\Modeler.StateModel.Tests.Sample.csproj" />
+      <ProjectReference Include="..\Modeler.StateModel.Sample\Modeler.StateModel.Sample.csproj" />
       <ProjectReference Include="..\Modeler.StateModel.Views.PlantUml\Modeler.StateModel.Views.PlantUml.csproj" />
     </ItemGroup>
 

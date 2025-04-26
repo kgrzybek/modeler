@@ -1,4 +1,4 @@
-using Modeler.ComponentsModel.Tests.Sample;
+using Modeler.ComponentsModel.Sample;
 
 namespace Modeler.ComponentsModel.Tests.UnitTests;
 

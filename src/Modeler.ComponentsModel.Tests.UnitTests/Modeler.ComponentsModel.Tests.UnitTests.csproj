@@ -18,7 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Modeler.ComponentsModel.Tests.Sample\Modeler.ComponentsModel.Tests.Sample.csproj" />
+      <ProjectReference Include="..\Modeler.ComponentsModel.Sample\Modeler.ComponentsModel.Sample.csproj" />
       <ProjectReference Include="..\Modeler.ComponentsModel\Modeler.ComponentsModel.csproj" />
     </ItemGroup>
 
