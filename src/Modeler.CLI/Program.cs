@@ -19,6 +19,8 @@ using Modeler.SequenceModel.Tests.Sample.Views;
 using Modeler.SequenceModel.Views.Mermaid;
 using Modeler.SequenceModel.Views.PlantUml;
 using Modeler.SequenceModel.Views.Shared;
+using Modeler.StateModel.Tests.Sample;
+using Modeler.StateModel.Views.PlantUml;
 
 Console.WriteLine("Docs generation...");
 
@@ -31,6 +33,8 @@ GenerateDataModels(documentationPath);
 GenerateSequenceModels(documentationPath);
 
 GenerateComponentsModels(documentationPath);
+
+GenerateStateMachineModels(documentationPath);
 
 Console.WriteLine("Docs generated...");
 
@@ -56,7 +60,7 @@ void GenerateConceptualModels(string path)
         model,
         4,
         viewTranslator,
-        new Modeler.ConceptualModel.Sample.TestViews.Outputs.FileSystemPlantUmlViewOutput<ClassDiagramView>(modelsPath)).Generate(classDiagramViews);
+        new FileSystemPlantUmlViewOutput<ClassDiagramView>(modelsPath)).Generate(classDiagramViews);
 
     // Mermaid
     new MermaidClassDiagramViewGenerator(
@@ -144,4 +148,21 @@ void GenerateComponentsModels(string path)
     var fileSystemOutput = new FileSystemPlantUmlComponentsDiagramViewOutput<ComponentsDiagramView>(componentsModelPath);
     new PlantComponentsDiagramViewGenerator(model, fileSystemOutput).Generate(sequenceDiagramViews);
 
+}
+
+void GenerateStateMachineModels(string path)
+{
+    var model = OrganizationsStateModel.GetInstance();
+    
+    // Get views
+    var sequenceDiagramViews = new StateMachineViewsFactory(
+        model,
+        Assembly.GetAssembly(typeof(AbsenceStateMachineViewDefinition))!).GetViews();
+    
+    // Set views path
+    var componentsModelPath = Path.Combine(path, "Models/StateMachines");
+    
+    // Generate views
+    var fileSystemOutput = new FileSystemPlantUmlStateMachineDiagramViewOutput<StateMachineView>(componentsModelPath);
+    new PlantUmlStateMachineViewGenerator(fileSystemOutput).Generate(sequenceDiagramViews);
 }

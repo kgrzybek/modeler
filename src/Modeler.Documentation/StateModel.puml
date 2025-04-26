@@ -1,0 +1,10 @@
+@startuml
+
+state "a b c" as a
+
+state "a b d" as d
+
+a -> d
+
+
+@enduml
