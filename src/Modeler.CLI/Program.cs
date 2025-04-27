@@ -4,7 +4,9 @@ using System.Reflection;
 using Modeler.ComponentsModel.Sample;
 using Modeler.ComponentsModel.Sample.Components;
 using Modeler.ComponentsModel.Sample.Views;
+using Modeler.ComponentsModel.Sample.Views.AsciiDoc;
 using Modeler.ComponentsModel.Sample.Views.Outputs;
+using Modeler.ComponentsModel.Views.AsciiDoc;
 using Modeler.ComponentsModel.Views.PlantUml;
 using Modeler.ConceptualModel.Sample.Concepts;
 using Modeler.ConceptualModel.Sample.Views;
@@ -161,9 +163,14 @@ void GenerateComponentsModels(string path)
     // Set views path
     var componentsModelPath = Path.Combine(path, "Models/Components");
     
-    // Generate views
+    // Generate PlantUML views
     var fileSystemOutput = new FileSystemPlantUmlComponentsDiagramViewOutput<ComponentsDiagramView>(componentsModelPath);
     new PlantComponentsDiagramViewGenerator(model, fileSystemOutput, new ComponentsDiagramDefaultViewLayout()).Generate(sequenceDiagramViews);
+    
+    // Generate AsciiDoc view
+    var fileSystemAsciiDocComponentsListTableViewOutput = new FileSystemAsciiDocComponentsListTableViewOutput(componentsModelPath);
+    new AsciiDocComponentsListTableViewGenerator(model, fileSystemAsciiDocComponentsListTableViewOutput).Generate();
+
 
 }
 

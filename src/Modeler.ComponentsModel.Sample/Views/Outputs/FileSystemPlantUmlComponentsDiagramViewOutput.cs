@@ -1,4 +1,5 @@
 using Modeler.ComponentsModel.Views.PlantUml;
+using Modeler.ComponentsModel.Views.Shared;
 
 namespace Modeler.ComponentsModel.Sample.Views.Outputs;
 

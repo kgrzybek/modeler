@@ -131,4 +131,27 @@ public abstract class Model
 
         return componentTypes;
     }
+
+    public List<Component> GetAllComponents()
+    {
+        var components = new List<Component>();
+        foreach (var component in _components)
+        {
+            components.AddRange(GetAllComponents(component));
+        }
+
+        return components;
+    }
+    
+    private static List<Component> GetAllComponents(Component component)
+    {
+        var components = new List<Component>();
+        components.Add(component);
+        foreach (var subComponent in component.SubComponents)
+        {
+            components.AddRange(GetAllComponents(subComponent));
+        }
+
+        return components;
+    }
 }

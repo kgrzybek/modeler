@@ -1,4 +1,4 @@
-﻿namespace Modeler.ComponentsModel.Views.PlantUml;
+﻿namespace Modeler.ComponentsModel.Views.Shared;
 
 public interface IViewsOutput<T>
 {
