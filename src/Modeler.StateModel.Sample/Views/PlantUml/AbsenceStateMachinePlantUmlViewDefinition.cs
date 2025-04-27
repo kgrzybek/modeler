@@ -7,7 +7,7 @@ public class AbsenceStateMachinePlantUmlViewDefinition : StateMachineViewDefinit
 {
     public const string Id = "AbsenceStateMachine";
     
-    public static StateMachineView Create(OrganizationsStateModel model)
+    public static StateMachineView Create(HRStateModel model)
     {
         var view = new StateMachineView(
             Id,

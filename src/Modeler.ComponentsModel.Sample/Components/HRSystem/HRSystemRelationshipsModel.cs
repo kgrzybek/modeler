@@ -15,7 +15,7 @@ public class HRSystemRelationshipsModel : RelationshipsModel
         var domain = model.GetComponent<HRBackendDomainModule>();
         var infrastructure = model.GetComponent<HRBackendInfrastructureModule>();
         var application = model.GetComponent<HRBackendApplicationModule>();
-        var crm = model.GetComponent<CRMExternalSystem>();
+        var crm = model.GetComponent<CRM>();
 
         model.AddUsageRelationship(frontend, api);
         model.AddDependencyRelationship(api, application);

@@ -14,7 +14,7 @@ public class SystemComponentsView : ComponentsDiagramViewDefinition
         var concepts = new List<Component>();
 
         concepts.Add(model.GetComponent<HRSystemBoundary>());
-        concepts.Add(model.GetComponent<CRMExternalSystem>());
+        concepts.Add(model.GetComponent<CRM>());
         
         var view = new ComponentsDiagramView(Id, concepts);
 

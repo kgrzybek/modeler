@@ -12,7 +12,7 @@ public class Tests
     public void Test()
     {
         // Given
-        var model = OrganizationStructureDataModel.GetInstance();
+        var model = HRDataModel.GetInstance();
         
         var memoryViewOutput = new MemoryViewOutput();
         

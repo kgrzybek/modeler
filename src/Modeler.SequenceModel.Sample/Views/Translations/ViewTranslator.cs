@@ -37,7 +37,7 @@ public class SequenceDiagramViewTranslator : ISequenceDiagramViewTranslator
         {
             Actor => "Actor",
             Database => "Database",
-            Models.ParticipantTypes.System => "System",
+            Application => "Application",
             ExternalSystem => "ExternalSystem",
             _ => throw new ArgumentException($"Invalid participant type {participantType}")
         };

@@ -11,7 +11,7 @@ public class DefaultViewLayout : ISequenceDiagramViewLayout
         {
             Actor => string.Empty,
             Database => string.Empty,
-            Models.ParticipantTypes.System => string.Empty,
+            Application => string.Empty,
             ExternalSystem => "#FFD2BE",
             _ => throw new ArgumentException($"Invalid participant type {participantType}")
         };

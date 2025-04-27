@@ -4,7 +4,9 @@ namespace Modeler.ComponentsModel.Sample.Components.HRSystem.Frontend;
 
 public class HRFrontendApplication : Component
 {
-    public HRFrontendApplication() : base("HR Frontend", new ApplicationComponentType())
+    public const string ComponentName = "HR Frontend";
+    
+    public HRFrontendApplication() : base(ComponentName, new ApplicationComponentType())
     {
     }
 }

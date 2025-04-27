@@ -1,15 +1,16 @@
 ﻿using Modeler.StateModel.Sample.Models.Events;
+using Modeler.StateModel.Sample.Models.StateMachines.Absence.States;
 
-namespace Modeler.StateModel.Sample.Models.StateMachines;
+namespace Modeler.StateModel.Sample.Models.StateMachines.Absence;
 
 public class AbsenceStateMachine : StateMachine
 {
-    public static StateMachine Create(OrganizationsStateModel model)
+    public static StateMachine Create(HRStateModel model)
     {
         var stateMachine = new AbsenceStateMachine();
 
-        var registeredState = new Registered();
-        var toDecideState = new ToDecide();
+        var registeredState = new RegisteredState();
+        var toDecideState = new ToDecideState();
         var needsClarificationState = new NeedsClarificationState();
         var acceptedState = new AcceptedState();
         var rejectedState = new RejectedState();
@@ -29,40 +30,5 @@ public class AbsenceStateMachine : StateMachine
         stateMachine.SetAsEnd(rejectedState);
         
         return stateMachine;
-    }
-}
-
-public class ToDecide : State
-{
-    public ToDecide() : base("To Decide")
-    {
-    }
-}
-
-public class Registered : State
-{
-    public Registered() : base("Registered")
-    {
-    }
-}
-
-public class NeedsClarificationState : State
-{
-    public NeedsClarificationState() : base("Needs Clarification")
-    {
-    }
-}
-
-public class AcceptedState : State
-{
-    public AcceptedState() : base("Accepted")
-    {
-    }
-}
-
-public class RejectedState : State
-{
-    public RejectedState() : base("Rejected")
-    {
     }
 }

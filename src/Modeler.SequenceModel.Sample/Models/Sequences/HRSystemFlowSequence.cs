@@ -3,17 +3,17 @@ using Modeler.SequenceModel.Sample.Models.Participants;
 
 namespace Modeler.SequenceModel.Sample.Models.Sequences;
 
-public class BasicSequence : Sequence
+public class HRSystemFlowSequence : Sequence
 {
-    public static void Create(SequencesModel model)
+    public static void Create(HRSequencesModel model)
     {
         var user = model.GetParticipant<UserParticipant>();
         var frontend = model.GetParticipant<FrontendParticipant>();
-        var backend = model.GetParticipant<BackendParticipant>();
+        var backend = model.GetParticipant<HRBackendParticipant>();
         var backendDatabase = model.GetParticipant<HRDatabaseParticipant>();
         var crm = model.GetParticipant<CrmParticipant>();
 
-        var builder = new SequenceBuilder<BasicSequence>("Basic");
+        var builder = new SequenceBuilder<HRSystemFlowSequence>("HR System Flow Sequence");
 
         builder.AddSynchronousRequestMessage(user, "addEmployee", new StringMessageParameter("Employee"), frontend);
         builder.AddSynchronousRequestMessage(frontend, "addEmployee", new StringMessageParameter("EmployeeDto"), backend);

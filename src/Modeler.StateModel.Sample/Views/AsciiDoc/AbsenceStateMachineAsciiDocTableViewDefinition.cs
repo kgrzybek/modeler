@@ -7,7 +7,7 @@ public class AbsenceStateMachineAsciiDocTableViewDefinition : StateMachineAsciiD
 {
     public const string Id = "AbsenceStateMachine";
     
-    public static StateMachineAsciiDocTableView Create(OrganizationsStateModel model)
+    public static StateMachineAsciiDocTableView Create(HRStateModel model)
     {
         var view = new StateMachineAsciiDocTableView(
             Id,

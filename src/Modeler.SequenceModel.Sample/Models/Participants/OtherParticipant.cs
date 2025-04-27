@@ -6,5 +6,5 @@ public class OtherParticipant : Participant
 {
     public static Participant Create() => new OtherParticipant()
         .WithName("Other")
-        .OfType(new ParticipantTypes.System());
+        .OfType(new ParticipantTypes.Application());
 }

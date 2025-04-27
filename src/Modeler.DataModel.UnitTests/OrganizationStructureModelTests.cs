@@ -10,7 +10,7 @@ public class OrganizationStructureModelTests
     [Test]
     public void Test()
     {
-        var model = OrganizationStructureDataModel.GetInstance();
+        var model = HRDataModel.GetInstance();
 
         var employeesTable = model.GetTable<EmployeesTable>();
 

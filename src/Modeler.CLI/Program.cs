@@ -100,7 +100,7 @@ void GenerateConceptualModels(string path)
 void GenerateDataModels(string path)
 {
     // Get model
-    var model = OrganizationStructureDataModel.GetInstance();
+    var model = HRDataModel.GetInstance();
     
     // Generate database scripts
     var dataModelPath = Path.Combine(path, "Models/Data");
@@ -126,7 +126,7 @@ void GenerateDataModels(string path)
 void GenerateSequenceModels(string path)
 {
     // Get model
-    var model = SequencesModel.GetInstance();
+    var model = HRSequencesModel.GetInstance();
     
     // Get views
     var sequenceDiagramViews = new SequenceDiagramViewsFactory(
@@ -169,7 +169,7 @@ void GenerateComponentsModels(string path)
 
 void GeneratePlantUmlStateMachineViews(string path)
 {
-    var model = OrganizationsStateModel.GetInstance();
+    var model = HRStateModel.GetInstance();
     
     // Get views
     var sequenceDiagramViews = new StateMachineViewsFactory(
@@ -186,7 +186,7 @@ void GeneratePlantUmlStateMachineViews(string path)
 
 void GenerateAsciiDocStateMachineTableViews(string path)
 {
-    var model = OrganizationsStateModel.GetInstance();
+    var model = HRStateModel.GetInstance();
     
     // Get views
     var sequenceDiagramViews = new StateMachineAsciiDocTableViewsFactory(

@@ -8,7 +8,7 @@ public class ModelTests
     [Test]
     public void Test()
     {
-        var model = new SequencesModel();
+        var model = new HRSequencesModel();
 
         var sequences = model.GetSequences();
         var participants = model.GetParticipants();
