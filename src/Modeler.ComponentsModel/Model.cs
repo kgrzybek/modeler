@@ -7,25 +7,19 @@ public abstract class Model
     private List<Component> _components;
 
     private readonly List<ComponentRelationship> _relationships;
-    
-    private readonly List<ComponentType> _componentTypes;
 
     protected Model()
     {
         _components = new List<Component>();
         _relationships = new List<ComponentRelationship>();
-        _componentTypes = new List<ComponentType>();
-        RegisterTypes<ComponentType>();
         InitializeComponents();
         InitializeRelationshipsModels();
     }
-    
-    public List<Component> GetComponents() => _components.ToList();
-    
-    public Component GetComponent<T>() where T: Component
+
+    public Component GetComponent<T>() where T : Component
     {
         var type = GetComponent<T>(_components);
-        
+
         if (type == null)
         {
             throw new Exception($"Type {typeof(T)} is not defined in the model");
@@ -34,7 +28,7 @@ public abstract class Model
         return type;
     }
 
-    private static Component? GetComponent<T>(List<Component> components) where T: Component
+    private static Component? GetComponent<T>(List<Component> components) where T : Component
     {
         foreach (var component in components)
         {
@@ -52,19 +46,20 @@ public abstract class Model
                 }
             }
         }
+
         return null;
     }
 
-    public void AddComponent(Component component)
+    public void AddAssociationRelationship(Component source, Component target, string? name = null)
     {
-        _components.Add(component);
+        _relationships.Add(new AssociationComponentRelationship(source, target, name));
     }
 
     public void AddUsageRelationship(Component source, Component target)
     {
         _relationships.Add(new UsageComponentRelationship(source, target));
     }
-    
+
     public void AddDependencyRelationship(Component source, Component target)
     {
         _relationships.Add(new DependencyComponentRelationship(source, target));
@@ -90,7 +85,7 @@ public abstract class Model
             }
         }
     }
-    
+
     private void InitializeRelationshipsModels()
     {
         var assembly = Assembly.GetAssembly(this.GetType())!;
@@ -106,31 +101,34 @@ public abstract class Model
 
             if (staticMethod != null)
             {
-                staticMethod.Invoke(null, new object?[]{ this });
+                staticMethod.Invoke(null, new object?[] {this});
             }
         }
     }
-    
-    private void RegisterTypes<T>() where T: ComponentType
-    {
-        var assembly = Assembly.GetAssembly(this.GetType());
-        
-        var types = assembly!
-            .GetTypes()
-            .Where(t =>
-                typeof(T).IsAssignableFrom(t))
-            .ToList();
-        
-        foreach (var type in types)
-        {
-            var staticMethod = type.GetMethod("Create", BindingFlags.Static | BindingFlags.Public);
 
-            if (staticMethod != null)
-            {
-                var entity = staticMethod.Invoke(null, null);
-                _componentTypes.Add((T) entity!);
-            }
-        }
-    }
     public List<ComponentRelationship> GetRelationships() => _relationships.ToList();
+
+    public List<ComponentType> GetComponentTypes()
+    {
+        var componentTypes = new List<ComponentType>();
+        foreach (var component in _components)
+        {
+            componentTypes.AddRange(GetComponentTypes(component));
+        }
+
+        return componentTypes.Distinct().ToList();
+    }
+
+    public List<ComponentType> GetComponentTypes(Component component)
+    {
+        var componentTypes = new List<ComponentType>();
+        componentTypes.Add(component.Type);
+
+        foreach (var subComponent in component.SubComponents)
+        {
+            componentTypes.AddRange(GetComponentTypes(subComponent));
+        }
+
+        return componentTypes;
+    }
 }

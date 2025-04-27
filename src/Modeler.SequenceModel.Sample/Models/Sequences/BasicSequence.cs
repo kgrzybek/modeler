@@ -10,7 +10,7 @@ public class BasicSequence : Sequence
         var user = model.GetParticipant<UserParticipant>();
         var frontend = model.GetParticipant<FrontendParticipant>();
         var backend = model.GetParticipant<BackendParticipant>();
-        var backendDatabase = model.GetParticipant<BackendDatabaseParticipant>();
+        var backendDatabase = model.GetParticipant<HRDatabaseParticipant>();
         var crm = model.GetParticipant<CrmParticipant>();
 
         var builder = new SequenceBuilder<BasicSequence>("Basic");

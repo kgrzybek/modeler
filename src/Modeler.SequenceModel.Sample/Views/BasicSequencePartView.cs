@@ -16,7 +16,7 @@ public class BasicSequencePartView : SequenceDiagramViewDefinition
             model.GetParticipant<UserParticipant>(),
             model.GetParticipant<FrontendParticipant>(),
             model.GetParticipant<BackendParticipant>(),
-            model.GetParticipant<BackendDatabaseParticipant>()
+            model.GetParticipant<HRDatabaseParticipant>()
         };
         var view = new SequenceDiagramView(
             Id,

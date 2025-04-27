@@ -2,10 +2,11 @@
 
 public abstract class Component
 {
-    public Component(string name)
+    public Component(string name, ComponentType type)
     {
         SubComponents = new List<Component>();
         Name = name;
+        this.Type = type;
     }
     public string Name { get; set; }
     

@@ -1,4 +1,6 @@
 using Modeler.ComponentsModel.Sample.Components;
+using Modeler.ComponentsModel.Sample.Components.ExternalSystems;
+using Modeler.ComponentsModel.Sample.Components.HRSystem;
 using Modeler.ComponentsModel.Views.PlantUml;
 
 namespace Modeler.ComponentsModel.Sample.Views;
@@ -11,7 +13,8 @@ public class SystemComponentsView : ComponentsDiagramViewDefinition
     {
         var concepts = new List<Component>();
 
-        concepts.Add(model.GetComponent<SystemComponent>());
+        concepts.Add(model.GetComponent<HRSystemBoundary>());
+        concepts.Add(model.GetComponent<CRMExternalSystem>());
         
         var view = new ComponentsDiagramView(Id, concepts);
 

@@ -163,7 +163,7 @@ void GenerateComponentsModels(string path)
     
     // Generate views
     var fileSystemOutput = new FileSystemPlantUmlComponentsDiagramViewOutput<ComponentsDiagramView>(componentsModelPath);
-    new PlantComponentsDiagramViewGenerator(model, fileSystemOutput).Generate(sequenceDiagramViews);
+    new PlantComponentsDiagramViewGenerator(model, fileSystemOutput, new ComponentsDiagramDefaultViewLayout()).Generate(sequenceDiagramViews);
 
 }
 

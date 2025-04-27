@@ -1,12 +1,31 @@
 @startuml
 
-component C {
-    component B {
-        component D {
-            component F
-        }
-    }
+abstract class Component {
+    Name: string
+    Type: ComponentType
 }
 
+abstract class ComponentRelationship {
+}
+
+abstract class ComponentType {
+}
+
+class AssociationComponentRelationship {
+}
+
+class UsageComponentRelationship {
+}
+
+class DependencyComponentRelationship {
+}
+
+AssociationComponentRelationship --|> ComponentRelationship
+UsageComponentRelationship --|> ComponentRelationship
+DependencyComponentRelationship --|> ComponentRelationship
+
+Component "1" --> "0..*" Component : Subcomponents
+Component "1" --> "0..*" ComponentRelationship : source
+Component "1" --> "0..*" ComponentRelationship : target
 
 @enduml

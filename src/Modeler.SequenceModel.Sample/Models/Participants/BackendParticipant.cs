@@ -3,6 +3,6 @@
 public class BackendParticipant : Participant
 {
     public static Participant Create() => new BackendParticipant()
-        .WithName("Backend")
+        .WithName("HR Backend")
         .OfType(new ParticipantTypes.System());
 }
