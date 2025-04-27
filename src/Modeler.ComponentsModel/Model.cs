@@ -108,6 +108,40 @@ public abstract class Model
 
     public List<ComponentRelationship> GetRelationships() => _relationships.ToList();
 
+    public List<ComponentRelationship> GetComponentRelationships(Component component, bool includeSubComponents = false)
+    {
+        var relationships = new List<ComponentRelationship>();
+        
+        relationships.AddRange(_relationships
+            .Where(x => (x.Source == component || x.Target == component) || includeSubComponents).ToList());
+
+        foreach (var subComponent in component.SubComponents)
+        {
+            relationships.AddRange(GetComponentRelationships(subComponent, includeSubComponents: true));
+        }
+
+        return relationships.Distinct().ToList();
+    }
+
+    public bool Contains(Component component, Component childComponent)
+    {
+        foreach (var subComponent in component.SubComponents)
+        {
+            if (subComponent == childComponent)
+            {
+                return true;
+            }
+
+            var subComponentContains = Contains(subComponent, childComponent);
+            if (subComponentContains)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public List<ComponentType> GetComponentTypes()
     {
         var componentTypes = new List<ComponentType>();

@@ -5,8 +5,10 @@ using Modeler.ComponentsModel.Sample;
 using Modeler.ComponentsModel.Sample.Components;
 using Modeler.ComponentsModel.Sample.Views;
 using Modeler.ComponentsModel.Sample.Views.AsciiDoc;
+using Modeler.ComponentsModel.Sample.Views.AsciiDoc.Details;
 using Modeler.ComponentsModel.Sample.Views.Outputs;
 using Modeler.ComponentsModel.Views.AsciiDoc;
+using Modeler.ComponentsModel.Views.AsciiDoc.Details;
 using Modeler.ComponentsModel.Views.PlantUml;
 using Modeler.ConceptualModel.Sample.Concepts;
 using Modeler.ConceptualModel.Sample.Views;
@@ -167,11 +169,16 @@ void GenerateComponentsModels(string path)
     var fileSystemOutput = new FileSystemPlantUmlComponentsDiagramViewOutput<ComponentsDiagramView>(componentsModelPath);
     new PlantComponentsDiagramViewGenerator(model, fileSystemOutput, new ComponentsDiagramDefaultViewLayout()).Generate(sequenceDiagramViews);
     
-    // Generate AsciiDoc view
+    // Generate AsciiDoc components list view
     var fileSystemAsciiDocComponentsListTableViewOutput = new FileSystemAsciiDocComponentsListTableViewOutput(componentsModelPath);
     new AsciiDocComponentsListTableViewGenerator(model, fileSystemAsciiDocComponentsListTableViewOutput).Generate();
-
-
+    
+    // Generate AsciiDoc components details views
+    var asciiDocDetailsViews = new AsciiDocComponentsDetailsViewsFactory(
+        model,
+        Assembly.GetAssembly(typeof(AsciiDocBackendDetailsViewDefinition))!).GetViews();
+    var fileSystemAsciiDocComponentsDetailsViewOutput = new FileSystemAsciiDocComponentsDetailsViewOutput<AsciiDocComponentDetailsView>(componentsModelPath);
+    new AsciiDocComponentsDetailsViewsGenerator(model, fileSystemAsciiDocComponentsDetailsViewOutput).Generate(asciiDocDetailsViews);
 }
 
 void GeneratePlantUmlStateMachineViews(string path)
