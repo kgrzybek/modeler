@@ -53,7 +53,14 @@ public class AsciiDocComponentsDetailsViewsGenerator
         {
             if (relationship is UsageComponentRelationship usage)
             {
-                if (_model.Contains(view.Component, relationship.Source))
+                if (relationship.Source == view.Component)
+                {
+                    sb.AppendLine("|Use");
+                    sb.AppendLine($"|{relationship.Target.Name}");
+                    sb.AppendLine($"|{relationship.Target.Type.Name}");
+                    sb.AppendLine();
+                }
+                else if (_model.Contains(view.Component, relationship.Source))
                 {
                     sb.AppendLine("|Use");
                     sb.AppendLine($"|{relationship.Target.Name}");

@@ -14,6 +14,7 @@ public class FileSystemAsciiDocComponentsDetailsViewOutput<T>: IViewsOutput<T>
 
         _relativePaths = new Dictionary<string, string>();
         _relativePaths.Add(AsciiDocBackendDetailsViewDefinition.Id, "BackendDetails.adoc");
+        _relativePaths.Add(AsciiDocFrontendDetailsViewDefinition.Id, "FrontendDetails.adoc");
     }
 
     public void Execute(List<ViewOutputItem<T>> views)

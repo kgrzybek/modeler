@@ -14,6 +14,11 @@ public class FileSystemOutput : IViewsOutput
 
     public void Execute(List<StructureItemViewItem> views)
     {
+        if (!Directory.Exists(_path))
+        {
+            Directory.CreateDirectory(_path);
+        }
+        
         foreach (var view in views)
         {
             var destination = Path.Combine(_path, $"{view.StructureName}.sql");

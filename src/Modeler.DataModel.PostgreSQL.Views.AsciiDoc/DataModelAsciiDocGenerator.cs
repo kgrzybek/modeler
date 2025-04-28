@@ -42,21 +42,21 @@ public static class DataModelAsciiDocGenerator
         StringBuilder sb,
         IViewTranslator viewTranslator)
     {
-        sb.AppendLine($"[#model_danych_{modelName.ToLower()}_{schema.ToLower()}_tables]");
-        sb.AppendLine("=== Tabele");
+        sb.AppendLine($"[#data_model_{modelName.ToLower()}_{schema.ToLower()}_tables]");
+        sb.AppendLine("=== Tables");
         sb.AppendLine();
         var tables = model.GetTables();
 
         foreach (var table in tables.Where(x => x.Schema.Name == schema).OrderBy(x => x.Name))
         {
-            sb.AppendLine($"[#model_danych_{modelName.ToLower()}_{schema}_tables_{table.Name.ToLower()}]");
+            sb.AppendLine($"[#data_model_{modelName.ToLower()}_{schema}_tables_{table.Name.ToLower()}]");
             sb.AppendLine($"==== {table.Name}");
             sb.AppendLine();
 
-            sb.AppendLine($".Tabela - {table.Name} - kolumny");
+            sb.AppendLine($".Tables - {table.Name} - columns");
             sb.AppendLine("[cols=4*]");
             sb.AppendLine("|===");
-            sb.AppendLine("|Nazwa| Typ| Czy wymagany| Opis");
+            sb.AppendLine("|Name| Type| Is required| Description");
             sb.AppendLine();
 
             foreach (var column in table.Columns
@@ -66,7 +66,7 @@ public static class DataModelAsciiDocGenerator
                 var name = column.IsPrimaryKey ? $"{column.Name} PK" : column.Name;
                 sb.AppendLine($"|{name}");
                 sb.AppendLine($"|{column.Type.Name}");
-                sb.AppendLine($"|{(!column.IsNullable ? "TAK" : "NIE")}");
+                sb.AppendLine($"|{(!column.IsNullable ? "YES" : "NO")}");
                 sb.AppendLine($"|{column.Description}");
                 sb.AppendLine();
             }
@@ -77,10 +77,10 @@ public static class DataModelAsciiDocGenerator
 
             if (fromRelations.Any())
             {
-                sb.AppendLine($".Tabela - {table.Name} - relacje od");
+                sb.AppendLine($".Tables - {table.Name} - relationships from");
                 sb.AppendLine("[cols=5*]");
                 sb.AppendLine("|===");
-                sb.AppendLine("|Od |Liczebność |Kolumna |Liczebność |Do");
+                sb.AppendLine("|From |Multiplicity |Column |Multiplicity |To");
                 sb.AppendLine();
 
                 foreach (var relation in fromRelations)
@@ -103,10 +103,10 @@ public static class DataModelAsciiDocGenerator
 
             if (toRelations.Any())
             {
-                sb.AppendLine($".Tabela - {table.Name} - relacje do");
+                sb.AppendLine($".Tables - {table.Name} - relationships to");
                 sb.AppendLine("[cols=5*]");
                 sb.AppendLine("|===");
-                sb.AppendLine("|Od |Liczebność |Kolumna |Liczebność |Do");
+                sb.AppendLine("|From |Multiplicity |Column |Multiplicity |To");
                 sb.AppendLine();
 
                 foreach (var relation in toRelations)
@@ -135,21 +135,21 @@ public static class DataModelAsciiDocGenerator
         string schema,
         StringBuilder sb)
     {
-        sb.AppendLine($"[#model_danych_{modelName.ToLower()}_{schema.ToLower()}_views]");
-        sb.AppendLine("==== Widoki");
+        sb.AppendLine($"[#data_model_{modelName.ToLower()}_{schema.ToLower()}_views]");
+        sb.AppendLine("==== Views");
         sb.AppendLine();
         var views = model.GetViews();
 
         foreach (var view in views.OrderBy(x => x.Name))
         {
-            sb.AppendLine($"[#model_danych_{modelName.ToLower()}_{schema.ToLower()}_views_{view.Name.ToLower()}]");
+            sb.AppendLine($"[#data_model_{modelName.ToLower()}_{schema.ToLower()}_views_{view.Name.ToLower()}]");
             sb.AppendLine($"===== {view.Name}");
             sb.AppendLine();
 
-            sb.AppendLine($".Widok - {view.Name} - kolumny");
+            sb.AppendLine($".View - {view.Name} - columns");
             sb.AppendLine("[cols=2*]");
             sb.AppendLine("|===");
-            sb.AppendLine("|Nazwa| Typ");
+            sb.AppendLine("|Name| Type");
             sb.AppendLine();
 
             foreach (var column in view.Columns.OrderBy(x => x.Name))
@@ -165,10 +165,10 @@ public static class DataModelAsciiDocGenerator
 
             if (fromRelations.Any())
             {
-                sb.AppendLine($".Widok - {view.Name} - relacje od");
+                sb.AppendLine($".View - {view.Name} - relationships from");
                 sb.AppendLine("[cols=5*]");
                 sb.AppendLine("|===");
-                sb.AppendLine("|Od |Liczebność |Kolumna |Liczebność |Do");
+                sb.AppendLine("|From |Multiplicity |Column |Multiplicity |To");
                 sb.AppendLine();
 
                 foreach (var relation in fromRelations)
@@ -191,10 +191,10 @@ public static class DataModelAsciiDocGenerator
 
             if (toRelations.Any())
             {
-                sb.AppendLine($".Widok - {view.Name} - relacje do");
+                sb.AppendLine($".View - {view.Name} - relationships to");
                 sb.AppendLine("[cols=5*]");
                 sb.AppendLine("|===");
-                sb.AppendLine("|Od |Liczebność |Kolumna |Liczebność |Do");
+                sb.AppendLine("|From |Multiplicity |Column |Multiplicity |To");
                 sb.AppendLine();
 
                 foreach (var relation in toRelations)
