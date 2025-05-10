@@ -16,7 +16,6 @@ using Modeler.ConceptualModel.Sample.Views.AsciiDocViews;
 using Modeler.ConceptualModel.Sample.Views.Outputs;
 using Modeler.ConceptualModel.Sample.Views.Translations;
 using Modeler.ConceptualModel.Views.AsciiDoc;
-using Modeler.ConceptualModel.Views.Mermaid;
 using Modeler.ConceptualModel.Views.PlantUml;
 using Modeler.ConceptualModel.Views.Shared;
 using Modeler.DataModel.PostgreSQL.Views.AsciiDoc;
@@ -26,6 +25,9 @@ using Modeler.DataModel.Sample;
 using Modeler.DataModel.Sample.Structure;
 using Modeler.DataModel.Sample.Structure.Tables;
 using Modeler.DataModel.Sample.Views.Outputs;
+using Modeler.EventsFlowModel.Sample;
+using Modeler.EventsFlowModel.Sample.Views.Mermaid;
+using Modeler.EventsFlowModel.Views.Mermaid;
 using Modeler.SequenceModel.Sample.Models;
 using Modeler.SequenceModel.Sample.Views;
 using Modeler.SequenceModel.Sample.Views.Layouts;
@@ -40,6 +42,7 @@ using Modeler.StateModel.Sample.Views.AsciiDoc;
 using Modeler.StateModel.Sample.Views.PlantUml;
 using Modeler.StateModel.Views.AsciiDoc;
 using Modeler.StateModel.Views.PlantUml;
+using MermaidClassDiagramViewGenerator = Modeler.ConceptualModel.Views.Mermaid.MermaidClassDiagramViewGenerator;
 
 Console.WriteLine("Docs generation...");
 
@@ -56,6 +59,8 @@ GenerateComponentsModels(documentationPath);
 GeneratePlantUmlStateMachineViews(documentationPath);
 
 GenerateAsciiDocStateMachineTableViews(documentationPath);
+
+GenerateMermaidEventsFlowViews(documentationPath);
 
 Console.WriteLine("Docs generated...");
 
@@ -213,4 +218,21 @@ void GenerateAsciiDocStateMachineTableViews(string path)
     // Generate views
     var fileSystemOutput = new FileSystemAsciiDocStateMachineTableViewOutput<StateMachineAsciiDocTableView>(componentsModelPath);
     new StateMachineAsciiDocTableViewGenerator(fileSystemOutput).Generate(sequenceDiagramViews);
+}
+
+void GenerateMermaidEventsFlowViews(string path)
+{
+    var model = HREventsFlowModel.GetInstance();
+    
+    // Get views
+    var views = new MermaidEventsFlowViewsFactory(
+        model,
+        Assembly.GetAssembly(typeof(HREventsFlowViewDefinition))!).Views;
+    
+    // Set views path
+    var viewsPath = Path.Combine(path, "Models/EventsFlows");
+    
+    // Generate views
+    var fileSystemOutput = new FileSystemMermaidEventsFlowViewOutput<MermaidEventFlowsView>(viewsPath);
+    new MermaidEventsFlowDiagramViewGenerator(fileSystemOutput).Generate(views);
 }
