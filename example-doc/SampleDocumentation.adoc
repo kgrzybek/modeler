@@ -1,0 +1,105 @@
+﻿= Sample Documentation
+Kamil Grzybek
+:doctype: book
+:toc: left
+:toc-title: Table of content
+:toclevels: 4 
+:figure-caption: Diagram
+:sectnums: true
+:sectnumlevels: 4
+:!version-label:
+:revdate: 0.1
+:chapter-signifier:
+:table-caption: Table
+:stylesheet: clean.css
+:sectanchors: true
+:sectlinks: true
+:diagram-extension: mermaid
+:source-highlighter: rouge
+
+== Conceptual Model
+
+plantuml::Models/Conceptual/OrganizationStructure.puml[svg]
+
+[mermaid, format="svg"]
+----
+include::Models/Conceptual/OrganizationStructure.mmd[]
+----
+
+=== Address
+
+include::Models/Conceptual/Address.adoc[]
+
+=== Employee
+
+include::Models/Conceptual/Employee.adoc[]
+
+=== Gender
+
+include::Models/Conceptual/Gender.adoc[]
+
+=== Manager
+
+include::Models/Conceptual/Manager.adoc[]
+
+=== OrganizationUnit
+
+include::Models/Conceptual/OrganizationUnit.adoc[]
+
+== Components
+
+plantuml::Models/Components/SystemComponents.puml[svg]
+
+include::Models/Components/ComponentsList.adoc[]
+
+=== Backend
+
+include::Models/Components/BackendDetails.adoc[]
+
+=== Frontend
+
+include::Models/Components/FrontendDetails.adoc[]
+
+== State Model
+
+plantuml::Models/StateMachines/AbsenceStateMachine.puml[svg]
+
+include::Models/StateMachines/AbsenceStateMachine.adoc[]
+
+== Interaction Model
+
+=== Basic Sequence - full
+
+plantuml::Models/Sequences/BasicSequence.puml[svg]
+
+[mermaid, format="svg"]
+----
+include::Models/Sequences/BasicSequence.mmd[]
+----
+
+=== Basic Sequence - part
+
+plantuml::Models/Sequences/BasicSequencePart.puml[svg]
+
+[mermaid, format="svg"]
+----
+include::Models/Sequences/BasicSequencePart.mmd[]
+----
+
+== Data Model
+
+plantuml::Models/Data/Organizations_data_model.puml[svg]
+
+include::Models/Data/ORGANIZATIONS/organizations_schema.adoc[]
+
+=== Scripts
+
+[source, sql]
+----
+include::Models/Data/organizations.employees.sql[]
+----
+
+[source, sql]
+----
+include::Models/Data/organizations.organization_units.sql[]
+----

@@ -2,7 +2,7 @@
 
 ## General information
 
-Modeler is a sample project demonstrating the concept of Model As Code – an approach where data models are defined, managed, and versioned as code. This allows for better traceability, automation, and integration with development workflows.
+Modeler is a sample project demonstrating the concept of Model As Code – an approach where models are defined, managed, and versioned as code. This allows for better traceability, automation, and integration with development workflows.
 
     ⚠️ Work in Progress
     This project is currently under active development. Interfaces and functionality may change as the project evolves.
@@ -29,6 +29,10 @@ Run Modeler.CLI program with output directory path argument:
 ```shell
 dotnet Modeler.CLI "C:\Modeler_sample_docs"
 ```
+
+This command will generate views based on views definitions and models. Then, you can use this views in your documentation.
+
+See [example documentation](/example-doc/).
 
 ## Models list
 
