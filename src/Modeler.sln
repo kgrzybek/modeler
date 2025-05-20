@@ -4,9 +4,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ConceptualModel", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.Documentation", "Modeler.Documentation\Modeler.Documentation.csproj", "{8BA0C906-7E65-4659-8F63-2DAABBA06F1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ConceptualModel.Sample", "Models\Conceptual\Tests\Sample\Modeler.ConceptualModel.Sample.csproj", "{6D92CFB0-4D66-44E4-B50D-A13B04DC6FD6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ConceptualModel.Sample", "Samples\Conceptual\Sample\Modeler.ConceptualModel.Sample.csproj", "{6D92CFB0-4D66-44E4-B50D-A13B04DC6FD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ConceptualModel.UnitTests", "Models\Conceptual\Tests\UnitTests\Modeler.ConceptualModel.UnitTests.csproj", "{78F86FDF-1E9B-436E-A6D7-3D835E47FE49}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ConceptualModel.UnitTests", "Samples\Conceptual\UnitTests\Modeler.ConceptualModel.UnitTests.csproj", "{78F86FDF-1E9B-436E-A6D7-3D835E47FE49}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ConceptualModel.Views.PlantUml", "Models\Conceptual\Views\PlantUml\Modeler.ConceptualModel.Views.PlantUml.csproj", "{24DFB9FC-604A-4ED7-9EE8-4DBB5A736ADA}"
 EndProject
@@ -24,9 +24,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.DataModel", "Models
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{0E838D53-18C4-42B5-B3E9-74A11810E51A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.DataModel.Sample", "Models\DataModel\Modeler.DataModel.Sample\Modeler.DataModel.Sample.csproj", "{E7250F49-2E56-4C15-9814-C18A276D2220}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.DataModel.Sample", "Samples\Data\Modeler.DataModel.Sample\Modeler.DataModel.Sample.csproj", "{E7250F49-2E56-4C15-9814-C18A276D2220}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.DataModel.UnitTests", "Models\DataModel\Modeler.DataModel.UnitTests\Modeler.DataModel.UnitTests.csproj", "{A40E3D92-2A00-4866-B1F1-E0082E8EC1EF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.DataModel.UnitTests", "Samples\Data\Modeler.DataModel.UnitTests\Modeler.DataModel.UnitTests.csproj", "{A40E3D92-2A00-4866-B1F1-E0082E8EC1EF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Views", "Views", "{5DB7D157-806A-444F-B5A5-63DEC9510D05}"
 EndProject
@@ -38,9 +38,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sequence", "Sequence", "{71
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.SequenceModel", "Models\SequenceModel\Modeler.SequenceModel\Modeler.SequenceModel.csproj", "{13AED0D2-D46B-43CE-A4EA-D8061A555022}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.SequenceModel.Sample", "Models\SequenceModel\Modeler.SequenceModel.Sample\Modeler.SequenceModel.Sample.csproj", "{4CC61A4F-0E5F-4735-AA20-7F3535A029EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.SequenceModel.Sample", "Samples\Sequence\Modeler.SequenceModel.Sample\Modeler.SequenceModel.Sample.csproj", "{4CC61A4F-0E5F-4735-AA20-7F3535A029EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.SequenceModel.Tests.UnitTests", "Models\SequenceModel\Modeler.SequenceModel.Tests.UnitTests\Modeler.SequenceModel.Tests.UnitTests.csproj", "{12267116-48CC-426F-A6F7-A7EEEC626A4B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.SequenceModel.Tests.UnitTests", "Samples\Sequence\Modeler.SequenceModel.Tests.UnitTests\Modeler.SequenceModel.Tests.UnitTests.csproj", "{12267116-48CC-426F-A6F7-A7EEEC626A4B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.SequenceModel.Views.PlantUml", "Models\SequenceModel\Modeler.SequenceModel.Views.PlantUml\Modeler.SequenceModel.Views.PlantUml.csproj", "{DAEB6240-5A0E-41B7-B695-CAEB065E7942}"
 EndProject
@@ -54,15 +54,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ComponentsModel", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ComponentsModel.Views.PlantUml", "Models\Components\Modeler.ComponentsModel.Views.PlantUml\Modeler.ComponentsModel.Views.PlantUml.csproj", "{F4290A87-DD65-4BDD-AE6E-4C03609BE497}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ComponentsModel.Sample", "Models\Components/Modeler.ComponentsModel.Sample\Modeler.ComponentsModel.Sample.csproj", "{DC2C42D3-0858-4FCF-BCD0-21CE0BC7F0AB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ComponentsModel.Sample", "Samples\Components\Modeler.ComponentsModel.Sample\Modeler.ComponentsModel.Sample.csproj", "{DC2C42D3-0858-4FCF-BCD0-21CE0BC7F0AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ComponentsModel.Tests.UnitTests", "Models\Components\Modeler.ComponentsModel.Tests.UnitTests\Modeler.ComponentsModel.Tests.UnitTests.csproj", "{55CBC9DC-9D94-4099-BF8A-67C1A569D6A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ComponentsModel.Tests.UnitTests", "Samples\Components\Modeler.ComponentsModel.Tests.UnitTests\Modeler.ComponentsModel.Tests.UnitTests.csproj", "{55CBC9DC-9D94-4099-BF8A-67C1A569D6A5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "State", "State", "{8292A41C-D2D8-40E6-B410-9231FCBBBE87}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.StateModel", "Models\StateModel\Modeler.StateModel\Modeler.StateModel.csproj", "{7353F136-B17E-4DC8-9107-C30CF480B64A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.StateModel.Sample", "Models\StateModel\Modeler.StateModel.Sample\Modeler.StateModel.Sample.csproj", "{68E9ABDF-427B-43E3-9FCA-01BCE56DA9FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.StateModel.Sample", "Samples\State\Modeler.StateModel.Sample\Modeler.StateModel.Sample.csproj", "{68E9ABDF-427B-43E3-9FCA-01BCE56DA9FA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.StateModel.Views.PlantUml", "Models\StateModel\Modeler.StateModel.Views.PlantUml\Modeler.StateModel.Views.PlantUml.csproj", "{1126B14A-614D-4010-AD96-3BB9EC38D067}"
 EndProject
@@ -112,7 +112,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventsFlow", "EventsFlow", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventsFlow", "EventsFlow", "{0D06CD41-E8A7-4013-917B-0961966AA851}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.EventsFlowModel.Sample", "Models\EventsFlow\Modeler.EventsFlowModel.Sample\Modeler.EventsFlowModel.Sample.csproj", "{1D1F5F8B-97A9-40D8-988C-3DB68CE2836D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.EventsFlowModel.Sample", "Samples\EventsFlow\Modeler.EventsFlowModel.Sample\Modeler.EventsFlowModel.Sample.csproj", "{1D1F5F8B-97A9-40D8-988C-3DB68CE2836D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Views", "Views", "{B4598E96-298F-44F0-823B-FAF2E80DC66C}"
 EndProject

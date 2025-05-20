@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Models\Components\Modeler.ComponentsModel.Views.AsciiDoc\Modeler.ComponentsModel.Views.AsciiDoc.csproj" />
+      <ProjectReference Include="..\..\..\Models\Components\Modeler.ComponentsModel.Views.PlantUml\Modeler.ComponentsModel.Views.PlantUml.csproj" />
+      <ProjectReference Include="..\..\..\Models\Components\Modeler.ComponentsModel.Views.Shared\Modeler.ComponentsModel.Views.Shared.csproj" />
+      <ProjectReference Include="..\..\..\Models\Components\Modeler.ComponentsModel\Modeler.ComponentsModel.csproj" />
+    </ItemGroup>
+
+</Project>

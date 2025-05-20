@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Models\StateModel\Modeler.StateModel.Views.AsciiDoc\Modeler.StateModel.Views.AsciiDoc.csproj" />
+      <ProjectReference Include="..\..\..\Models\StateModel\Modeler.StateModel.Views.PlantUml\Modeler.StateModel.Views.PlantUml.csproj" />
+      <ProjectReference Include="..\..\..\Models\StateModel\Modeler.StateModel\Modeler.StateModel.csproj" />
+    </ItemGroup>
+
+</Project>

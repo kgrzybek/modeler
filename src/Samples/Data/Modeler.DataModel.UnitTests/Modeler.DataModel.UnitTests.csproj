@@ -19,9 +19,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Modeler.DataModel.PostgreSQL.Views.SQL\Modeler.DataModel.PostgreSQL.Views.SQL.csproj" />
+      <ProjectReference Include="..\..\..\Models\DataModel\Modeler.DataModel.PostgreSQL.Views.SQL\Modeler.DataModel.PostgreSQL.Views.SQL.csproj" />
       <ProjectReference Include="..\Modeler.DataModel.Sample\Modeler.DataModel.Sample.csproj" />
-      <ProjectReference Include="..\Modeler.DataModel\Modeler.DataModel.csproj" />
+      <ProjectReference Include="..\..\..\Models\DataModel\Modeler.DataModel\Modeler.DataModel.csproj" />
     </ItemGroup>
 
     <ItemGroup>

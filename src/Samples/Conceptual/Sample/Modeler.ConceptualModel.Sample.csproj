@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Models\Conceptual\Views\AsciiDoc\Modeler.ConceptualModel.Views.AsciiDoc.csproj" />
+      <ProjectReference Include="..\..\..\Models\Conceptual\Views\PlantUml\Modeler.ConceptualModel.Views.PlantUml.csproj" />
+      <ProjectReference Include="..\..\..\Models\Conceptual\ConceptualModel\Modeler.ConceptualModel.csproj" />
+    </ItemGroup>
+
+</Project>

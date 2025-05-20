@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Models\DataModel\Modeler.DataModel.PostgreSQL.Views.PlantUml\Modeler.DataModel.PostgreSQL.Views.PlantUml.csproj" />
+      <ProjectReference Include="..\..\..\Models\DataModel\Modeler.DataModel.PostgreSQL.Views.SQL\Modeler.DataModel.PostgreSQL.Views.SQL.csproj" />
+      <ProjectReference Include="..\..\..\Models\DataModel\Modeler.DataModel\Modeler.DataModel.csproj" />
+    </ItemGroup>
+
+</Project>

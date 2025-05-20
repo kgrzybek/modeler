@@ -8,8 +8,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\Components\Modeler.ComponentsModel.Sample\Modeler.ComponentsModel.Sample.csproj" />
-      <ProjectReference Include="..\Modeler.SequenceModel.Views.PlantUml\Modeler.SequenceModel.Views.PlantUml.csproj" />
-      <ProjectReference Include="..\Modeler.SequenceModel\Modeler.SequenceModel.csproj" />
+      <ProjectReference Include="..\..\..\Models\SequenceModel\Modeler.SequenceModel.Views.PlantUml\Modeler.SequenceModel.Views.PlantUml.csproj" />
+      <ProjectReference Include="..\..\..\Models\SequenceModel\Modeler.SequenceModel\Modeler.SequenceModel.csproj" />
     </ItemGroup>
 
 </Project>
