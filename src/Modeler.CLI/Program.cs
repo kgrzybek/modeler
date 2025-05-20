@@ -1,7 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using System.Reflection;
-using Modeler.ComponentsModel.Sample;
 using Modeler.ComponentsModel.Sample.Components;
 using Modeler.ComponentsModel.Sample.Views;
 using Modeler.ComponentsModel.Sample.Views.AsciiDoc;
@@ -21,7 +20,6 @@ using Modeler.ConceptualModel.Views.Shared;
 using Modeler.DataModel.PostgreSQL.Views.AsciiDoc;
 using Modeler.DataModel.PostgreSQL.Views.PlantUml;
 using Modeler.DataModel.PostgreSQL.Views.SQL.Generator;
-using Modeler.DataModel.Sample;
 using Modeler.DataModel.Sample.Structure;
 using Modeler.DataModel.Sample.Structure.Tables;
 using Modeler.DataModel.Sample.Views.Outputs;
@@ -36,7 +34,6 @@ using Modeler.SequenceModel.Sample.Views.Translations;
 using Modeler.SequenceModel.Views.Mermaid;
 using Modeler.SequenceModel.Views.PlantUml;
 using Modeler.SequenceModel.Views.Shared;
-using Modeler.StateModel.Sample;
 using Modeler.StateModel.Sample.Models;
 using Modeler.StateModel.Sample.Views.AsciiDoc;
 using Modeler.StateModel.Sample.Views.PlantUml;
@@ -44,9 +41,14 @@ using Modeler.StateModel.Views.AsciiDoc;
 using Modeler.StateModel.Views.PlantUml;
 using MermaidClassDiagramViewGenerator = Modeler.ConceptualModel.Views.Mermaid.MermaidClassDiagramViewGenerator;
 
-Console.WriteLine("Docs generation...");
+if (args.Length != 1)
+{
+    throw new Exception("Provide path to documentation output directory");
+}
 
-const string documentationPath = "C:\\Modeler_sample_docs";
+var documentationPath = args[0];
+
+Console.WriteLine($"Documentation generation to {documentationPath} started.");
 
 GenerateConceptualModels(documentationPath);
 
@@ -62,7 +64,7 @@ GenerateAsciiDocStateMachineTableViews(documentationPath);
 
 GenerateMermaidEventsFlowViews(documentationPath);
 
-Console.WriteLine("Docs generated...");
+Console.WriteLine("Documentation generated.");
 
 
 void GenerateConceptualModels(string path)
