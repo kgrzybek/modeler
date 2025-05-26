@@ -99,6 +99,10 @@ Describes interactions between objects or components in a time-ordered sequence.
 1. Mermaid Sequence Diagram
 2. PlantUML Sequence Diagram
 
+#### Documentation
+
+See [Sequence Documentation](docs/Models/Sequence).
+
 ### State machine
 
 Models the states of an object and the transitions between them based on events. Useful for describing system behavior over time.
