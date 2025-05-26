@@ -74,6 +74,10 @@ Defines data structures, tables, and their relationships. Useful for modeling da
 2. PlantUml DataModel Diagram
 3. SQL Script
 
+#### Documentation
+
+See [Data Model Documentation](docs/Models/Data).
+
 ### Events Flow
 
 Illustrates the flow of events between components or systems. Helps in understanding how different parts of the system react and communicate through events.
