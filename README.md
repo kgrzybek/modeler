@@ -86,6 +86,10 @@ Illustrates the flow of events between components or systems. Helps in understan
 
 1. Mermaid Flow Diagram
 
+#### Documentation
+
+See [Events Flow Documentation](docs/Models/EventsFlow).
+
 ### Sequence
 
 Describes interactions between objects or components in a time-ordered sequence. Ideal for capturing detailed behavior and scenarios.
