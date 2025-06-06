@@ -68,19 +68,13 @@ public class MarkdownViewsGenerator
         {
             foreach (var attribute in (generalizationConcept).Attributes.OrderBy(x => x.Name))
             {
-                sb.AppendLine($"|({generalizationConcept.Name}) {attribute.Name}");
-                sb.AppendLine($"|{attribute.Type.Name}");
-                sb.AppendLine($"|{(attribute.IsRequired ? _translationDictionary.IsRequiredYesValueText : _translationDictionary.IsRequiredNoValueText)}");
-                sb.AppendLine();
+                sb.AppendLine($"|({generalizationConcept.Name}) {attribute.Name}|{attribute.Type.Name}|{(attribute.IsRequired ? _translationDictionary.IsRequiredYesValueText : _translationDictionary.IsRequiredNoValueText)}|");
             }
         }
 
         foreach (var attribute in entityConcept.Attributes.OrderBy(x => x.Name))
         {
-            sb.AppendLine($"|{attribute.Name}");
-            sb.AppendLine($"|{attribute.Type.Name}");
-            sb.AppendLine($"|{(attribute.IsRequired ? _translationDictionary.IsRequiredYesValueText : _translationDictionary.IsRequiredNoValueText)}");
-            sb.AppendLine();
+            sb.AppendLine($"|{attribute.Name}|{attribute.Type.Name}|{(attribute.IsRequired ? _translationDictionary.IsRequiredYesValueText : _translationDictionary.IsRequiredNoValueText)}|");
         }
 
         sb.AppendLine();
@@ -102,10 +96,7 @@ public class MarkdownViewsGenerator
 
         foreach (var attribute in complexAttributeType.Attributes.OrderBy(x => x.Name))
         {
-            sb.AppendLine($"|{attribute.Name}");
-            sb.AppendLine($"|{attribute.Type.Name}");
-            sb.AppendLine($"|{(attribute.IsRequired ? _translationDictionary.IsRequiredYesValueText : _translationDictionary.IsRequiredNoValueText)}");
-            sb.AppendLine();
+            sb.AppendLine($"|{attribute.Name}|{attribute.Type.Name}|{(attribute.IsRequired ? _translationDictionary.IsRequiredYesValueText : _translationDictionary.IsRequiredNoValueText)}|");
         }
 
         sb.AppendLine();
@@ -174,19 +165,9 @@ public class MarkdownViewsGenerator
 
             var inheritedFromName = inherited ? $"({concept.Name}) " : string.Empty;
 
-            sb.AppendLine($"|{inheritedFromName}{firstRelation.From.Name}");
-            sb.AppendLine($"|{firstRelation.Name}");
-            sb.AppendLine($"|{_viewTranslator.TranslateMultiplicity(firstRelation.Multiplicity)}");
-            sb.AppendLine($"|*{firstRelation.To.Name}*");
-            sb.AppendLine($"|{firstRelation.Description}");
-            sb.AppendLine();
+            sb.AppendLine($"|{inheritedFromName}{firstRelation.From.Name}|{firstRelation.Name}|{_viewTranslator.TranslateMultiplicity(firstRelation.Multiplicity)}|*{firstRelation.To.Name}*|{firstRelation.Description}|");
 
-            sb.AppendLine($"|*{inheritedFromName}{secondRelation.From.Name}*");
-            sb.AppendLine($"|{secondRelation.Name}");
-            sb.AppendLine($"|{_viewTranslator.TranslateMultiplicity(secondRelation.Multiplicity)}");
-            sb.AppendLine($"|{secondRelation.To.Name}");
-            sb.AppendLine($"|{secondRelation.Description}");
-            sb.AppendLine();
+            sb.AppendLine($"|*{inheritedFromName}{secondRelation.From.Name}*|{secondRelation.Name}|{_viewTranslator.TranslateMultiplicity(secondRelation.Multiplicity)}|{secondRelation.To.Name}|{secondRelation.Description}|");
         }
     }
 
@@ -201,7 +182,7 @@ public class MarkdownViewsGenerator
 
         foreach (var value in enumConcept.Values.OrderBy(x => x.Value))
         {
-            sb.AppendLine($"|{value.Value}");
+            sb.AppendLine($"|{value.Value}|");
         }
 
         sb.AppendLine();
