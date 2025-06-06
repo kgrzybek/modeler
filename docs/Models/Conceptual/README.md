@@ -196,3 +196,26 @@ This will generate:
 * Relationships of the concept
 
 See [Manager Concept Details](Manager.adoc)
+### Markdown
+
+The same view can be generated in Markdown format using `MarkdownViewsGenerator`:
+
+```csharp
+public class ManagerMarkdownView : MarkdownViewDefinition
+{
+    public const string Id = "Manager";
+
+    public static MarkdownView Create(Model model)
+    {
+        var concept = model.GetEntity<Manager>();
+
+        var view = new MarkdownView(Id, concept);
+
+        return view;
+    }
+}
+```
+
+This will generate a Markdown table with attributes and relations.
+
+See [Manager Concept Details](Manager.md)
