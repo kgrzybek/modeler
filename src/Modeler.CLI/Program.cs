@@ -12,7 +12,10 @@ using Modeler.ComponentsModel.Views.PlantUml;
 using Modeler.ConceptualModel.Sample.Concepts;
 using Modeler.ConceptualModel.Sample.Views;
 using Modeler.ConceptualModel.Sample.Views.AsciiDocViews;
+using Modeler.ConceptualModel.Sample.Views.MarkdownViews;
+using Modeler.ConceptualModel.Views.Markdown;
 using Modeler.ConceptualModel.Sample.Views.Outputs;
+using Modeler.ConceptualModel.Sample.Views.Outputs.Markdown;
 using Modeler.ConceptualModel.Sample.Views.Translations;
 using Modeler.ConceptualModel.Views.AsciiDoc;
 using Modeler.ConceptualModel.Views.PlantUml;
@@ -106,6 +109,16 @@ void GenerateConceptualModels(string path)
         viewTranslator,
         new FileSystemAsciiDocViewOutput<AsciiDocView>(modelsPath),
         new AsciiDocViewTranslationDictionary()).Generate(asciiDocsViewsFactory.GetViews());
+
+    // Markdown
+    var markdownViewsFactory = new MarkdownViewsFactory(
+        model,
+        Assembly.GetAssembly(typeof(EmployeeMarkdownView))!);
+    new MarkdownViewsGenerator(
+        model,
+        viewTranslator,
+        new FileSystemMarkdownViewOutput<MarkdownView>(modelsPath),
+        new MarkdownViewTranslationDictionary()).Generate(markdownViewsFactory.GetViews());
 }
 
 void GenerateDataModels(string path)
