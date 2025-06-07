@@ -56,6 +56,9 @@ using Modeler.RestApiModel.Sample.Models;
 using Modeler.RestApiModel.Sample.Views.AsciiDoc;
 using Modeler.RestApiModel.Sample.Views.AsciiDoc.Outputs;
 using Modeler.RestApiModel.Views.AsciiDoc;
+using Modeler.RestApiModel.Sample.Views.OpenApi;
+using Modeler.RestApiModel.Sample.Views.OpenApi.Outputs;
+using Modeler.RestApiModel.Views.OpenApi;
 using MermaidClassDiagramViewGenerator = Modeler.ConceptualModel.Views.Mermaid.MermaidClassDiagramViewGenerator;
 
 if (args.Length != 1)
@@ -85,6 +88,7 @@ GenerateMermaidEventsFlowViews(documentationPath);
 GenerateMarkdownEventsFlowViews(documentationPath);
 GenerateAsciiDocEventsFlowViews(documentationPath);
 GenerateAsciiDocRestApiViews(documentationPath);
+GenerateOpenApiRestApiViews(documentationPath);
 
 Console.WriteLine("Documentation generated.");
 
@@ -349,4 +353,18 @@ void GenerateAsciiDocRestApiViews(string path)
 
     var modelsOutput = new FileSystemAsciiDocRestApiViewOutput<AsciiDocApiModelsView>(viewsPath);
     new AsciiDocApiModelsViewGenerator(modelsOutput).Generate(apiModelViews);
+}
+
+void GenerateOpenApiRestApiViews(string path)
+{
+    var model = HRRestApiModel.GetInstance();
+
+    var views = new OpenApiViewsFactory(
+        model,
+        Assembly.GetAssembly(typeof(OpenApiJsonViewDefinition))!).Views;
+
+    var viewsPath = Path.Combine(path, "Models/RestApi");
+
+    var output = new FileSystemOpenApiRestApiViewOutput<OpenApiView>(viewsPath);
+    new OpenApiViewGenerator(output).Generate(views);
 }
