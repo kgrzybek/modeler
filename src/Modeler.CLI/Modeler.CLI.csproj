@@ -26,6 +26,7 @@
       <ProjectReference Include="..\Models\DataModel\Modeler.DataModel\Modeler.DataModel.csproj" />
       <ProjectReference Include="..\Samples\EventsFlow\Modeler.EventsFlowModel.Sample\Modeler.EventsFlowModel.Sample.csproj" />
       <ProjectReference Include="..\Models\EventsFlow\Modeler.EventsFlowModel.Views.Mermaid\Modeler.EventsFlowModel.Views.Mermaid.csproj" />
+      <ProjectReference Include="..\Samples\RestApi\Modeler.RestApiModel.Sample\Modeler.RestApiModel.Sample.csproj" />
       <ProjectReference Include="..\Samples\Sequence\Modeler.SequenceModel.Sample\Modeler.SequenceModel.Sample.csproj" />
       <ProjectReference Include="..\Models\SequenceModel\Modeler.SequenceModel.Views.Mermaid\Modeler.SequenceModel.Views.Mermaid.csproj" />
       <ProjectReference Include="..\Models\SequenceModel\Modeler.SequenceModel.Views.PlantUml\Modeler.SequenceModel.Views.PlantUml.csproj" />
