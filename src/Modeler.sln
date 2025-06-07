@@ -126,6 +126,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.EventsFlowModel.Vie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.EventsFlowModel.Views.Markdown", "Models\EventsFlow\Modeler.EventsFlowModel.Views.Markdown\Modeler.EventsFlowModel.Views.Markdown.csproj", "{70967E97-916D-453B-8414-CA2D8E509AE2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.EventsFlowModel.Views.AsciiDoc", "Models\EventsFlow\Modeler.EventsFlowModel.Views.AsciiDoc\Modeler.EventsFlowModel.Views.AsciiDoc.csproj", "{AD138619-2071-4E9C-A291-4280C0AB60D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -284,6 +286,10 @@ Global
                 {70967E97-916D-453B-8414-CA2D8E509AE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
                 {70967E97-916D-453B-8414-CA2D8E509AE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
                 {70967E97-916D-453B-8414-CA2D8E509AE2}.Release|Any CPU.Build.0 = Release|Any CPU
+                {AD138619-2071-4E9C-A291-4280C0AB60D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+                {AD138619-2071-4E9C-A291-4280C0AB60D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+                {AD138619-2071-4E9C-A291-4280C0AB60D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+                {AD138619-2071-4E9C-A291-4280C0AB60D3}.Release|Any CPU.Build.0 = Release|Any CPU
         EndGlobalSection
         GlobalSection(NestedProjects) = preSolution
 		{A2350489-B216-451D-9EA4-7B8BC0F99175} = {2F8FCD8A-040B-41CA-AC74-310512C691EF}
@@ -345,6 +351,7 @@ Global
 		{B4598E96-298F-44F0-823B-FAF2E80DC66C} = {9D0C630E-F6E0-40D4-BA0D-E3971989A175}
                 {1F008B2F-D223-413D-ABBB-1716B0A98627} = {B4598E96-298F-44F0-823B-FAF2E80DC66C}
                 {70967E97-916D-453B-8414-CA2D8E509AE2} = {B4598E96-298F-44F0-823B-FAF2E80DC66C}
+                {AD138619-2071-4E9C-A291-4280C0AB60D3} = {B4598E96-298F-44F0-823B-FAF2E80DC66C}
                 {A52E13CE-0830-444F-92C7-23F7F35F9DD5} = {2F789D57-2118-4482-A283-BF2E5101C0DB}
         EndGlobalSection
 EndGlobal

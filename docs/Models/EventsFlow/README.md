@@ -142,3 +142,21 @@ public class HREventsFlowMarkdownViewDefinition : MarkdownEventFlowsViewDefiniti
 ```
 
 Output: [HREventsFlow table](HREventsFlow.md)
+
+### AsciiDoc
+
+You can generate an AsciiDoc table showing commands and events using `AsciiDocEventsFlowViewGenerator`:
+
+```csharp
+public class HREventsFlowAsciiDocViewDefinition : AsciiDocEventFlowsViewDefinition
+{
+    public const string Id = "HREventsFlowAsciiDoc";
+
+    public static AsciiDocEventFlowsView Create(HREventsFlowModel model)
+    {
+        return new AsciiDocEventFlowsView(Id, model);
+    }
+}
+```
+
+Output: [HREventsFlow table](HREventsFlow.adoc)
