@@ -6,7 +6,7 @@ See full example [here](../../../src/Samples/Sequence/Modeler.SequenceModel.Samp
 
 ## Metamodel
 
-TODO
+![Metamodel](Sequence_meta_model.png)
 
 ## Design
 

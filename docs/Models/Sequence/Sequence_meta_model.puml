@@ -1,0 +1,56 @@
+﻿@startuml
+' https://plantuml.com/class-diagram
+
+abstract class ParticipantType {
+}
+
+abstract class MessageParameters {
+}
+
+abstract class MessageType {
+}
+
+class SynchronousRequestMessage {
+}
+
+class SynchronousResponseMessage {
+}
+
+class EventMessage {
+}
+
+class SelfMessage {
+}
+
+class Participant {
+    Name: Text
+    Id: Text
+    Type: ParticipantType
+}
+
+class Message {
+    Name: Text
+    Sender: Participant
+    Receiver: Participant
+    Parameters: MessageParameters
+    Type: MessageType
+}
+
+class Sequence {
+    Name: Text
+}
+
+Participant "1" --> "1" ParticipantType : type
+Message "1" --> "1" Participant : sender
+Message "1" --> "1" Participant : receiver
+Message "1" --> "1" MessageParameters : parameters
+Message "1" --> "1" MessageType : type
+Sequence "1" --> "1..*" Participant
+Sequence "1" --> "1..*" Message
+
+MessageType <|-- SynchronousRequestMessage
+MessageType <|-- SynchronousResponseMessage
+MessageType <|-- EventMessage
+MessageType <|-- SelfMessage
+
+@enduml
