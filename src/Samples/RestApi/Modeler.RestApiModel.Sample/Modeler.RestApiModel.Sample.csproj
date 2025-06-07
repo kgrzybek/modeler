@@ -6,6 +6,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Models\RestApiModel\Modeler.RestApiModel.Views.AsciiDoc\Modeler.RestApiModel.Views.AsciiDoc.csproj" />
+    <ProjectReference Include="..\..\..\Models\RestApiModel\Modeler.RestApiModel.Views.OpenApi\Modeler.RestApiModel.Views.OpenApi.csproj" />
     <ProjectReference Include="..\..\..\Models\RestApiModel\Modeler.RestApiModel\Modeler.RestApiModel.csproj" />
   </ItemGroup>
 </Project>

@@ -138,6 +138,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Views", "Views", "{B2460519
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.RestApiModel.Views.AsciiDoc", "Models\RestApiModel\Modeler.RestApiModel.Views.AsciiDoc\Modeler.RestApiModel.Views.AsciiDoc.csproj", "{F5419797-ADA1-4B56-A154-CA5BF4522BD6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.RestApiModel.Views.OpenApi", "Models\RestApiModel\Modeler.RestApiModel.Views.OpenApi\Modeler.RestApiModel.Views.OpenApi.csproj", "{AFDF9627-4278-4055-9DED-D55D50EA2D13}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.RestApiModel.Sample", "Samples\RestApi\Modeler.RestApiModel.Sample\Modeler.RestApiModel.Sample.csproj", "{674DC40E-43CE-4FE4-B7B0-AFE65D9E8A28}"
 EndProject
 Global
@@ -310,6 +312,10 @@ Global
                 {F5419797-ADA1-4B56-A154-CA5BF4522BD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
                 {F5419797-ADA1-4B56-A154-CA5BF4522BD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
                 {F5419797-ADA1-4B56-A154-CA5BF4522BD6}.Release|Any CPU.Build.0 = Release|Any CPU
+                {AFDF9627-4278-4055-9DED-D55D50EA2D13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+                {AFDF9627-4278-4055-9DED-D55D50EA2D13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+                {AFDF9627-4278-4055-9DED-D55D50EA2D13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+                {AFDF9627-4278-4055-9DED-D55D50EA2D13}.Release|Any CPU.Build.0 = Release|Any CPU
                 {674DC40E-43CE-4FE4-B7B0-AFE65D9E8A28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
                 {674DC40E-43CE-4FE4-B7B0-AFE65D9E8A28}.Debug|Any CPU.Build.0 = Debug|Any CPU
                 {674DC40E-43CE-4FE4-B7B0-AFE65D9E8A28}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -381,6 +387,7 @@ Global
                 {B2460519-3AD1-4640-B1CA-88A5952E008D} = {D5673E66-436E-4C9D-9D32-4274FA2953A6}
                 {50F0E065-24A2-4AE7-B172-6856414FD528} = {D5673E66-436E-4C9D-9D32-4274FA2953A6}
                 {F5419797-ADA1-4B56-A154-CA5BF4522BD6} = {B2460519-3AD1-4640-B1CA-88A5952E008D}
+                {AFDF9627-4278-4055-9DED-D55D50EA2D13} = {B2460519-3AD1-4640-B1CA-88A5952E008D}
                 {E0DC08CC-58BE-4770-A07C-08424DD22CFC} = {F41E42BA-7F4F-47D5-91D1-B4E53215C268}
                 {674DC40E-43CE-4FE4-B7B0-AFE65D9E8A28} = {E0DC08CC-58BE-4770-A07C-08424DD22CFC}
         EndGlobalSection
