@@ -2,14 +2,14 @@ namespace Modeler.RestApiModel;
 
 public abstract class ApiModel
 {
-    protected ApiModel WithName(string name)
+    public ApiModel WithName(string name)
     {
         Name = name;
         Id = name.Replace(" ", "_").ToLower();
         return this;
     }
 
-    protected ApiModel WithAttribute(string name, string type, bool required)
+    public ApiModel WithAttribute(string name, string type, bool required)
     {
         Attributes.Add(new ApiModelAttribute(name, type, required));
         return this;
