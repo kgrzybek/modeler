@@ -6,10 +6,11 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <ItemGroup>
+  <ItemGroup>
       <ProjectReference Include="..\..\..\Models\StateModel\Modeler.StateModel.Views.AsciiDoc\Modeler.StateModel.Views.AsciiDoc.csproj" />
       <ProjectReference Include="..\..\..\Models\StateModel\Modeler.StateModel.Views.PlantUml\Modeler.StateModel.Views.PlantUml.csproj" />
+      <ProjectReference Include="..\..\..\Models\StateModel\Modeler.StateModel.Views.Markdown\Modeler.StateModel.Views.Markdown.csproj" />
       <ProjectReference Include="..\..\..\Models\StateModel\Modeler.StateModel\Modeler.StateModel.csproj" />
-    </ItemGroup>
+  </ItemGroup>
 
 </Project>
