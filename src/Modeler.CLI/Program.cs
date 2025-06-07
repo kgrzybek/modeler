@@ -6,8 +6,12 @@ using Modeler.ComponentsModel.Sample.Views;
 using Modeler.ComponentsModel.Sample.Views.AsciiDoc;
 using Modeler.ComponentsModel.Sample.Views.AsciiDoc.Details;
 using Modeler.ComponentsModel.Sample.Views.Outputs;
+using Modeler.ComponentsModel.Sample.Views.Markdown.Details;
+using Modeler.ComponentsModel.Sample.Views.Outputs.Markdown;
 using Modeler.ComponentsModel.Views.AsciiDoc;
 using Modeler.ComponentsModel.Views.AsciiDoc.Details;
+using Modeler.ComponentsModel.Views.Markdown;
+using Modeler.ComponentsModel.Views.Markdown.Details;
 using Modeler.ComponentsModel.Views.PlantUml;
 using Modeler.ConceptualModel.Sample.Concepts;
 using Modeler.ConceptualModel.Sample.Views;
@@ -198,6 +202,17 @@ void GenerateComponentsModels(string path)
         Assembly.GetAssembly(typeof(AsciiDocBackendDetailsViewDefinition))!).GetViews();
     var fileSystemAsciiDocComponentsDetailsViewOutput = new FileSystemAsciiDocComponentsDetailsViewOutput<AsciiDocComponentDetailsView>(componentsModelPath);
     new AsciiDocComponentsDetailsViewsGenerator(model, fileSystemAsciiDocComponentsDetailsViewOutput).Generate(asciiDocDetailsViews);
+
+    // Generate Markdown components list view
+    var fileSystemMarkdownComponentsListTableViewOutput = new FileSystemMarkdownComponentsListTableViewOutput(componentsModelPath);
+    new MarkdownComponentsListTableViewGenerator(model, fileSystemMarkdownComponentsListTableViewOutput).Generate();
+
+    // Generate Markdown components details views
+    var markdownDetailsViews = new MarkdownComponentsDetailsViewsFactory(
+        model,
+        Assembly.GetAssembly(typeof(MarkdownBackendDetailsViewDefinition))!).GetViews();
+    var fileSystemMarkdownComponentsDetailsViewOutput = new FileSystemMarkdownComponentsDetailsViewOutput<MarkdownComponentDetailsView>(componentsModelPath);
+    new MarkdownComponentsDetailsViewsGenerator(model, fileSystemMarkdownComponentsDetailsViewOutput).Generate(markdownDetailsViews);
 }
 
 void GeneratePlantUmlStateMachineViews(string path)

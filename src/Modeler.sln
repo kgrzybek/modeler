@@ -104,6 +104,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{26E518D9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ComponentsModel.Views.AsciiDoc", "Models\Components\Modeler.ComponentsModel.Views.AsciiDoc\Modeler.ComponentsModel.Views.AsciiDoc.csproj", "{955C2258-3BFB-48C6-82E2-661D2B6609A3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ComponentsModel.Views.Markdown", "Models\Components\Modeler.ComponentsModel.Views.Markdown\Modeler.ComponentsModel.Views.Markdown.csproj", "{A52E13CE-0830-444F-92C7-23F7F35F9DD5}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.ComponentsModel.Views.Shared", "Models\Components\Modeler.ComponentsModel.Views.Shared\Modeler.ComponentsModel.Views.Shared.csproj", "{54886E1C-8815-4F15-A941-334D216071EF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.EventsFlowModel", "Models\EventsFlow\Modeler.EventsFlowModel\Modeler.EventsFlowModel.csproj", "{560C843C-1E50-4825-ADB1-D9D02B7DA19F}"
