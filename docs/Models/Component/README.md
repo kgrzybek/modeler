@@ -153,3 +153,24 @@ public class AsciiDocBackendDetailsViewDefinition : AsciiDocComponentDetailsView
 ```
 
 This will generate list of all related components - see [Component Details](BackendDetails.adoc)
+
+### Markdown
+
+The same views can be generated in Markdown format. Use `MarkdownComponentsListTableViewGenerator` to create a list of all components.
+
+Output: [Markdown Components Table List](ComponentsList.md)
+
+To generate component details use `MarkdownComponentsDetailsViewsGenerator` by defining a view:
+
+```csharp
+public class MarkdownBackendDetailsViewDefinition : MarkdownComponentDetailsViewDefinition
+{
+    public const string Id = "BackendDetailsView";
+    public static MarkdownComponentDetailsView Create(SystemComponentsModel model)
+    {
+        return new MarkdownComponentDetailsView(Id, model.GetComponent<HRBackendApplication>());
+    }
+}
+```
+
+This will generate list of all related components - see [Component Details](BackendDetails.md)

@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Modeler.ComponentsModel.Views.Shared\Modeler.ComponentsModel.Views.Shared.csproj" />
+      <ProjectReference Include="..\Modeler.ComponentsModel\Modeler.ComponentsModel.csproj" />
+    </ItemGroup>
+
+</Project>
