@@ -124,6 +124,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Views", "Views", "{B4598E96
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.EventsFlowModel.Views.Mermaid", "Models\EventsFlow\Modeler.EventsFlowModel.Views.Mermaid\Modeler.EventsFlowModel.Views.Mermaid.csproj", "{1F008B2F-D223-413D-ABBB-1716B0A98627}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.EventsFlowModel.Views.Markdown", "Models\EventsFlow\Modeler.EventsFlowModel.Views.Markdown\Modeler.EventsFlowModel.Views.Markdown.csproj", "{70967E97-916D-453B-8414-CA2D8E509AE2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -274,12 +276,16 @@ Global
 		{1D1F5F8B-97A9-40D8-988C-3DB68CE2836D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D1F5F8B-97A9-40D8-988C-3DB68CE2836D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D1F5F8B-97A9-40D8-988C-3DB68CE2836D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1F008B2F-D223-413D-ABBB-1716B0A98627}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1F008B2F-D223-413D-ABBB-1716B0A98627}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1F008B2F-D223-413D-ABBB-1716B0A98627}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1F008B2F-D223-413D-ABBB-1716B0A98627}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
+                {1F008B2F-D223-413D-ABBB-1716B0A98627}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+                {1F008B2F-D223-413D-ABBB-1716B0A98627}.Debug|Any CPU.Build.0 = Debug|Any CPU
+                {1F008B2F-D223-413D-ABBB-1716B0A98627}.Release|Any CPU.ActiveCfg = Release|Any CPU
+                {1F008B2F-D223-413D-ABBB-1716B0A98627}.Release|Any CPU.Build.0 = Release|Any CPU
+                {70967E97-916D-453B-8414-CA2D8E509AE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+                {70967E97-916D-453B-8414-CA2D8E509AE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+                {70967E97-916D-453B-8414-CA2D8E509AE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+                {70967E97-916D-453B-8414-CA2D8E509AE2}.Release|Any CPU.Build.0 = Release|Any CPU
+        EndGlobalSection
+        GlobalSection(NestedProjects) = preSolution
 		{A2350489-B216-451D-9EA4-7B8BC0F99175} = {2F8FCD8A-040B-41CA-AC74-310512C691EF}
 																{B11CFAE9-DF53-484A-94AA-FF6AFDD8851B} = {A2350489-B216-451D-9EA4-7B8BC0F99175}
 																{DF85D13C-F995-42B1-B5CF-F97C337E100B} = {A2350489-B216-451D-9EA4-7B8BC0F99175}
@@ -337,7 +343,8 @@ Global
 		{0D06CD41-E8A7-4013-917B-0961966AA851} = {F41E42BA-7F4F-47D5-91D1-B4E53215C268}
 		{1D1F5F8B-97A9-40D8-988C-3DB68CE2836D} = {0D06CD41-E8A7-4013-917B-0961966AA851}
 		{B4598E96-298F-44F0-823B-FAF2E80DC66C} = {9D0C630E-F6E0-40D4-BA0D-E3971989A175}
-		{1F008B2F-D223-413D-ABBB-1716B0A98627} = {B4598E96-298F-44F0-823B-FAF2E80DC66C}
-		{A52E13CE-0830-444F-92C7-23F7F35F9DD5} = {2F789D57-2118-4482-A283-BF2E5101C0DB}
-	EndGlobalSection
+                {1F008B2F-D223-413D-ABBB-1716B0A98627} = {B4598E96-298F-44F0-823B-FAF2E80DC66C}
+                {70967E97-916D-453B-8414-CA2D8E509AE2} = {B4598E96-298F-44F0-823B-FAF2E80DC66C}
+                {A52E13CE-0830-444F-92C7-23F7F35F9DD5} = {2F789D57-2118-4482-A283-BF2E5101C0DB}
+        EndGlobalSection
 EndGlobal

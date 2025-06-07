@@ -6,9 +6,10 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\..\..\Models\EventsFlow\Modeler.EventsFlowModel.Views.Mermaid\Modeler.EventsFlowModel.Views.Mermaid.csproj" />
-      <ProjectReference Include="..\..\..\Models\EventsFlow\Modeler.EventsFlowModel\Modeler.EventsFlowModel.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Models\EventsFlow\Modeler.EventsFlowModel.Views.Mermaid\Modeler.EventsFlowModel.Views.Mermaid.csproj" />
+    <ProjectReference Include="..\..\..\Models\EventsFlow\Modeler.EventsFlowModel.Views.Markdown\Modeler.EventsFlowModel.Views.Markdown.csproj" />
+    <ProjectReference Include="..\..\..\Models\EventsFlow\Modeler.EventsFlowModel\Modeler.EventsFlowModel.csproj" />
+  </ItemGroup>
 
 </Project>
