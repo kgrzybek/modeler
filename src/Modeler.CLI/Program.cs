@@ -25,6 +25,7 @@ using Modeler.ConceptualModel.Views.PlantUml;
 using Modeler.ConceptualModel.Views.Shared;
 using Modeler.DataModel.PostgreSQL.Views.AsciiDoc;
 using Modeler.DataModel.PostgreSQL.Views.PlantUml;
+using Modeler.DataModel.PostgreSQL.Views.Markdown;
 using Modeler.DataModel.PostgreSQL.Views.SQL.Generator;
 using Modeler.DataModel.Sample.Structure;
 using Modeler.DataModel.Sample.Structure.Tables;
@@ -141,13 +142,16 @@ void GenerateDataModels(string path)
     
     PlantUmlDataModelGenerator.Generate(
         path,
-        model, 
+        model,
         4,
         plantUmlDataModelViewsFactory.Views,
         viewTranslator);
-    
+
     // Generate ascii doc tables
     DataModelAsciiDocGenerator.Generate(dataModelPath, "organizations", model, viewTranslator);
+
+    // Generate markdown tables
+    DataModelMarkdownGenerator.Generate(dataModelPath, "organizations", model, viewTranslator);
 }
 
 void GenerateSequenceModels(string path)

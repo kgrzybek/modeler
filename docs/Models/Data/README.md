@@ -141,9 +141,17 @@ Output:
 
 #### Structure documentation
 
-You can generate whole structure documentation (structure elements and relationships) using `DataModelAsciiDocGenerator`. 
+You can generate whole structure documentation (structure elements and relationships) using `DataModelAsciiDocGenerator`.
 
 Output: [Structure Ascii Doc documentation](organizations_schema.adoc)
+
+### Markdown
+
+#### Structure documentation
+
+You can generate whole structure documentation (structure elements and relationships) using `DataModelMarkdownGenerator`.
+
+Output: [Structure Markdown documentation](organizations_schema.md)
 
 ### SQL
 
