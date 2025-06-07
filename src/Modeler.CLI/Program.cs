@@ -15,7 +15,6 @@ using Modeler.ConceptualModel.Sample.Views.AsciiDocViews;
 using Modeler.ConceptualModel.Sample.Views.MarkdownViews;
 using Modeler.ConceptualModel.Views.Markdown;
 using Modeler.ConceptualModel.Sample.Views.Outputs;
-using Modeler.ConceptualModel.Sample.Views.Outputs.Markdown;
 using Modeler.ConceptualModel.Sample.Views.Translations;
 using Modeler.ConceptualModel.Views.AsciiDoc;
 using Modeler.ConceptualModel.Views.PlantUml;
