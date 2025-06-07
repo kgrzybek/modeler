@@ -128,6 +128,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.EventsFlowModel.Vie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.EventsFlowModel.Views.AsciiDoc", "Models\EventsFlow\Modeler.EventsFlowModel.Views.AsciiDoc\Modeler.EventsFlowModel.Views.AsciiDoc.csproj", "{AD138619-2071-4E9C-A291-4280C0AB60D3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RestApi", "RestApi", "{E0DC08CC-58BE-4770-A07C-08424DD22CFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.RestApiModel", "Models\RestApiModel\Modeler.RestApiModel\Modeler.RestApiModel.csproj", "{50F0E065-24A2-4AE7-B172-6856414FD528}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RestApi", "RestApi", "{D5673E66-436E-4C9D-9D32-4274FA2953A6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Views", "Views", "{B2460519-3AD1-4640-B1CA-88A5952E008D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.RestApiModel.Views.AsciiDoc", "Models\RestApiModel\Modeler.RestApiModel.Views.AsciiDoc\Modeler.RestApiModel.Views.AsciiDoc.csproj", "{F5419797-ADA1-4B56-A154-CA5BF4522BD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modeler.RestApiModel.Sample", "Samples\RestApi\Modeler.RestApiModel.Sample\Modeler.RestApiModel.Sample.csproj", "{674DC40E-43CE-4FE4-B7B0-AFE65D9E8A28}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -289,7 +301,19 @@ Global
                 {AD138619-2071-4E9C-A291-4280C0AB60D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
                 {AD138619-2071-4E9C-A291-4280C0AB60D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
                 {AD138619-2071-4E9C-A291-4280C0AB60D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-                {AD138619-2071-4E9C-A291-4280C0AB60D3}.Release|Any CPU.Build.0 = Release|Any CPU
+{AD138619-2071-4E9C-A291-4280C0AB60D3}.Release|Any CPU.Build.0 = Release|Any CPU
+                {50F0E065-24A2-4AE7-B172-6856414FD528}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+                {50F0E065-24A2-4AE7-B172-6856414FD528}.Debug|Any CPU.Build.0 = Debug|Any CPU
+                {50F0E065-24A2-4AE7-B172-6856414FD528}.Release|Any CPU.ActiveCfg = Release|Any CPU
+                {50F0E065-24A2-4AE7-B172-6856414FD528}.Release|Any CPU.Build.0 = Release|Any CPU
+                {F5419797-ADA1-4B56-A154-CA5BF4522BD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+                {F5419797-ADA1-4B56-A154-CA5BF4522BD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+                {F5419797-ADA1-4B56-A154-CA5BF4522BD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+                {F5419797-ADA1-4B56-A154-CA5BF4522BD6}.Release|Any CPU.Build.0 = Release|Any CPU
+                {674DC40E-43CE-4FE4-B7B0-AFE65D9E8A28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+                {674DC40E-43CE-4FE4-B7B0-AFE65D9E8A28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+                {674DC40E-43CE-4FE4-B7B0-AFE65D9E8A28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+                {674DC40E-43CE-4FE4-B7B0-AFE65D9E8A28}.Release|Any CPU.Build.0 = Release|Any CPU
         EndGlobalSection
         GlobalSection(NestedProjects) = preSolution
 		{A2350489-B216-451D-9EA4-7B8BC0F99175} = {2F8FCD8A-040B-41CA-AC74-310512C691EF}
@@ -353,5 +377,11 @@ Global
                 {70967E97-916D-453B-8414-CA2D8E509AE2} = {B4598E96-298F-44F0-823B-FAF2E80DC66C}
                 {AD138619-2071-4E9C-A291-4280C0AB60D3} = {B4598E96-298F-44F0-823B-FAF2E80DC66C}
                 {A52E13CE-0830-444F-92C7-23F7F35F9DD5} = {2F789D57-2118-4482-A283-BF2E5101C0DB}
+                {D5673E66-436E-4C9D-9D32-4274FA2953A6} = {CCE57DA0-EA38-4F70-BF8A-30A938D08E39}
+                {B2460519-3AD1-4640-B1CA-88A5952E008D} = {D5673E66-436E-4C9D-9D32-4274FA2953A6}
+                {50F0E065-24A2-4AE7-B172-6856414FD528} = {D5673E66-436E-4C9D-9D32-4274FA2953A6}
+                {F5419797-ADA1-4B56-A154-CA5BF4522BD6} = {B2460519-3AD1-4640-B1CA-88A5952E008D}
+                {E0DC08CC-58BE-4770-A07C-08424DD22CFC} = {F41E42BA-7F4F-47D5-91D1-B4E53215C268}
+                {674DC40E-43CE-4FE4-B7B0-AFE65D9E8A28} = {E0DC08CC-58BE-4770-A07C-08424DD22CFC}
         EndGlobalSection
 EndGlobal

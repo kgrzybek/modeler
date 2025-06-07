@@ -52,6 +52,10 @@ using Modeler.StateModel.Sample.Views.Markdown;
 using Modeler.StateModel.Views.AsciiDoc;
 using Modeler.StateModel.Views.Markdown;
 using Modeler.StateModel.Views.PlantUml;
+using Modeler.RestApiModel.Sample.Models;
+using Modeler.RestApiModel.Sample.Views.AsciiDoc;
+using Modeler.RestApiModel.Sample.Views.AsciiDoc.Outputs;
+using Modeler.RestApiModel.Views.AsciiDoc;
 using MermaidClassDiagramViewGenerator = Modeler.ConceptualModel.Views.Mermaid.MermaidClassDiagramViewGenerator;
 
 if (args.Length != 1)
@@ -80,6 +84,7 @@ GenerateMarkdownStateMachineTableViews(documentationPath);
 GenerateMermaidEventsFlowViews(documentationPath);
 GenerateMarkdownEventsFlowViews(documentationPath);
 GenerateAsciiDocEventsFlowViews(documentationPath);
+GenerateAsciiDocRestApiViews(documentationPath);
 
 Console.WriteLine("Documentation generated.");
 
@@ -323,4 +328,25 @@ void GenerateAsciiDocEventsFlowViews(string path)
 
     var fileSystemOutput = new FileSystemAsciiDocEventsFlowViewOutput<AsciiDocEventFlowsView>(viewsPath);
     new AsciiDocEventsFlowViewGenerator(fileSystemOutput).Generate(views);
+}
+
+void GenerateAsciiDocRestApiViews(string path)
+{
+    var model = HRRestApiModel.GetInstance();
+
+    var endpointsViews = new AsciiDocEndpointsViewsFactory(
+        model,
+        Assembly.GetAssembly(typeof(EndpointsAsciiDocViewDefinition))!).Views;
+
+    var apiModelViews = new AsciiDocApiModelsViewsFactory(
+        model,
+        Assembly.GetAssembly(typeof(ApiModelsAsciiDocViewDefinition))!).Views;
+
+    var viewsPath = Path.Combine(path, "Models/RestApi");
+
+    var endpointsOutput = new FileSystemAsciiDocRestApiViewOutput<AsciiDocEndpointsView>(viewsPath);
+    new AsciiDocEndpointsViewGenerator(endpointsOutput).Generate(endpointsViews);
+
+    var modelsOutput = new FileSystemAsciiDocRestApiViewOutput<AsciiDocApiModelsView>(viewsPath);
+    new AsciiDocApiModelsViewGenerator(modelsOutput).Generate(apiModelViews);
 }
