@@ -31,9 +31,11 @@ using Modeler.DataModel.Sample.Structure;
 using Modeler.DataModel.Sample.Structure.Tables;
 using Modeler.DataModel.Sample.Views.Outputs;
 using Modeler.EventsFlowModel.Sample;
+using Modeler.EventsFlowModel.Sample.Views.AsciiDoc;
 using Modeler.EventsFlowModel.Sample.Views.Mermaid;
 using Modeler.EventsFlowModel.Views.Mermaid;
 using Modeler.EventsFlowModel.Sample.Views.Markdown;
+using Modeler.EventsFlowModel.Views.AsciiDoc;
 using Modeler.EventsFlowModel.Views.Markdown;
 using Modeler.SequenceModel.Sample.Models;
 using Modeler.SequenceModel.Sample.Views;
@@ -77,6 +79,7 @@ GenerateMarkdownStateMachineTableViews(documentationPath);
 
 GenerateMermaidEventsFlowViews(documentationPath);
 GenerateMarkdownEventsFlowViews(documentationPath);
+GenerateAsciiDocEventsFlowViews(documentationPath);
 
 Console.WriteLine("Documentation generated.");
 
@@ -306,4 +309,18 @@ void GenerateMarkdownEventsFlowViews(string path)
 
     var fileSystemOutput = new FileSystemMarkdownEventsFlowViewOutput<MarkdownEventFlowsView>(viewsPath);
     new MarkdownEventsFlowViewGenerator(fileSystemOutput).Generate(views);
+}
+
+void GenerateAsciiDocEventsFlowViews(string path)
+{
+    var model = HREventsFlowModel.GetInstance();
+
+    var views = new AsciiDocEventsFlowViewsFactory(
+        model,
+        Assembly.GetAssembly(typeof(HREventsFlowAsciiDocViewDefinition))!).Views;
+
+    var viewsPath = Path.Combine(path, "Models/EventsFlows");
+
+    var fileSystemOutput = new FileSystemAsciiDocEventsFlowViewOutput<AsciiDocEventFlowsView>(viewsPath);
+    new AsciiDocEventsFlowViewGenerator(fileSystemOutput).Generate(views);
 }
