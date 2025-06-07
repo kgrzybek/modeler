@@ -44,7 +44,9 @@ using Modeler.SequenceModel.Views.Shared;
 using Modeler.StateModel.Sample.Models;
 using Modeler.StateModel.Sample.Views.AsciiDoc;
 using Modeler.StateModel.Sample.Views.PlantUml;
+using Modeler.StateModel.Sample.Views.Markdown;
 using Modeler.StateModel.Views.AsciiDoc;
+using Modeler.StateModel.Views.Markdown;
 using Modeler.StateModel.Views.PlantUml;
 using MermaidClassDiagramViewGenerator = Modeler.ConceptualModel.Views.Mermaid.MermaidClassDiagramViewGenerator;
 
@@ -68,6 +70,8 @@ GenerateComponentsModels(documentationPath);
 GeneratePlantUmlStateMachineViews(documentationPath);
 
 GenerateAsciiDocStateMachineTableViews(documentationPath);
+
+GenerateMarkdownStateMachineTableViews(documentationPath);
 
 GenerateMermaidEventsFlowViews(documentationPath);
 
@@ -251,6 +255,23 @@ void GenerateAsciiDocStateMachineTableViews(string path)
     // Generate views
     var fileSystemOutput = new FileSystemAsciiDocStateMachineTableViewOutput<StateMachineAsciiDocTableView>(componentsModelPath);
     new StateMachineAsciiDocTableViewGenerator(fileSystemOutput).Generate(sequenceDiagramViews);
+}
+
+void GenerateMarkdownStateMachineTableViews(string path)
+{
+    var model = HRStateModel.GetInstance();
+
+    // Get views
+    var views = new StateMachineMarkdownTableViewsFactory(
+        model,
+        Assembly.GetAssembly(typeof(AbsenceStateMachineMarkdownTableViewDefinition))!).GetViews();
+
+    // Set views path
+    var componentsModelPath = Path.Combine(path, "Models/StateMachines");
+
+    // Generate views
+    var fileSystemOutput = new FileSystemMarkdownStateMachineTableViewOutput<StateMachineMarkdownTableView>(componentsModelPath);
+    new StateMachineMarkdownTableViewGenerator(fileSystemOutput).Generate(views);
 }
 
 void GenerateMermaidEventsFlowViews(string path)

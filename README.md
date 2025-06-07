@@ -111,3 +111,4 @@ Models the states of an object and the transitions between them based on events.
 
 1. AsciiDoc Table
 2. PlantUML State Diagram
+3. Markdown Table

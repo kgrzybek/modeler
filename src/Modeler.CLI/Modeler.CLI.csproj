@@ -31,6 +31,7 @@
       <ProjectReference Include="..\Models\SequenceModel\Modeler.SequenceModel.Views.PlantUml\Modeler.SequenceModel.Views.PlantUml.csproj" />
       <ProjectReference Include="..\Samples\State\Modeler.StateModel.Sample\Modeler.StateModel.Sample.csproj" />
       <ProjectReference Include="..\Models\StateModel\Modeler.StateModel.Views.PlantUml\Modeler.StateModel.Views.PlantUml.csproj" />
+      <ProjectReference Include="..\Models\StateModel\Modeler.StateModel.Views.Markdown\Modeler.StateModel.Views.Markdown.csproj" />
     </ItemGroup>
 
 </Project>
