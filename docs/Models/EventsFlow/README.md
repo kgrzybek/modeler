@@ -124,3 +124,21 @@ employee_added --> send_notification
 employee_added --> regenerate_employees_report
 employee_changed --> regenerate_employees_report
 ```
+
+### Markdown
+
+You can generate a Markdown table showing commands and events using `MarkdownEventsFlowViewGenerator`:
+
+```csharp
+public class HREventsFlowMarkdownViewDefinition : MarkdownEventFlowsViewDefinition
+{
+    public const string Id = "HREventsFlowMarkdown";
+
+    public static MarkdownEventFlowsView Create(HREventsFlowModel model)
+    {
+        return new MarkdownEventFlowsView(Id, model);
+    }
+}
+```
+
+Output: [HREventsFlow table](HREventsFlow.md)
