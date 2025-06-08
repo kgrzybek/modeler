@@ -12,6 +12,7 @@ public class FileSystemOpenApiRestApiViewOutput<T> : IOpenApiRestApiViewsOutput<
         _absoluteDirectoryPath = absoluteDirectoryPath;
         _relativePaths = new Dictionary<string, string>();
         _relativePaths.Add(OpenApiJsonViewDefinition.Id, "OpenApi.json");
+        _relativePaths.Add(OpenApiYamlViewDefinition.Id, "OpenApi.yaml");
     }
 
     public void Execute(List<OpenApiRestApiViewsOutputItem<T>> views)
