@@ -1,5 +1,6 @@
 using System.Text;
 using System.Text.Json;
+using Modeler.RestApiModel.Types;
 
 namespace Modeler.RestApiModel.Views.OpenApi;
 
@@ -156,10 +157,7 @@ public class OpenApiYamlViewGenerator
             var required = new List<string>();
             foreach (var attr in apiModel.Attributes)
             {
-                properties[attr.Name] = new Dictionary<string, object>
-                {
-                    ["type"] = attr.Type.Name
-                };
+                properties[attr.Name] = BuildSchema(attr.Type);
                 if (attr.Required)
                 {
                     required.Add(attr.Name);
@@ -189,6 +187,26 @@ public class OpenApiYamlViewGenerator
             ["components"] = new Dictionary<string, object>
             {
                 ["schemas"] = schemas
+            }
+        };
+    }
+
+    private static Dictionary<string, object> BuildSchema(AttributeType type)
+    {
+        return type switch
+        {
+            ArrayType array => new Dictionary<string, object>
+            {
+                ["type"] = "array",
+                ["items"] = BuildSchema(array.ElementType)
+            },
+            ModelType model => new Dictionary<string, object>
+            {
+                ["$ref"] = $"#/components/schemas/{model.Model.Name}"
+            },
+            _ => new Dictionary<string, object>
+            {
+                ["type"] = type.Name
             }
         };
     }
