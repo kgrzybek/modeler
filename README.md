@@ -116,3 +116,17 @@ Models the states of an object and the transitions between them based on events.
 #### Documentation
 
 See [State Model Documentation](docs/Models/State).
+
+### Rest API
+
+Defines endpoints along with request and response models.
+
+#### Supported Views
+
+1. AsciiDoc tables
+2. OpenAPI JSON specification
+3. OpenAPI YAML specification
+
+#### Documentation
+
+See [Rest API Model Documentation](docs/Models/RestApi).
