@@ -26,6 +26,7 @@ using Modeler.ConceptualModel.Views.Shared;
 using Modeler.DataModel.PostgreSQL.Views.AsciiDoc;
 using Modeler.DataModel.PostgreSQL.Views.Markdown;
 using Modeler.DataModel.PostgreSQL.Views.PlantUml;
+using Modeler.DataModel.PostgreSQL.Views.Mermaid;
 using Modeler.DataModel.PostgreSQL.Views.SQL.Generator;
 using Modeler.DataModel.Sample.Structure;
 using Modeler.DataModel.Sample.Structure.Tables;
@@ -164,6 +165,15 @@ void GenerateDataModels(string path)
         model,
         4,
         plantUmlDataModelViewsFactory.Views,
+        viewTranslator);
+
+    var mermaidDataModelViewsFactory = new MermaidDataModelViewsFactory(model);
+    mermaidDataModelViewsFactory.Initialize(Assembly.GetAssembly(typeof(EmployeesTable))!);
+    MermaidDataModelGenerator.Generate(
+        path,
+        model,
+        4,
+        mermaidDataModelViewsFactory.Views,
         viewTranslator);
 
     // Generate ascii doc tables
