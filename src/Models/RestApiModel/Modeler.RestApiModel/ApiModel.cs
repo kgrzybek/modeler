@@ -9,7 +9,7 @@ public abstract class ApiModel
         return this;
     }
 
-    public ApiModel WithAttribute(string name, string type, bool required)
+    public ApiModel WithAttribute(string name, AttributeType type, bool required)
     {
         Attributes.Add(new ApiModelAttribute(name, type, required));
         return this;

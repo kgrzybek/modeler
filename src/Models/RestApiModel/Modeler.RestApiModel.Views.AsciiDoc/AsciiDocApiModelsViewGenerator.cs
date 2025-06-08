@@ -30,7 +30,7 @@ public class AsciiDocApiModelsViewGenerator
                 foreach (var attr in model.Attributes)
                 {
                     sb.AppendLine($"|{attr.Name}");
-                    sb.AppendLine($"|{attr.Type}");
+                    sb.AppendLine($"|{attr.Type.Name}");
                     sb.AppendLine($"|{(attr.Required ? "YES" : "NO")}");
                     sb.AppendLine();
                 }

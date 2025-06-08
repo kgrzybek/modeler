@@ -89,7 +89,7 @@ public class OpenApiViewGenerator
             {
                 properties[attr.Name] = new Dictionary<string, object>
                 {
-                    ["type"] = attr.Type
+                    ["type"] = attr.Type.Name
                 };
                 if (attr.Required)
                 {
