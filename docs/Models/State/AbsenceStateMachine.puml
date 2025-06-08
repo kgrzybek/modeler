@@ -1,0 +1,16 @@
+@startuml
+state Registered
+state "To Decide" as ToDecide
+state "Needs Clarification" as NeedsClarification
+state Accepted
+state Rejected
+
+[*] --> Registered
+Registered --> ToDecide : Sent To Decision
+ToDecide --> NeedsClarification : Clarification Requested
+NeedsClarification --> ToDecide : Sent To Decision
+ToDecide --> Accepted : Accepted
+ToDecide --> Rejected : Rejected
+Accepted --> [*]
+Rejected --> [*]
+@enduml
