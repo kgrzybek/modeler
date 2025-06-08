@@ -1,0 +1,64 @@
+openapi: "3.0.0"
+info:
+  title: "Generated API"
+  version: "1.0.0"
+paths:
+  /employees:
+    post:
+      summary: "Add Employee"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddEmployeeRequest"
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Employee"
+    get:
+      summary: "Get Employees"
+      responses:
+        "200":
+          description: "Success"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EmployeesResponse"
+components:
+  schemas:
+    AddEmployeeRequest:
+      type: object
+      properties:
+        FirstName:
+          type: string
+        LastName:
+          type: string
+      required:
+        - FirstName
+        - LastName
+    Employee:
+      type: object
+      properties:
+        Id:
+          type: string
+        FirstName:
+          type: string
+        LastName:
+          type: string
+      required:
+        - Id
+        - FirstName
+        - LastName
+    EmployeesResponse:
+      type: object
+      properties:
+        Employees:
+          type: array
+          items:
+            $ref: "#/components/schemas/Employee"
+      required:
+        - Employees
