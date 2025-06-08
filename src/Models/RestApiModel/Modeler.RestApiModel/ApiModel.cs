@@ -1,3 +1,5 @@
+using Modeler.RestApiModel.Types;
+
 namespace Modeler.RestApiModel;
 
 public abstract class ApiModel
@@ -9,7 +11,7 @@ public abstract class ApiModel
         return this;
     }
 
-    public ApiModel WithAttribute(string name, string type, bool required)
+    public ApiModel WithAttribute(string name, AttributeType type, bool required)
     {
         Attributes.Add(new ApiModelAttribute(name, type, required));
         return this;
