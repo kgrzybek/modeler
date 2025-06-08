@@ -1,4 +1,4 @@
-using Modeler.RestApiModel;
+using Modeler.RestApiModel.Types;
 
 namespace Modeler.RestApiModel.Sample.Models.ApiModels;
 

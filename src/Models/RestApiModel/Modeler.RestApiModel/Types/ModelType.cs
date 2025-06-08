@@ -1,4 +1,4 @@
-namespace Modeler.RestApiModel;
+namespace Modeler.RestApiModel.Types;
 
 public class ModelType : AttributeType
 {

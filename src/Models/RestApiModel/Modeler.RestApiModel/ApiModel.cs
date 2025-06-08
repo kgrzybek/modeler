@@ -1,3 +1,5 @@
+using Modeler.RestApiModel.Types;
+
 namespace Modeler.RestApiModel;
 
 public abstract class ApiModel
