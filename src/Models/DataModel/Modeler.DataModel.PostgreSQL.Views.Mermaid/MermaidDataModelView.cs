@@ -1,4 +1,4 @@
-﻿namespace Modeler.DataModel.PostgreSQL.Views.Mermaid;
+namespace Modeler.DataModel.PostgreSQL.Views.Mermaid;
 
 public class MermaidDataModelView
 {

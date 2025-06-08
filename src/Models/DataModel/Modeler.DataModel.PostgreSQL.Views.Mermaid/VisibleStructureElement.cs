@@ -1,6 +1,6 @@
 using Modeler.DataModel.Structure;
 
-namespace Modeler.DataModel.PostgreSQL.Views.PlantUml;
+namespace Modeler.DataModel.PostgreSQL.Views.Mermaid;
 
 public class VisibleStructureElement
 {
