@@ -42,8 +42,22 @@ public class AddEmployeeEndpoint : Endpoint
 
 * `AsciiDocApiModelsViewGenerator` - generates tables with all API models.
 * `AsciiDocEndpointsViewGenerator` - generates table listing endpoints.
+#### Example
+
+Example generated documentation tables:
+
+* [API Models](RestApiModels.adoc)
+* [Endpoints](RestApiEndpoints.adoc)
+
 
 ### OpenAPI
 
 * `OpenApiViewGenerator` - produces OpenAPI specification in JSON.
 * `OpenApiYamlViewGenerator` - produces OpenAPI specification in YAML.
+#### Example
+
+Generated specifications:
+
+* [OpenAPI JSON](OpenApi.json)
+* [OpenAPI YAML](OpenApi.yaml)
+
