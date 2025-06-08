@@ -366,5 +366,10 @@ void GenerateOpenApiRestApiViews(string path)
     var viewsPath = Path.Combine(path, "Models/RestApi");
 
     var output = new FileSystemOpenApiRestApiViewOutput<OpenApiView>(viewsPath);
-    new OpenApiViewGenerator(output).Generate(views);
+
+    var jsonViews = views.Where(v => v.Id == OpenApiJsonViewDefinition.Id).ToList();
+    var yamlViews = views.Where(v => v.Id == OpenApiYamlViewDefinition.Id).ToList();
+
+    new OpenApiViewGenerator(output).Generate(jsonViews);
+    new OpenApiYamlViewGenerator(output).Generate(yamlViews);
 }
