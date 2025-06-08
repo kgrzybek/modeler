@@ -6,10 +6,11 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <ItemGroup>
+  <ItemGroup>
       <ProjectReference Include="..\..\..\Models\DataModel\Modeler.DataModel.PostgreSQL.Views.PlantUml\Modeler.DataModel.PostgreSQL.Views.PlantUml.csproj" />
+      <ProjectReference Include="..\..\..\Models\DataModel\Modeler.DataModel.PostgreSQL.Views.Mermaid\Modeler.DataModel.PostgreSQL.Views.Mermaid.csproj" />
       <ProjectReference Include="..\..\..\Models\DataModel\Modeler.DataModel.PostgreSQL.Views.SQL\Modeler.DataModel.PostgreSQL.Views.SQL.csproj" />
       <ProjectReference Include="..\..\..\Models\DataModel\Modeler.DataModel\Modeler.DataModel.csproj" />
-    </ItemGroup>
+  </ItemGroup>
 
 </Project>
