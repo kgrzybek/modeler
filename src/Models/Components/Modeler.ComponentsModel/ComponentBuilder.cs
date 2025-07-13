@@ -20,8 +20,6 @@ public class ComponentBuilder
        
         childBuilderAction?.Invoke(childBuilder);
         
-        _node.SubComponents.Add(childBuilder.Build());
-        
         return this;
     }
 

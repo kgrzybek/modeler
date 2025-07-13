@@ -2,13 +2,13 @@
 
 public class AsciiDocComponentDetailsView
 {
-    public AsciiDocComponentDetailsView(string id, Component component)
+    public AsciiDocComponentDetailsView(string id, IComponent component)
     {
         Component = component;
         Id = id;
     }
 
-    public Component Component { get; }
+    public IComponent Component { get; }
     
     public string Id { get; }
 }

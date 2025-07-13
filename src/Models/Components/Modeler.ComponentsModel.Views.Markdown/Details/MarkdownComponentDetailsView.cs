@@ -2,13 +2,13 @@ namespace Modeler.ComponentsModel.Views.Markdown.Details;
 
 public class MarkdownComponentDetailsView
 {
-    public MarkdownComponentDetailsView(string id, Component component)
+    public MarkdownComponentDetailsView(string id, IComponent component)
     {
         Component = component;
         Id = id;
     }
 
-    public Component Component { get; }
+    public IComponent Component { get; }
     public string Id { get; }
 }
 

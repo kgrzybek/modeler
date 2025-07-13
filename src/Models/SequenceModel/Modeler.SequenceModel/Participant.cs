@@ -1,6 +1,6 @@
 ﻿namespace Modeler.SequenceModel;
 
-public abstract class Participant
+public abstract class Participant : ISequenceParticipant
 {
     public ParticipantType Type { get; set; }
     
@@ -25,4 +25,6 @@ public abstract class Participant
 
         return this;
     }
+
+    public ParticipantType ParticipantType => Type;
 }

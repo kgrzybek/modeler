@@ -106,15 +106,15 @@ public class MermaidSequenceDiagramViewGenerator
     }
 
     private static void GenerateParticipant(StringBuilder sb,
-        Participant participant,
+        ISequenceParticipant participant,
         ISequenceDiagramViewTranslator viewTranslator)
     {
-        var participantType = viewTranslator.TranslateParticipantType(participant.Type);
+        var participantType = viewTranslator.TranslateParticipantType(participant.ParticipantType);
         if (participantType != "participant" && participantType != "actor")
         {
             participantType = "participant";
         }
         
-        sb.AppendLine($"{participantType} {participant.Id} as {participant.Name} <<{viewTranslator.TranslateParticipantStereoType(participant.Type)}>>");
+        sb.AppendLine($"{participantType} {participant.Id} as {participant.Name} <<{viewTranslator.TranslateParticipantStereoType(participant.ParticipantType)}>>");
     }
 }

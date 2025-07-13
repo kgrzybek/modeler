@@ -1,24 +1,24 @@
 ﻿using System.Reflection;
+using Models.Elements;
 
 namespace Modeler.ComponentsModel;
 
 public abstract class Model
 {
-    private List<Component> _components;
+    private List<IComponent> _components;
 
     private readonly List<ComponentRelationship> _relationships;
 
-    protected Model()
+    protected Model(ModelElementsRegistry elementsRegistry)
     {
-        _components = new List<Component>();
+        _components = elementsRegistry.GetElements<IComponent>();
         _relationships = new List<ComponentRelationship>();
-        InitializeComponents();
         InitializeRelationshipsModels();
     }
 
-    public Component GetComponent<T>() where T : Component
+    public IComponent GetComponent<T>() where T : IComponent
     {
-        var type = GetComponent<T>(_components);
+        var type = _components.Single(x => x.GetType() == typeof(T));
 
         if (type == null)
         {
@@ -28,22 +28,13 @@ public abstract class Model
         return type;
     }
 
-    private static Component? GetComponent<T>(List<Component> components) where T : Component
+    private static IComponent? GetComponent<T>(List<IComponent> components) where T : IComponent
     {
         foreach (var component in components)
         {
             if (component is T)
             {
                 return component;
-            }
-
-            if (component.SubComponents.Any())
-            {
-                var subComponent = GetComponent<T>(component.SubComponents);
-                if (subComponent is T)
-                {
-                    return subComponent;
-                }
             }
         }
 
@@ -55,35 +46,19 @@ public abstract class Model
         _relationships.Add(new AssociationComponentRelationship(source, target, name));
     }
 
-    public void AddUsageRelationship(Component source, Component target)
+    public void AddUsageRelationship(IComponent source, IComponent target)
     {
         _relationships.Add(new UsageComponentRelationship(source, target));
     }
 
-    public void AddDependencyRelationship(Component source, Component target)
+    public void AddDependencyRelationship(IComponent source, IComponent target)
     {
         _relationships.Add(new DependencyComponentRelationship(source, target));
     }
-
-    private void InitializeComponents()
+    
+    public void AddContainsRelationship(IComponent source, IComponent target)
     {
-        var assembly = Assembly.GetAssembly(this.GetType())!;
-        var types = assembly
-            .GetTypes()
-            .Where(t =>
-                typeof(Component).IsAssignableFrom(t))
-            .ToList();
-
-        foreach (var type in types)
-        {
-            var staticMethod = type.GetMethod("Create", BindingFlags.Static | BindingFlags.Public);
-
-            if (staticMethod != null)
-            {
-                var component = staticMethod.Invoke(null, null) as Component;
-                _components.Add(component!);
-            }
-        }
+        _relationships.Add(new ContainsComponentRelationship(source, target));
     }
 
     private void InitializeRelationshipsModels()
@@ -108,84 +83,58 @@ public abstract class Model
 
     public List<ComponentRelationship> GetRelationships() => _relationships.ToList();
 
-    public List<ComponentRelationship> GetComponentRelationships(Component component, bool includeSubComponents = false)
+    public List<ComponentRelationship> GetComponentRelationships(IComponent component)
     {
         var relationships = new List<ComponentRelationship>();
         
         relationships.AddRange(_relationships
-            .Where(x => (x.Source == component || x.Target == component) || includeSubComponents).ToList());
+            .Where(x => x.Source == component || x.Target == component).ToList());
 
-        foreach (var subComponent in component.SubComponents)
+        var subComponents = GetSubComponents(component);
+
+        foreach (var subComponent in subComponents)
         {
-            relationships.AddRange(GetComponentRelationships(subComponent, includeSubComponents: true));
+            var subComponentRelationships = GetComponentRelationships(subComponent);
+            relationships.AddRange(subComponentRelationships);
         }
-
+        
         return relationships.Distinct().ToList();
     }
 
-    public bool Contains(Component component, Component childComponent)
+    public bool Contains(IComponent component, IComponent childComponent)
     {
-        foreach (var subComponent in component.SubComponents)
-        {
-            if (subComponent == childComponent)
-            {
-                return true;
-            }
-
-            var subComponentContains = Contains(subComponent, childComponent);
-            if (subComponentContains)
-            {
-                return true;
-            }
-        }
-
-        return false;
+        return _relationships.Any(x => x.Source == component && x.Target == childComponent);
     }
 
     public List<ComponentType> GetComponentTypes()
     {
-        var componentTypes = new List<ComponentType>();
-        foreach (var component in _components)
-        {
-            componentTypes.AddRange(GetComponentTypes(component));
-        }
-
-        return componentTypes.Distinct().ToList();
+        return _components.Select(x => x.Type).Distinct().ToList();
     }
 
-    public List<ComponentType> GetComponentTypes(Component component)
+    public List<IComponent> GetAllComponents()
     {
-        var componentTypes = new List<ComponentType>();
-        componentTypes.Add(component.Type);
-
-        foreach (var subComponent in component.SubComponents)
-        {
-            componentTypes.AddRange(GetComponentTypes(subComponent));
-        }
-
-        return componentTypes;
+        return _components;
     }
 
-    public List<Component> GetAllComponents()
+    public List<IComponent> GetSubComponents(IComponent component)
     {
-        var components = new List<Component>();
-        foreach (var component in _components)
-        {
-            components.AddRange(GetAllComponents(component));
-        }
-
-        return components;
+        return _relationships.OfType<ContainsComponentRelationship>().Where(x => x.Source == component)
+            .Select(x => x.Target)
+            .ToList();
     }
     
-    private static List<Component> GetAllComponents(Component component)
+    public List<IComponent> GetAllSubComponents(IComponent component)
     {
-        var components = new List<Component>();
-        components.Add(component);
-        foreach (var subComponent in component.SubComponents)
+        List<IComponent> allComponents = new List<IComponent>();
+        var subComponents =  GetSubComponents(component);
+        allComponents.AddRange(subComponents);
+
+        foreach (var subComponent in subComponents)
         {
-            components.AddRange(GetAllComponents(subComponent));
+            var allSubComponents = GetAllSubComponents(subComponent);
+            allComponents.AddRange(allSubComponents);
         }
 
-        return components;
+        return allComponents.Distinct().ToList();
     }
 }

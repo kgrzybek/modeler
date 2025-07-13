@@ -5,7 +5,7 @@ public class SequenceDiagramView
     public SequenceDiagramView(
         string id,
         Sequence sequence,
-        List<Participant> participantsToShow,
+        List<ISequenceParticipant> participantsToShow,
         bool autonumberMessages = false)
     {
         Id = id;
@@ -20,5 +20,5 @@ public class SequenceDiagramView
     
     public bool AutonumberMessages { get; }
 
-    public List<Participant> ParticipantsToShow { get; }
+    public List<ISequenceParticipant> ParticipantsToShow { get; }
 }

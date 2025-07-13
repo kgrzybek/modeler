@@ -71,25 +71,25 @@ var documentationPath = args[0];
 
 Console.WriteLine($"Documentation generation to {documentationPath} started.");
 
-GenerateConceptualModels(documentationPath);
-
-GenerateDataModels(documentationPath);
-
-GenerateSequenceModels(documentationPath);
+// GenerateConceptualModels(documentationPath);
+//
+// GenerateDataModels(documentationPath);
+//
+// GenerateSequenceModels(documentationPath);
 
 GenerateComponentsModels(documentationPath);
 
-GeneratePlantUmlStateMachineViews(documentationPath);
-
-GenerateAsciiDocStateMachineTableViews(documentationPath);
-
-GenerateMarkdownStateMachineTableViews(documentationPath);
-
-GenerateMermaidEventsFlowViews(documentationPath);
-GenerateMarkdownEventsFlowViews(documentationPath);
-GenerateAsciiDocEventsFlowViews(documentationPath);
-GenerateAsciiDocRestApiViews(documentationPath);
-GenerateOpenApiRestApiViews(documentationPath);
+// GeneratePlantUmlStateMachineViews(documentationPath);
+//
+// GenerateAsciiDocStateMachineTableViews(documentationPath);
+//
+// GenerateMarkdownStateMachineTableViews(documentationPath);
+//
+// GenerateMermaidEventsFlowViews(documentationPath);
+// GenerateMarkdownEventsFlowViews(documentationPath);
+// GenerateAsciiDocEventsFlowViews(documentationPath);
+// GenerateAsciiDocRestApiViews(documentationPath);
+// GenerateOpenApiRestApiViews(documentationPath);
 
 Console.WriteLine("Documentation generated.");
 
@@ -211,7 +211,9 @@ void GenerateSequenceModels(string path)
 
 void GenerateComponentsModels(string path)
 {
-    var model = SystemComponentsModel.GetInstance();
+    var elementsRegistry = ElementsRegistry.GetInstance();
+    elementsRegistry.AddElementsFromAssembly(Assembly.GetAssembly(typeof(SystemComponentsModel)));
+    var model = SystemComponentsModel.GetInstance(elementsRegistry);
     
     // Get views
     var sequenceDiagramViews = new ComponentsDiagramViewsFactory(

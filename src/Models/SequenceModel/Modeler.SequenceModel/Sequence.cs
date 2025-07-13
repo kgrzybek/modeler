@@ -2,7 +2,7 @@
 
 public abstract class Sequence
 {
-    private List<Participant> _participants;
+    private List<ISequenceParticipant> _participants;
     
     private List<Message> _messages;
     
@@ -10,12 +10,12 @@ public abstract class Sequence
 
     protected Sequence()
     {
-        _participants = new List<Participant>();
+        _participants = new List<ISequenceParticipant>();
         _messages = new List<Message>();
         Name = string.Empty;
     }
 
-    public List<Participant> GetParticipants()
+    public List<ISequenceParticipant> GetParticipants()
     {
         return _participants;
     }
@@ -25,7 +25,7 @@ public abstract class Sequence
         return _messages;
     }
 
-    internal void SetParticipants(List<Participant> participants)
+    internal void SetParticipants(List<ISequenceParticipant> participants)
     {
         _participants = participants;
     }

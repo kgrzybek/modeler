@@ -1,36 +1,13 @@
-﻿namespace Modeler.ComponentsModel;
+﻿using Models.Elements;
 
-public abstract class Component
+namespace Modeler.ComponentsModel;
+
+public abstract class Component : Element, IComponent
 {
-    public Component(string name, ComponentType type)
+    protected Component(string name, ComponentType type) : base(name)
     {
-        SubComponents = new List<Component>();
-        Name = name;
         this.Type = type;
     }
-    public string Name { get; set; }
     
-    public ComponentType Type { get; set; }
-    
-    public List<Component> SubComponents { get; set; }
-    
-    protected Component WithName(
-        string name)
-    {
-        this.Name = name;
-
-        return this;
-    }
-
-    public List<Component> GetAll()
-    {
-        var allComponents = new List<Component>();
-        foreach (var subComponent in SubComponents)
-        {
-            allComponents.Add(subComponent);
-            allComponents.AddRange(subComponent.GetAll());
-        }
-
-        return allComponents;
-    }
+    public ComponentType Type { get; }
 }

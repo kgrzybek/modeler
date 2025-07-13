@@ -112,11 +112,11 @@ public class PlantUmlSequenceDiagramViewGenerator
     }
 
     private static void GenerateParticipant(StringBuilder sb,
-        Participant participant,
+        ISequenceParticipant participant,
         ISequenceDiagramViewTranslator viewTranslator,
         ISequenceDiagramViewLayout viewLayout)
     {
-        var participantType = viewTranslator.TranslateParticipantType(participant.Type);
-        sb.AppendLine($"{participantType} \"{participant.Name}\" as {participant.Id} <<{viewTranslator.TranslateParticipantStereoType(participant.Type)}>> {viewLayout.GetParticipantColor(participant.Type)}");
+        var participantType = viewTranslator.TranslateParticipantType(participant.ParticipantType);
+        sb.AppendLine($"{participantType} \"{participant.Name}\" as {participant.Id} <<{viewTranslator.TranslateParticipantStereoType(participant.ParticipantType)}>> {viewLayout.GetParticipantColor(participant.ParticipantType)}");
     }
 }

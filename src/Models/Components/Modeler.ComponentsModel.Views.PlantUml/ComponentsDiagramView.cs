@@ -4,7 +4,7 @@ public class ComponentsDiagramView
 {
     public ComponentsDiagramView(
         string id,
-        List<Component> components)
+        List<IComponent> components)
     {
         Components = components;
         Id = id;
@@ -12,5 +12,5 @@ public class ComponentsDiagramView
     
     public string Id { get; }
 
-    public List<Component> Components { get; }
+    public List<IComponent> Components { get; }
 }

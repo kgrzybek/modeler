@@ -2,7 +2,7 @@
 
 public class UsageComponentRelationship : ComponentRelationship
 {
-    public UsageComponentRelationship(Component source, Component target) : base(source, target)
+    public UsageComponentRelationship(IComponent source, IComponent target) : base(source, target)
     {
     }
 }

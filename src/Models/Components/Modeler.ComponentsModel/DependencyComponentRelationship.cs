@@ -2,7 +2,7 @@
 
 public class DependencyComponentRelationship : ComponentRelationship
 {
-    public DependencyComponentRelationship(Component source, Component target) : base(source, target)
+    public DependencyComponentRelationship(IComponent source, IComponent target) : base(source, target)
     {
     }
 }

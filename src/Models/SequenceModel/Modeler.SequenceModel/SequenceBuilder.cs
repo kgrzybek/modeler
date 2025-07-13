@@ -11,25 +11,25 @@ public class SequenceBuilder<T> where T : Sequence, new()
         _messages = new List<Message>();
     }
     
-    public void AddSynchronousRequestMessage(Participant sender, string name, MessageParameters parameters, Participant recipient)
+    public void AddSynchronousRequestMessage(ISequenceParticipant sender, string name, MessageParameters parameters, ISequenceParticipant recipient)
     {
         var message = new Message(name, sender, recipient, parameters, new SynchronousRequestMessage());
         _messages.Add(message);
     }
     
-    public void AddSelfMessage(Participant sender, string name, MessageParameters parameters)
+    public void AddSelfMessage(ISequenceParticipant sender, string name, MessageParameters parameters)
     {
         var message = new Message(name, sender, sender, parameters, new SelfMessage());
         _messages.Add(message);
     }
     
-    public void AddSynchronousResponseMessage(Participant sender, string name, MessageParameters parameters, Participant recipient)
+    public void AddSynchronousResponseMessage(ISequenceParticipant sender, string name, MessageParameters parameters, ISequenceParticipant recipient)
     {
         var message = new Message(name, sender, recipient, parameters, new SynchronousResponseMessage());
         _messages.Add(message);
     }
     
-    public void AddEventMessage(Participant sender, string name, MessageParameters parameters, Participant recipient)
+    public void AddEventMessage(ISequenceParticipant sender, string name, MessageParameters parameters, ISequenceParticipant recipient)
     {
         var message = new Message(name, sender, recipient, parameters, new EventMessage());
         _messages.Add(message);
@@ -37,7 +37,7 @@ public class SequenceBuilder<T> where T : Sequence, new()
 
     public T Build()
     {
-        var participants = new List<Participant>();
+        var participants = new List<ISequenceParticipant>();
         participants.AddRange(_messages.Select(x => x.Sender).ToList());
         participants.AddRange(_messages.Select(x => x.Receiver).ToList());
 

@@ -87,14 +87,16 @@ public class PlantComponentsDiagramViewGenerator
 
     private void GenerateComponent(
         StringBuilder sb,
-        Component component,
+        IComponent component,
         int indentLevel)
     {
         indentLevel += 1;
         var indentText = GetIndentText(indentLevel);
         sb.AppendLine($"{indentText}component \"{component.Name}\" <<{component.Type.Name}>>" + " {");
 
-        foreach (var subComponent in component.SubComponents)
+        var subComponents = _model.GetSubComponents(component);
+
+        foreach (var subComponent in subComponents)
         {
             GenerateComponent(sb, subComponent, indentLevel);
         }
@@ -116,7 +118,7 @@ public class PlantComponentsDiagramViewGenerator
             {
                 foreach (var viewComponent in view.Components)
                 {
-                    if(viewComponent.GetAll().Contains(relationship.Source))
+                    if(_model.GetAllSubComponents(viewComponent).Contains(relationship.Source))
                     {
                         showSource = true;
                     }
@@ -133,7 +135,7 @@ public class PlantComponentsDiagramViewGenerator
             {
                 foreach (var viewComponent in view.Components)
                 {
-                    if(viewComponent.GetAll().Contains(relationship.Target))
+                    if(_model.GetAllSubComponents(viewComponent).Contains(relationship.Target))
                     {
                         showTarget = true;
                     }

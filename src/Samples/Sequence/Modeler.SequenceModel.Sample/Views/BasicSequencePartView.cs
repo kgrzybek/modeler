@@ -11,7 +11,7 @@ public class BasicSequencePartView : SequenceDiagramViewDefinition
     
     public static SequenceDiagramView Create(HRSequencesModel model)
     {
-        var participantsToShow = new List<Participant>
+        var participantsToShow = new List<ISequenceParticipant>
         {
             model.GetParticipant<UserParticipant>(),
             model.GetParticipant<FrontendParticipant>(),

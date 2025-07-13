@@ -2,7 +2,7 @@
 
 public class Message
 {
-    public Message(string name, Participant sender, Participant receiver, MessageParameters parameters, MessageType type)
+    public Message(string name, ISequenceParticipant sender, ISequenceParticipant receiver, MessageParameters parameters, MessageType type)
     {
         Name = name;
         Sender = sender;
@@ -13,9 +13,9 @@ public class Message
 
     public string Name { get; }
     
-    public Participant Sender { get; }
+    public ISequenceParticipant Sender { get; }
     
-    public Participant Receiver { get; }
+    public ISequenceParticipant Receiver { get; }
     
     public MessageParameters Parameters { get; }
     

@@ -39,7 +39,7 @@ public abstract class Model
         return _participants.ToList();
     }
 
-    public Participant GetParticipant<T>() where T: Participant
+    public ISequenceParticipant GetParticipant<T>() where T: ISequenceParticipant
     {
         var type = _participants.OfType<T>().SingleOrDefault();
         
