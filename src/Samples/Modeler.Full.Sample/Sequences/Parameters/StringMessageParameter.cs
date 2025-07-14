@@ -1,4 +1,6 @@
-﻿namespace Modeler.SequenceModel.Sample.Models.Parameters;
+﻿using Modeler.SequenceModel;
+
+namespace Modeler.Full.Sample.Sequences.Parameters;
 
 public class StringMessageParameter : MessageParameters
 {

@@ -1,15 +1,18 @@
-﻿
-using Modeler.ComponentsModel;
+﻿using Modeler.ComponentsModel;
 using Modeler.Full.Sample.Components.Types;
-using Modeler.Full.Sample.ParticipantTypes;
+using Modeler.Full.Sample.Sequences.ParticipantTypes;
 using Modeler.SequenceModel;
 using Models.Elements;
 
-namespace Modeler.Full.Sample.Components;
+namespace Modeler.Full.Sample.Components.System.Backend;
 
-public class BackendApplication : IComponent, ISequenceParticipant
+public class HRBackendApplication : IComponent, ISequenceParticipant
 {
-    public BackendApplication()
+    public static IElement Create()
+    {
+        return new HRBackendApplication();
+    }
+    public HRBackendApplication()
     {
         this.Name = "Backend";
         this.Id = ElementIdGenerator.GenerateElementId(this.GetType(), Name);

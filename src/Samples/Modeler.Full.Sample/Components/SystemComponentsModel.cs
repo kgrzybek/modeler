@@ -1,7 +1,7 @@
 ﻿using Modeler.ComponentsModel;
 using Models.Elements;
 
-namespace Modeler.Full.Sample;
+namespace Modeler.Full.Sample.Components;
 
 public class SystemComponentsModel : Model
 {

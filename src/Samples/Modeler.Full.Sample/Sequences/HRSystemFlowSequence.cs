@@ -1,6 +1,10 @@
 ﻿using Modeler.Full.Sample.Components;
+using Modeler.Full.Sample.Components.ExternalSystems;
+using Modeler.Full.Sample.Components.System.Backend;
+using Modeler.Full.Sample.Components.System.Database;
+using Modeler.Full.Sample.Components.System.Frontend;
+using Modeler.Full.Sample.Sequences.Parameters;
 using Modeler.SequenceModel;
-using Modeler.SequenceModel.Sample.Models.Parameters;
 
 namespace Modeler.Full.Sample.Sequences;
 
@@ -8,13 +12,25 @@ public class HRSystemFlowSequence : Sequence
 {
     public static void Create(HRSequencesModel model)
     {
-        var backend = model.GetParticipant<BackendApplication>();
+        var user = model.GetParticipant<UserParticipant>();
         var frontend = model.GetParticipant<HRFrontendApplication>();
+        var backend = model.GetParticipant<HRBackendApplication>();
+        var backendDatabase = model.GetParticipant<HRDatabase>();
+        var crm = model.GetParticipant<CRM>();
 
         var builder = new SequenceBuilder<HRSystemFlowSequence>("HR System Flow Sequence");
 
-        builder.AddSynchronousRequestMessage(backend, "addEmployee", new StringMessageParameter("SQL"), frontend);
-        builder.AddSynchronousResponseMessage(frontend, "OK", new NoMessageParameters(), backend);
+        builder.AddSynchronousRequestMessage(user, "addEmployee", new StringMessageParameter("Employee"), frontend);
+        builder.AddSynchronousRequestMessage(frontend, "addEmployee", new StringMessageParameter("EmployeeDto"), backend);
+        
+        builder.AddSelfMessage(backend, "Validate", new StringMessageParameter("EmployeeDto"));
+        
+        builder.AddSynchronousRequestMessage(backend, "addEmployee", new StringMessageParameter("SQL"), backendDatabase);
+        builder.AddSynchronousResponseMessage(backendDatabase, "OK", new NoMessageParameters(), backend);
+        builder.AddEventMessage(backend, "EmployeeAdded", new StringMessageParameter("EmployeeAddedEvent"), crm);
+        builder.AddSynchronousResponseMessage(backend, "OK", new NoMessageParameters(), frontend);
+        
+        builder.AddSynchronousResponseMessage(frontend, "OK", new NoMessageParameters(), user);
 
         var sequence = builder.Build();
         model.AddSequence(sequence);

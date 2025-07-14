@@ -1,13 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using System.Reflection;
-using Modeler.ComponentsModel.Sample.Components;
-using Modeler.ComponentsModel.Sample.Views;
-using Modeler.ComponentsModel.Sample.Views.AsciiDoc;
-using Modeler.ComponentsModel.Sample.Views.AsciiDoc.Details;
-using Modeler.ComponentsModel.Sample.Views.Outputs;
-using Modeler.ComponentsModel.Sample.Views.Markdown.Details;
-using Modeler.ComponentsModel.Sample.Views.Outputs.Markdown;
 using Modeler.ComponentsModel.Views.AsciiDoc;
 using Modeler.ComponentsModel.Views.AsciiDoc.Details;
 using Modeler.ComponentsModel.Views.Markdown;
@@ -38,11 +31,17 @@ using Modeler.EventsFlowModel.Views.Mermaid;
 using Modeler.EventsFlowModel.Sample.Views.Markdown;
 using Modeler.EventsFlowModel.Views.AsciiDoc;
 using Modeler.EventsFlowModel.Views.Markdown;
-using Modeler.SequenceModel.Sample.Models;
-using Modeler.SequenceModel.Sample.Views;
-using Modeler.SequenceModel.Sample.Views.Layouts;
-using Modeler.SequenceModel.Sample.Views.Outputs;
-using Modeler.SequenceModel.Sample.Views.Translations;
+using Modeler.Full.Sample;
+using Modeler.Full.Sample.Components.Views;
+using Modeler.Full.Sample.Components.Views.AsciiDoc;
+using Modeler.Full.Sample.Components.Views.AsciiDoc.Details;
+using Modeler.Full.Sample.Components.Views.Outputs;
+using Modeler.Full.Sample.Components.Views.Outputs.Markdown;
+using Modeler.Full.Sample.Sequences;
+using Modeler.Full.Sample.Sequences.Views;
+using Modeler.Full.Sample.Sequences.Views.Layouts;
+using Modeler.Full.Sample.Sequences.Views.Outputs;
+using Modeler.Full.Sample.Sequences.Views.Translations;
 using Modeler.SequenceModel.Views.Mermaid;
 using Modeler.SequenceModel.Views.PlantUml;
 using Modeler.SequenceModel.Views.Shared;
@@ -61,6 +60,7 @@ using Modeler.RestApiModel.Sample.Views.OpenApi;
 using Modeler.RestApiModel.Sample.Views.OpenApi.Outputs;
 using Modeler.RestApiModel.Views.OpenApi;
 using MermaidClassDiagramViewGenerator = Modeler.ConceptualModel.Views.Mermaid.MermaidClassDiagramViewGenerator;
+using SystemComponentsModel = Modeler.Full.Sample.Components.SystemComponentsModel;
 
 if (args.Length != 1)
 {
@@ -75,7 +75,11 @@ Console.WriteLine($"Documentation generation to {documentationPath} started.");
 //
 // GenerateDataModels(documentationPath);
 //
-// GenerateSequenceModels(documentationPath);
+
+var elementsRegistry = ElementsRegistry.GetInstance();
+elementsRegistry.AddElementsFromAssembly(Assembly.GetAssembly(typeof(SystemComponentsModel)));
+
+GenerateSequenceModels(documentationPath);
 
 GenerateComponentsModels(documentationPath);
 
@@ -186,7 +190,8 @@ void GenerateDataModels(string path)
 void GenerateSequenceModels(string path)
 {
     // Get model
-    var model = HRSequencesModel.GetInstance();
+    var elementsRegistry = ElementsRegistry.GetInstance();
+    var model = HRSequencesModel.GetInstance(elementsRegistry);
     
     // Get views
     var sequenceDiagramViews = new SequenceDiagramViewsFactory(
@@ -211,14 +216,13 @@ void GenerateSequenceModels(string path)
 
 void GenerateComponentsModels(string path)
 {
-    var elementsRegistry = ElementsRegistry.GetInstance();
-    elementsRegistry.AddElementsFromAssembly(Assembly.GetAssembly(typeof(SystemComponentsModel)));
     var model = SystemComponentsModel.GetInstance(elementsRegistry);
+    var viewsAssembly = Assembly.GetAssembly(typeof(SystemComponentsModel))!;
     
     // Get views
     var sequenceDiagramViews = new ComponentsDiagramViewsFactory(
         model,
-        Assembly.GetAssembly(typeof(SystemComponentsView))!).GetViews();
+        viewsAssembly!).GetViews();
     
     // Set views path
     var componentsModelPath = Path.Combine(path, "Models/Components");
@@ -234,7 +238,7 @@ void GenerateComponentsModels(string path)
     // Generate AsciiDoc components details views
     var asciiDocDetailsViews = new AsciiDocComponentsDetailsViewsFactory(
         model,
-        Assembly.GetAssembly(typeof(AsciiDocBackendDetailsViewDefinition))!).GetViews();
+        viewsAssembly).GetViews();
     var fileSystemAsciiDocComponentsDetailsViewOutput = new FileSystemAsciiDocComponentsDetailsViewOutput<AsciiDocComponentDetailsView>(componentsModelPath);
     new AsciiDocComponentsDetailsViewsGenerator(model, fileSystemAsciiDocComponentsDetailsViewOutput).Generate(asciiDocDetailsViews);
 
@@ -245,7 +249,7 @@ void GenerateComponentsModels(string path)
     // Generate Markdown components details views
     var markdownDetailsViews = new MarkdownComponentsDetailsViewsFactory(
         model,
-        Assembly.GetAssembly(typeof(MarkdownBackendDetailsViewDefinition))!).GetViews();
+        viewsAssembly).GetViews();
     var fileSystemMarkdownComponentsDetailsViewOutput = new FileSystemMarkdownComponentsDetailsViewOutput<MarkdownComponentDetailsView>(componentsModelPath);
     new MarkdownComponentsDetailsViewsGenerator(model, fileSystemMarkdownComponentsDetailsViewOutput).Generate(markdownDetailsViews);
 }

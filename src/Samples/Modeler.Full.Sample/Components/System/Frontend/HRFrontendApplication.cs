@@ -1,13 +1,17 @@
 ﻿using Modeler.ComponentsModel;
 using Modeler.Full.Sample.Components.Types;
-using Modeler.Full.Sample.ParticipantTypes;
+using Modeler.Full.Sample.Sequences.ParticipantTypes;
 using Modeler.SequenceModel;
 using Models.Elements;
 
-namespace Modeler.Full.Sample.Components;
+namespace Modeler.Full.Sample.Components.System.Frontend;
 
 public class HRFrontendApplication : IComponent, ISequenceParticipant
 {
+    public static IElement Create()
+    {
+        return new HRFrontendApplication();
+    }
     public HRFrontendApplication()
     {
         Name = "HRFrontendApplication";

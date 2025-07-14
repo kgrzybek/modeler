@@ -1,22 +1,22 @@
 ﻿using System.Reflection;
+using Models.Elements;
 
 namespace Modeler.SequenceModel;
 
 public abstract class Model
 {
-    private List<Participant> _participants;
+    private List<ISequenceParticipant> _participants;
 
     private readonly List<Sequence> _sequences;
     
     private readonly List<ParticipantType> _participantTypes;
 
-    protected Model()
+    protected Model(ModelElementsRegistry elementsRegistry)
     {
-        _participants = new List<Participant>();
+        _participants = elementsRegistry.GetElements<ISequenceParticipant>().ToList();
         _participantTypes = new List<ParticipantType>();
         _sequences = new List<Sequence>();
         RegisterTypes<ParticipantType>();
-        RegisterParticipants();
         InitializeSequences();
     }
     
@@ -34,7 +34,7 @@ public abstract class Model
         return type;
     }
 
-    public List<Participant> GetParticipants()
+    public List<ISequenceParticipant> GetParticipants()
     {
         return _participants.ToList();
     }
@@ -72,28 +72,6 @@ public abstract class Model
             if (staticMethod != null)
             {
                 staticMethod.Invoke(null, new object?[]{ this });
-            }
-        }
-    }
-
-    private void RegisterParticipants()
-    {
-        var assembly = Assembly.GetAssembly(this.GetType());
-        _participants = new List<Participant>();
-        var types = assembly!
-            .GetTypes()
-            .Where(t =>
-                typeof(Participant).IsAssignableFrom(t))
-            .ToList();
-        
-        foreach (var type in types)
-        {
-            var staticMethod = type.GetMethod("Create", BindingFlags.Static | BindingFlags.Public);
-
-            if (staticMethod != null)
-            {
-                var entity = staticMethod.Invoke(null, null);
-                _participants.Add((Participant) entity!);
             }
         }
     }

@@ -6,7 +6,7 @@ public abstract class Element : IElement
     {
         Name = name;
         
-        Id = $"{GetType().Name}_{name}";
+        Id = $"{GetType().Name}";
     }
 
     public string Name { get; }
