@@ -1,6 +1,8 @@
+using Models.Elements;
+
 namespace Modeler.RestApiModel;
 
-public class Endpoint
+public class Endpoint : IElement
 {
     public Endpoint WithName(string name)
     {
@@ -21,15 +23,15 @@ public class Endpoint
         return this;
     }
 
-    public Endpoint WithRequestModel(ApiModel model)
+    public Endpoint WithRequestModel(ApiObjectModel objectModel)
     {
-        RequestModel = model;
+        RequestModel = objectModel;
         return this;
     }
 
-    public Endpoint WithResponseModel(ApiModel model)
+    public Endpoint WithResponseModel(ApiObjectModel objectModel)
     {
-        ResponseModel = model;
+        ResponseModel = objectModel;
         return this;
     }
 
@@ -41,7 +43,7 @@ public class Endpoint
 
     public string Path { get; private set; } = "/";
 
-    public ApiModel? RequestModel { get; private set; }
+    public ApiObjectModel? RequestModel { get; private set; }
 
-    public ApiModel? ResponseModel { get; private set; }
+    public ApiObjectModel? ResponseModel { get; private set; }
 }

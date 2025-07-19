@@ -10,6 +10,8 @@
     <ItemGroup>
       <ProjectReference Include="..\Models\Conceptual\ConceptualModel\Modeler.ConceptualModel.csproj" />
       <ProjectReference Include="..\Models\DataModel\Modeler.DataModel.PostgreSQL.Views.Markdown\Modeler.DataModel.PostgreSQL.Views.Markdown.csproj" />
+      <ProjectReference Include="..\Models\RestApiModel\Modeler.RestApiModel.Views.AsciiDoc\Modeler.RestApiModel.Views.AsciiDoc.csproj" />
+      <ProjectReference Include="..\Models\RestApiModel\Modeler.RestApiModel.Views.OpenApi\Modeler.RestApiModel.Views.OpenApi.csproj" />
       <ProjectReference Include="..\Samples\Conceptual\Sample\Modeler.ConceptualModel.Sample.csproj" />
       <ProjectReference Include="..\Models\Conceptual\Views\AsciiDoc\Modeler.ConceptualModel.Views.AsciiDoc.csproj" />
       <ProjectReference Include="..\Models\Conceptual\Views\Mermaid\Modeler.ConceptualModel.Views.Mermaid.csproj" />
@@ -26,7 +28,6 @@
       <ProjectReference Include="..\Samples\EventsFlow\Modeler.EventsFlowModel.Sample\Modeler.EventsFlowModel.Sample.csproj" />
       <ProjectReference Include="..\Models\EventsFlow\Modeler.EventsFlowModel.Views.Mermaid\Modeler.EventsFlowModel.Views.Mermaid.csproj" />
       <ProjectReference Include="..\Samples\Modeler.Full.Sample\Modeler.Full.Sample.csproj" />
-      <ProjectReference Include="..\Samples\RestApi\Modeler.RestApiModel.Sample\Modeler.RestApiModel.Sample.csproj" />
       <ProjectReference Include="..\Models\SequenceModel\Modeler.SequenceModel.Views.Mermaid\Modeler.SequenceModel.Views.Mermaid.csproj" />
       <ProjectReference Include="..\Models\SequenceModel\Modeler.SequenceModel.Views.PlantUml\Modeler.SequenceModel.Views.PlantUml.csproj" />
       <ProjectReference Include="..\Samples\State\Modeler.StateModel.Sample\Modeler.StateModel.Sample.csproj" />

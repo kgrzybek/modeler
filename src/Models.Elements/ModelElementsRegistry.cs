@@ -35,4 +35,14 @@ public class ModelElementsRegistry
     {
         return _elements.OfType<T>().ToList();
     }
+
+    public void AddElement(IElement element)
+    {
+        _elements.Add(element);
+    }
+    
+    public T GetElement<T>()
+    {
+        return _elements.OfType<T>().Single();
+    }
 }

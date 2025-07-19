@@ -2,12 +2,12 @@ namespace Modeler.RestApiModel.Types;
 
 public class ModelType : AttributeType
 {
-    public ApiModel Model { get; }
+    public ApiObjectModel ObjectModel { get; }
 
-    private ModelType(ApiModel model) : base(model.Name)
+    private ModelType(ApiObjectModel objectModel) : base(objectModel.Name)
     {
-        Model = model;
+        ObjectModel = objectModel;
     }
 
-    public static AttributeType Create(ApiModel model) => new ModelType(model);
+    public static AttributeType Create(ApiObjectModel objectModel) => new ModelType(objectModel);
 }

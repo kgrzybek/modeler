@@ -1,17 +1,18 @@
 using Modeler.RestApiModel.Types;
+using Models.Elements;
 
 namespace Modeler.RestApiModel;
 
-public abstract class ApiModel
+public abstract class ApiObjectModel : IApiObjectModel
 {
-    public ApiModel WithName(string name)
+    public ApiObjectModel WithName(string name)
     {
         Name = name;
         Id = name.Replace(" ", "_").ToLower();
         return this;
     }
 
-    public ApiModel WithAttribute(string name, AttributeType type, bool required)
+    public ApiObjectModel WithAttribute(string name, AttributeType type, bool required)
     {
         Attributes.Add(new ApiModelAttribute(name, type, required));
         return this;
@@ -22,4 +23,9 @@ public abstract class ApiModel
     public string Id { get; private set; } = Guid.NewGuid().ToString();
 
     public List<ApiModelAttribute> Attributes { get; } = new();
+}
+
+public interface IApiObjectModel : IElement
+{
+    public List<ApiModelAttribute> Attributes { get; }
 }

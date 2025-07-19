@@ -1,7 +1,8 @@
-using Modeler.RestApiModel.Sample.Models.Endpoints;
+using Modeler.Full.Sample.Apis.Endpoints;
+using Modeler.RestApiModel;
 using Models.Elements;
 
-namespace Modeler.RestApiModel.Sample.Models;
+namespace Modeler.Full.Sample.Apis;
 
 public class HRRestApiModel : IApiModel
 {
@@ -43,4 +44,3 @@ public class HRRestApiModel : IApiModel
     public string Name { get; }
     public string Id { get; }
 }
-

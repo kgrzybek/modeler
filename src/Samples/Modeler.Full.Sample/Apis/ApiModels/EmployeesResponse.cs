@@ -1,3 +1,4 @@
+using Modeler.Full.Sample.Apis.ApiModels;
 using Modeler.RestApiModel.Types;
 
 namespace Modeler.RestApiModel.Sample.Models.ApiModels;

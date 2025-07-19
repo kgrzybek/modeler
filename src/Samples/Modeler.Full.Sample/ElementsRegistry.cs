@@ -1,4 +1,7 @@
-﻿using Models.Elements;
+﻿using Modeler.Full.Sample.Apis;
+using Modeler.Full.Sample.Components;
+using Modeler.Full.Sample.Sequences;
+using Models.Elements;
 
 namespace Modeler.Full.Sample;
 
@@ -14,5 +17,13 @@ public class ElementsRegistry : ModelElementsRegistry
         }
 
         return _instance;
+    }
+
+    public void RegisterElements()
+    {
+        var instance = GetInstance(); 
+        instance.RegisterHRApiElements();
+        instance.RegisterComponents();
+        instance.RegisterSequenceParticipants();
     }
 }

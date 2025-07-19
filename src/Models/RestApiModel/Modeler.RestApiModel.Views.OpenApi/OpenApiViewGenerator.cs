@@ -24,7 +24,7 @@ public class OpenApiViewGenerator
         _viewsOutput.Execute(outputItems);
     }
 
-    private static object GenerateSpecification(Model model)
+    private static object GenerateSpecification(IApiModel model)
     {
         var paths = new Dictionary<string, Dictionary<string, object>>();
         foreach (var ep in model.GetEndpoints())
@@ -82,7 +82,7 @@ public class OpenApiViewGenerator
         }
 
         var schemas = new Dictionary<string, object>();
-        foreach (var apiModel in model.GetApiModels())
+        foreach (var apiModel in model.GetApiObjectModels())
         {
             var properties = new Dictionary<string, object>();
             var required = new List<string>();
@@ -133,7 +133,7 @@ public class OpenApiViewGenerator
             },
             ModelType model => new Dictionary<string, object>
             {
-                ["$ref"] = $"#/components/schemas/{model.Model.Name}"
+                ["$ref"] = $"#/components/schemas/{model.ObjectModel.Name}"
             },
             _ => new Dictionary<string, object>
             {

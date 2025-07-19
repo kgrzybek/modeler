@@ -1,7 +1,6 @@
-using Modeler.RestApiModel.Sample.Models;
 using Modeler.RestApiModel.Views.AsciiDoc;
 
-namespace Modeler.RestApiModel.Sample.Views.AsciiDoc;
+namespace Modeler.Full.Sample.Apis.Views.AsciiDoc;
 
 public class EndpointsAsciiDocViewDefinition : AsciiDocEndpointsViewDefinition
 {

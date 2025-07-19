@@ -1,4 +1,5 @@
 using Modeler.RestApiModel.Sample.Models.ApiModels;
+using Models.Elements;
 
 namespace Modeler.RestApiModel.Sample.Models.Endpoints;
 
@@ -9,5 +10,5 @@ public class AddEmployeeEndpoint : Endpoint
         .WithMethod("POST")
         .WithPath("/employees")
         .WithRequestModel(AddEmployeeRequest.Create())
-        .WithResponseModel(EmployeeModel.Create());
+        .WithResponseModel(EmployeeObjectModel.Create());
 }

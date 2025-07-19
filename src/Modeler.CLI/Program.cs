@@ -32,6 +32,9 @@ using Modeler.EventsFlowModel.Sample.Views.Markdown;
 using Modeler.EventsFlowModel.Views.AsciiDoc;
 using Modeler.EventsFlowModel.Views.Markdown;
 using Modeler.Full.Sample;
+using Modeler.Full.Sample.Apis;
+using Modeler.Full.Sample.Apis.Views.AsciiDoc;
+using Modeler.Full.Sample.Apis.Views.OpenApi;
 using Modeler.Full.Sample.Components.Views;
 using Modeler.Full.Sample.Components.Views.AsciiDoc;
 using Modeler.Full.Sample.Components.Views.AsciiDoc.Details;
@@ -77,11 +80,14 @@ Console.WriteLine($"Documentation generation to {documentationPath} started.");
 //
 
 var elementsRegistry = ElementsRegistry.GetInstance();
-elementsRegistry.AddElementsFromAssembly(Assembly.GetAssembly(typeof(SystemComponentsModel)));
+elementsRegistry.RegisterElements();
 
 GenerateSequenceModels(documentationPath);
 
 GenerateComponentsModels(documentationPath);
+
+GenerateAsciiDocRestApiViews(documentationPath);
+GenerateOpenApiRestApiViews(documentationPath);
 
 // GeneratePlantUmlStateMachineViews(documentationPath);
 //
@@ -92,8 +98,7 @@ GenerateComponentsModels(documentationPath);
 // GenerateMermaidEventsFlowViews(documentationPath);
 // GenerateMarkdownEventsFlowViews(documentationPath);
 // GenerateAsciiDocEventsFlowViews(documentationPath);
-// GenerateAsciiDocRestApiViews(documentationPath);
-// GenerateOpenApiRestApiViews(documentationPath);
+
 
 Console.WriteLine("Documentation generated.");
 
@@ -352,7 +357,7 @@ void GenerateAsciiDocEventsFlowViews(string path)
 
 void GenerateAsciiDocRestApiViews(string path)
 {
-    var model = HRRestApiModel.GetInstance();
+    var model = ElementsRegistry.GetInstance().GetElement<HRRestApiModel>();
 
     var endpointsViews = new AsciiDocEndpointsViewsFactory(
         model,
@@ -373,8 +378,7 @@ void GenerateAsciiDocRestApiViews(string path)
 
 void GenerateOpenApiRestApiViews(string path)
 {
-    var model = HRRestApiModel.GetInstance();
-
+    var model = ElementsRegistry.GetInstance().GetElement<HRRestApiModel>();
     var views = new OpenApiViewsFactory(
         model,
         Assembly.GetAssembly(typeof(OpenApiJsonViewDefinition))!).Views;

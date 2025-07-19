@@ -5,9 +5,9 @@ namespace Modeler.RestApiModel.Views.AsciiDoc;
 public class AsciiDocEndpointsViewsFactory
 {
     private readonly List<AsciiDocEndpointsView> _views;
-    private readonly Model _model;
+    private readonly IApiModel _model;
 
-    public AsciiDocEndpointsViewsFactory(Model model, Assembly viewsAssembly)
+    public AsciiDocEndpointsViewsFactory(IApiModel model, Assembly viewsAssembly)
     {
         _model = model;
         _views = new List<AsciiDocEndpointsView>();

@@ -5,9 +5,9 @@ namespace Modeler.RestApiModel.Views.OpenApi;
 public class OpenApiViewsFactory
 {
     private readonly List<OpenApiView> _views;
-    private readonly Model _model;
+    private readonly IApiModel _model;
 
-    public OpenApiViewsFactory(Model model, Assembly viewsAssembly)
+    public OpenApiViewsFactory(IApiModel model, Assembly viewsAssembly)
     {
         _model = model;
         _views = new List<OpenApiView>();

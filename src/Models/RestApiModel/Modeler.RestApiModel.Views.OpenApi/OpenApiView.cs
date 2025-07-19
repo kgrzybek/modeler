@@ -2,7 +2,7 @@ namespace Modeler.RestApiModel.Views.OpenApi;
 
 public class OpenApiView
 {
-    public OpenApiView(string id, Model model)
+    public OpenApiView(string id, IApiModel model)
     {
         Id = id;
         Model = model;
@@ -10,7 +10,7 @@ public class OpenApiView
 
     public string Id { get; }
 
-    public Model Model { get; }
+    public IApiModel Model { get; }
 }
 
 public abstract class OpenApiViewDefinition

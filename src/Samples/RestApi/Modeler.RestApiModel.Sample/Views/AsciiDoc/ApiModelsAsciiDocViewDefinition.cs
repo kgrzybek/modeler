@@ -7,8 +7,8 @@ public class ApiModelsAsciiDocViewDefinition : AsciiDocApiModelsViewDefinition
 {
     public const string Id = "RestApiModels";
 
-    public static AsciiDocApiModelsView Create(HRRestApiModel model)
+    public static AsciiDocApiModelsView Create(HRRestApiModel apisRegistry)
     {
-        return new AsciiDocApiModelsView(Id, model);
+        return new AsciiDocApiModelsView(Id, apisRegistry);
     }
 }

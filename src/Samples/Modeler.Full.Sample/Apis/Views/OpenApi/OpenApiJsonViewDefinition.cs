@@ -1,7 +1,6 @@
-using Modeler.RestApiModel.Sample.Models;
 using Modeler.RestApiModel.Views.OpenApi;
 
-namespace Modeler.RestApiModel.Sample.Views.OpenApi;
+namespace Modeler.Full.Sample.Apis.Views.OpenApi;
 
 public class OpenApiJsonViewDefinition : OpenApiViewDefinition
 {

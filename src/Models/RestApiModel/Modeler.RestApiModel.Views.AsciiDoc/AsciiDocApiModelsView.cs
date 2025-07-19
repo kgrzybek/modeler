@@ -2,7 +2,7 @@ namespace Modeler.RestApiModel.Views.AsciiDoc;
 
 public class AsciiDocApiModelsView
 {
-    public AsciiDocApiModelsView(string id, Model model)
+    public AsciiDocApiModelsView(string id, IApiModel model)
     {
         Id = id;
         Model = model;
@@ -10,7 +10,7 @@ public class AsciiDocApiModelsView
 
     public string Id { get; }
 
-    public Model Model { get; }
+    public IApiModel Model { get; }
 }
 
 public abstract class AsciiDocApiModelsViewDefinition
