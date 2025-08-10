@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using Modeler.ComponentsModel.Views.Shared;
+using Modeler.RestApiModel;
 
 namespace Modeler.ComponentsModel.Views.PlantUml;
 
@@ -48,7 +49,9 @@ public class PlantComponentsDiagramViewGenerator
             sb.AppendLine();
 
             GenerateComponents(sb, view);
+          //  GenerateInterfaces(sb, view);
             GenerateRelationships(sb, view);
+            GenerateApisRelationships(sb, view);
             
             sb.AppendLine();
             sb.AppendLine("@enduml");
@@ -60,6 +63,28 @@ public class PlantComponentsDiagramViewGenerator
         }
         
         _viewsOutput.Execute(outputItems);
+    }
+
+    private void GenerateApisRelationships(StringBuilder sb, ComponentsDiagramView view)
+    {
+        var components = GetAllComponents(view);
+
+        foreach (var component in components)
+        {
+            // if (component is IApiProvider apiProvider)
+            // {
+            //     string label = "provides";
+            //     sb.AppendLine(
+            //         $"\"{component.Name}\" --> \"{apiProvider.ProvidedApi.Id}\" : {label}");
+            // }
+            
+            if (component is IApiConsumer apiConsumer)
+            {
+                string label = "uses";
+                sb.AppendLine(
+                    $"\"{component.Name}\" --> \"{apiConsumer.ConsumingApi.Id}\" : {label}");
+            }
+        }
     }
 
     private string GetIndentText(int indentLevel)
@@ -84,6 +109,34 @@ public class PlantComponentsDiagramViewGenerator
             sb.AppendLine();
         }
     }
+    
+    // private void GenerateInterfaces(
+    //     StringBuilder sb,
+    //     ComponentsDiagramView view)
+    // {
+    //     var interfaces = new List<IApiModel>();
+    //     var components = GetAllComponents(view);
+    //     interfaces.AddRange(components.OfType<IApiProvider>().Select(x => x.ProvidedApi).ToList());
+    //     interfaces.AddRange(components.OfType<IApiConsumer>().Select(x => x.ConsumingApi).ToList());
+    //     interfaces = interfaces.Distinct().ToList();
+    //     foreach (var @interface in interfaces)
+    //     {
+    //         GenerateInterface(sb, @interface);
+    //
+    //         sb.AppendLine();
+    //     }
+    // }
+
+    private List<IComponent> GetAllComponents(ComponentsDiagramView view)
+    {
+        var components = view.Components.ToList();
+        foreach (var component in view.Components)
+        {
+            components.AddRange(_model.GetAllSubComponents(component));
+        }
+
+        return components;
+    }
 
     private void GenerateComponent(
         StringBuilder sb,
@@ -94,6 +147,11 @@ public class PlantComponentsDiagramViewGenerator
         var indentText = GetIndentText(indentLevel);
         sb.AppendLine($"{indentText}component \"{component.Name}\" <<{component.Type.Name}>>" + " {");
 
+        if (component is IApiProvider apiProvider)
+        {
+            GenerateInterface(sb, apiProvider.ProvidedApi);
+        }
+
         var subComponents = _model.GetSubComponents(component);
 
         foreach (var subComponent in subComponents)
@@ -102,6 +160,13 @@ public class PlantComponentsDiagramViewGenerator
         }
 
         sb.AppendLine($"{indentText}}}");
+    }
+    
+    private void GenerateInterface(
+        StringBuilder sb,
+        IApiModel api)
+    {
+        sb.AppendLine($"interface \"{api.Name}\" as {api.Id}");
     }
     
     private void GenerateRelationships(StringBuilder sb, ComponentsDiagramView view)
@@ -179,6 +244,13 @@ public class PlantComponentsDiagramViewGenerator
     
     private static void GenerateForUsage(StringBuilder sb, UsageComponentRelationship relationship)
     {
+        if (relationship is {Source: IApiConsumer apiConsumer, Target: IApiProvider apiProvider})
+        {
+            if (apiConsumer.ConsumingApi == apiProvider.ProvidedApi)
+            {
+                return;
+            }
+        }
         string label = "use";
         sb.AppendLine(
             $"\"{relationship.Source.Name}\" --> \"{relationship.Target.Name}\" : {label}");

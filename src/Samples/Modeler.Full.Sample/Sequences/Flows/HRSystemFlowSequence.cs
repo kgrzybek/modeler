@@ -1,22 +1,22 @@
-﻿using Modeler.Full.Sample.Components;
-using Modeler.Full.Sample.Components.ExternalSystems;
+﻿using Modeler.Full.Sample.Components.ExternalSystems;
 using Modeler.Full.Sample.Components.System.Backend;
 using Modeler.Full.Sample.Components.System.Database;
 using Modeler.Full.Sample.Components.System.Frontend;
 using Modeler.Full.Sample.Sequences.Parameters;
+using Modeler.Full.Sample.Sequences.Participants;
 using Modeler.SequenceModel;
 
-namespace Modeler.Full.Sample.Sequences;
+namespace Modeler.Full.Sample.Sequences.Flows;
 
 public class HRSystemFlowSequence : Sequence
 {
-    public static void Create(HRSequencesModel model)
+    public static HRSystemFlowSequence Create(ElementsRegistry elementsRegistry)
     {
-        var user = model.GetParticipant<UserParticipant>();
-        var frontend = model.GetParticipant<HRFrontendApplication>();
-        var backend = model.GetParticipant<HRBackendApplication>();
-        var backendDatabase = model.GetParticipant<HRDatabase>();
-        var crm = model.GetParticipant<CRM>();
+        var user = elementsRegistry.GetElement<UserParticipant>();
+        var frontend = elementsRegistry.GetElement<HRFrontendApplication>();
+        var backend = elementsRegistry.GetElement<HRBackendApplication>();
+        var backendDatabase = elementsRegistry.GetElement<HRDatabase>();
+        var crm = elementsRegistry.GetElement<CRM>();
 
         var builder = new SequenceBuilder<HRSystemFlowSequence>("HR System Flow Sequence");
 
@@ -33,6 +33,7 @@ public class HRSystemFlowSequence : Sequence
         builder.AddSynchronousResponseMessage(frontend, "OK", new NoMessageParameters(), user);
 
         var sequence = builder.Build();
-        model.AddSequence(sequence);
+        
+        return sequence;
     }
 }

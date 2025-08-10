@@ -13,12 +13,12 @@ internal static class ComponentsElementsRegistration
     {
         elementsRegistry.AddElement(CRM.Create());
         elementsRegistry.AddElement(HRBackendApplication.Create());
-        elementsRegistry.AddElement(HRBackendApiModule.Create());
+        elementsRegistry.AddElement(HRBackendApiModule.Create(elementsRegistry));
         elementsRegistry.AddElement(HRBackendApplicationModule.Create());
         elementsRegistry.AddElement(HRBackendDomainModule.Create());
         elementsRegistry.AddElement(HRBackendInfrastructureModule.Create());
         elementsRegistry.AddElement(HRDatabase.Create());
-        elementsRegistry.AddElement(HRFrontendApplication.Create());
+        elementsRegistry.AddElement(HRFrontendApplication.Create(elementsRegistry));
         elementsRegistry.AddElement(HRSystemBoundary.Create());
     }
 }

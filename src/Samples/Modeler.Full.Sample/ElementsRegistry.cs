@@ -24,6 +24,6 @@ public class ElementsRegistry : ModelElementsRegistry
         var instance = GetInstance(); 
         instance.RegisterHRApiElements();
         instance.RegisterComponents();
-        instance.RegisterSequenceParticipants();
+        instance.RegisterSequences();
     }
 }

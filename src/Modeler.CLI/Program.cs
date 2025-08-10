@@ -82,6 +82,12 @@ Console.WriteLine($"Documentation generation to {documentationPath} started.");
 var elementsRegistry = ElementsRegistry.GetInstance();
 elementsRegistry.RegisterElements();
 
+var modelsRegistry = ModelsRegistry.GetInstance();
+modelsRegistry.RegisterModels(elementsRegistry);
+
+var viewsRegistry = ViewsRegistry.GetInstance();
+viewsRegistry.RegisterViews(modelsRegistry);
+
 GenerateSequenceModels(documentationPath);
 
 GenerateComponentsModels(documentationPath);
@@ -194,14 +200,8 @@ void GenerateDataModels(string path)
 
 void GenerateSequenceModels(string path)
 {
-    // Get model
-    var elementsRegistry = ElementsRegistry.GetInstance();
-    var model = HRSequencesModel.GetInstance(elementsRegistry);
-    
     // Get views
-    var sequenceDiagramViews = new SequenceDiagramViewsFactory(
-        model,
-        Assembly.GetAssembly(typeof(BasicSequenceView))!).GetViews();
+    var sequenceDiagramViews = viewsRegistry.GetElements<SequenceDiagramView>();
     
     // Set views path
     var sequencesModelPath = Path.Combine(path, "Models/Sequences");

@@ -1,6 +1,8 @@
-﻿namespace Modeler.SequenceModel.Views.Shared;
+﻿using Models.Elements;
 
-public class SequenceDiagramView
+namespace Modeler.SequenceModel.Views.Shared;
+
+public class SequenceDiagramView : IView
 {
     public SequenceDiagramView(
         string id,

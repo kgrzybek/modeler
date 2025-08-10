@@ -28,6 +28,6 @@ public class HRSystemFlowSequence : Sequence
         builder.AddSynchronousResponseMessage(frontend, "OK", new NoMessageParameters(), user);
 
         var sequence = builder.Build();
-        model.AddSequence(sequence);
+        // TODO after redesign model.AddSequence(sequence);
     }
 }

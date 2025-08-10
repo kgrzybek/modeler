@@ -2,7 +2,7 @@
 using Modeler.SequenceModel;
 using Models.Elements;
 
-namespace Modeler.Full.Sample.Sequences;
+namespace Modeler.Full.Sample.Sequences.Participants;
 
 public class UserParticipant : Participant
 {
