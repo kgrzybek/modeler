@@ -1,4 +1,5 @@
 ﻿using Modeler.ConceptualModel.Attributes;
+using Models.Elements;
 using Attribute = Modeler.ConceptualModel.Attributes.Attribute;
 
 namespace Modeler.ConceptualModel;
@@ -18,6 +19,8 @@ public abstract class Entity : Concept
         string name)
     {
         this.Name = name;
+
+        this.Id = ElementIdGenerator.GenerateElementId(this.GetType(), name);
 
         return this;
     }

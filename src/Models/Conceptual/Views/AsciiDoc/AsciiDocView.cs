@@ -1,6 +1,8 @@
+using Models.Elements;
+
 namespace Modeler.ConceptualModel.Views.AsciiDoc;
 
-public class AsciiDocView
+public class AsciiDocView : IView
 {
     public AsciiDocView(string id, Concept concept)
     {

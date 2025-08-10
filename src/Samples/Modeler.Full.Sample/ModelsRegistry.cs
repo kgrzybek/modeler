@@ -1,4 +1,5 @@
 ﻿using Modeler.Full.Sample.Components;
+using Modeler.Full.Sample.Conceptual.Concepts;
 using Modeler.Full.Sample.Sequences;
 using Models.Elements;
 
@@ -22,5 +23,6 @@ public class ModelsRegistry : ModelsRegistryBase
     {
         AddElement(new HRSequencesModel(elementsRegistry));
         AddElement(new SystemComponentsModel(elementsRegistry));
+        AddElement(new OrganizationStructureConceptualModel(elementsRegistry));
     }
 }

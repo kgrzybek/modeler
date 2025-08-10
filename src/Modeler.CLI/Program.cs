@@ -6,10 +6,6 @@ using Modeler.ComponentsModel.Views.AsciiDoc.Details;
 using Modeler.ComponentsModel.Views.Markdown;
 using Modeler.ComponentsModel.Views.Markdown.Details;
 using Modeler.ComponentsModel.Views.PlantUml;
-using Modeler.ConceptualModel.Sample.Concepts;
-using Modeler.ConceptualModel.Sample.Views;
-using Modeler.ConceptualModel.Sample.Views.AsciiDocViews;
-using Modeler.ConceptualModel.Sample.Views.MarkdownViews;
 using Modeler.ConceptualModel.Views.Markdown;
 using Modeler.ConceptualModel.Sample.Views.Outputs;
 using Modeler.ConceptualModel.Sample.Views.Translations;
@@ -40,6 +36,7 @@ using Modeler.Full.Sample.Components.Views.AsciiDoc;
 using Modeler.Full.Sample.Components.Views.AsciiDoc.Details;
 using Modeler.Full.Sample.Components.Views.Outputs;
 using Modeler.Full.Sample.Components.Views.Outputs.Markdown;
+using Modeler.Full.Sample.Conceptual.Concepts;
 using Modeler.Full.Sample.Sequences;
 using Modeler.Full.Sample.Sequences.Views;
 using Modeler.Full.Sample.Sequences.Views.Layouts;
@@ -74,8 +71,6 @@ var documentationPath = args[0];
 
 Console.WriteLine($"Documentation generation to {documentationPath} started.");
 
-// GenerateConceptualModels(documentationPath);
-//
 // GenerateDataModels(documentationPath);
 //
 
@@ -93,7 +88,10 @@ GenerateSequenceModels(documentationPath);
 GenerateComponentsModels(documentationPath);
 
 GenerateAsciiDocRestApiViews(documentationPath);
+
 GenerateOpenApiRestApiViews(documentationPath);
+
+GenerateConceptualModels(documentationPath);
 
 // GeneratePlantUmlStateMachineViews(documentationPath);
 //
@@ -112,12 +110,10 @@ Console.WriteLine("Documentation generated.");
 void GenerateConceptualModels(string path)
 {
     // Get model
-    var model = OrganizationStructureConceptualModel.GetInstance();
+    var model = modelsRegistry.GetModel<OrganizationStructureConceptualModel>();
 
-    // Views to generate
-    var classDiagramViews = new ClassDiagramViewsFactory(
-        model,
-        Assembly.GetAssembly(typeof(OrganizationStructureView))!).GetViews();
+    // class diagram views
+    var classDiagramViews = viewsRegistry.GetElements<ClassDiagramView>();
 
     // Views translations
     var viewTranslator = new ViewTranslator();
@@ -140,24 +136,20 @@ void GenerateConceptualModels(string path)
         new FileSystemMermaidViewOutput<ClassDiagramView>(modelsPath)).Generate(classDiagramViews);
 
     // AsciiDoc
-    var asciiDocsViewsFactory = new AsciiDocViewsFactory(
-        model,
-        Assembly.GetAssembly(typeof(EmployeeAsciiDocView))!);
+    var asciDocViews = viewsRegistry.GetElements<AsciiDocView>();
     new AsciiDocViewsGenerator(
         model,
         viewTranslator,
         new FileSystemAsciiDocViewOutput<AsciiDocView>(modelsPath),
-        new AsciiDocViewTranslationDictionary()).Generate(asciiDocsViewsFactory.GetViews());
+        new AsciiDocViewTranslationDictionary()).Generate(asciDocViews);
 
     // Markdown
-    var markdownViewsFactory = new MarkdownViewsFactory(
-        model,
-        Assembly.GetAssembly(typeof(EmployeeMarkdownView))!);
+    var markdownViews = viewsRegistry.GetElements<MarkdownView>();
     new MarkdownViewsGenerator(
         model,
         viewTranslator,
         new FileSystemMarkdownViewOutput<MarkdownView>(modelsPath),
-        new MarkdownViewTranslationDictionary()).Generate(markdownViewsFactory.GetViews());
+        new MarkdownViewTranslationDictionary()).Generate(markdownViews);
 }
 
 void GenerateDataModels(string path)

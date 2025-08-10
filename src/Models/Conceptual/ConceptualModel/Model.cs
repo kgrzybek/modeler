@@ -3,12 +3,13 @@ using Modeler.ConceptualModel.Attributes;
 using Modeler.ConceptualModel.Relationships;
 using Modeler.ConceptualModel.Relationships.Associations;
 using Modeler.ConceptualModel.Relationships.Generalizations;
+using Models.Elements;
 
 namespace Modeler.ConceptualModel;
 
-public abstract class Model
+public abstract class Model : IModel
 {
-    private List<Entity> _entities;
+    private readonly List<Entity> _entities;
 
     private readonly List<AttributeType> _types;
 
@@ -87,38 +88,15 @@ public abstract class Model
         }
     }
 
-    protected Model()
+    protected Model(ModelElementsRegistry elementsRegistry)
     {
-        _entities = new List<Entity>();
+        _entities = elementsRegistry.GetElements<Entity>();
         _types = new List<AttributeType>();
         _relationships = new List<Relationship>();
         RegisterTypes<PrimitiveType>();
         RegisterTypes<EnumerationType>();
         RegisterTypes<ComplexAttributeType>();
-        RegisterEntities();
         InitializeRelationshipsModels();
-    }
-
-    private void RegisterEntities()
-    {
-        var assembly = Assembly.GetAssembly(this.GetType());
-        _entities = new List<Entity>();
-        var types = assembly!
-            .GetTypes()
-            .Where(t =>
-                typeof(Entity).IsAssignableFrom(t))
-            .ToList();
-        
-        foreach (var type in types)
-        {
-            var staticMethod = type.GetMethod("Create", BindingFlags.Static | BindingFlags.Public);
-
-            if (staticMethod != null)
-            {
-                var entity = staticMethod.Invoke(null, null);
-                _entities.Add((Entity) entity!);
-            }
-        }
     }
     
     private void RegisterTypes<T>() where T: AttributeType

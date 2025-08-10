@@ -1,5 +1,6 @@
 ﻿using Modeler.Full.Sample.Apis;
 using Modeler.Full.Sample.Components;
+using Modeler.Full.Sample.Conceptual.Concepts;
 using Modeler.Full.Sample.Sequences;
 using Models.Elements;
 
@@ -24,5 +25,6 @@ public class ElementsRegistry : ModelElementsRegistry
         this.RegisterHRApiElements();
         this.RegisterComponents();
         this.RegisterSequences();
+        this.RegisterConcepts();
     }
 }

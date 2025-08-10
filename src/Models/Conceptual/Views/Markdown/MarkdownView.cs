@@ -1,6 +1,8 @@
+using Models.Elements;
+
 namespace Modeler.ConceptualModel.Views.Markdown;
 
-public class MarkdownView
+public class MarkdownView : IView
 {
     public MarkdownView(string id, Concept concept)
     {

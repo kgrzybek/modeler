@@ -1,8 +1,11 @@
+using Models.Elements;
+
 namespace Modeler.ConceptualModel;
 
-public abstract class Concept
+public abstract class Concept : IElement
 {
     public string Name { get; protected set; } = "Undefined";
+    public string Id { get; protected set; }
 
     public override bool Equals(object? obj)
     {

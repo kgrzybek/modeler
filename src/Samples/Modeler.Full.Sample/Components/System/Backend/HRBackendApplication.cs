@@ -8,14 +8,14 @@ namespace Modeler.Full.Sample.Components.System.Backend;
 
 public class HRBackendApplication : IComponent, ISequenceParticipant
 {
-    public static IElement Create()
+    public static HRBackendApplication Create()
     {
         return new HRBackendApplication();
     }
-    public HRBackendApplication()
+    private HRBackendApplication()
     {
-        this.Name = "Backend";
-        this.Id = ElementIdGenerator.GenerateElementId(this.GetType(), Name);
+        Name = "Backend";
+        Id = ElementIdGenerator.GenerateElementId(GetType(), Name);
         Type = new ApplicationComponentType();
         ParticipantType = new Application();
     }

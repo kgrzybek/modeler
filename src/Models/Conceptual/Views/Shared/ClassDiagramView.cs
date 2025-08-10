@@ -1,6 +1,8 @@
-﻿namespace Modeler.ConceptualModel.Views.Shared;
+﻿using Models.Elements;
 
-public class ClassDiagramView
+namespace Modeler.ConceptualModel.Views.Shared;
+
+public class ClassDiagramView : IView
 {
     public ClassDiagramView(
         string id,
