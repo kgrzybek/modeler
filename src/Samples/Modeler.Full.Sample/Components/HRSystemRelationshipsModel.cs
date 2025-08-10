@@ -1,5 +1,4 @@
-﻿using Modeler.ComponentsModel;
-using Modeler.Full.Sample.Components.ExternalSystems;
+﻿using Modeler.Full.Sample.Components.ExternalSystems;
 using Modeler.Full.Sample.Components.System;
 using Modeler.Full.Sample.Components.System.Backend;
 using Modeler.Full.Sample.Components.System.Backend.Modules;
@@ -8,7 +7,7 @@ using Modeler.Full.Sample.Components.System.Frontend;
 
 namespace Modeler.Full.Sample.Components;
 
-public class HRSystemRelationshipsModel : RelationshipsModel
+public static class HRSystemRelationshipsModel
 {
     public static void Create(SystemComponentsModel model)
     {

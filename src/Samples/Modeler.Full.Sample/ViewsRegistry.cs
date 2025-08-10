@@ -1,4 +1,8 @@
-﻿using Modeler.Full.Sample.Sequences;
+﻿using Modeler.Full.Sample.Components;
+using Modeler.Full.Sample.Components.Views;
+using Modeler.Full.Sample.Components.Views.AsciiDoc.Details;
+using Modeler.Full.Sample.Components.Views.Markdown.Details;
+using Modeler.Full.Sample.Sequences;
 using Modeler.Full.Sample.Sequences.Views;
 using Models.Elements;
 
@@ -20,8 +24,13 @@ public class ViewsRegistry : ViewsRegistryBase
     
     public void RegisterViews(ModelsRegistry modelsRegistry)
     {
-        var instance = GetInstance();
-        instance.AddElement(BasicSequenceView.Create(modelsRegistry.GetModel<HRSequencesModel>()));
-        instance.AddElement(BasicSequencePartView.Create(modelsRegistry.GetModel<HRSequencesModel>()));
+        AddElement(BasicSequenceView.Create(modelsRegistry.GetModel<HRSequencesModel>()));
+        AddElement(BasicSequencePartView.Create(modelsRegistry.GetModel<HRSequencesModel>()));
+        
+        AddElement(AsciiDocBackendDetailsViewDefinition.Create(modelsRegistry.GetModel<SystemComponentsModel>()));
+        AddElement(AsciiDocFrontendDetailsViewDefinition.Create(modelsRegistry.GetModel<SystemComponentsModel>()));
+        AddElement(MarkdownBackendDetailsViewDefinition.Create(modelsRegistry.GetModel<SystemComponentsModel>()));
+        AddElement(MarkdownFrontendDetailsViewDefinition.Create(modelsRegistry.GetModel<SystemComponentsModel>()));
+        AddElement(SystemComponentsView.Create(modelsRegistry.GetModel<SystemComponentsModel>()));
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace Modeler.ComponentsModel.Views.PlantUml;
+﻿using Models.Elements;
 
-public class ComponentsDiagramView
+namespace Modeler.ComponentsModel.Views.PlantUml;
+
+public class ComponentsDiagramView : IView
 {
     public ComponentsDiagramView(
         string id,

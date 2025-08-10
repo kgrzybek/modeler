@@ -221,42 +221,35 @@ void GenerateSequenceModels(string path)
 
 void GenerateComponentsModels(string path)
 {
-    var model = SystemComponentsModel.GetInstance(elementsRegistry);
-    var viewsAssembly = Assembly.GetAssembly(typeof(SystemComponentsModel))!;
+    var systemComponentsModel = modelsRegistry.GetModel<SystemComponentsModel>();
     
     // Get views
-    var sequenceDiagramViews = new ComponentsDiagramViewsFactory(
-        model,
-        viewsAssembly!).GetViews();
+    var componentDiagramViews = viewsRegistry.GetElements<ComponentsDiagramView>();
     
     // Set views path
     var componentsModelPath = Path.Combine(path, "Models/Components");
     
     // Generate PlantUML views
     var fileSystemOutput = new FileSystemPlantUmlComponentsDiagramViewOutput<ComponentsDiagramView>(componentsModelPath);
-    new PlantComponentsDiagramViewGenerator(model, fileSystemOutput, new ComponentsDiagramDefaultViewLayout()).Generate(sequenceDiagramViews);
+    new PlantComponentsDiagramViewGenerator(systemComponentsModel, fileSystemOutput, new ComponentsDiagramDefaultViewLayout()).Generate(componentDiagramViews);
     
     // Generate AsciiDoc components list view
     var fileSystemAsciiDocComponentsListTableViewOutput = new FileSystemAsciiDocComponentsListTableViewOutput(componentsModelPath);
-    new AsciiDocComponentsListTableViewGenerator(model, fileSystemAsciiDocComponentsListTableViewOutput).Generate();
+    new AsciiDocComponentsListTableViewGenerator(systemComponentsModel, fileSystemAsciiDocComponentsListTableViewOutput).Generate();
     
     // Generate AsciiDoc components details views
-    var asciiDocDetailsViews = new AsciiDocComponentsDetailsViewsFactory(
-        model,
-        viewsAssembly).GetViews();
+    var asciiDocDetailsViews = viewsRegistry.GetElements<AsciiDocComponentDetailsView>();
     var fileSystemAsciiDocComponentsDetailsViewOutput = new FileSystemAsciiDocComponentsDetailsViewOutput<AsciiDocComponentDetailsView>(componentsModelPath);
-    new AsciiDocComponentsDetailsViewsGenerator(model, fileSystemAsciiDocComponentsDetailsViewOutput).Generate(asciiDocDetailsViews);
+    new AsciiDocComponentsDetailsViewsGenerator(systemComponentsModel, fileSystemAsciiDocComponentsDetailsViewOutput).Generate(asciiDocDetailsViews);
 
     // Generate Markdown components list view
     var fileSystemMarkdownComponentsListTableViewOutput = new FileSystemMarkdownComponentsListTableViewOutput(componentsModelPath);
-    new MarkdownComponentsListTableViewGenerator(model, fileSystemMarkdownComponentsListTableViewOutput).Generate();
+    new MarkdownComponentsListTableViewGenerator(systemComponentsModel, fileSystemMarkdownComponentsListTableViewOutput).Generate();
 
     // Generate Markdown components details views
-    var markdownDetailsViews = new MarkdownComponentsDetailsViewsFactory(
-        model,
-        viewsAssembly).GetViews();
+    var markdownDetailsViews = viewsRegistry.GetElements<MarkdownComponentDetailsView>();
     var fileSystemMarkdownComponentsDetailsViewOutput = new FileSystemMarkdownComponentsDetailsViewOutput<MarkdownComponentDetailsView>(componentsModelPath);
-    new MarkdownComponentsDetailsViewsGenerator(model, fileSystemMarkdownComponentsDetailsViewOutput).Generate(markdownDetailsViews);
+    new MarkdownComponentsDetailsViewsGenerator(systemComponentsModel, fileSystemMarkdownComponentsDetailsViewOutput).Generate(markdownDetailsViews);
 }
 
 void GeneratePlantUmlStateMachineViews(string path)

@@ -21,9 +21,8 @@ public class ElementsRegistry : ModelElementsRegistry
 
     public void RegisterElements()
     {
-        var instance = GetInstance(); 
-        instance.RegisterHRApiElements();
-        instance.RegisterComponents();
-        instance.RegisterSequences();
+        this.RegisterHRApiElements();
+        this.RegisterComponents();
+        this.RegisterSequences();
     }
 }

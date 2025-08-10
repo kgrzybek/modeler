@@ -3,7 +3,7 @@ using Models.Elements;
 
 namespace Modeler.ComponentsModel;
 
-public abstract class Model
+public abstract class Model : IModel
 {
     private List<IComponent> _components;
 
@@ -13,7 +13,6 @@ public abstract class Model
     {
         _components = elementsRegistry.GetElements<IComponent>();
         _relationships = new List<ComponentRelationship>();
-        InitializeRelationshipsModels();
     }
 
     public IComponent GetComponent<T>() where T : IComponent
@@ -59,26 +58,6 @@ public abstract class Model
     public void AddContainsRelationship(IComponent source, IComponent target)
     {
         _relationships.Add(new ContainsComponentRelationship(source, target));
-    }
-
-    private void InitializeRelationshipsModels()
-    {
-        var assembly = Assembly.GetAssembly(this.GetType())!;
-        var types = assembly
-            .GetTypes()
-            .Where(t =>
-                typeof(RelationshipsModel).IsAssignableFrom(t))
-            .ToList();
-
-        foreach (var type in types)
-        {
-            var staticMethod = type.GetMethod("Create", BindingFlags.Static | BindingFlags.Public);
-
-            if (staticMethod != null)
-            {
-                staticMethod.Invoke(null, new object?[] {this});
-            }
-        }
     }
 
     public List<ComponentRelationship> GetRelationships() => _relationships.ToList();

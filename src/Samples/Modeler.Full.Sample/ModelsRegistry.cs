@@ -1,4 +1,5 @@
-﻿using Modeler.Full.Sample.Sequences;
+﻿using Modeler.Full.Sample.Components;
+using Modeler.Full.Sample.Sequences;
 using Models.Elements;
 
 namespace Modeler.Full.Sample;
@@ -19,7 +20,7 @@ public class ModelsRegistry : ModelsRegistryBase
     
     public void RegisterModels(ElementsRegistry elementsRegistry)
     {
-        var instance = GetInstance(); 
-        instance.AddElement(new HRSequencesModel(elementsRegistry));
+        AddElement(new HRSequencesModel(elementsRegistry));
+        AddElement(new SystemComponentsModel(elementsRegistry));
     }
 }
