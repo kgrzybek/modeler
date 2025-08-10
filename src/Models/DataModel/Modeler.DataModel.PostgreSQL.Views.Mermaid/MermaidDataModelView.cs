@@ -1,6 +1,8 @@
+using Models.Elements;
+
 namespace Modeler.DataModel.PostgreSQL.Views.Mermaid;
 
-public class MermaidDataModelView
+public class MermaidDataModelView : IView
 {
     public MermaidDataModelView(
         List<VisibleStructureElement> visibleTables,

@@ -18,6 +18,13 @@
       <ProjectReference Include="..\..\Models\Conceptual\Views\Mermaid\Modeler.ConceptualModel.Views.Mermaid.csproj" />
       <ProjectReference Include="..\..\Models\Conceptual\Views\PlantUml\Modeler.ConceptualModel.Views.PlantUml.csproj" />
       <ProjectReference Include="..\..\Models\Conceptual\Views\Shared\Modeler.ConceptualModel.Views.Shared.csproj" />
+      <ProjectReference Include="..\..\Models\DataModel\Modeler.DataModel.PostgreSQL.Views.AsciiDoc\Modeler.DataModel.PostgreSQL.Views.AsciiDoc.csproj" />
+      <ProjectReference Include="..\..\Models\DataModel\Modeler.DataModel.PostgreSQL.Views.Markdown\Modeler.DataModel.PostgreSQL.Views.Markdown.csproj" />
+      <ProjectReference Include="..\..\Models\DataModel\Modeler.DataModel.PostgreSQL.Views.Mermaid\Modeler.DataModel.PostgreSQL.Views.Mermaid.csproj" />
+      <ProjectReference Include="..\..\Models\DataModel\Modeler.DataModel.PostgreSQL.Views.PlantUml\Modeler.DataModel.PostgreSQL.Views.PlantUml.csproj" />
+      <ProjectReference Include="..\..\Models\DataModel\Modeler.DataModel.PostgreSQL.Views.Shared\Modeler.DataModel.PostgreSQL.Views.Shared.csproj" />
+      <ProjectReference Include="..\..\Models\DataModel\Modeler.DataModel.PostgreSQL.Views.SQL\Modeler.DataModel.PostgreSQL.Views.SQL.csproj" />
+      <ProjectReference Include="..\..\Models\DataModel\Modeler.DataModel\Modeler.DataModel.csproj" />
       <ProjectReference Include="..\..\Models\RestApiModel\Modeler.RestApiModel.Views.AsciiDoc\Modeler.RestApiModel.Views.AsciiDoc.csproj" />
       <ProjectReference Include="..\..\Models\RestApiModel\Modeler.RestApiModel.Views.OpenApi\Modeler.RestApiModel.Views.OpenApi.csproj" />
       <ProjectReference Include="..\..\Models\RestApiModel\Modeler.RestApiModel\Modeler.RestApiModel.csproj" />

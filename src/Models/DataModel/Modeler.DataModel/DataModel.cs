@@ -2,81 +2,17 @@
 using Modeler.DataModel.Relationships;
 using Modeler.DataModel.Relationships.Multiplicity;
 using Modeler.DataModel.Structure;
+using Models.Elements;
 
 namespace Modeler.DataModel;
 
-public class DataModel
+public class DataModel : IModel
 {
-    private void InitializeTables()
+    protected DataModel(ModelElementsRegistry elementsRegistry)
     {
-        var assembly = Assembly.GetAssembly(this.GetType())!;
-        var types = assembly
-            .GetTypes()
-            .Where(t =>
-                typeof(Table).IsAssignableFrom(t))
-            .ToList();
-
-        foreach (var type in types)
-        {
-            var staticMethod = type.GetMethod("Create", BindingFlags.Static | BindingFlags.Public);
-
-            if (staticMethod != null)
-            {
-                var concept = staticMethod.Invoke(null, null);
-                _tables.Add((Table)concept!);
-            }
-        }
-    }
-
-    private void InitializeViews()
-    {
-        var assembly = Assembly.GetAssembly(this.GetType())!;
-        var types = assembly
-            .GetTypes()
-            .Where(t =>
-                typeof(View).IsAssignableFrom(t))
-            .ToList();
-
-        foreach (var type in types)
-        {
-            var staticMethod = type.GetMethod("Create", BindingFlags.Static | BindingFlags.Public);
-
-            if (staticMethod != null)
-            {
-                var concept = staticMethod.Invoke(null, null);
-                _views.Add((View)concept!);
-            }
-        }
-    }
-
-    private void InitializeModels()
-    {
-        var assembly = Assembly.GetAssembly(this.GetType())!;
-        var types = assembly
-            .GetTypes()
-            .Where(t =>
-                typeof(TableRelationshipsModel).IsAssignableFrom(t))
-            .ToList();
-
-        foreach (var type in types)
-        {
-            var staticMethod = type.GetMethod("Create", BindingFlags.Static | BindingFlags.Public);
-
-            if (staticMethod != null)
-            {
-                staticMethod.Invoke(null, new object?[]{ this });
-            }
-        }
-    }
-
-    protected DataModel()
-    {
-        _tables = new List<Table>();
-        _views = new List<View>();
+        _tables = elementsRegistry.GetElements<Table>();
+        _views = elementsRegistry.GetElements<View>();
         _relationships = new List<StructureElementRelationship>();
-        InitializeTables();
-        InitializeViews();
-        InitializeModels();
     }
 
     private List<Table> _tables;

@@ -59,6 +59,7 @@ using Modeler.RestApiModel.Views.AsciiDoc;
 using Modeler.RestApiModel.Sample.Views.OpenApi;
 using Modeler.RestApiModel.Sample.Views.OpenApi.Outputs;
 using Modeler.RestApiModel.Views.OpenApi;
+using HRDataModel = Modeler.Full.Sample.Data.Structure.HRDataModel;
 using MermaidClassDiagramViewGenerator = Modeler.ConceptualModel.Views.Mermaid.MermaidClassDiagramViewGenerator;
 using SystemComponentsModel = Modeler.Full.Sample.Components.SystemComponentsModel;
 
@@ -71,9 +72,6 @@ var documentationPath = args[0];
 
 Console.WriteLine($"Documentation generation to {documentationPath} started.");
 
-// GenerateDataModels(documentationPath);
-//
-
 var elementsRegistry = ElementsRegistry.GetInstance();
 elementsRegistry.RegisterElements();
 
@@ -82,6 +80,8 @@ modelsRegistry.RegisterModels(elementsRegistry);
 
 var viewsRegistry = ViewsRegistry.GetInstance();
 viewsRegistry.RegisterViews(modelsRegistry);
+
+GenerateDataModels(documentationPath);
 
 GenerateSequenceModels(documentationPath);
 
@@ -155,7 +155,7 @@ void GenerateConceptualModels(string path)
 void GenerateDataModels(string path)
 {
     // Get model
-    var model = HRDataModel.GetInstance();
+    var model = modelsRegistry.GetModel<HRDataModel>();
     
     // Generate database scripts
     var dataModelPath = Path.Combine(path, "Models/Data");
@@ -163,24 +163,22 @@ void GenerateDataModels(string path)
     new PostgreSqlStructureViewsGenerator(model, fileSystemOutput).Generate();
 
     // Generate data model diagrams
-    var plantUmlDataModelViewsFactory = new PlantUmlDataModelViewsFactory(model);
-    plantUmlDataModelViewsFactory.Initialize(Assembly.GetAssembly(typeof(EmployeesTable))!);
+    var plantUmlDataViews = viewsRegistry.GetElements<PlantUmlDataModelView>();
     var viewTranslator = new Modeler.DataModel.Sample.Views.Translations.ViewTranslator();
     
     PlantUmlDataModelGenerator.Generate(
         path,
         model,
         4,
-        plantUmlDataModelViewsFactory.Views,
+        plantUmlDataViews,
         viewTranslator);
 
-    var mermaidDataModelViewsFactory = new MermaidDataModelViewsFactory(model);
-    mermaidDataModelViewsFactory.Initialize(Assembly.GetAssembly(typeof(EmployeesTable))!);
+    var mermaidUmlDataViews = viewsRegistry.GetElements<MermaidDataModelView>();
     MermaidDataModelGenerator.Generate(
         path,
         model,
         4,
-        mermaidDataModelViewsFactory.Views,
+        mermaidUmlDataViews,
         viewTranslator);
 
     // Generate ascii doc tables

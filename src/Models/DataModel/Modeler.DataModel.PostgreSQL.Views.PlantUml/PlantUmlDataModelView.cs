@@ -1,6 +1,8 @@
-﻿namespace Modeler.DataModel.PostgreSQL.Views.PlantUml;
+﻿using Models.Elements;
 
-public class PlantUmlDataModelView
+namespace Modeler.DataModel.PostgreSQL.Views.PlantUml;
+
+public class PlantUmlDataModelView : IView
 {
     public PlantUmlDataModelView(
         List<VisibleStructureElement> visibleTables,

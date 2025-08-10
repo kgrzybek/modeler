@@ -1,4 +1,5 @@
 using Modeler.DataModel.Schemas;
+using Models.Elements;
 
 namespace Modeler.DataModel.Structure;
 
@@ -15,6 +16,8 @@ public abstract class Table : StructureElement
         string name)
     {
         this.Name = name;
+
+        this.Id = ElementIdGenerator.GenerateElementId(this.GetType(), name);
 
         return this;
     }

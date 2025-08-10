@@ -1,16 +1,10 @@
-﻿namespace Modeler.DataModel.Sample.Structure;
+﻿using Models.Elements;
+
+namespace Modeler.DataModel.Sample.Structure;
 
 public class HRDataModel : DataModel
 {
-    private static HRDataModel? _instance;
-
-    public static HRDataModel GetInstance()
+    protected HRDataModel(ModelElementsRegistry elementsRegistry) : base(elementsRegistry)
     {
-        if (_instance == null)
-        {
-            _instance = new HRDataModel();
-        }
-
-        return _instance;
     }
 }
