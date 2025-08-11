@@ -1,6 +1,6 @@
 using Modeler.EventsFlowModel.Views.AsciiDoc;
 
-namespace Modeler.EventsFlowModel.Sample.Views.AsciiDoc;
+namespace Modeler.Full.Sample.EventsFlow.Views.AsciiDoc;
 
 public class HREventsFlowAsciiDocViewDefinition : AsciiDocEventFlowsViewDefinition
 {

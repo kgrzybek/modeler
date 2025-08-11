@@ -1,6 +1,8 @@
-﻿namespace Modeler.EventsFlowModel;
+﻿using Models.Elements;
 
-public abstract class FlowElement
+namespace Modeler.EventsFlowModel;
+
+public abstract class FlowElement : IElement
 {
     public string Name { get; protected set; } = "Undefined";
     

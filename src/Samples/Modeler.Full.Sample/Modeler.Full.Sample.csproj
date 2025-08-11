@@ -25,6 +25,10 @@
       <ProjectReference Include="..\..\Models\DataModel\Modeler.DataModel.PostgreSQL.Views.Shared\Modeler.DataModel.PostgreSQL.Views.Shared.csproj" />
       <ProjectReference Include="..\..\Models\DataModel\Modeler.DataModel.PostgreSQL.Views.SQL\Modeler.DataModel.PostgreSQL.Views.SQL.csproj" />
       <ProjectReference Include="..\..\Models\DataModel\Modeler.DataModel\Modeler.DataModel.csproj" />
+      <ProjectReference Include="..\..\Models\EventsFlow\Modeler.EventsFlowModel.Views.AsciiDoc\Modeler.EventsFlowModel.Views.AsciiDoc.csproj" />
+      <ProjectReference Include="..\..\Models\EventsFlow\Modeler.EventsFlowModel.Views.Markdown\Modeler.EventsFlowModel.Views.Markdown.csproj" />
+      <ProjectReference Include="..\..\Models\EventsFlow\Modeler.EventsFlowModel.Views.Mermaid\Modeler.EventsFlowModel.Views.Mermaid.csproj" />
+      <ProjectReference Include="..\..\Models\EventsFlow\Modeler.EventsFlowModel\Modeler.EventsFlowModel.csproj" />
       <ProjectReference Include="..\..\Models\RestApiModel\Modeler.RestApiModel.Views.AsciiDoc\Modeler.RestApiModel.Views.AsciiDoc.csproj" />
       <ProjectReference Include="..\..\Models\RestApiModel\Modeler.RestApiModel.Views.OpenApi\Modeler.RestApiModel.Views.OpenApi.csproj" />
       <ProjectReference Include="..\..\Models\RestApiModel\Modeler.RestApiModel\Modeler.RestApiModel.csproj" />

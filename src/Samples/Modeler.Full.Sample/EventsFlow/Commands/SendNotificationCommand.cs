@@ -1,4 +1,6 @@
-﻿namespace Modeler.EventsFlowModel.Sample.Commands;
+﻿using Modeler.EventsFlowModel;
+
+namespace Modeler.Full.Sample.EventsFlow.Commands;
 
 public class SendNotificationCommand : Command
 {

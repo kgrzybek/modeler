@@ -15,11 +15,7 @@ using Modeler.DataModel.PostgreSQL.Views.Markdown;
 using Modeler.DataModel.PostgreSQL.Views.PlantUml;
 using Modeler.DataModel.PostgreSQL.Views.Mermaid;
 using Modeler.DataModel.PostgreSQL.Views.SQL.Generator;
-using Modeler.EventsFlowModel.Sample;
-using Modeler.EventsFlowModel.Sample.Views.AsciiDoc;
-using Modeler.EventsFlowModel.Sample.Views.Mermaid;
 using Modeler.EventsFlowModel.Views.Mermaid;
-using Modeler.EventsFlowModel.Sample.Views.Markdown;
 using Modeler.EventsFlowModel.Views.AsciiDoc;
 using Modeler.EventsFlowModel.Views.Markdown;
 using Modeler.Full.Sample;
@@ -38,6 +34,10 @@ using Modeler.Full.Sample.Conceptual.Views.Outputs;
 using Modeler.Full.Sample.Conceptual.Views.Outputs.Markdown;
 using Modeler.Full.Sample.Conceptual.Views.Translations;
 using Modeler.Full.Sample.Data.Views.Outputs;
+using Modeler.Full.Sample.EventsFlow;
+using Modeler.Full.Sample.EventsFlow.Views.AsciiDoc;
+using Modeler.Full.Sample.EventsFlow.Views.Markdown;
+using Modeler.Full.Sample.EventsFlow.Views.Mermaid;
 using Modeler.Full.Sample.Sequences.Views.Layouts;
 using Modeler.Full.Sample.Sequences.Views.Outputs;
 using Modeler.Full.Sample.Sequences.Views.Translations;
@@ -68,7 +68,7 @@ Console.WriteLine($"Documentation generation to {documentationPath} started.");
 var elementsRegistry = ElementsRegistry.GetInstance();
 elementsRegistry.RegisterElements();
 
-var modelsRegistry = ModelsRegistry.GetInstance();
+var modelsRegistry = new ModelsRegistry();
 modelsRegistry.RegisterModels(elementsRegistry);
 
 var viewsRegistry = ViewsRegistry.GetInstance();
@@ -92,10 +92,9 @@ GenerateAsciiDocStateMachineTableViews(documentationPath);
 
 GenerateMarkdownStateMachineTableViews(documentationPath);
 
-// GenerateMermaidEventsFlowViews(documentationPath);
-// GenerateMarkdownEventsFlowViews(documentationPath);
-// GenerateAsciiDocEventsFlowViews(documentationPath);
-
+GenerateMermaidEventsFlowViews(documentationPath);
+GenerateMarkdownEventsFlowViews(documentationPath);
+GenerateAsciiDocEventsFlowViews(documentationPath);
 
 Console.WriteLine("Documentation generated.");
 
@@ -276,12 +275,8 @@ void GenerateMarkdownStateMachineTableViews(string path)
 
 void GenerateMermaidEventsFlowViews(string path)
 {
-    var model = HREventsFlowModel.GetInstance();
-    
     // Get views
-    var views = new MermaidEventsFlowViewsFactory(
-        model,
-        Assembly.GetAssembly(typeof(HREventsFlowViewDefinition))!).Views;
+    var views = viewsRegistry.GetElements<MermaidEventFlowsView>();
     
     // Set views path
     var viewsPath = Path.Combine(path, "Models/EventsFlows");
@@ -293,11 +288,7 @@ void GenerateMermaidEventsFlowViews(string path)
 
 void GenerateMarkdownEventsFlowViews(string path)
 {
-    var model = HREventsFlowModel.GetInstance();
-
-    var views = new MarkdownEventsFlowViewsFactory(
-        model,
-        Assembly.GetAssembly(typeof(HREventsFlowMarkdownViewDefinition))!).Views;
+    var views = viewsRegistry.GetElements<MarkdownEventFlowsView>();
 
     var viewsPath = Path.Combine(path, "Models/EventsFlows");
 
@@ -307,11 +298,7 @@ void GenerateMarkdownEventsFlowViews(string path)
 
 void GenerateAsciiDocEventsFlowViews(string path)
 {
-    var model = HREventsFlowModel.GetInstance();
-
-    var views = new AsciiDocEventsFlowViewsFactory(
-        model,
-        Assembly.GetAssembly(typeof(HREventsFlowAsciiDocViewDefinition))!).Views;
+    var views = viewsRegistry.GetElements<AsciiDocEventFlowsView>();
 
     var viewsPath = Path.Combine(path, "Models/EventsFlows");
 

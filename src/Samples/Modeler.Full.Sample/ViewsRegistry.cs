@@ -8,6 +8,10 @@ using Modeler.Full.Sample.Conceptual.Views.AsciiDocViews;
 using Modeler.Full.Sample.Conceptual.Views.MarkdownViews;
 using Modeler.Full.Sample.Data.Structure;
 using Modeler.Full.Sample.Data.Views;
+using Modeler.Full.Sample.EventsFlow;
+using Modeler.Full.Sample.EventsFlow.Views.AsciiDoc;
+using Modeler.Full.Sample.EventsFlow.Views.Markdown;
+using Modeler.Full.Sample.EventsFlow.Views.Mermaid;
 using Modeler.Full.Sample.Sequences;
 using Modeler.Full.Sample.Sequences.Views;
 using Modeler.Full.Sample.State.Models;
@@ -63,5 +67,9 @@ public class ViewsRegistry : ViewsRegistryBase
         AddElement(AbsenceStateMachineAsciiDocTableViewDefinition.Create(modelsRegistry.GetModel<HRStateModel>()));
         AddElement(AbsenceStateMachineMarkdownTableViewDefinition.Create(modelsRegistry.GetModel<HRStateModel>()));
         AddElement(AbsenceStateMachinePlantUmlViewDefinition.Create(modelsRegistry.GetModel<HRStateModel>()));
+        
+        AddElement(HREventsFlowAsciiDocViewDefinition.Create(modelsRegistry.GetModel<HREventsFlowModel>()));
+        AddElement(HREventsFlowMarkdownViewDefinition.Create(modelsRegistry.GetModel<HREventsFlowModel>()));
+        AddElement(HREventsFlowViewDefinition.Create(modelsRegistry.GetModel<HREventsFlowModel>()));
     }
 }

@@ -1,20 +1,20 @@
-using Modeler.EventsFlowModel.Views.Markdown;
+using Modeler.EventsFlowModel.Views.AsciiDoc;
 
-namespace Modeler.EventsFlowModel.Sample.Views.Markdown;
+namespace Modeler.Full.Sample.EventsFlow.Views.AsciiDoc;
 
-public class FileSystemMarkdownEventsFlowViewOutput<T> : IMarkdownEventsFlowViewsOutput<T>
+public class FileSystemAsciiDocEventsFlowViewOutput<T> : IAsciiDocEventsFlowViewsOutput<T>
 {
     private readonly string _absoluteDirectoryPath;
     private readonly IDictionary<string, string> _relativePaths;
 
-    public FileSystemMarkdownEventsFlowViewOutput(string absoluteDirectoryPath)
+    public FileSystemAsciiDocEventsFlowViewOutput(string absoluteDirectoryPath)
     {
         _absoluteDirectoryPath = absoluteDirectoryPath;
         _relativePaths = new Dictionary<string, string>();
-        _relativePaths.Add(HREventsFlowMarkdownViewDefinition.Id, "HREventsFlow.md");
+        _relativePaths.Add(HREventsFlowAsciiDocViewDefinition.Id, "HREventsFlow.adoc");
     }
 
-    public void Execute(List<MarkdownEventsFlowViewsOutputItem<T>> views)
+    public void Execute(List<AsciiDocEventsFlowViewsOutputItem<T>> views)
     {
         if (!Directory.Exists(_absoluteDirectoryPath))
         {

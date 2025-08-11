@@ -1,6 +1,8 @@
-﻿namespace Modeler.EventsFlowModel.Views.Mermaid;
+﻿using Models.Elements;
 
-public class MermaidEventFlowsView
+namespace Modeler.EventsFlowModel.Views.Mermaid;
+
+public class MermaidEventFlowsView : IView
 {
     public MermaidEventFlowsView(
         string id,

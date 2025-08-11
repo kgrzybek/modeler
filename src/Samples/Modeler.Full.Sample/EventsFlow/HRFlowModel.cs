@@ -1,7 +1,8 @@
-﻿using Modeler.EventsFlowModel.Sample.Commands;
-using Modeler.EventsFlowModel.Sample.Events;
+﻿using Modeler.EventsFlowModel;
+using Modeler.Full.Sample.EventsFlow.Commands;
+using Modeler.Full.Sample.EventsFlow.Events;
 
-namespace Modeler.EventsFlowModel.Sample;
+namespace Modeler.Full.Sample.EventsFlow;
 
 public class HRFlowModel : FlowModel
 {

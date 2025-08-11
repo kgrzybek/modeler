@@ -1,6 +1,8 @@
+using Models.Elements;
+
 namespace Modeler.EventsFlowModel.Views.AsciiDoc;
 
-public class AsciiDocEventFlowsView
+public class AsciiDocEventFlowsView : IView
 {
     public AsciiDocEventFlowsView(string id, Model model)
     {

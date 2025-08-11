@@ -1,4 +1,6 @@
-﻿namespace Modeler.EventsFlowModel.Sample.Events;
+﻿using Modeler.EventsFlowModel;
+
+namespace Modeler.Full.Sample.EventsFlow.Events;
 
 public class SmsSentEvent : Event
 {

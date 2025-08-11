@@ -1,6 +1,6 @@
 using Modeler.EventsFlowModel.Views.Markdown;
 
-namespace Modeler.EventsFlowModel.Sample.Views.Markdown;
+namespace Modeler.Full.Sample.EventsFlow.Views.Markdown;
 
 public class HREventsFlowMarkdownViewDefinition : MarkdownEventFlowsViewDefinition
 {

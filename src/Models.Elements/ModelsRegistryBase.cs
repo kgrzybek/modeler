@@ -2,14 +2,14 @@
 
 public class ModelsRegistryBase
 {
-    private List<IModel> _models;
+    private readonly List<IModel> _models;
     
     protected ModelsRegistryBase()
     {
         _models = new List<IModel>();
     }
-    
-    public void AddElement(IModel model)
+
+    protected void AddElement(IModel model)
     {
         _models.Add(model);
     }
