@@ -3,6 +3,7 @@ using Modeler.Full.Sample.Components;
 using Modeler.Full.Sample.Conceptual.Concepts;
 using Modeler.Full.Sample.Data;
 using Modeler.Full.Sample.Sequences;
+using Modeler.Full.Sample.State;
 using Models.Elements;
 
 namespace Modeler.Full.Sample;
@@ -28,5 +29,6 @@ public class ElementsRegistry : ModelElementsRegistry
         this.RegisterSequences();
         this.RegisterConcepts();
         this.RegisterDataModelElements();
+        this.RegisterStateMachineElements();
     }
 }

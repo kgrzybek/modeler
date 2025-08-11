@@ -32,6 +32,10 @@
       <ProjectReference Include="..\..\Models\SequenceModel\Modeler.SequenceModel.Views.PlantUml\Modeler.SequenceModel.Views.PlantUml.csproj" />
       <ProjectReference Include="..\..\Models\SequenceModel\Modeler.SequenceModel.Views.Shared\Modeler.SequenceModel.Views.Shared.csproj" />
       <ProjectReference Include="..\..\Models\SequenceModel\Modeler.SequenceModel\Modeler.SequenceModel.csproj" />
+      <ProjectReference Include="..\..\Models\StateModel\Modeler.StateModel.Views.AsciiDoc\Modeler.StateModel.Views.AsciiDoc.csproj" />
+      <ProjectReference Include="..\..\Models\StateModel\Modeler.StateModel.Views.Markdown\Modeler.StateModel.Views.Markdown.csproj" />
+      <ProjectReference Include="..\..\Models\StateModel\Modeler.StateModel.Views.PlantUml\Modeler.StateModel.Views.PlantUml.csproj" />
+      <ProjectReference Include="..\..\Models\StateModel\Modeler.StateModel\Modeler.StateModel.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,6 +1,8 @@
-﻿namespace Modeler.StateModel;
+﻿using Models.Elements;
 
-public abstract class State
+namespace Modeler.StateModel;
+
+public abstract class State : IElement
 {
     protected State(string name)
     {

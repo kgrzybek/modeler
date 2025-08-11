@@ -10,6 +10,10 @@ using Modeler.Full.Sample.Data.Structure;
 using Modeler.Full.Sample.Data.Views;
 using Modeler.Full.Sample.Sequences;
 using Modeler.Full.Sample.Sequences.Views;
+using Modeler.Full.Sample.State.Models;
+using Modeler.Full.Sample.State.Views.AsciiDoc;
+using Modeler.Full.Sample.State.Views.Markdown;
+using Modeler.Full.Sample.State.Views.PlantUml;
 using Models.Elements;
 
 namespace Modeler.Full.Sample;
@@ -55,5 +59,9 @@ public class ViewsRegistry : ViewsRegistryBase
         
         AddElement(OrganizationsMermaidView.Create(modelsRegistry.GetModel<HRDataModel>()));
         AddElement(OrganizationsPlantUmlView.Create(modelsRegistry.GetModel<HRDataModel>()));
+
+        AddElement(AbsenceStateMachineAsciiDocTableViewDefinition.Create(modelsRegistry.GetModel<HRStateModel>()));
+        AddElement(AbsenceStateMachineMarkdownTableViewDefinition.Create(modelsRegistry.GetModel<HRStateModel>()));
+        AddElement(AbsenceStateMachinePlantUmlViewDefinition.Create(modelsRegistry.GetModel<HRStateModel>()));
     }
 }

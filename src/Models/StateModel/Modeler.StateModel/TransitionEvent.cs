@@ -1,18 +1,15 @@
-﻿namespace Modeler.StateModel;
+﻿using Models.Elements;
 
-public abstract class TransitionEvent
+namespace Modeler.StateModel;
+
+public abstract class TransitionEvent : IElement
 {
     protected TransitionEvent(string name)
     {
         Name = name;
+        Id = ElementIdGenerator.GenerateElementId(GetType(), name);
     }
 
     public string Name { get; }
-}
-
-public class Description : TransitionEvent
-{
-    public Description(string? name) : base(name ?? string.Empty)
-    {
-    }
+    public string Id { get; }
 }

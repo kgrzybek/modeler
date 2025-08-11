@@ -1,17 +1,18 @@
-﻿using Modeler.StateModel.Sample.Models.Events;
-using Modeler.StateModel.Sample.Models.StateMachines.Absence.States;
+﻿using Modeler.Full.Sample.State.Models.Events;
+using Modeler.Full.Sample.State.Models.StateMachines.Absence.States;
+using Modeler.StateModel;
 
-namespace Modeler.StateModel.Sample.Models.StateMachines.Absence;
+namespace Modeler.Full.Sample.State.Models.StateMachines.Absence;
 
 public class AbsenceStateMachine : StateMachine
 {
-    public AbsenceStateMachine(string name) : base(name)
+    private AbsenceStateMachine(string name) : base(name)
     {
+        
     }
-
     public static StateMachine Create(HRStateModel model)
     {
-        var stateMachine = new AbsenceStateMachine("Absence");
+        var stateMachine = new AbsenceStateMachine("Absence State Machine");
 
         var registeredState = new RegisteredState();
         var toDecideState = new ToDecideState();

@@ -1,7 +1,6 @@
-using Modeler.Full.Sample.Apis.Views.AsciiDoc;
 using Modeler.RestApiModel.Views.AsciiDoc;
 
-namespace Modeler.RestApiModel.Sample.Views.AsciiDoc.Outputs;
+namespace Modeler.Full.Sample.Apis.Views.AsciiDoc.Outputs;
 
 public class FileSystemAsciiDocRestApiViewOutput<T> : IAsciiDocRestApiViewsOutput<T>
 {

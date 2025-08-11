@@ -1,6 +1,8 @@
-﻿namespace Modeler.StateModel.Views.AsciiDoc;
+﻿using Models.Elements;
 
-public class StateMachineAsciiDocTableView
+namespace Modeler.StateModel.Views.AsciiDoc;
+
+public class StateMachineAsciiDocTableView : IView
 {
     public StateMachineAsciiDocTableView(string id, StateMachine stateMachine)
     {

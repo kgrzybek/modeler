@@ -1,6 +1,5 @@
 ﻿using Modeler.Full.Sample.Apis.ApiModels;
 using Modeler.Full.Sample.Apis.Endpoints;
-using Modeler.RestApiModel.Sample.Models.ApiModels;
 
 namespace Modeler.Full.Sample.Apis;
 

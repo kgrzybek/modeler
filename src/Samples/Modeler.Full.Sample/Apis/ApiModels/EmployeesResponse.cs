@@ -1,7 +1,7 @@
-using Modeler.Full.Sample.Apis.ApiModels;
+using Modeler.RestApiModel;
 using Modeler.RestApiModel.Types;
 
-namespace Modeler.RestApiModel.Sample.Models.ApiModels;
+namespace Modeler.Full.Sample.Apis.ApiModels;
 
 public class EmployeesResponse : ApiObjectModel
 {

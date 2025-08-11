@@ -1,16 +1,10 @@
-﻿namespace Modeler.StateModel.Sample.Models;
+﻿using Models.Elements;
+
+namespace Modeler.StateModel.Sample.Models;
 
 public class HRStateModel : Model
 {
-    private static HRStateModel? _instance;
-
-    public static HRStateModel GetInstance()
+    public HRStateModel(ModelElementsRegistry elementsRegistry) : base(elementsRegistry)
     {
-        if (_instance == null)
-        {
-            _instance = new HRStateModel();
-        }
-
-        return _instance;
     }
 }

@@ -1,6 +1,8 @@
+using Models.Elements;
+
 namespace Modeler.StateModel.Views.Markdown;
 
-public class StateMachineMarkdownTableView
+public class StateMachineMarkdownTableView : IView
 {
     public StateMachineMarkdownTableView(string id, StateMachine stateMachine)
     {

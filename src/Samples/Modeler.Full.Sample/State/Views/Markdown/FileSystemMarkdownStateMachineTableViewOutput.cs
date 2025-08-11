@@ -1,21 +1,21 @@
-using Modeler.RestApiModel.Views.OpenApi;
+using Modeler.Full.Sample.State.Views.PlantUml;
+using Modeler.StateModel.Views.Markdown;
 
-namespace Modeler.Full.Sample.Apis.Views.OpenApi.Outputs;
+namespace Modeler.Full.Sample.State.Views.Markdown;
 
-public class FileSystemOpenApiRestApiViewOutput<T> : IOpenApiRestApiViewsOutput<T>
+public class FileSystemMarkdownStateMachineTableViewOutput<T> : IStateMachineMarkdownTableViewsOutput<T>
 {
     private readonly string _absoluteDirectoryPath;
     private readonly IDictionary<string, string> _relativePaths;
 
-    public FileSystemOpenApiRestApiViewOutput(string absoluteDirectoryPath)
+    public FileSystemMarkdownStateMachineTableViewOutput(string absoluteDirectoryPath)
     {
         _absoluteDirectoryPath = absoluteDirectoryPath;
         _relativePaths = new Dictionary<string, string>();
-        _relativePaths.Add(OpenApiJsonViewDefinition.Id, "OpenApi.json");
-        _relativePaths.Add(OpenApiYamlViewDefinition.Id, "OpenApi.yaml");
+        _relativePaths.Add(AbsenceStateMachinePlantUmlViewDefinition.Id, "AbsenceStateMachine.md");
     }
 
-    public void Execute(List<OpenApiRestApiViewsOutputItem<T>> views)
+    public void Execute(List<StateMachineMarkdownTableViewsOutputItem<T>> views)
     {
         if (!Directory.Exists(_absoluteDirectoryPath))
         {

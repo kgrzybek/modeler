@@ -1,6 +1,8 @@
-﻿namespace Modeler.StateModel.Views.PlantUml;
+﻿using Models.Elements;
 
-public class StateMachineView
+namespace Modeler.StateModel.Views.PlantUml;
+
+public class StateMachineView : IView
 {
     public StateMachineView(string id, StateMachine stateMachine)
     {

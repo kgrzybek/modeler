@@ -1,16 +1,18 @@
-using System.Collections;
+using Models.Elements;
 
 namespace Modeler.StateModel;
 
-public abstract class StateMachine
+public abstract class StateMachine : IElement
 {
     private readonly List<Transition> _transitions;
 
-    protected StateMachine()
+    protected StateMachine(string name)
     {
         _transitions = new List<Transition>();
         InitialState = new InitialState();
         EndState = new EndState();
+        this.Name = name;
+        Id = ElementIdGenerator.GenerateElementId(GetType(), name);
     }
     
     public void AddTransition(State fromState, TransitionEvent @event, State toState)
@@ -46,4 +48,7 @@ public abstract class StateMachine
     {
         return _transitions.Select(x => x.Event).Where(x => x is not Description).Distinct().ToList();
     }
+
+    public string Name { get; }
+    public string Id { get; }
 }

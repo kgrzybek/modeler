@@ -7,8 +7,6 @@ using Modeler.ComponentsModel.Views.Markdown;
 using Modeler.ComponentsModel.Views.Markdown.Details;
 using Modeler.ComponentsModel.Views.PlantUml;
 using Modeler.ConceptualModel.Views.Markdown;
-using Modeler.ConceptualModel.Sample.Views.Outputs;
-using Modeler.ConceptualModel.Sample.Views.Translations;
 using Modeler.ConceptualModel.Views.AsciiDoc;
 using Modeler.ConceptualModel.Views.PlantUml;
 using Modeler.ConceptualModel.Views.Shared;
@@ -17,9 +15,6 @@ using Modeler.DataModel.PostgreSQL.Views.Markdown;
 using Modeler.DataModel.PostgreSQL.Views.PlantUml;
 using Modeler.DataModel.PostgreSQL.Views.Mermaid;
 using Modeler.DataModel.PostgreSQL.Views.SQL.Generator;
-using Modeler.DataModel.Sample.Structure;
-using Modeler.DataModel.Sample.Structure.Tables;
-using Modeler.DataModel.Sample.Views.Outputs;
 using Modeler.EventsFlowModel.Sample;
 using Modeler.EventsFlowModel.Sample.Views.AsciiDoc;
 using Modeler.EventsFlowModel.Sample.Views.Mermaid;
@@ -30,34 +25,32 @@ using Modeler.EventsFlowModel.Views.Markdown;
 using Modeler.Full.Sample;
 using Modeler.Full.Sample.Apis;
 using Modeler.Full.Sample.Apis.Views.AsciiDoc;
+using Modeler.Full.Sample.Apis.Views.AsciiDoc.Outputs;
 using Modeler.Full.Sample.Apis.Views.OpenApi;
+using Modeler.Full.Sample.Apis.Views.OpenApi.Outputs;
 using Modeler.Full.Sample.Components.Views;
 using Modeler.Full.Sample.Components.Views.AsciiDoc;
 using Modeler.Full.Sample.Components.Views.AsciiDoc.Details;
 using Modeler.Full.Sample.Components.Views.Outputs;
 using Modeler.Full.Sample.Components.Views.Outputs.Markdown;
 using Modeler.Full.Sample.Conceptual.Concepts;
-using Modeler.Full.Sample.Sequences;
-using Modeler.Full.Sample.Sequences.Views;
+using Modeler.Full.Sample.Conceptual.Views.Outputs;
+using Modeler.Full.Sample.Conceptual.Views.Outputs.Markdown;
+using Modeler.Full.Sample.Conceptual.Views.Translations;
+using Modeler.Full.Sample.Data.Views.Outputs;
 using Modeler.Full.Sample.Sequences.Views.Layouts;
 using Modeler.Full.Sample.Sequences.Views.Outputs;
 using Modeler.Full.Sample.Sequences.Views.Translations;
+using Modeler.Full.Sample.State.Views.AsciiDoc;
+using Modeler.Full.Sample.State.Views.Markdown;
+using Modeler.Full.Sample.State.Views.PlantUml;
 using Modeler.SequenceModel.Views.Mermaid;
 using Modeler.SequenceModel.Views.PlantUml;
 using Modeler.SequenceModel.Views.Shared;
-using Modeler.StateModel.Sample.Models;
-using Modeler.StateModel.Sample.Views.AsciiDoc;
-using Modeler.StateModel.Sample.Views.PlantUml;
-using Modeler.StateModel.Sample.Views.Markdown;
 using Modeler.StateModel.Views.AsciiDoc;
 using Modeler.StateModel.Views.Markdown;
 using Modeler.StateModel.Views.PlantUml;
-using Modeler.RestApiModel.Sample.Models;
-using Modeler.RestApiModel.Sample.Views.AsciiDoc;
-using Modeler.RestApiModel.Sample.Views.AsciiDoc.Outputs;
 using Modeler.RestApiModel.Views.AsciiDoc;
-using Modeler.RestApiModel.Sample.Views.OpenApi;
-using Modeler.RestApiModel.Sample.Views.OpenApi.Outputs;
 using Modeler.RestApiModel.Views.OpenApi;
 using HRDataModel = Modeler.Full.Sample.Data.Structure.HRDataModel;
 using MermaidClassDiagramViewGenerator = Modeler.ConceptualModel.Views.Mermaid.MermaidClassDiagramViewGenerator;
@@ -93,12 +86,12 @@ GenerateOpenApiRestApiViews(documentationPath);
 
 GenerateConceptualModels(documentationPath);
 
-// GeneratePlantUmlStateMachineViews(documentationPath);
-//
-// GenerateAsciiDocStateMachineTableViews(documentationPath);
-//
-// GenerateMarkdownStateMachineTableViews(documentationPath);
-//
+GeneratePlantUmlStateMachineViews(documentationPath);
+
+GenerateAsciiDocStateMachineTableViews(documentationPath);
+
+GenerateMarkdownStateMachineTableViews(documentationPath);
+
 // GenerateMermaidEventsFlowViews(documentationPath);
 // GenerateMarkdownEventsFlowViews(documentationPath);
 // GenerateAsciiDocEventsFlowViews(documentationPath);
@@ -244,53 +237,41 @@ void GenerateComponentsModels(string path)
 
 void GeneratePlantUmlStateMachineViews(string path)
 {
-    var model = HRStateModel.GetInstance();
-    
     // Get views
-    var sequenceDiagramViews = new StateMachineViewsFactory(
-        model,
-        Assembly.GetAssembly(typeof(AbsenceStateMachinePlantUmlViewDefinition))!).GetViews();
+    var stateMachineViews = viewsRegistry.GetElements<StateMachineView>();
     
     // Set views path
     var componentsModelPath = Path.Combine(path, "Models/StateMachines");
     
     // Generate views
     var fileSystemOutput = new FileSystemPlantUmlStateMachineDiagramViewOutput<StateMachineView>(componentsModelPath);
-    new PlantUmlStateMachineViewGenerator(fileSystemOutput).Generate(sequenceDiagramViews);
+    new PlantUmlStateMachineViewGenerator(fileSystemOutput).Generate(stateMachineViews);
 }
 
 void GenerateAsciiDocStateMachineTableViews(string path)
 {
-    var model = HRStateModel.GetInstance();
-    
     // Get views
-    var sequenceDiagramViews = new StateMachineAsciiDocTableViewsFactory(
-        model,
-        Assembly.GetAssembly(typeof(AbsenceStateMachineAsciiDocTableViewDefinition))!).GetViews();
+    var stateMachineViews = viewsRegistry.GetElements<StateMachineAsciiDocTableView>();
     
     // Set views path
     var componentsModelPath = Path.Combine(path, "Models/StateMachines");
     
     // Generate views
     var fileSystemOutput = new FileSystemAsciiDocStateMachineTableViewOutput<StateMachineAsciiDocTableView>(componentsModelPath);
-    new StateMachineAsciiDocTableViewGenerator(fileSystemOutput).Generate(sequenceDiagramViews);
+    new StateMachineAsciiDocTableViewGenerator(fileSystemOutput).Generate(stateMachineViews);
 }
 
 void GenerateMarkdownStateMachineTableViews(string path)
 {
-    var model = HRStateModel.GetInstance();
-
     // Get views
-    var views = new StateMachineMarkdownTableViewsFactory(
-        model,
-        Assembly.GetAssembly(typeof(AbsenceStateMachineMarkdownTableViewDefinition))!).GetViews();
+    var stateMachineViews = viewsRegistry.GetElements<StateMachineMarkdownTableView>();
 
     // Set views path
     var componentsModelPath = Path.Combine(path, "Models/StateMachines");
 
     // Generate views
     var fileSystemOutput = new FileSystemMarkdownStateMachineTableViewOutput<StateMachineMarkdownTableView>(componentsModelPath);
-    new StateMachineMarkdownTableViewGenerator(fileSystemOutput).Generate(views);
+    new StateMachineMarkdownTableViewGenerator(fileSystemOutput).Generate(stateMachineViews);
 }
 
 void GenerateMermaidEventsFlowViews(string path)
