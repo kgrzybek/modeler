@@ -7,6 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\Modeler.Messaging.Views.AsciiDoc\Modeler.Messaging.Views.AsciiDoc.csproj" />
+      <ProjectReference Include="..\..\Modeler.Messaging\Modeler.Messaging.csproj" />
       <ProjectReference Include="..\..\Models\Components\Modeler.ComponentsModel.Views.AsciiDoc\Modeler.ComponentsModel.Views.AsciiDoc.csproj" />
       <ProjectReference Include="..\..\Models\Components\Modeler.ComponentsModel.Views.Markdown\Modeler.ComponentsModel.Views.Markdown.csproj" />
       <ProjectReference Include="..\..\Models\Components\Modeler.ComponentsModel.Views.PlantUml\Modeler.ComponentsModel.Views.PlantUml.csproj" />

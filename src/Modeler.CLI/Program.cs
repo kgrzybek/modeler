@@ -38,12 +38,14 @@ using Modeler.Full.Sample.EventsFlow;
 using Modeler.Full.Sample.EventsFlow.Views.AsciiDoc;
 using Modeler.Full.Sample.EventsFlow.Views.Markdown;
 using Modeler.Full.Sample.EventsFlow.Views.Mermaid;
+using Modeler.Full.Sample.Messaging;
 using Modeler.Full.Sample.Sequences.Views.Layouts;
 using Modeler.Full.Sample.Sequences.Views.Outputs;
 using Modeler.Full.Sample.Sequences.Views.Translations;
 using Modeler.Full.Sample.State.Views.AsciiDoc;
 using Modeler.Full.Sample.State.Views.Markdown;
 using Modeler.Full.Sample.State.Views.PlantUml;
+using Modeler.Messaging.Views.AsciiDoc;
 using Modeler.SequenceModel.Views.Mermaid;
 using Modeler.SequenceModel.Views.PlantUml;
 using Modeler.SequenceModel.Views.Shared;
@@ -52,6 +54,7 @@ using Modeler.StateModel.Views.Markdown;
 using Modeler.StateModel.Views.PlantUml;
 using Modeler.RestApiModel.Views.AsciiDoc;
 using Modeler.RestApiModel.Views.OpenApi;
+using Modeler.Views.Common;
 using HRDataModel = Modeler.Full.Sample.Data.Structure.HRDataModel;
 using MermaidClassDiagramViewGenerator = Modeler.ConceptualModel.Views.Mermaid.MermaidClassDiagramViewGenerator;
 using SystemComponentsModel = Modeler.Full.Sample.Components.SystemComponentsModel;
@@ -95,6 +98,8 @@ GenerateMarkdownStateMachineTableViews(documentationPath);
 GenerateMermaidEventsFlowViews(documentationPath);
 GenerateMarkdownEventsFlowViews(documentationPath);
 GenerateAsciiDocEventsFlowViews(documentationPath);
+
+GenerateMessagingViews(documentationPath);
 
 Console.WriteLine("Documentation generated.");
 
@@ -142,6 +147,14 @@ void GenerateConceptualModels(string path)
         viewTranslator,
         new FileSystemMarkdownViewOutput<MarkdownView>(modelsPath),
         new MarkdownViewTranslationDictionary()).Generate(markdownViews);
+}
+
+void GenerateMessagingViews(string path)
+{
+    var model = modelsRegistry.GetModel<HRBrokerModel>();
+    var dataModelPath = Path.Combine(path, "Models/Messaging");
+    IViewOutput output = new FileSystemViewOutput(dataModelPath, "MessagesList.adoc");
+    AsciiDocBrokerMessagesListGenerator.Generate(model, output);
 }
 
 void GenerateDataModels(string path)

@@ -1,12 +1,13 @@
 ﻿using Modeler.ComponentsModel;
 using Modeler.Full.Sample.Components.Types;
 using Modeler.Full.Sample.Sequences.ParticipantTypes;
+using Modeler.Messaging;
 using Modeler.SequenceModel;
 using Models.Elements;
 
 namespace Modeler.Full.Sample.Components.System.Backend;
 
-public class HRBackendApplication : IComponent, ISequenceParticipant
+public class HRBackendApplication : IComponent, ISequenceParticipant, IMessagesPublisher
 {
     public static HRBackendApplication Create()
     {

@@ -2,6 +2,7 @@
 using Modeler.Full.Sample.Conceptual.Concepts;
 using Modeler.Full.Sample.Data.Structure;
 using Modeler.Full.Sample.EventsFlow;
+using Modeler.Full.Sample.Messaging;
 using Modeler.Full.Sample.Sequences;
 using Modeler.Full.Sample.State.Models;
 using Models.Elements;
@@ -18,5 +19,6 @@ public class ModelsRegistry : ModelsRegistryBase
         AddElement(new HRDataModel(elementsRegistry));
         AddElement(new HRStateModel(elementsRegistry));
         AddElement(new HREventsFlowModel(elementsRegistry));
+        AddElement(new HRBrokerModel(elementsRegistry));
     }
 }

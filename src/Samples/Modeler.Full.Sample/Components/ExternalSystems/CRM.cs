@@ -1,11 +1,12 @@
 ﻿using Modeler.ComponentsModel;
 using Modeler.Full.Sample.Components.Types;
 using Modeler.Full.Sample.Sequences.ParticipantTypes;
+using Modeler.Messaging;
 using Modeler.SequenceModel;
 
 namespace Modeler.Full.Sample.Components.ExternalSystems;
 
-public class CRM : Component, ISequenceParticipant
+public class CRM : Component, ISequenceParticipant, IMessagesSubscriber
 {
     public const string ComponentName = "CRM";
     
