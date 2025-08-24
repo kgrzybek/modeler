@@ -2,6 +2,8 @@
 using Modeler.Full.Sample.Components.System.Backend;
 using Modeler.Full.Sample.Components.System.Database;
 using Modeler.Full.Sample.Components.System.Frontend;
+using Modeler.Full.Sample.EventsFlow.Events;
+using Modeler.Full.Sample.Messaging;
 using Modeler.Full.Sample.Sequences.Parameters;
 using Modeler.Full.Sample.Sequences.Participants;
 using Modeler.SequenceModel;
@@ -17,6 +19,7 @@ public class HRSystemFlowSequence : Sequence
         var backend = elementsRegistry.GetElement<HRBackendApplication>();
         var backendDatabase = elementsRegistry.GetElement<HRDatabase>();
         var crm = elementsRegistry.GetElement<CRM>();
+        var employeeAddedEvent = elementsRegistry.GetElement<EmployeeAddedEventMessage>();
 
         var builder = new SequenceBuilder<HRSystemFlowSequence>("HR System Flow Sequence");
 
@@ -27,7 +30,7 @@ public class HRSystemFlowSequence : Sequence
         
         builder.AddSynchronousRequestMessage(backend, "addEmployee", new StringMessageParameter("SQL"), backendDatabase);
         builder.AddSynchronousResponseMessage(backendDatabase, "OK", new NoMessageParameters(), backend);
-        builder.AddEventMessage(backend, "EmployeeAdded", new StringMessageParameter("EmployeeAddedEvent"), crm);
+        builder.AddEventMessage(backend, employeeAddedEvent, crm);
         builder.AddSynchronousResponseMessage(backend, "OK", new NoMessageParameters(), frontend);
         
         builder.AddSynchronousResponseMessage(frontend, "OK", new NoMessageParameters(), user);

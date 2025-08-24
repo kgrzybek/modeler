@@ -3,11 +3,11 @@ using Models.Elements;
 
 namespace Modeler.Full.Sample.Messaging;
 
-public class PersonAddedEventMessage : IMessage
+public class EmployeeAddedEventMessage : IMessage
 {
-    public PersonAddedEventMessage()
+    public EmployeeAddedEventMessage()
     {
-        Name = "Person Added Event";
+        Name = "Employee Added Event";
         Id = ElementIdGenerator.GenerateElementId(this.GetType(), Name);
     }
 

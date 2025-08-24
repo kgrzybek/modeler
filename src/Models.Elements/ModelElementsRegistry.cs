@@ -21,6 +21,13 @@ public class ModelElementsRegistry
     
     public T GetElement<T>()
     {
-        return _elements.OfType<T>().Single();
+        var model = _elements.OfType<T>().SingleOrDefault();
+
+        if (model == null)
+        {
+            throw new Exception($"Model element of type {typeof(T).FullName} is not registered.");
+        }
+
+        return model;
     }
 }

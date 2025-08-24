@@ -10,7 +10,7 @@ public class HRBrokerModel : BrokerModel
     public HRBrokerModel(ModelElementsRegistry elementsRegistry) : base(elementsRegistry)
     {
         var sampleQueue = elementsRegistry.GetElement<SampleQueue>();
-        var personAddedEventMessage = elementsRegistry.GetElement<PersonAddedEventMessage>();
+        var personAddedEventMessage = elementsRegistry.GetElement<EmployeeAddedEventMessage>();
         var backendApplication = elementsRegistry.GetElement<HRBackendApplication>();
         var crm = elementsRegistry.GetElement<CRM>();
         

@@ -1,4 +1,6 @@
-﻿namespace Modeler.SequenceModel;
+﻿using Modeler.Messaging;
+
+namespace Modeler.SequenceModel;
 
 public class SequenceBuilder<T> where T : Sequence, new()
 {
@@ -33,6 +35,11 @@ public class SequenceBuilder<T> where T : Sequence, new()
     {
         var message = new Message(name, sender, recipient, parameters, new EventMessage());
         _messages.Add(message);
+    }
+    
+    public void AddEventMessage(ISequenceParticipant sender, IMessage @event, ISequenceParticipant recipient)
+    {
+        _messages.Add(Message.FromEvent(sender, @event, recipient));
     }
 
     public T Build()

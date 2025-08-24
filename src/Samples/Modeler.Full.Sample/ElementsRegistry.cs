@@ -28,11 +28,11 @@ public class ElementsRegistry : ModelElementsRegistry
     {
         this.RegisterHRApiElements();
         this.RegisterComponents();
+        this.RegisterMessagingElements();
         this.RegisterSequences();
         this.RegisterConcepts();
         this.RegisterDataModelElements();
         this.RegisterStateMachineElements();
         this.RegisterEventsFlowElements();
-        this.RegisterMessagingElements();
     }
 }

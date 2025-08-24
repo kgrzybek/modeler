@@ -4,3 +4,8 @@ public abstract class MessageParameters
 {
     
 }
+
+public class NoMessageParameters : MessageParameters
+{
+    
+}
