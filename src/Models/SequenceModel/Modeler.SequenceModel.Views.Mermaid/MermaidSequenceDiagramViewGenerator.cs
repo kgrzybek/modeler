@@ -77,17 +77,23 @@ public class MermaidSequenceDiagramViewGenerator
                 throw new Exception("Unknown message type");
             }
             
-            sb.AppendLine($"{message.Sender.Id} {messageArrow} {message.Receiver.Id} : {message.Name} {_viewTranslator.TranslateMessageParameters(message.Parameters)}");
-            
             if (message.Type is SynchronousRequestMessage)
             {
+                sb.AppendLine($"{message.Sender.Id} {messageArrow} {message.Receiver.Id} : {message.Name} ({message.Content})");
                 sb.AppendLine($"activate {message.Receiver.Id}");
                 sb.AppendLine();
             }
 
             if (message.Type is SynchronousResponseMessage)
             {
+                sb.AppendLine($"{message.Sender.Id} {messageArrow} {message.Receiver.Id} : {message.Name} : {message.Content}");
                 sb.AppendLine($"deactivate {message.Sender.Id}");
+                sb.AppendLine();
+            }
+            
+            if (message.Type is EventMessage)
+            {
+                sb.AppendLine($"{message.Sender.Id} {messageArrow} {message.Receiver.Id} : Publish({message.Name})");
                 sb.AppendLine();
             }
         }

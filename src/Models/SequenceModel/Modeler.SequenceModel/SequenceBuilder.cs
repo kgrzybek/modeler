@@ -1,4 +1,5 @@
 ﻿using Modeler.Messaging;
+using Modeler.RestApiModel;
 
 namespace Modeler.SequenceModel;
 
@@ -13,27 +14,43 @@ public class SequenceBuilder<T> where T : Sequence, new()
         _messages = new List<Message>();
     }
     
-    public void AddSynchronousRequestMessage(ISequenceParticipant sender, string name, MessageParameters parameters, ISequenceParticipant recipient)
+    public void AddSynchronousRequestMessage(ISequenceParticipant sender, string name, string content, ISequenceParticipant recipient)
     {
-        var message = new Message(name, sender, recipient, parameters, new SynchronousRequestMessage());
+        var message = new Message(name, sender, recipient, content, new SynchronousRequestMessage());
         _messages.Add(message);
     }
     
-    public void AddSelfMessage(ISequenceParticipant sender, string name, MessageParameters parameters)
+    public void AddSynchronousRequestMessage(ISequenceParticipant sender, Endpoint endpoint, ISequenceParticipant recipient)
     {
-        var message = new Message(name, sender, sender, parameters, new SelfMessage());
+        _messages.Add(Message.RequestEndpointMessage(sender, endpoint, recipient));
+    }
+    
+    public void AddSelfMessage(ISequenceParticipant sender, string name, string content)
+    {
+        var message = new Message(name, sender, sender, content, new SelfMessage());
         _messages.Add(message);
     }
     
-    public void AddSynchronousResponseMessage(ISequenceParticipant sender, string name, MessageParameters parameters, ISequenceParticipant recipient)
+    public void AddSynchronousResponseMessage(ISequenceParticipant sender, string name, string content, ISequenceParticipant recipient)
     {
-        var message = new Message(name, sender, recipient, parameters, new SynchronousResponseMessage());
+        var message = new Message(name, sender, recipient, content, new SynchronousResponseMessage());
         _messages.Add(message);
     }
     
-    public void AddEventMessage(ISequenceParticipant sender, string name, MessageParameters parameters, ISequenceParticipant recipient)
+    public void AddOkResponseMessage(ISequenceParticipant sender, string name, ISequenceParticipant recipient)
     {
-        var message = new Message(name, sender, recipient, parameters, new EventMessage());
+        var message = new Message(name, sender, recipient, "OK" , new SynchronousResponseMessage());
+        _messages.Add(message);
+    }
+    
+    public void AddSynchronousResponseMessage(ISequenceParticipant sender, Endpoint endpoint, ISequenceParticipant recipient)
+    {
+        _messages.Add(Message.ResponseEndpointMessage(sender, endpoint, recipient));
+    }
+    
+    public void AddEventMessage(ISequenceParticipant sender, string name, string content, ISequenceParticipant recipient)
+    {
+        var message = new Message(name, sender, recipient, content, new EventMessage());
         _messages.Add(message);
     }
     

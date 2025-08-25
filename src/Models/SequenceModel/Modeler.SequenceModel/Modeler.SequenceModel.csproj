@@ -9,6 +9,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\..\Modeler.Messaging\Modeler.Messaging.csproj" />
       <ProjectReference Include="..\..\..\Models.Elements\Models.Elements.csproj" />
+      <ProjectReference Include="..\..\RestApiModel\Modeler.RestApiModel\Modeler.RestApiModel.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,21 +1,44 @@
 ﻿using Modeler.Messaging;
+using Modeler.RestApiModel;
 
 namespace Modeler.SequenceModel;
 
 public class Message
 {
-    public Message(string name, ISequenceParticipant sender, ISequenceParticipant receiver, MessageParameters parameters, MessageType type)
+    public Message(string name, ISequenceParticipant sender, ISequenceParticipant receiver, string? content, MessageType type)
     {
         Name = name;
         Sender = sender;
         Receiver = receiver;
-        Parameters = parameters;
+        Content = content;
         Type = type;
     }
 
     public static Message FromEvent(ISequenceParticipant sender, IMessage message, ISequenceParticipant receiver)
     {
-        return new Message(message.Name, sender, receiver, new NoMessageParameters(), new EventMessage());
+        return new Message(message.Name, sender, receiver, message.Name, new EventMessage());
+    }
+    
+    public static Message RequestEndpointMessage(ISequenceParticipant sender, Endpoint endpoint, ISequenceParticipant receiver)
+    {
+        string? content = null;
+        if (endpoint.RequestModel != null)
+        {
+            content = endpoint.RequestModel.Name;
+        }
+        
+        return new Message(endpoint.Name, sender, receiver, content, new SynchronousRequestMessage());
+    }
+    
+    public static Message ResponseEndpointMessage(ISequenceParticipant sender, Endpoint endpoint, ISequenceParticipant receiver)
+    {
+        string? content = null;
+        if (endpoint.ResponseModel != null)
+        {
+            content = endpoint.ResponseModel.Name;
+        }
+        
+        return new Message(endpoint.Name, sender, receiver, content, new SynchronousResponseMessage());
     }
 
     public string Name { get; }
@@ -24,9 +47,9 @@ public class Message
     
     public ISequenceParticipant Receiver { get; }
     
-    public MessageParameters Parameters { get; }
-    
     public MessageType Type { get; }
+    
+    public string? Content { get; }
 }
 
 public abstract class MessageType {
