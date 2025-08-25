@@ -4,7 +4,7 @@ using Modeler.ComponentsModel.Views.AsciiDoc.Details;
 
 namespace Modeler.ComponentsModel.Sample.Views.AsciiDoc.Details;
 
-public class AsciiDocBackendDetailsViewDefinition : AsciiDocComponentDetailsViewDefinition
+public class AsciiDocBackendDetailsViewDefinition
 {
     public const string Id = "BackendDetailsView";
     public static AsciiDocComponentDetailsView Create(SystemComponentsModel model)

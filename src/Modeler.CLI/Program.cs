@@ -3,8 +3,10 @@
 using System.Reflection;
 using Modeler.ComponentsModel.Views.AsciiDoc;
 using Modeler.ComponentsModel.Views.AsciiDoc.Details;
+using Modeler.ComponentsModel.Views.AsciiDoc.ListTable;
 using Modeler.ComponentsModel.Views.Markdown;
 using Modeler.ComponentsModel.Views.Markdown.Details;
+using Modeler.ComponentsModel.Views.Markdown.ListTable;
 using Modeler.ComponentsModel.Views.PlantUml;
 using Modeler.ConceptualModel.Views.Markdown;
 using Modeler.ConceptualModel.Views.AsciiDoc;
@@ -228,7 +230,7 @@ void GenerateComponentsModels(string path)
     new PlantComponentsDiagramViewGenerator(systemComponentsModel, fileSystemOutput, new ComponentsDiagramDefaultViewLayout()).Generate(componentDiagramViews);
     
     // Generate AsciiDoc components list view
-    var fileSystemAsciiDocComponentsListTableViewOutput = new FileSystemAsciiDocComponentsListTableViewOutput(componentsModelPath);
+    var fileSystemAsciiDocComponentsListTableViewOutput = new FileSystemViewOutput(componentsModelPath, "ComponentsList_full.adoc");
     new AsciiDocComponentsListTableViewGenerator(systemComponentsModel, fileSystemAsciiDocComponentsListTableViewOutput).Generate();
     
     // Generate AsciiDoc components details views
@@ -237,7 +239,7 @@ void GenerateComponentsModels(string path)
     new AsciiDocComponentsDetailsViewsGenerator(systemComponentsModel, fileSystemAsciiDocComponentsDetailsViewOutput).Generate(asciiDocDetailsViews);
 
     // Generate Markdown components list view
-    var fileSystemMarkdownComponentsListTableViewOutput = new FileSystemMarkdownComponentsListTableViewOutput(componentsModelPath);
+    var fileSystemMarkdownComponentsListTableViewOutput = new FileSystemViewOutput(componentsModelPath, "ComponentsList_full.md");
     new MarkdownComponentsListTableViewGenerator(systemComponentsModel, fileSystemMarkdownComponentsListTableViewOutput).Generate();
 
     // Generate Markdown components details views

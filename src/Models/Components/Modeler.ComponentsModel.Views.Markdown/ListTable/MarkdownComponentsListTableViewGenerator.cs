@@ -1,13 +1,14 @@
 using System.Text;
+using Modeler.Views.Common;
 
-namespace Modeler.ComponentsModel.Views.Markdown;
+namespace Modeler.ComponentsModel.Views.Markdown.ListTable;
 
 public class MarkdownComponentsListTableViewGenerator
 {
     private readonly Model _model;
-    private readonly IMarkdownComponentsListTableViewOutput _output;
+    private readonly IViewOutput _output;
 
-    public MarkdownComponentsListTableViewGenerator(Model model, IMarkdownComponentsListTableViewOutput output)
+    public MarkdownComponentsListTableViewGenerator(Model model, IViewOutput output)
     {
         _model = model;
         _output = output;

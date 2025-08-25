@@ -1,16 +1,17 @@
 ﻿using System.Text;
+using Modeler.Views.Common;
 
-namespace Modeler.ComponentsModel.Views.AsciiDoc;
+namespace Modeler.ComponentsModel.Views.AsciiDoc.ListTable;
 
 public class AsciiDocComponentsListTableViewGenerator
 {
     private readonly Model _model;
 
-    private readonly IAsciiDocComponentsListTableViewOutput _output;
+    private readonly IViewOutput _output;
 
     public AsciiDocComponentsListTableViewGenerator(
         Model model,
-        IAsciiDocComponentsListTableViewOutput output)
+        IViewOutput output)
     {
         _model = model;
         _output = output;
