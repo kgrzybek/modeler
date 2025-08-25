@@ -6,13 +6,13 @@ public class StateMachineViewsFactory
 {
     private readonly List<StateMachineView> _views;
 
-    private readonly Model _model;
+    private readonly StateMachineModel _stateMachineModel;
 
     public StateMachineViewsFactory(
-        Model model,
+        StateMachineModel stateMachineModel,
         Assembly viewsAssembly)
     {
-        _model = model;
+        _stateMachineModel = stateMachineModel;
         _views = new List<StateMachineView>();
         InitializeViews(viewsAssembly);
     }
@@ -33,7 +33,7 @@ public class StateMachineViewsFactory
 
             if (staticMethod != null)
             {
-                var plantUmlView = staticMethod.Invoke(null, new object?[] {_model});
+                var plantUmlView = staticMethod.Invoke(null, new object?[] {_stateMachineModel});
                 _views.Add((StateMachineView) plantUmlView!);
             }
         }

@@ -8,11 +8,11 @@ public class AbsenceStateMachineMarkdownTableViewDefinition : StateMachineMarkdo
 {
     public const string Id = "AbsenceStateMachine";
 
-    public static StateMachineMarkdownTableView Create(HRStateModel model)
+    public static StateMachineMarkdownTableView Create(HRStateStateMachineModel stateMachineModel)
     {
         var view = new StateMachineMarkdownTableView(
             Id,
-            model.GetStateMachine<StateMachine>());
+            stateMachineModel.GetStateMachine<StateMachine>());
 
         return view;
     }

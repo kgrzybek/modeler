@@ -1,4 +1,5 @@
 ﻿using Modeler.ComponentsModel.Sample.Components.HRSystem.Frontend;
+using Modeler.SequenceModel.Participants;
 
 namespace Modeler.SequenceModel.Sample.Models.Participants;
 

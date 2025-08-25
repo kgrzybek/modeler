@@ -6,13 +6,13 @@ public class StateMachineAsciiDocTableViewsFactory
 {
     private readonly List<StateMachineAsciiDocTableView> _views;
 
-    private readonly Model _model;
+    private readonly StateMachineModel _stateMachineModel;
 
     public StateMachineAsciiDocTableViewsFactory(
-        Model model,
+        StateMachineModel stateMachineModel,
         Assembly viewsAssembly)
     {
-        _model = model;
+        _stateMachineModel = stateMachineModel;
         _views = new List<StateMachineAsciiDocTableView>();
         InitializeViews(viewsAssembly);
     }
@@ -33,7 +33,7 @@ public class StateMachineAsciiDocTableViewsFactory
 
             if (staticMethod != null)
             {
-                var plantUmlView = staticMethod.Invoke(null, new object?[] {_model});
+                var plantUmlView = staticMethod.Invoke(null, new object?[] {_stateMachineModel});
                 _views.Add((StateMachineAsciiDocTableView) plantUmlView!);
             }
         }

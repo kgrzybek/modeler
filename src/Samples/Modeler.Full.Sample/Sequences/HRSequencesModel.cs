@@ -3,7 +3,7 @@ using Models.Elements;
 
 namespace Modeler.Full.Sample.Sequences;
 
-public class HRSequencesModel : Model
+public class HRSequencesModel : SequencesModel
 {
     public HRSequencesModel(ModelElementsRegistry elementsRegistry) : base(elementsRegistry)
     {

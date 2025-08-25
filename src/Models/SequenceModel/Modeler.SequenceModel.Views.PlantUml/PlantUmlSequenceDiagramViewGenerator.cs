@@ -1,4 +1,6 @@
 ﻿using System.Text;
+using Modeler.SequenceModel.Messages.Types;
+using Modeler.SequenceModel.Participants;
 using Modeler.SequenceModel.Views.Shared;
 
 namespace Modeler.SequenceModel.Views.PlantUml;

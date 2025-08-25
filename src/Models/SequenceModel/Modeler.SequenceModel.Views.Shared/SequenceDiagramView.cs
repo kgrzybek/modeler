@@ -1,4 +1,6 @@
-﻿using Models.Elements;
+﻿using Modeler.SequenceModel.Participants;
+using Modeler.SequenceModel.Sequences;
+using Models.Elements;
 
 namespace Modeler.SequenceModel.Views.Shared;
 

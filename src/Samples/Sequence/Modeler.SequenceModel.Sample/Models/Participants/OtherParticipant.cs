@@ -1,5 +1,7 @@
 ﻿
 
+using Modeler.SequenceModel.Participants;
+
 namespace Modeler.SequenceModel.Sample.Models.Participants;
 
 public class OtherParticipant : Participant

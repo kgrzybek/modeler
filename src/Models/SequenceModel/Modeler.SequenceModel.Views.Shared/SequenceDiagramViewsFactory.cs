@@ -6,10 +6,10 @@ public class SequenceDiagramViewsFactory
 {
     private readonly List<SequenceDiagramView> _views;
 
-    private readonly Model _model;
+    private readonly SequencesModel _model;
 
     public SequenceDiagramViewsFactory(
-        Model model,
+        SequencesModel model,
         Assembly viewsAssembly)
     {
         _model = model;

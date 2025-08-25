@@ -1,7 +1,10 @@
 ﻿using Modeler.Messaging;
 using Modeler.RestApiModel;
+using Modeler.SequenceModel.Messages;
+using Modeler.SequenceModel.Messages.Types;
+using Modeler.SequenceModel.Participants;
 
-namespace Modeler.SequenceModel;
+namespace Modeler.SequenceModel.Sequences;
 
 public class SequenceBuilder<T> where T : Sequence, new()
 {

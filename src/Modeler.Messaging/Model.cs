@@ -10,7 +10,7 @@ public abstract class BrokerModel : IModel
 
     private readonly List<SubscribedMessage> _subscribedMessages;
 
-    public BrokerModel(ModelElementsRegistry elementsRegistry)
+    protected BrokerModel(ModelElementsRegistry elementsRegistry)
     {
         _queues = elementsRegistry.GetElements<IQueue>();
         _publishedMessages = new List<PublishedMessage>();
@@ -30,34 +30,6 @@ public abstract class BrokerModel : IModel
     protected void AddQueue(IQueue queue)
     {
         _queues.Add(queue);
-    }
-
-    public class PublishedMessage
-    {
-        public PublishedMessage(IMessagesPublisher publisher, IQueue queue, IMessage message)
-        {
-            Publisher = publisher;
-            Queue = queue;
-            Message = message;
-        }
-
-        public IMessagesPublisher Publisher { get; }
-        public IQueue Queue { get; }
-        public IMessage Message { get; }
-    }
-
-    public class SubscribedMessage
-    {
-        public SubscribedMessage(IMessagesSubscriber subscriber, IQueue queue, IMessage message)
-        {
-            Subscriber = subscriber;
-            Queue = queue;
-            Message = message;
-        }
-
-        public IMessagesSubscriber Subscriber { get; }
-        public IQueue Queue { get; }
-        public IMessage Message { get; }
     }
 
     public List<IMessage> GetAllMessages()

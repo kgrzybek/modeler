@@ -34,7 +34,6 @@ using Modeler.Full.Sample.Conceptual.Views.Outputs;
 using Modeler.Full.Sample.Conceptual.Views.Outputs.Markdown;
 using Modeler.Full.Sample.Conceptual.Views.Translations;
 using Modeler.Full.Sample.Data.Views.Outputs;
-using Modeler.Full.Sample.EventsFlow;
 using Modeler.Full.Sample.EventsFlow.Views.AsciiDoc;
 using Modeler.Full.Sample.EventsFlow.Views.Markdown;
 using Modeler.Full.Sample.EventsFlow.Views.Mermaid;

@@ -4,9 +4,9 @@ using Models.Elements;
 
 namespace Modeler.Full.Sample.State.Models;
 
-public class HRStateModel : Model
+public class HRStateStateMachineModel : StateMachineModel
 {
-    public HRStateModel(ModelElementsRegistry elementsRegistry) : base(elementsRegistry)
+    public HRStateStateMachineModel(ModelElementsRegistry elementsRegistry) : base(elementsRegistry)
     {
         AddStateMachine(AbsenceStateMachine.Create(this));
     }

@@ -17,7 +17,7 @@ public class ModelsRegistry : ModelsRegistryBase
         AddElement(new SystemComponentsModel(elementsRegistry));
         AddElement(new OrganizationStructureConceptualModel(elementsRegistry));
         AddElement(new HRDataModel(elementsRegistry));
-        AddElement(new HRStateModel(elementsRegistry));
+        AddElement(new HRStateStateMachineModel(elementsRegistry));
         AddElement(new HREventsFlowModel(elementsRegistry));
         AddElement(new HRBrokerModel(elementsRegistry));
     }

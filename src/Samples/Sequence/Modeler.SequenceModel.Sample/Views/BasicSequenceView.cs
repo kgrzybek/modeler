@@ -1,3 +1,4 @@
+using Modeler.SequenceModel.Participants;
 using Modeler.SequenceModel.Sample.Models;
 using Modeler.SequenceModel.Sample.Models.Participants;
 using Modeler.SequenceModel.Sample.Models.Sequences;

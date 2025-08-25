@@ -3,6 +3,7 @@ using Modeler.Full.Sample.Components.Types;
 using Modeler.Full.Sample.Sequences.ParticipantTypes;
 using Modeler.Messaging;
 using Modeler.SequenceModel;
+using Modeler.SequenceModel.Participants;
 
 namespace Modeler.Full.Sample.Components.ExternalSystems;
 

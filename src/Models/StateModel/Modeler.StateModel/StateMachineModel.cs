@@ -2,13 +2,13 @@
 
 namespace Modeler.StateModel;
 
-public abstract class Model : IModel
+public abstract class StateMachineModel : IModel
 {
     private readonly List<TransitionEvent> _events;
     
     private readonly List<StateMachine> _stateMachines;
 
-    protected Model(ModelElementsRegistry elementsRegistry)
+    protected StateMachineModel(ModelElementsRegistry elementsRegistry)
     {
         _events = elementsRegistry.GetElements<TransitionEvent>();
         _stateMachines = elementsRegistry.GetElements<StateMachine>();
@@ -38,7 +38,7 @@ public abstract class Model : IModel
         return type;
     }
 
-    public void AddStateMachine(StateMachine stateMachine)
+    protected void AddStateMachine(StateMachine stateMachine)
     {
         _stateMachines.Add(stateMachine);
     }

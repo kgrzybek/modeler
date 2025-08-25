@@ -1,4 +1,6 @@
-﻿namespace Modeler.SequenceModel.Sample.Models.ParticipantTypes;
+﻿using Modeler.SequenceModel.Participants;
+
+namespace Modeler.SequenceModel.Sample.Models.ParticipantTypes;
 
 public class ExternalSystem : ParticipantType
 {

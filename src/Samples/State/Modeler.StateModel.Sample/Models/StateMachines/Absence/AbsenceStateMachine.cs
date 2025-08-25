@@ -9,7 +9,7 @@ public class AbsenceStateMachine : StateMachine
     {
     }
 
-    public static StateMachine Create(HRStateModel model)
+    public static StateMachine Create(HRStateStateMachineModel stateMachineModel)
     {
         var stateMachine = new AbsenceStateMachine("Absence");
 
@@ -19,10 +19,10 @@ public class AbsenceStateMachine : StateMachine
         var acceptedState = new AcceptedState();
         var rejectedState = new RejectedState();
         
-        var sentToDecisionEvent = model.GetEvent<SentToDecisionEvent>();
-        var acceptedEvent =  model.GetEvent<AcceptedEvent>();
-        var rejectedEvent = model.GetEvent<RejectedEvent>();
-        var answeredEvent = model.GetEvent<ClarificationRequestedEvent>();
+        var sentToDecisionEvent = stateMachineModel.GetEvent<SentToDecisionEvent>();
+        var acceptedEvent =  stateMachineModel.GetEvent<AcceptedEvent>();
+        var rejectedEvent = stateMachineModel.GetEvent<RejectedEvent>();
+        var answeredEvent = stateMachineModel.GetEvent<ClarificationRequestedEvent>();
         
         stateMachine.StartFrom(registeredState);
         stateMachine.AddTransition(registeredState, sentToDecisionEvent, toDecideState);

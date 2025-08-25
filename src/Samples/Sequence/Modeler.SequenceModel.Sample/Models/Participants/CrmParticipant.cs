@@ -1,4 +1,5 @@
 ﻿using Modeler.ComponentsModel.Sample.Components.ExternalSystems;
+using Modeler.SequenceModel.Participants;
 using Modeler.SequenceModel.Sample.Models.ParticipantTypes;
 
 namespace Modeler.SequenceModel.Sample.Models.Participants;

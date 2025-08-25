@@ -1,6 +1,7 @@
 ﻿using Modeler.ComponentsModel;
 using Modeler.Full.Sample.Components.Types;
 using Modeler.SequenceModel;
+using Modeler.SequenceModel.Participants;
 using Models.Elements;
 
 namespace Modeler.Full.Sample.Components.System.Database;

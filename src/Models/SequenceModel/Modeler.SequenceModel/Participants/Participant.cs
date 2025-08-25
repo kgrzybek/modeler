@@ -1,4 +1,4 @@
-﻿namespace Modeler.SequenceModel;
+﻿namespace Modeler.SequenceModel.Participants;
 
 public abstract class Participant : ISequenceParticipant
 {

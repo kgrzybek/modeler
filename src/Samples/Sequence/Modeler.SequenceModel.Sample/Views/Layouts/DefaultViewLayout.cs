@@ -1,4 +1,5 @@
-﻿using Modeler.SequenceModel.Sample.Models.ParticipantTypes;
+﻿using Modeler.SequenceModel.Participants;
+using Modeler.SequenceModel.Sample.Models.ParticipantTypes;
 using Modeler.SequenceModel.Views.Shared;
 
 namespace Modeler.SequenceModel.Sample.Views.Layouts;

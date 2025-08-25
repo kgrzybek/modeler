@@ -6,6 +6,7 @@ using Modeler.Full.Sample.Components.System.Frontend;
 using Modeler.Full.Sample.Messaging;
 using Modeler.Full.Sample.Sequences.Participants;
 using Modeler.SequenceModel;
+using Modeler.SequenceModel.Sequences;
 
 namespace Modeler.Full.Sample.Sequences.Flows;
 

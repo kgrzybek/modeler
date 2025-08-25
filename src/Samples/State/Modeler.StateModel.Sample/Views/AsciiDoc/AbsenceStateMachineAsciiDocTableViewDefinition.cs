@@ -7,11 +7,11 @@ public class AbsenceStateMachineAsciiDocTableViewDefinition : StateMachineAsciiD
 {
     public const string Id = "AbsenceStateMachine";
     
-    public static StateMachineAsciiDocTableView Create(HRStateModel model)
+    public static StateMachineAsciiDocTableView Create(HRStateStateMachineModel stateMachineModel)
     {
         var view = new StateMachineAsciiDocTableView(
             Id,
-            model.GetStateMachine<StateMachine>());
+            stateMachineModel.GetStateMachine<StateMachine>());
 
         return view;
     }

@@ -4,6 +4,7 @@ using Modeler.Full.Sample.Components.System.Frontend;
 using Modeler.Full.Sample.Sequences.Flows;
 using Modeler.Full.Sample.Sequences.Participants;
 using Modeler.SequenceModel;
+using Modeler.SequenceModel.Participants;
 using Modeler.SequenceModel.Views.Shared;
 using Models.Elements;
 

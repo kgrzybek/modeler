@@ -1,6 +1,8 @@
-﻿using Models.Elements;
+﻿using Modeler.SequenceModel.Messages;
+using Modeler.SequenceModel.Participants;
+using Models.Elements;
 
-namespace Modeler.SequenceModel;
+namespace Modeler.SequenceModel.Sequences;
 
 public abstract class Sequence : IElement
 {

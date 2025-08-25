@@ -1,11 +1,10 @@
 using Modeler.RestApiModel.Types;
-using Models.Elements;
 
 namespace Modeler.RestApiModel;
 
 public abstract class ApiObjectModel : IApiObjectModel
 {
-    public ApiObjectModel WithName(string name)
+    protected ApiObjectModel WithName(string name)
     {
         Name = name;
         Id = name.Replace(" ", "_").ToLower();
@@ -23,9 +22,4 @@ public abstract class ApiObjectModel : IApiObjectModel
     public string Id { get; private set; } = Guid.NewGuid().ToString();
 
     public List<ApiModelAttribute> Attributes { get; } = new();
-}
-
-public interface IApiObjectModel : IElement
-{
-    public List<ApiModelAttribute> Attributes { get; }
 }

@@ -1,5 +1,6 @@
 ﻿using Modeler.Full.Sample.Sequences.ParticipantTypes;
 using Modeler.SequenceModel;
+using Modeler.SequenceModel.Participants;
 using Models.Elements;
 
 namespace Modeler.Full.Sample.Sequences.Participants;

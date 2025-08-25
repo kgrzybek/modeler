@@ -2,7 +2,7 @@
 
 namespace Modeler.SequenceModel.Sample.Models;
 
-public class HRSequencesModel : Model
+public class HRSequencesModel : SequencesModel
 {
     private static HRSequencesModel? _instance;
 

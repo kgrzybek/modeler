@@ -5,11 +5,11 @@ namespace Modeler.StateModel.Views.Markdown;
 public class StateMachineMarkdownTableViewsFactory
 {
     private readonly List<StateMachineMarkdownTableView> _views;
-    private readonly Model _model;
+    private readonly StateMachineModel _stateMachineModel;
 
-    public StateMachineMarkdownTableViewsFactory(Model model, Assembly viewsAssembly)
+    public StateMachineMarkdownTableViewsFactory(StateMachineModel stateMachineModel, Assembly viewsAssembly)
     {
-        _model = model;
+        _stateMachineModel = stateMachineModel;
         _views = new List<StateMachineMarkdownTableView>();
         InitializeViews(viewsAssembly);
     }
@@ -28,7 +28,7 @@ public class StateMachineMarkdownTableViewsFactory
             var staticMethod = type.GetMethod("Create", BindingFlags.Static | BindingFlags.Public);
             if (staticMethod != null)
             {
-                var view = staticMethod.Invoke(null, new object?[] { _model });
+                var view = staticMethod.Invoke(null, new object?[] { _stateMachineModel });
                 _views.Add((StateMachineMarkdownTableView)view!);
             }
         }
