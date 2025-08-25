@@ -11,7 +11,7 @@ using Models.Elements;
 
 namespace Modeler.Full.Sample.Sequences.Views;
 
-public class BasicSequenceView : SequenceDiagramViewDefinition
+public class BasicSequenceView
 {
     public const string Id = "BasicSequence";
     

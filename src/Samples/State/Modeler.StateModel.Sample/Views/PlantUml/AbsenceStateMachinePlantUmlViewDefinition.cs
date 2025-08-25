@@ -3,7 +3,7 @@ using Modeler.StateModel.Views.PlantUml;
 
 namespace Modeler.StateModel.Sample.Views.PlantUml;
 
-public class AbsenceStateMachinePlantUmlViewDefinition : StateMachineViewDefinition
+public class AbsenceStateMachinePlantUmlViewDefinition
 {
     public const string Id = "AbsenceStateMachine";
     

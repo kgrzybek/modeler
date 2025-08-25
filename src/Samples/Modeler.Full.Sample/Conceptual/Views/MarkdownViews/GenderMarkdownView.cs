@@ -4,7 +4,7 @@ using Modeler.Full.Sample.Conceptual.Concepts.Enums;
 
 namespace Modeler.Full.Sample.Conceptual.Views.MarkdownViews;
 
-public class GenderMarkdownView : MarkdownViewDefinition
+public class GenderMarkdownView
 {
     public const string Id = "Gender";
     

@@ -1,10 +1,9 @@
-using Modeler.ConceptualModel.Sample.Concepts;
 using Modeler.ConceptualModel.Sample.Concepts.Types;
 using Modeler.ConceptualModel.Views.AsciiDoc;
 
 namespace Modeler.ConceptualModel.Sample.Views.AsciiDocViews;
 
-public class AddressAsciiDocView : AsciiDocViewDefinition
+public class AddressAsciiDocView
 {
     public const string Id = "Address";
     

@@ -1,4 +1,6 @@
-﻿using Modeler.Full.Sample.Components;
+﻿using Modeler.Full.Sample.Apis;
+using Modeler.Full.Sample.Apis.Views.AsciiDoc;
+using Modeler.Full.Sample.Components;
 using Modeler.Full.Sample.Components.Views;
 using Modeler.Full.Sample.Components.Views.AsciiDoc.Details;
 using Modeler.Full.Sample.Components.Views.Markdown.Details;
@@ -36,7 +38,7 @@ public class ViewsRegistry : ViewsRegistryBase
         return _instance;
     }
     
-    public void RegisterViews(ModelsRegistry modelsRegistry)
+    public void RegisterViews(ModelsRegistry modelsRegistry, ModelElementsRegistry elementsRegistry)
     {
         AddElement(BasicSequenceView.Create(modelsRegistry.GetModel<HRSequencesModel>()));
         AddElement(BasicSequencePartView.Create(modelsRegistry.GetModel<HRSequencesModel>()));
@@ -71,5 +73,8 @@ public class ViewsRegistry : ViewsRegistryBase
         AddElement(HREventsFlowAsciiDocViewDefinition.Create(modelsRegistry.GetModel<HREventsFlowModel>()));
         AddElement(HREventsFlowMarkdownViewDefinition.Create(modelsRegistry.GetModel<HREventsFlowModel>()));
         AddElement(HREventsFlowViewDefinition.Create(modelsRegistry.GetModel<HREventsFlowModel>()));
+        
+        AddElement(ApiModelsAsciiDocViewDefinition.Create(elementsRegistry.GetElement<HRRestApiModel>()));
+        AddElement(EndpointsAsciiDocViewDefinition.Create(elementsRegistry.GetElement<HRRestApiModel>()));
     }
 }

@@ -4,7 +4,7 @@ using Modeler.Full.Sample.Conceptual.Concepts.Types;
 
 namespace Modeler.Full.Sample.Conceptual.Views.AsciiDocViews;
 
-public class AddressAsciiDocView : AsciiDocViewDefinition
+public class AddressAsciiDocView
 {
     public const string Id = "Address";
     

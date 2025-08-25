@@ -10,7 +10,7 @@ using Models.Elements;
 
 namespace Modeler.Full.Sample.Sequences.Views;
 
-public class BasicSequencePartView : SequenceDiagramViewDefinition, IView
+public class BasicSequencePartView : IView
 {
     public const string Id = "BasicSequencePart";
     

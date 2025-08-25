@@ -3,7 +3,7 @@ using Modeler.DataModel.Sample.Structure.Tables;
 
 namespace Modeler.DataModel.Sample.Views;
 
-public class OrganizationsPlantUmlView : PlantUmlDataModelViewFactory
+public class OrganizationsPlantUmlView
 {
     public static PlantUmlDataModelView Create(DataModel model)
     {

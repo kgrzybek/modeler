@@ -3,7 +3,7 @@ using Modeler.DataModel.Sample.Structure.Tables;
 
 namespace Modeler.DataModel.Sample.Views;
 
-public class OrganizationsMermaidView : MermaidDataModelViewFactory
+public class OrganizationsMermaidView
 {
     public static MermaidDataModelView Create(DataModel model)
     {

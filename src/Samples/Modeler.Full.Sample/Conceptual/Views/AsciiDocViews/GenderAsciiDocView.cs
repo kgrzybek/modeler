@@ -4,7 +4,7 @@ using Modeler.Full.Sample.Conceptual.Concepts.Enums;
 
 namespace Modeler.Full.Sample.Conceptual.Views.AsciiDocViews;
 
-public class GenderAsciiDocView : AsciiDocViewDefinition
+public class GenderAsciiDocView
 {
     public const string Id = "Gender";
     

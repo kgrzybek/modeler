@@ -1,6 +1,8 @@
+using Models.Elements;
+
 namespace Modeler.RestApiModel.Views.AsciiDoc;
 
-public class AsciiDocEndpointsView
+public class AsciiDocEndpointsView : IView
 {
     public AsciiDocEndpointsView(string id, IApiModel model)
     {
@@ -11,8 +13,4 @@ public class AsciiDocEndpointsView
     public string Id { get; }
 
     public IApiModel Model { get; }
-}
-
-public abstract class AsciiDocEndpointsViewDefinition
-{
 }

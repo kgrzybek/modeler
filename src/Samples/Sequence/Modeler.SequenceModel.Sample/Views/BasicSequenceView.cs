@@ -6,7 +6,7 @@ using Modeler.SequenceModel.Views.Shared;
 
 namespace Modeler.SequenceModel.Sample.Views;
 
-public class BasicSequenceView : SequenceDiagramViewDefinition
+public class BasicSequenceView
 {
     public const string Id = "BasicSequence";
     

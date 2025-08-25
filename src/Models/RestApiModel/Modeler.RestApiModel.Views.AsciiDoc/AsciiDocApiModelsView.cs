@@ -1,6 +1,8 @@
+using Models.Elements;
+
 namespace Modeler.RestApiModel.Views.AsciiDoc;
 
-public class AsciiDocApiModelsView
+public class AsciiDocApiModelsView : IView
 {
     public AsciiDocApiModelsView(string id, IApiModel model)
     {

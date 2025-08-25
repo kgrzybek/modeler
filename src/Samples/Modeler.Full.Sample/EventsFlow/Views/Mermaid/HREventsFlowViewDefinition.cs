@@ -5,7 +5,7 @@ using Modeler.Full.Sample.EventsFlow.Events;
 
 namespace Modeler.Full.Sample.EventsFlow.Views.Mermaid;
 
-public class HREventsFlowViewDefinition : MermaidEventFlowsViewDefinition
+public class HREventsFlowViewDefinition
 {
     public const string Id = "HREventsFlowView";
     

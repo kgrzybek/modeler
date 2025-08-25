@@ -3,7 +3,7 @@ using Modeler.StateModel.Views.Markdown;
 
 namespace Modeler.StateModel.Sample.Views.Markdown;
 
-public class AbsenceStateMachineMarkdownTableViewDefinition : StateMachineMarkdownTableViewDefinition
+public class AbsenceStateMachineMarkdownTableViewDefinition
 {
     public const string Id = "AbsenceStateMachine";
 

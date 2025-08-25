@@ -4,7 +4,7 @@ using Modeler.Full.Sample.Conceptual.Concepts.Types;
 
 namespace Modeler.Full.Sample.Conceptual.Views.MarkdownViews;
 
-public class AddressMarkdownView : MarkdownViewDefinition
+public class AddressMarkdownView
 {
     public const string Id = "Address";
     

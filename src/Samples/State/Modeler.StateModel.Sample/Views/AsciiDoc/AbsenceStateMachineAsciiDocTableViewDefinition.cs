@@ -3,7 +3,7 @@ using Modeler.StateModel.Views.AsciiDoc;
 
 namespace Modeler.StateModel.Sample.Views.AsciiDoc;
 
-public class AbsenceStateMachineAsciiDocTableViewDefinition : StateMachineAsciiDocTableViewDefinition
+public class AbsenceStateMachineAsciiDocTableViewDefinition
 {
     public const string Id = "AbsenceStateMachine";
     

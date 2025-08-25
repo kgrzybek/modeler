@@ -4,7 +4,7 @@ using Modeler.ConceptualModel.Views.Markdown;
 
 namespace Modeler.ConceptualModel.Sample.Views.MarkdownViews;
 
-public class GenderMarkdownView : MarkdownViewDefinition
+public class GenderMarkdownView
 {
     public const string Id = "Gender";
     

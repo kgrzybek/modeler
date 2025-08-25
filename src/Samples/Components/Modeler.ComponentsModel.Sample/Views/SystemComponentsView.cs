@@ -5,7 +5,7 @@ using Modeler.ComponentsModel.Views.PlantUml;
 
 namespace Modeler.ComponentsModel.Sample.Views;
 
-public class SystemComponentsView : ComponentsDiagramViewDefinition
+public class SystemComponentsView
 {
     public const string Id = "SystemComponents";
     

@@ -3,7 +3,7 @@ using Modeler.RestApiModel.Views.AsciiDoc;
 
 namespace Modeler.RestApiModel.Sample.Views.AsciiDoc;
 
-public class EndpointsAsciiDocViewDefinition : AsciiDocEndpointsViewDefinition
+public class EndpointsAsciiDocViewDefinition
 {
     public const string Id = "RestApiEndpoints";
 

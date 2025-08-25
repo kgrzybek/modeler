@@ -4,7 +4,7 @@ using Modeler.Full.Sample.Conceptual.Concepts.Entities;
 
 namespace Modeler.Full.Sample.Conceptual.Views.MarkdownViews;
 
-public class EmployeeMarkdownView : MarkdownViewDefinition
+public class EmployeeMarkdownView
 {
     public const string Id = "Employee";
     

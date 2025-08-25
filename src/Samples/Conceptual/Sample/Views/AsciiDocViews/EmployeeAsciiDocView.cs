@@ -4,7 +4,7 @@ using Modeler.ConceptualModel.Views.AsciiDoc;
 
 namespace Modeler.ConceptualModel.Sample.Views.AsciiDocViews;
 
-public class EmployeeAsciiDocView : AsciiDocViewDefinition
+public class EmployeeAsciiDocView
 {
     public const string Id = "Employee";
     

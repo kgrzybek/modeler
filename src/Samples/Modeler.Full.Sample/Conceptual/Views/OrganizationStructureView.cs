@@ -4,7 +4,7 @@ using Modeler.Full.Sample.Conceptual.Concepts.Entities;
 
 namespace Modeler.Full.Sample.Conceptual.Views;
 
-public class OrganizationStructureView : ClassDiagramViewDefinition
+public class OrganizationStructureView
 {
     public const string Id = "OrganizationStructure";
     

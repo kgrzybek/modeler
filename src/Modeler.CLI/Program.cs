@@ -74,7 +74,7 @@ var modelsRegistry = new ModelsRegistry();
 modelsRegistry.RegisterModels(elementsRegistry);
 
 var viewsRegistry = ViewsRegistry.GetInstance();
-viewsRegistry.RegisterViews(modelsRegistry);
+viewsRegistry.RegisterViews(modelsRegistry, elementsRegistry);
 
 GenerateDataModels(documentationPath);
 
@@ -320,15 +320,9 @@ void GenerateAsciiDocEventsFlowViews(string path)
 
 void GenerateAsciiDocRestApiViews(string path)
 {
-    var model = ElementsRegistry.GetInstance().GetElement<HRRestApiModel>();
-
-    var endpointsViews = new AsciiDocEndpointsViewsFactory(
-        model,
-        Assembly.GetAssembly(typeof(EndpointsAsciiDocViewDefinition))!).Views;
-
-    var apiModelViews = new AsciiDocApiModelsViewsFactory(
-        model,
-        Assembly.GetAssembly(typeof(ApiModelsAsciiDocViewDefinition))!).Views;
+    var endpointsViews = viewsRegistry.GetElements<AsciiDocEndpointsView>();
+    
+    var apiModelViews = viewsRegistry.GetElements<AsciiDocApiModelsView>();
 
     var viewsPath = Path.Combine(path, "Models/RestApi");
 
