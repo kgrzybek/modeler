@@ -7,7 +7,7 @@ using Modeler.Full.Sample.Components.Views.Details.AsciiDoc;
 using Modeler.Full.Sample.Components.Views.Details.Markdown;
 using Modeler.Full.Sample.Conceptual.Concepts;
 using Modeler.Full.Sample.Conceptual.Views;
-using Modeler.Full.Sample.Conceptual.Views.AsciiDocViews;
+using Modeler.Full.Sample.Conceptual.Views.ConceptDetails.AsciiDoc;
 using Modeler.Full.Sample.Conceptual.Views.MarkdownViews;
 using Modeler.Full.Sample.Data.Structure;
 using Modeler.Full.Sample.Data.Views;
@@ -50,11 +50,11 @@ public class ViewsRegistry : ViewsRegistryBase
         AddElement(new MarkdownFrontendComponentDetailsView(modelsRegistry.GetModel<SystemComponentsModel>()));
         AddElement(new PlantUmlHRSystemComponentsView(modelsRegistry.GetModel<SystemComponentsModel>()));
         
-        AddElement(AddressAsciiDocView.Create(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
-        AddElement(EmployeeAsciiDocView.Create(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
-        AddElement(GenderAsciiDocView.Create(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
-        AddElement(ManagerAsciiDocView.Create(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
-        AddElement(OrganizationUnitAsciiDocView.Create(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
+        AddElement(new AddressAsciiDocView(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
+        AddElement(new EmployeeAsciiDocView(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
+        AddElement(new GenderAsciiDocView(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
+        AddElement(new ManagerAsciiDocView(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
+        AddElement(new OrganizationUnitAsciiDocView(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
         
         AddElement(AddressMarkdownView.Create(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
         AddElement(EmployeeMarkdownView.Create(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));

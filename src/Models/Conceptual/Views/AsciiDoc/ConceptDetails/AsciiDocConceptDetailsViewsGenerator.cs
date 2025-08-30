@@ -2,46 +2,47 @@ using System.Text;
 using Modeler.ConceptualModel.Attributes;
 using Modeler.ConceptualModel.Relationships.Associations;
 using Modeler.ConceptualModel.Views.Shared;
+using Modeler.Views.Common;
 
-namespace Modeler.ConceptualModel.Views.AsciiDoc;
+namespace Modeler.ConceptualModel.Views.AsciiDoc.ConceptDetails;
 
-public class AsciiDocViewsGenerator
+public class AsciiDocConceptDetailsViewsGenerator
 {
     private readonly IViewTranslator _viewTranslator;
 
-    private readonly IViewsOutput<AsciiDocView> _viewsOutput;
+    private readonly IMultipleViewsOutput _viewsOutput;
 
     private readonly Model _model;
 
-    private readonly AsciiDocViewTranslationDictionary _translationDictionary;
+    private readonly AsciiDocConceptDetailsViewTranslationDictionary _translationDictionary;
 
-    public AsciiDocViewsGenerator(
+    public AsciiDocConceptDetailsViewsGenerator(
         Model model,
         IViewTranslator viewTranslator,
-        IViewsOutput<AsciiDocView> viewsOutput,
-        AsciiDocViewTranslationDictionary? translationDictionary = null)
+        IMultipleViewsOutput viewsOutput,
+        AsciiDocConceptDetailsViewTranslationDictionary? translationDictionary = null)
     {
         _viewTranslator = viewTranslator;
         _model = model;
         _viewsOutput = viewsOutput;
-        _translationDictionary = translationDictionary ?? new AsciiDocViewTranslationDictionary();
+        _translationDictionary = translationDictionary ?? new AsciiDocConceptDetailsViewTranslationDictionary();
     }
 
     public void Generate(
-        List<AsciiDocView> views)
+        List<AsciiDocConceptDetailsView> views)
     {
-        var outputItems = new List<ViewOutputItem<AsciiDocView>>();
+        var outputItems = new List<ViewOutputItem>();
         foreach (var view in views)
         {
             var content = Generate(view);
             
-            outputItems.Add(new ViewOutputItem<AsciiDocView>(view.Id, view, content));
+            outputItems.Add(new ViewOutputItem(view, content));
         }
         
         _viewsOutput.Execute(outputItems);
     }
 
-    private string Generate(AsciiDocView view)
+    private string Generate(AsciiDocConceptDetailsView view)
     {
         return view.Concept switch
         {

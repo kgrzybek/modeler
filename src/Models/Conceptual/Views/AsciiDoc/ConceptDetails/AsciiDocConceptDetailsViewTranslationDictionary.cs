@@ -1,6 +1,6 @@
-﻿namespace Modeler.ConceptualModel.Views.AsciiDoc;
+﻿namespace Modeler.ConceptualModel.Views.AsciiDoc.ConceptDetails;
 
-public class AsciiDocViewTranslationDictionary
+public class AsciiDocConceptDetailsViewTranslationDictionary
 {
     public string AttributesText { get; set; } = "Attributes";
     

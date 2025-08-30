@@ -10,6 +10,7 @@ using Modeler.ComponentsModel.Views.Markdown.ListTable;
 using Modeler.ComponentsModel.Views.PlantUml;
 using Modeler.ConceptualModel.Views.Markdown;
 using Modeler.ConceptualModel.Views.AsciiDoc;
+using Modeler.ConceptualModel.Views.AsciiDoc.ConceptDetails;
 using Modeler.ConceptualModel.Views.PlantUml;
 using Modeler.ConceptualModel.Views.Shared;
 using Modeler.DataModel.PostgreSQL.Views.AsciiDoc;
@@ -29,6 +30,7 @@ using Modeler.Full.Sample.Components.Views.ComponentsDiagram.PlantUml;
 using Modeler.Full.Sample.Components.Views.Details.AsciiDoc;
 using Modeler.Full.Sample.Components.Views.Details.Markdown;
 using Modeler.Full.Sample.Conceptual.Concepts;
+using Modeler.Full.Sample.Conceptual.Views.ConceptDetails.AsciiDoc;
 using Modeler.Full.Sample.Conceptual.Views.Outputs;
 using Modeler.Full.Sample.Conceptual.Views.Outputs.Markdown;
 using Modeler.Full.Sample.Conceptual.Views.Translations;
@@ -131,12 +133,12 @@ void GenerateConceptualModels(string path)
         new FileSystemMermaidViewOutput<ClassDiagramView>(modelsPath)).Generate(classDiagramViews);
 
     // AsciiDoc
-    var asciDocViews = viewsRegistry.GetElements<AsciiDocView>();
-    new AsciiDocViewsGenerator(
+    var asciDocViews = viewsRegistry.GetElements<AsciiDocConceptDetailsView>();
+    new AsciiDocConceptDetailsViewsGenerator(
         model,
         viewTranslator,
-        new FileSystemAsciiDocViewOutput<AsciiDocView>(modelsPath),
-        new AsciiDocViewTranslationDictionary()).Generate(asciDocViews);
+        new AsciiDocConceptDetailsFileSystemViewsOutput(modelsPath, viewsRegistry),
+        new AsciiDocConceptDetailsViewTranslationDictionary()).Generate(asciDocViews);
 
     // Markdown
     var markdownViews = viewsRegistry.GetElements<MarkdownView>();

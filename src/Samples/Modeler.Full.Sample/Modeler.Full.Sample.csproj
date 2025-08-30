@@ -45,6 +45,7 @@
 
     <ItemGroup>
       <Folder Include="Components\Views\Details\" />
+      <Folder Include="Conceptual\Views\ConceptDetails\" />
     </ItemGroup>
 
 </Project>
