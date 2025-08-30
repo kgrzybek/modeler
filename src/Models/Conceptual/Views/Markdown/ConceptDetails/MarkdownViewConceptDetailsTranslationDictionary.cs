@@ -1,6 +1,6 @@
-﻿namespace Modeler.ConceptualModel.Views.Markdown;
+﻿namespace Modeler.ConceptualModel.Views.Markdown.ConceptDetails;
 
-public class MarkdownViewTranslationDictionary
+public class MarkdownViewConceptDetailsTranslationDictionary
 {
     public string AttributesText { get; set; } = "Attributes";
     

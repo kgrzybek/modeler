@@ -1,16 +1,14 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using System.Reflection;
-using Modeler.ComponentsModel.Views.AsciiDoc;
 using Modeler.ComponentsModel.Views.AsciiDoc.Details;
 using Modeler.ComponentsModel.Views.AsciiDoc.ListTable;
-using Modeler.ComponentsModel.Views.Markdown;
 using Modeler.ComponentsModel.Views.Markdown.Details;
 using Modeler.ComponentsModel.Views.Markdown.ListTable;
 using Modeler.ComponentsModel.Views.PlantUml;
 using Modeler.ConceptualModel.Views.Markdown;
-using Modeler.ConceptualModel.Views.AsciiDoc;
 using Modeler.ConceptualModel.Views.AsciiDoc.ConceptDetails;
+using Modeler.ConceptualModel.Views.Markdown.ConceptDetails;
 using Modeler.ConceptualModel.Views.PlantUml;
 using Modeler.ConceptualModel.Views.Shared;
 using Modeler.DataModel.PostgreSQL.Views.AsciiDoc;
@@ -31,8 +29,8 @@ using Modeler.Full.Sample.Components.Views.Details.AsciiDoc;
 using Modeler.Full.Sample.Components.Views.Details.Markdown;
 using Modeler.Full.Sample.Conceptual.Concepts;
 using Modeler.Full.Sample.Conceptual.Views.ConceptDetails.AsciiDoc;
+using Modeler.Full.Sample.Conceptual.Views.MarkdownViews;
 using Modeler.Full.Sample.Conceptual.Views.Outputs;
-using Modeler.Full.Sample.Conceptual.Views.Outputs.Markdown;
 using Modeler.Full.Sample.Conceptual.Views.Translations;
 using Modeler.Full.Sample.Data.Views.Outputs;
 using Modeler.Full.Sample.EventsFlow.Views.AsciiDoc;
@@ -141,12 +139,12 @@ void GenerateConceptualModels(string path)
         new AsciiDocConceptDetailsViewTranslationDictionary()).Generate(asciDocViews);
 
     // Markdown
-    var markdownViews = viewsRegistry.GetElements<MarkdownView>();
-    new MarkdownViewsGenerator(
+    var markdownViews = viewsRegistry.GetElements<MarkdownConceptDetailsView>();
+    new MarkdownConceptDetailsViewsGenerator(
         model,
         viewTranslator,
-        new FileSystemMarkdownViewOutput<MarkdownView>(modelsPath),
-        new MarkdownViewTranslationDictionary()).Generate(markdownViews);
+        new MarkdownConceptDetailsFileSystemViewsOutput(modelsPath, viewsRegistry),
+        new MarkdownViewConceptDetailsTranslationDictionary()).Generate(markdownViews);
 }
 
 void GenerateMessagingViews(string path)

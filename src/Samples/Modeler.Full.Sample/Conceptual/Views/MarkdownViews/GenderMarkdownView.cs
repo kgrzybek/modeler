@@ -1,19 +1,14 @@
 using Modeler.ConceptualModel;
 using Modeler.ConceptualModel.Views.Markdown;
+using Modeler.ConceptualModel.Views.Markdown.ConceptDetails;
 using Modeler.Full.Sample.Conceptual.Concepts.Enums;
+using Modeler.Full.Sample.Conceptual.Views.ConceptDetails.AsciiDoc;
 
 namespace Modeler.Full.Sample.Conceptual.Views.MarkdownViews;
 
-public class GenderMarkdownView
+public class GenderMarkdownView : MarkdownConceptDetailsView
 {
-    public const string Id = "Gender";
-    
-    public static MarkdownView Create(Model model)
+    public GenderMarkdownView(Model model) : base(model.GetType<Gender>())
     {
-        var concept = model.GetType<Gender>();
-        
-        var view = new MarkdownView(Id, concept);
-
-        return view;
     }
 }

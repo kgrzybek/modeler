@@ -1,19 +1,13 @@
 using Modeler.ConceptualModel;
 using Modeler.ConceptualModel.Views.Markdown;
+using Modeler.ConceptualModel.Views.Markdown.ConceptDetails;
 using Modeler.Full.Sample.Conceptual.Concepts.Entities;
 
 namespace Modeler.Full.Sample.Conceptual.Views.MarkdownViews;
 
-public class OrganizationUnitMarkdownView
+public class OrganizationUnitMarkdownView : MarkdownConceptDetailsView
 {
-    public const string Id = "OrganizationUnit";
-    
-    public static MarkdownView Create(Model model)
+    public OrganizationUnitMarkdownView(Model model) : base(model.GetEntity<OrganizationUnit>())
     {
-        var concept = model.GetEntity<OrganizationUnit>();
-        
-        var view = new MarkdownView(Id, concept);
-
-        return view;
     }
 }

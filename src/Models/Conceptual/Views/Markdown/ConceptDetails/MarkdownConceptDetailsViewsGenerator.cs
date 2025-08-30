@@ -2,46 +2,47 @@ using System.Text;
 using Modeler.ConceptualModel.Attributes;
 using Modeler.ConceptualModel.Relationships.Associations;
 using Modeler.ConceptualModel.Views.Shared;
+using Modeler.Views.Common;
 
-namespace Modeler.ConceptualModel.Views.Markdown;
+namespace Modeler.ConceptualModel.Views.Markdown.ConceptDetails;
 
-public class MarkdownViewsGenerator
+public class MarkdownConceptDetailsViewsGenerator
 {
     private readonly IViewTranslator _viewTranslator;
 
-    private readonly IViewsOutput<MarkdownView> _viewsOutput;
+    private readonly IMultipleViewsOutput _viewsOutput;
 
     private readonly Model _model;
 
-    private readonly MarkdownViewTranslationDictionary _translationDictionary;
+    private readonly MarkdownViewConceptDetailsTranslationDictionary _translationDictionary;
 
-    public MarkdownViewsGenerator(
+    public MarkdownConceptDetailsViewsGenerator(
         Model model,
         IViewTranslator viewTranslator,
-        IViewsOutput<MarkdownView> viewsOutput,
-        MarkdownViewTranslationDictionary? translationDictionary = null)
+        IMultipleViewsOutput viewsOutput,
+        MarkdownViewConceptDetailsTranslationDictionary? translationDictionary = null)
     {
         _viewTranslator = viewTranslator;
         _model = model;
         _viewsOutput = viewsOutput;
-        _translationDictionary = translationDictionary ?? new MarkdownViewTranslationDictionary();
+        _translationDictionary = translationDictionary ?? new MarkdownViewConceptDetailsTranslationDictionary();
     }
 
     public void Generate(
-        List<MarkdownView> views)
+        List<MarkdownConceptDetailsView> views)
     {
-        var outputItems = new List<ViewOutputItem<MarkdownView>>();
+        var outputItems = new List<ViewOutputItem>();
         foreach (var view in views)
         {
             var content = Generate(view);
             
-            outputItems.Add(new ViewOutputItem<MarkdownView>(view.Id, view, content));
+            outputItems.Add(new ViewOutputItem(view, content));
         }
         
         _viewsOutput.Execute(outputItems);
     }
 
-    private string Generate(MarkdownView view)
+    private string Generate(MarkdownConceptDetailsView view)
     {
         return view.Concept switch
         {

@@ -1,19 +1,13 @@
 using Modeler.ConceptualModel;
 using Modeler.ConceptualModel.Views.Markdown;
+using Modeler.ConceptualModel.Views.Markdown.ConceptDetails;
 using Modeler.Full.Sample.Conceptual.Concepts.Types;
 
 namespace Modeler.Full.Sample.Conceptual.Views.MarkdownViews;
 
-public class AddressMarkdownView
+public class AddressMarkdownView : MarkdownConceptDetailsView
 {
-    public const string Id = "Address";
-    
-    public static MarkdownView Create(Model model)
+    public AddressMarkdownView(Model model) : base(model.GetType<Address>())
     {
-        var concept = model.GetType<Address>();
-        
-        var view = new MarkdownView(Id, concept);
-
-        return view;
     }
 }

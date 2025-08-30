@@ -56,11 +56,11 @@ public class ViewsRegistry : ViewsRegistryBase
         AddElement(new ManagerAsciiDocView(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
         AddElement(new OrganizationUnitAsciiDocView(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
         
-        AddElement(AddressMarkdownView.Create(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
-        AddElement(EmployeeMarkdownView.Create(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
-        AddElement(GenderMarkdownView.Create(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
-        AddElement(ManagerMarkdownView.Create(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
-        AddElement(OrganizationUnitMarkdownView.Create(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
+        AddElement(new AddressMarkdownView(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
+        AddElement(new EmployeeMarkdownView(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
+        AddElement(new GenderMarkdownView(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
+        AddElement(new ManagerMarkdownView(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
+        AddElement(new OrganizationUnitMarkdownView(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
         
         AddElement(OrganizationStructureView.Create(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
         
