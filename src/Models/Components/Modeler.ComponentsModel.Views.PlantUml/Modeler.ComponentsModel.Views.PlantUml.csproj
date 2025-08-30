@@ -7,8 +7,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\..\Modeler.Views.Common\Modeler.Views.Common.csproj" />
       <ProjectReference Include="..\..\RestApiModel\Modeler.RestApiModel\Modeler.RestApiModel.csproj" />
-      <ProjectReference Include="..\Modeler.ComponentsModel.Views.Shared\Modeler.ComponentsModel.Views.Shared.csproj" />
       <ProjectReference Include="..\Modeler.ComponentsModel\Modeler.ComponentsModel.csproj" />
     </ItemGroup>
 

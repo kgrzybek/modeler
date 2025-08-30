@@ -18,4 +18,9 @@ public class ViewsRegistryBase
     {
         return _views.OfType<T>().ToList();
     }
+    
+    public T GetElement<T>() where T : IView
+    {
+        return _views.OfType<T>().Single();
+    }
 }

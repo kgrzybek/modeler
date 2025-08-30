@@ -2,8 +2,9 @@
 using Modeler.Full.Sample.Apis.Views.AsciiDoc;
 using Modeler.Full.Sample.Components;
 using Modeler.Full.Sample.Components.Views;
-using Modeler.Full.Sample.Components.Views.AsciiDoc.Details;
-using Modeler.Full.Sample.Components.Views.Markdown.Details;
+using Modeler.Full.Sample.Components.Views.ComponentsDiagram.PlantUml;
+using Modeler.Full.Sample.Components.Views.Details.AsciiDoc;
+using Modeler.Full.Sample.Components.Views.Details.Markdown;
 using Modeler.Full.Sample.Conceptual.Concepts;
 using Modeler.Full.Sample.Conceptual.Views;
 using Modeler.Full.Sample.Conceptual.Views.AsciiDocViews;
@@ -43,11 +44,11 @@ public class ViewsRegistry : ViewsRegistryBase
         AddElement(BasicSequenceView.Create(modelsRegistry.GetModel<HRSequencesModel>()));
         AddElement(BasicSequencePartView.Create(modelsRegistry.GetModel<HRSequencesModel>()));
         
-        AddElement(AsciiDocBackendDetailsViewDefinition.Create(modelsRegistry.GetModel<SystemComponentsModel>()));
-        AddElement(AsciiDocFrontendDetailsViewDefinition.Create(modelsRegistry.GetModel<SystemComponentsModel>()));
-        AddElement(MarkdownBackendDetailsViewDefinition.Create(modelsRegistry.GetModel<SystemComponentsModel>()));
-        AddElement(MarkdownFrontendDetailsViewDefinition.Create(modelsRegistry.GetModel<SystemComponentsModel>()));
-        AddElement(SystemComponentsView.Create(modelsRegistry.GetModel<SystemComponentsModel>()));
+        AddElement(new AsciiDocBackendComponentDetailsView(modelsRegistry.GetModel<SystemComponentsModel>()));
+        AddElement(new AsciiDocFrontendComponentDetailsView(modelsRegistry.GetModel<SystemComponentsModel>()));
+        AddElement(new MarkdownBackendComponentDetailsView(modelsRegistry.GetModel<SystemComponentsModel>()));
+        AddElement(new MarkdownFrontendComponentDetailsView(modelsRegistry.GetModel<SystemComponentsModel>()));
+        AddElement(new PlantUmlHRSystemComponentsView(modelsRegistry.GetModel<SystemComponentsModel>()));
         
         AddElement(AddressAsciiDocView.Create(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
         AddElement(EmployeeAsciiDocView.Create(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));

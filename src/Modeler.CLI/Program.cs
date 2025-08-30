@@ -22,15 +22,12 @@ using Modeler.EventsFlowModel.Views.AsciiDoc;
 using Modeler.EventsFlowModel.Views.Markdown;
 using Modeler.Full.Sample;
 using Modeler.Full.Sample.Apis;
-using Modeler.Full.Sample.Apis.Views.AsciiDoc;
 using Modeler.Full.Sample.Apis.Views.AsciiDoc.Outputs;
 using Modeler.Full.Sample.Apis.Views.OpenApi;
 using Modeler.Full.Sample.Apis.Views.OpenApi.Outputs;
-using Modeler.Full.Sample.Components.Views;
-using Modeler.Full.Sample.Components.Views.AsciiDoc;
-using Modeler.Full.Sample.Components.Views.AsciiDoc.Details;
-using Modeler.Full.Sample.Components.Views.Outputs;
-using Modeler.Full.Sample.Components.Views.Outputs.Markdown;
+using Modeler.Full.Sample.Components.Views.ComponentsDiagram.PlantUml;
+using Modeler.Full.Sample.Components.Views.Details.AsciiDoc;
+using Modeler.Full.Sample.Components.Views.Details.Markdown;
 using Modeler.Full.Sample.Conceptual.Concepts;
 using Modeler.Full.Sample.Conceptual.Views.Outputs;
 using Modeler.Full.Sample.Conceptual.Views.Outputs.Markdown;
@@ -220,13 +217,13 @@ void GenerateComponentsModels(string path)
     var systemComponentsModel = modelsRegistry.GetModel<SystemComponentsModel>();
     
     // Get views
-    var componentDiagramViews = viewsRegistry.GetElements<ComponentsDiagramView>();
+    var componentDiagramViews = viewsRegistry.GetElements<PlantUmlComponentsDiagramView>();
     
     // Set views path
     var componentsModelPath = Path.Combine(path, "Models/Components");
     
     // Generate PlantUML views
-    var fileSystemOutput = new FileSystemPlantUmlComponentsDiagramViewOutput<ComponentsDiagramView>(componentsModelPath);
+    var fileSystemOutput = new PlantUmlComponentsDiagramViewFileSystemViewsOutput(componentsModelPath, viewsRegistry);
     new PlantComponentsDiagramViewGenerator(systemComponentsModel, fileSystemOutput, new ComponentsDiagramDefaultViewLayout()).Generate(componentDiagramViews);
     
     // Generate AsciiDoc components list view
@@ -235,7 +232,7 @@ void GenerateComponentsModels(string path)
     
     // Generate AsciiDoc components details views
     var asciiDocDetailsViews = viewsRegistry.GetElements<AsciiDocComponentDetailsView>();
-    var fileSystemAsciiDocComponentsDetailsViewOutput = new FileSystemAsciiDocComponentsDetailsViewOutput<AsciiDocComponentDetailsView>(componentsModelPath);
+    var fileSystemAsciiDocComponentsDetailsViewOutput = new AsciiDocComponentsDetailsFileSystemViewsOutput(componentsModelPath, viewsRegistry);
     new AsciiDocComponentsDetailsViewsGenerator(systemComponentsModel, fileSystemAsciiDocComponentsDetailsViewOutput).Generate(asciiDocDetailsViews);
 
     // Generate Markdown components list view
@@ -244,7 +241,7 @@ void GenerateComponentsModels(string path)
 
     // Generate Markdown components details views
     var markdownDetailsViews = viewsRegistry.GetElements<MarkdownComponentDetailsView>();
-    var fileSystemMarkdownComponentsDetailsViewOutput = new FileSystemMarkdownComponentsDetailsViewOutput<MarkdownComponentDetailsView>(componentsModelPath);
+    var fileSystemMarkdownComponentsDetailsViewOutput = new MarkdownComponentsDetailsFileSystemViewsOutput(componentsModelPath, viewsRegistry);
     new MarkdownComponentsDetailsViewsGenerator(systemComponentsModel, fileSystemMarkdownComponentsDetailsViewOutput).Generate(markdownDetailsViews);
 }
 

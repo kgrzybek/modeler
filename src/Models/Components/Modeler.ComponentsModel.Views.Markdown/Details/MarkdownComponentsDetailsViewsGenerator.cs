@@ -1,14 +1,14 @@
 using System.Text;
-using Modeler.ComponentsModel.Views.Shared;
+using Modeler.Views.Common;
 
 namespace Modeler.ComponentsModel.Views.Markdown.Details;
 
 public class MarkdownComponentsDetailsViewsGenerator
 {
-    private readonly IViewsOutput<MarkdownComponentDetailsView> _viewsOutput;
+    private readonly IMultipleViewsOutput _viewsOutput;
     private readonly Model _model;
 
-    public MarkdownComponentsDetailsViewsGenerator(Model model, IViewsOutput<MarkdownComponentDetailsView> viewsOutput)
+    public MarkdownComponentsDetailsViewsGenerator(Model model, IMultipleViewsOutput viewsOutput)
     {
         _viewsOutput = viewsOutput;
         _model = model;
@@ -16,11 +16,11 @@ public class MarkdownComponentsDetailsViewsGenerator
 
     public void Generate(List<MarkdownComponentDetailsView> views)
     {
-        var outputItems = new List<ViewOutputItem<MarkdownComponentDetailsView>>();
+        var outputItems = new List<ViewOutputItem>();
         foreach (var view in views)
         {
             var content = Generate(view);
-            outputItems.Add(new ViewOutputItem<MarkdownComponentDetailsView>(view.Id, view, content));
+            outputItems.Add(new ViewOutputItem(view, content));
         }
 
         _viewsOutput.Execute(outputItems);

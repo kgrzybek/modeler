@@ -1,12 +1,12 @@
 ﻿using System.Text;
-using Modeler.ComponentsModel.Views.Shared;
 using Modeler.RestApiModel;
+using Modeler.Views.Common;
 
 namespace Modeler.ComponentsModel.Views.PlantUml;
 
 public class PlantComponentsDiagramViewGenerator
 {
-    private readonly IViewsOutput<ComponentsDiagramView> _viewsOutput;
+    private readonly IMultipleViewsOutput _viewsOutput;
 
     private readonly Model _model;
 
@@ -14,7 +14,7 @@ public class PlantComponentsDiagramViewGenerator
 
     public PlantComponentsDiagramViewGenerator(
         Model model,
-        IViewsOutput<ComponentsDiagramView> viewsOutput,
+        IMultipleViewsOutput viewsOutput,
         IComponentsDiagramViewLayout viewLayout)
     {
         _viewsOutput = viewsOutput;
@@ -23,9 +23,9 @@ public class PlantComponentsDiagramViewGenerator
     }
 
     public void Generate(
-        List<ComponentsDiagramView> views)
+        List<PlantUmlComponentsDiagramView> views)
     {
-        var outputItems = new List<ViewOutputItem<ComponentsDiagramView>>();
+        var outputItems = new List<ViewOutputItem>();
         foreach (var view in views)
         {
             var sb = new StringBuilder();
@@ -59,13 +59,13 @@ public class PlantComponentsDiagramViewGenerator
 
             var content = sb.ToString();
             
-            outputItems.Add(new ViewOutputItem<ComponentsDiagramView>(view.Id, view, content));
+            outputItems.Add(new ViewOutputItem(view, content));
         }
         
         _viewsOutput.Execute(outputItems);
     }
 
-    private void GenerateApisRelationships(StringBuilder sb, ComponentsDiagramView view)
+    private void GenerateApisRelationships(StringBuilder sb, PlantUmlComponentsDiagramView view)
     {
         var components = GetAllComponents(view);
 
@@ -100,7 +100,7 @@ public class PlantComponentsDiagramViewGenerator
     
     private void GenerateComponents(
         StringBuilder sb,
-        ComponentsDiagramView view)
+        PlantUmlComponentsDiagramView view)
     {
         foreach (var component in view.Components.OrderBy(x => x.Name))
         {
@@ -127,7 +127,7 @@ public class PlantComponentsDiagramViewGenerator
     //     }
     // }
 
-    private List<IComponent> GetAllComponents(ComponentsDiagramView view)
+    private List<IComponent> GetAllComponents(PlantUmlComponentsDiagramView view)
     {
         var components = view.Components.ToList();
         foreach (var component in view.Components)
@@ -169,7 +169,7 @@ public class PlantComponentsDiagramViewGenerator
         sb.AppendLine($"interface \"{api.Name}\" as {api.Id}");
     }
     
-    private void GenerateRelationships(StringBuilder sb, ComponentsDiagramView view)
+    private void GenerateRelationships(StringBuilder sb, PlantUmlComponentsDiagramView view)
     {
         foreach (var relationship in _model.GetRelationships())
         {

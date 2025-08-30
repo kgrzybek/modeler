@@ -1,7 +1,8 @@
-﻿using Modeler.ComponentsModel.Sample.Components.Types;
+﻿using Modeler.ComponentsModel;
 using Modeler.ComponentsModel.Views.PlantUml;
+using Modeler.Full.Sample.Components.Types;
 
-namespace Modeler.ComponentsModel.Sample.Views;
+namespace Modeler.Full.Sample.Components.Views.ComponentsDiagram.PlantUml;
 
 public class ComponentsDiagramDefaultViewLayout : IComponentsDiagramViewLayout
 {

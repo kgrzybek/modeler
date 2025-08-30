@@ -1,29 +1,28 @@
 ﻿using System.Text;
-using Modeler.ComponentsModel.Views.Shared;
+using Modeler.Views.Common;
 
 namespace Modeler.ComponentsModel.Views.AsciiDoc.Details;
 
 public class AsciiDocComponentsDetailsViewsGenerator
 {
-    private readonly IViewsOutput<AsciiDocComponentDetailsView> _viewsOutput;
+    private readonly IMultipleViewsOutput _viewsOutput;
 
     private readonly Model _model;
 
-    public AsciiDocComponentsDetailsViewsGenerator(Model model, IViewsOutput<AsciiDocComponentDetailsView> viewsOutput)
+    public AsciiDocComponentsDetailsViewsGenerator(Model model, IMultipleViewsOutput viewsOutput)
     {
         _viewsOutput = viewsOutput;
         _model = model;
     }
 
-    public void Generate(
-        List<AsciiDocComponentDetailsView> views)
+    public void Generate(List<AsciiDocComponentDetailsView> views)
     {
-        var outputItems = new List<ViewOutputItem<AsciiDocComponentDetailsView>>();
+        var outputItems = new List<ViewOutputItem>();
         foreach (var view in views)
         {
             var content = Generate(view);
 
-            outputItems.Add(new ViewOutputItem<AsciiDocComponentDetailsView>(view.Id, view, content));
+            outputItems.Add(new ViewOutputItem(view, content));
         }
 
         _viewsOutput.Execute(outputItems);
