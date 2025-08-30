@@ -3,6 +3,7 @@ using Modeler.ConceptualModel.Attributes;
 using Modeler.ConceptualModel.Relationships.Associations;
 using Modeler.ConceptualModel.Relationships.Generalizations;
 using Modeler.ConceptualModel.Views.Shared;
+using Modeler.Views.Common;
 using Attribute = Modeler.ConceptualModel.Attributes.Attribute;
 
 namespace Modeler.ConceptualModel.Views.PlantUml;
@@ -11,13 +12,13 @@ public class PlantUmlClassDiagramViewGenerator
 {
     private readonly IViewTranslator _viewTranslator;
 
-    private readonly IViewsOutput<ClassDiagramView> _viewsOutput;
+    private readonly IMultipleViewsOutput _viewsOutput;
 
     private readonly Model _model;
 
     private string _indentText = string.Empty;
 
-    public PlantUmlClassDiagramViewGenerator(Model model, int indentSize, IViewTranslator viewTranslator, IViewsOutput<ClassDiagramView> viewsOutput)
+    public PlantUmlClassDiagramViewGenerator(Model model, int indentSize, IViewTranslator viewTranslator, IMultipleViewsOutput viewsOutput)
     {
         _viewTranslator = viewTranslator;
         _viewsOutput = viewsOutput;
@@ -27,9 +28,9 @@ public class PlantUmlClassDiagramViewGenerator
     }
 
     public void Generate(
-        List<ClassDiagramView> views)
+        List<ConceptsClassDiagramView> views)
     {
-        var outputItems = new List<ViewOutputItem<ClassDiagramView>>();
+        var outputItems = new List<ViewOutputItem>();
         foreach (var view in views)
         {
             var sb = new StringBuilder();
@@ -50,7 +51,7 @@ public class PlantUmlClassDiagramViewGenerator
 
             var content = sb.ToString();
             
-            outputItems.Add(new ViewOutputItem<ClassDiagramView>(view.Id, view, content));
+            outputItems.Add(new ViewOutputItem(view, content));
         }
         
         _viewsOutput.Execute(outputItems);
@@ -64,12 +65,12 @@ public class PlantUmlClassDiagramViewGenerator
         }
     }
 
-    private void GenerateNonPrimitiveTypes(StringBuilder sb, ClassDiagramView view)
+    private void GenerateNonPrimitiveTypes(StringBuilder sb, ConceptsClassDiagramView view)
     {
         var toGenerate = new List<AttributeType>();
         foreach (var entity in _model.GetEntities().OrderBy(x => x.Name))
         {
-            var viewConcept = view.Entities.SingleOrDefault(x => Equals(x.Entity, entity));
+            var viewConcept = view.VisibleEntities.SingleOrDefault(x => Equals(x.Entity, entity));
             if (viewConcept == null)
             {
                 continue;
@@ -152,14 +153,14 @@ public class PlantUmlClassDiagramViewGenerator
         return toGenerate;
     }
 
-    private void GenerateRelationships(StringBuilder sb, ClassDiagramView view)
+    private void GenerateRelationships(StringBuilder sb, ConceptsClassDiagramView view)
     {
         foreach (var relationship in _model.GetRelationships())
         {
             var shouldBeVisible = true;
             foreach (var entity in relationship.BetweenEntities())
             {
-                if (view.Entities.All(x => !Equals(x.Entity, entity)))
+                if (view.VisibleEntities.All(x => !Equals(x.Entity, entity)))
                 {
                     shouldBeVisible = false;
                     break;
@@ -208,11 +209,11 @@ public class PlantUmlClassDiagramViewGenerator
 
     private void GenerateEntities(
         StringBuilder sb,
-        ClassDiagramView view)
+        ConceptsClassDiagramView view)
     {
         foreach (var entity in _model.GetEntities().OrderBy(x => x.Name))
         {
-            var viewConcept = view.Entities.SingleOrDefault(x => Equals(x.Entity, entity));
+            var viewConcept = view.VisibleEntities.SingleOrDefault(x => Equals(x.Entity, entity));
             if (viewConcept == null)
             {
                 continue;

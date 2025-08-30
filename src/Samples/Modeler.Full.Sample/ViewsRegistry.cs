@@ -8,7 +8,8 @@ using Modeler.Full.Sample.Components.Views.Details.Markdown;
 using Modeler.Full.Sample.Conceptual.Concepts;
 using Modeler.Full.Sample.Conceptual.Views;
 using Modeler.Full.Sample.Conceptual.Views.ConceptDetails.AsciiDoc;
-using Modeler.Full.Sample.Conceptual.Views.MarkdownViews;
+using Modeler.Full.Sample.Conceptual.Views.ConceptDetails.Markdown;
+using Modeler.Full.Sample.Conceptual.Views.ConceptDiagrams;
 using Modeler.Full.Sample.Data.Structure;
 using Modeler.Full.Sample.Data.Views;
 using Modeler.Full.Sample.EventsFlow;
@@ -62,7 +63,7 @@ public class ViewsRegistry : ViewsRegistryBase
         AddElement(new ManagerMarkdownView(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
         AddElement(new OrganizationUnitMarkdownView(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
         
-        AddElement(OrganizationStructureView.Create(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
+        AddElement(new OrganizationStructureConceptsView(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
         
         AddElement(OrganizationsMermaidView.Create(modelsRegistry.GetModel<HRDataModel>()));
         AddElement(OrganizationsPlantUmlView.Create(modelsRegistry.GetModel<HRDataModel>()));

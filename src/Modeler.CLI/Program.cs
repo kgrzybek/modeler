@@ -29,8 +29,8 @@ using Modeler.Full.Sample.Components.Views.Details.AsciiDoc;
 using Modeler.Full.Sample.Components.Views.Details.Markdown;
 using Modeler.Full.Sample.Conceptual.Concepts;
 using Modeler.Full.Sample.Conceptual.Views.ConceptDetails.AsciiDoc;
-using Modeler.Full.Sample.Conceptual.Views.MarkdownViews;
-using Modeler.Full.Sample.Conceptual.Views.Outputs;
+using Modeler.Full.Sample.Conceptual.Views.ConceptDetails.Markdown;
+using Modeler.Full.Sample.Conceptual.Views.ConceptDiagrams;
 using Modeler.Full.Sample.Conceptual.Views.Translations;
 using Modeler.Full.Sample.Data.Views.Outputs;
 using Modeler.Full.Sample.EventsFlow.Views.AsciiDoc;
@@ -108,7 +108,7 @@ void GenerateConceptualModels(string path)
     var model = modelsRegistry.GetModel<OrganizationStructureConceptualModel>();
 
     // class diagram views
-    var classDiagramViews = viewsRegistry.GetElements<ClassDiagramView>();
+    var classDiagramViews = viewsRegistry.GetElements<ConceptsClassDiagramView>();
 
     // Views translations
     var viewTranslator = new ViewTranslator();
@@ -121,14 +121,14 @@ void GenerateConceptualModels(string path)
         model,
         4,
         viewTranslator,
-        new FileSystemPlantUmlViewOutput<ClassDiagramView>(modelsPath)).Generate(classDiagramViews);
+        new PlantUmlConceptDiagramViewFileSystemViewsOutput(modelsPath, viewsRegistry)).Generate(classDiagramViews);
 
     // Mermaid
     new MermaidClassDiagramViewGenerator(
         model,
         4,
         viewTranslator,
-        new FileSystemMermaidViewOutput<ClassDiagramView>(modelsPath)).Generate(classDiagramViews);
+        new MermaidConceptDiagramViewFileSystemViewsOutput(modelsPath, viewsRegistry)).Generate(classDiagramViews);
 
     // AsciiDoc
     var asciDocViews = viewsRegistry.GetElements<AsciiDocConceptDetailsView>();

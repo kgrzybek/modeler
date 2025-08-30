@@ -1,6 +1,6 @@
 ﻿using Modeler.Views.Common;
 
-namespace Modeler.Full.Sample.Conceptual.Views.MarkdownViews;
+namespace Modeler.Full.Sample.Conceptual.Views.ConceptDetails.Markdown;
 
 public class MarkdownConceptDetailsFileSystemViewsOutput : FileSystemMultipleViewsOutput
 {
