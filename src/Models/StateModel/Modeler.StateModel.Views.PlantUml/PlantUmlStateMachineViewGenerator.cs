@@ -1,21 +1,21 @@
 ﻿using System.Text;
+using Modeler.Views.Common;
 
 namespace Modeler.StateModel.Views.PlantUml;
 
 public class PlantUmlStateMachineViewGenerator
 {
-    private readonly IStateMachineViewsOutput<StateMachineView> _stateMachineViewsOutput;
+    private readonly IMultipleViewsOutput _viewsOutput;
 
-    public PlantUmlStateMachineViewGenerator(
-        IStateMachineViewsOutput<StateMachineView> stateMachineViewsOutput)
+    public PlantUmlStateMachineViewGenerator(IMultipleViewsOutput viewsOutput)
     {
-        _stateMachineViewsOutput = stateMachineViewsOutput;
+        _viewsOutput = viewsOutput;
     }
 
     public void Generate(
-        List<StateMachineView> views)
+        List<PlantUmlStateMachineDiagramView> views)
     {
-        var outputItems = new List<StateMachineViewOutputItem<StateMachineView>>();
+        var outputItems = new List<ViewOutputItem>();
         foreach (var view in views)
         {
             var sb = new StringBuilder();
@@ -35,15 +35,15 @@ public class PlantUmlStateMachineViewGenerator
 
             var content = sb.ToString();
             
-            outputItems.Add(new StateMachineViewOutputItem<StateMachineView>(view.Id, view, content));
+            outputItems.Add(new ViewOutputItem(view, content));
         }
         
-        _stateMachineViewsOutput.Execute(outputItems);
+        _viewsOutput.Execute(outputItems);
     }
 
-    private static void GenerateTransitions(StringBuilder sb, StateMachineView view)
+    private static void GenerateTransitions(StringBuilder sb, PlantUmlStateMachineDiagramView diagramView)
     {
-        foreach (var transition in view.StateMachine.GetTransitions())
+        foreach (var transition in diagramView.StateMachine.GetTransitions())
         {
             var fromStateId = transition.FromState is InitialState ? "[*]" : transition.FromState.Id;
             var toStateId = transition.ToState is EndState ? "[*]" : transition.ToState.Id;
@@ -53,9 +53,9 @@ public class PlantUmlStateMachineViewGenerator
     }
 
     private static void GenerateStates(StringBuilder sb,
-        StateMachineView view)
+        PlantUmlStateMachineDiagramView diagramView)
     {
-        foreach (var state in view.StateMachine.GetStates())
+        foreach (var state in diagramView.StateMachine.GetStates())
         {
             GenerateState(sb, state);
 

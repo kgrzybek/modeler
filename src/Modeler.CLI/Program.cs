@@ -41,9 +41,9 @@ using Modeler.Full.Sample.Messaging.HRBroker;
 using Modeler.Full.Sample.Sequences.Views.Layouts;
 using Modeler.Full.Sample.Sequences.Views.Outputs;
 using Modeler.Full.Sample.Sequences.Views.Translations;
-using Modeler.Full.Sample.State.Views.AsciiDoc;
-using Modeler.Full.Sample.State.Views.Markdown;
 using Modeler.Full.Sample.State.Views.PlantUml;
+using Modeler.Full.Sample.State.Views.StateMachineTable.AsciiDoc;
+using Modeler.Full.Sample.State.Views.StateMachineTable.Markdown;
 using Modeler.Messaging.Views.AsciiDoc;
 using Modeler.SequenceModel.Views.Mermaid;
 using Modeler.SequenceModel.Views.PlantUml;
@@ -262,13 +262,13 @@ void GenerateComponentsModels(string path)
 void GeneratePlantUmlStateMachineViews(string path)
 {
     // Get views
-    var stateMachineViews = viewsRegistry.GetElements<StateMachineView>();
+    var stateMachineViews = viewsRegistry.GetElements<PlantUmlStateMachineDiagramView>();
     
     // Set views path
     var componentsModelPath = Path.Combine(path, "Models/StateMachines");
     
     // Generate views
-    var fileSystemOutput = new FileSystemPlantUmlStateMachineDiagramViewOutput<StateMachineView>(componentsModelPath);
+    var fileSystemOutput = new PlantUmlStateMachineDiagramsFileSystemViewsOutput(componentsModelPath, viewsRegistry);
     new PlantUmlStateMachineViewGenerator(fileSystemOutput).Generate(stateMachineViews);
 }
 
@@ -281,7 +281,7 @@ void GenerateAsciiDocStateMachineTableViews(string path)
     var componentsModelPath = Path.Combine(path, "Models/StateMachines");
     
     // Generate views
-    var fileSystemOutput = new FileSystemAsciiDocStateMachineTableViewOutput<StateMachineAsciiDocTableView>(componentsModelPath);
+    var fileSystemOutput = new AsciiDocStateMachineTableFileSystemViewsOutput(componentsModelPath, viewsRegistry);
     new StateMachineAsciiDocTableViewGenerator(fileSystemOutput).Generate(stateMachineViews);
 }
 
@@ -294,7 +294,7 @@ void GenerateMarkdownStateMachineTableViews(string path)
     var componentsModelPath = Path.Combine(path, "Models/StateMachines");
 
     // Generate views
-    var fileSystemOutput = new FileSystemMarkdownStateMachineTableViewOutput<StateMachineMarkdownTableView>(componentsModelPath);
+    var fileSystemOutput = new MarkdownStateMachineTableFileSystemViewsOutput(componentsModelPath, viewsRegistry);
     new StateMachineMarkdownTableViewGenerator(fileSystemOutput).Generate(stateMachineViews);
 }
 

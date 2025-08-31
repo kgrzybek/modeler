@@ -23,9 +23,9 @@ using Modeler.Full.Sample.EventsFlow.Views.TableList.Markdown;
 using Modeler.Full.Sample.Sequences;
 using Modeler.Full.Sample.Sequences.Views;
 using Modeler.Full.Sample.State.Models;
-using Modeler.Full.Sample.State.Views.AsciiDoc;
-using Modeler.Full.Sample.State.Views.Markdown;
 using Modeler.Full.Sample.State.Views.PlantUml;
+using Modeler.Full.Sample.State.Views.StateMachineTable.AsciiDoc;
+using Modeler.Full.Sample.State.Views.StateMachineTable.Markdown;
 using Models.Elements;
 
 namespace Modeler.Full.Sample;
@@ -75,9 +75,9 @@ public class ViewsRegistry : ViewsRegistryBase
         AddElement(new SqlEmployeesTableView(modelsRegistry.GetModel<HRDataModel>()));
         AddElement(new SqlOrganizationUnitTableView(modelsRegistry.GetModel<HRDataModel>()));
 
-        AddElement(AbsenceStateMachineAsciiDocTableViewDefinition.Create(modelsRegistry.GetModel<HRStateStateMachineModel>()));
-        AddElement(AbsenceStateMachineMarkdownTableViewDefinition.Create(modelsRegistry.GetModel<HRStateStateMachineModel>()));
-        AddElement(AbsenceStateMachinePlantUmlViewDefinition.Create(modelsRegistry.GetModel<HRStateStateMachineModel>()));
+        AddElement(new AbsenceStateMachineAsciiDocTableViewDefinition(modelsRegistry.GetModel<HRStateStateMachineModel>()));
+        AddElement(new AbsenceStateMachineMarkdownTableViewDefinition(modelsRegistry.GetModel<HRStateStateMachineModel>()));
+        AddElement(new PlantUmlAbsenceStateMachineDiagramView(modelsRegistry.GetModel<HRStateStateMachineModel>()));
         
         AddElement(new AsciiDocHREventsFlowView(modelsRegistry.GetModel<HREventsFlowModel>()));
         AddElement(new MarkdownHREventsFlowView(modelsRegistry.GetModel<HREventsFlowModel>()));
@@ -85,7 +85,5 @@ public class ViewsRegistry : ViewsRegistryBase
         
         AddElement(new ApiModelsAsciiDocViewDefinition(elementsRegistry.GetElement<HRRestApiModel>()));
         AddElement(new EndpointsAsciiDocViewDefinition(elementsRegistry));
-        
-        
     }
 }

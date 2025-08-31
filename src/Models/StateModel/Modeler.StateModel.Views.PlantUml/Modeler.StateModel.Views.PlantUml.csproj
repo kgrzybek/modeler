@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\..\Modeler.Views.Common\Modeler.Views.Common.csproj" />
       <ProjectReference Include="..\Modeler.StateModel\Modeler.StateModel.csproj" />
     </ItemGroup>
 

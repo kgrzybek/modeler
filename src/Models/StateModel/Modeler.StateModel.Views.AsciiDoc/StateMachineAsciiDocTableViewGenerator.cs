@@ -1,22 +1,22 @@
 ﻿using System.Text;
+using Modeler.Views.Common;
 
 namespace Modeler.StateModel.Views.AsciiDoc;
 
 public class StateMachineAsciiDocTableViewGenerator
 {
-    private readonly IStateMachineAsciiDocTableViewsOutput<StateMachineAsciiDocTableView> 
-        _stateMachineViewsOutput;
+    private readonly IMultipleViewsOutput _viewsOutput;
 
     public StateMachineAsciiDocTableViewGenerator(
-        IStateMachineAsciiDocTableViewsOutput<StateMachineAsciiDocTableView> stateMachineViewsOutput)
+        IMultipleViewsOutput viewsOutput)
     {
-        _stateMachineViewsOutput = stateMachineViewsOutput;
+        _viewsOutput = viewsOutput;
     }
 
     public void Generate(
         List<StateMachineAsciiDocTableView> views)
     {
-        var outputItems = new List<StateMachineAsciiDocTableViewsOutputItem<StateMachineAsciiDocTableView>>();
+        var outputItems = new List<ViewOutputItem>();
         foreach (var view in views)
         {
             var sb = new StringBuilder();
@@ -65,9 +65,9 @@ public class StateMachineAsciiDocTableViewGenerator
 
             var content = sb.ToString();
             
-            outputItems.Add(new StateMachineAsciiDocTableViewsOutputItem<StateMachineAsciiDocTableView>(view.Id, view, content));
+            outputItems.Add(new ViewOutputItem(view, content));
         }
         
-        _stateMachineViewsOutput.Execute(outputItems);
+        _viewsOutput.Execute(outputItems);
     }
 }

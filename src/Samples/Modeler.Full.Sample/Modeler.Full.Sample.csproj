@@ -48,6 +48,7 @@
       <Folder Include="Conceptual\Views\ConceptDetails\" />
       <Folder Include="EventsFlow\Views\EventsFlowDiagrams\" />
       <Folder Include="EventsFlow\Views\TableList\" />
+      <Folder Include="State\Views\StateMachineTable\" />
     </ItemGroup>
 
 </Project>

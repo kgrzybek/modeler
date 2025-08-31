@@ -1,20 +1,21 @@
 using System.Text;
+using Modeler.Views.Common;
 
 namespace Modeler.StateModel.Views.Markdown;
 
 public class StateMachineMarkdownTableViewGenerator
 {
-    private readonly IStateMachineMarkdownTableViewsOutput<StateMachineMarkdownTableView> _output;
+    private readonly IMultipleViewsOutput _viewsOutput;
 
     public StateMachineMarkdownTableViewGenerator(
-        IStateMachineMarkdownTableViewsOutput<StateMachineMarkdownTableView> output)
+        IMultipleViewsOutput viewsOutput)
     {
-        _output = output;
+        _viewsOutput = viewsOutput;
     }
 
     public void Generate(List<StateMachineMarkdownTableView> views)
     {
-        var outputItems = new List<StateMachineMarkdownTableViewsOutputItem<StateMachineMarkdownTableView>>();
+        var outputItems = new List<ViewOutputItem>();
         foreach (var view in views)
         {
             var sb = new StringBuilder();
@@ -57,9 +58,9 @@ public class StateMachineMarkdownTableViewGenerator
             }
 
             var content = sb.ToString();
-            outputItems.Add(new StateMachineMarkdownTableViewsOutputItem<StateMachineMarkdownTableView>(view.Id, view, content));
+            outputItems.Add(new ViewOutputItem(view, content));
         }
 
-        _output.Execute(outputItems);
+        _viewsOutput.Execute(outputItems);
     }
 }
