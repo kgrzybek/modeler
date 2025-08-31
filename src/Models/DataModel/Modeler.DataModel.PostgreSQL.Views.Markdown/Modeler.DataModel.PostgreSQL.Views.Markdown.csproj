@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\..\..\Modeler.Views.Common\Modeler.Views.Common.csproj" />
       <ProjectReference Include="..\Modeler.DataModel.PostgreSQL.Views.Shared\Modeler.DataModel.PostgreSQL.Views.Shared.csproj" />
       <ProjectReference Include="..\Modeler.DataModel\Modeler.DataModel.csproj" />
     </ItemGroup>

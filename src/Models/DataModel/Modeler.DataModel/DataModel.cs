@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Modeler.DataModel.Relationships;
 using Modeler.DataModel.Relationships.Multiplicity;
+using Modeler.DataModel.Schemas;
 using Modeler.DataModel.Structure;
 using Models.Elements;
 
@@ -69,4 +70,16 @@ public class DataModel : IModel
     public List<Table> GetTables() => _tables.ToList();
 
     public List<View> GetViews() => _views.ToList();
+
+    public Schema GetSchema<T>() where T : Schema
+    {
+        var schema = GetTables().Select(x => x.Schema).Distinct().OfType<T>().Single();
+
+        if (schema == null)
+        {
+            throw new Exception($"Schema {typeof(T)} is not defined in the model");
+        }
+
+        return schema;
+    }
 }

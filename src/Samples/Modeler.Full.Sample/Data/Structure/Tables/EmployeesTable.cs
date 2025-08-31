@@ -6,10 +6,10 @@ namespace Modeler.Full.Sample.Data.Structure.Tables;
 
 public class EmployeesTable : Table
 {
-    public static Table Create()
+    public static Table Create(ElementsRegistry elementsRegistry)
     {
         return new EmployeesTable()
-            .InSchema(new OrganizationSchema())
+            .InSchema(elementsRegistry.GetElement<OrganizationSchema>())
             .WithName("employees")
             .WithColumnAsPrimaryKey("id", new UUID())
             .WithColumn("first_name", new Varchar(100), false)

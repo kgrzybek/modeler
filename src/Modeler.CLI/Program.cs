@@ -6,7 +6,6 @@ using Modeler.ComponentsModel.Views.AsciiDoc.ListTable;
 using Modeler.ComponentsModel.Views.Markdown.Details;
 using Modeler.ComponentsModel.Views.Markdown.ListTable;
 using Modeler.ComponentsModel.Views.PlantUml;
-using Modeler.ConceptualModel.Views.Markdown;
 using Modeler.ConceptualModel.Views.AsciiDoc.ConceptDetails;
 using Modeler.ConceptualModel.Views.Markdown.ConceptDetails;
 using Modeler.ConceptualModel.Views.PlantUml;
@@ -15,6 +14,7 @@ using Modeler.DataModel.PostgreSQL.Views.AsciiDoc;
 using Modeler.DataModel.PostgreSQL.Views.Markdown;
 using Modeler.DataModel.PostgreSQL.Views.PlantUml;
 using Modeler.DataModel.PostgreSQL.Views.Mermaid;
+using Modeler.DataModel.PostgreSQL.Views.Shared;
 using Modeler.DataModel.PostgreSQL.Views.SQL.Generator;
 using Modeler.EventsFlowModel.Views.Mermaid;
 using Modeler.EventsFlowModel.Views.AsciiDoc;
@@ -32,7 +32,8 @@ using Modeler.Full.Sample.Conceptual.Views.ConceptDetails.AsciiDoc;
 using Modeler.Full.Sample.Conceptual.Views.ConceptDetails.Markdown;
 using Modeler.Full.Sample.Conceptual.Views.ConceptDiagrams;
 using Modeler.Full.Sample.Conceptual.Views.Translations;
-using Modeler.Full.Sample.Data.Views.Outputs;
+using Modeler.Full.Sample.Data.Views.SchemaDetails;
+using Modeler.Full.Sample.Data.Views.Sql;
 using Modeler.Full.Sample.EventsFlow.Views.AsciiDoc;
 using Modeler.Full.Sample.EventsFlow.Views.Markdown;
 using Modeler.Full.Sample.EventsFlow.Views.Mermaid;
@@ -162,12 +163,12 @@ void GenerateDataModels(string path)
     
     // Generate database scripts
     var dataModelPath = Path.Combine(path, "Models/Data");
-    var fileSystemOutput = new FileSystemOutput(dataModelPath);
-    new PostgreSqlStructureViewsGenerator(model, fileSystemOutput).Generate();
+    var views = viewsRegistry.GetElements<SqlStructureElementView>();
+    new PostgreSqlStructureViewsGenerator(new SqlFileSystemViewsOutput(dataModelPath, viewsRegistry)).Generate(views);
 
     // Generate data model diagrams
     var plantUmlDataViews = viewsRegistry.GetElements<PlantUmlDataModelView>();
-    var viewTranslator = new Modeler.DataModel.Sample.Views.Translations.ViewTranslator();
+    var viewTranslator = new Modeler.Full.Sample.Data.Views.Translations.ViewTranslator();
     
     PlantUmlDataModelGenerator.Generate(
         model,
@@ -184,11 +185,23 @@ void GenerateDataModels(string path)
         viewTranslator,
         new FileSystemViewOutput(dataModelPath, "Organizations_data_model.mmd"));
 
+    var schemaViews = viewsRegistry.GetElements<DataModelSchemaDetailsView>();
     // Generate ascii doc tables
-    DataModelAsciiDocGenerator.Generate(dataModelPath, "organizations", model, viewTranslator);
+
+    DataModelAsciiDocGenerator.Generate(
+        "organizations", 
+        model, 
+        viewTranslator, 
+        new AsciiDocSchemaDetailsFileSystemViewsOutput(dataModelPath, viewsRegistry), 
+        schemaViews);
 
     // Generate markdown tables
-    DataModelMarkdownGenerator.Generate(dataModelPath, "organizations", model, viewTranslator);
+    DataModelMarkdownGenerator.Generate(
+        "organizations", 
+        model, 
+        viewTranslator,
+        new MarkdownSchemaDetailsFileSystemViewsOutput(dataModelPath, viewsRegistry),
+        schemaViews);
 }
 
 void GenerateSequenceModels(string path)

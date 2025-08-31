@@ -12,6 +12,10 @@ using Modeler.Full.Sample.Conceptual.Views.ConceptDetails.Markdown;
 using Modeler.Full.Sample.Conceptual.Views.ConceptDiagrams;
 using Modeler.Full.Sample.Data.Structure;
 using Modeler.Full.Sample.Data.Views;
+using Modeler.Full.Sample.Data.Views.DataModelDiagrams.Mermaid;
+using Modeler.Full.Sample.Data.Views.DataModelDiagrams.PlantUml;
+using Modeler.Full.Sample.Data.Views.SchemaDetails;
+using Modeler.Full.Sample.Data.Views.Sql;
 using Modeler.Full.Sample.EventsFlow;
 using Modeler.Full.Sample.EventsFlow.Views.AsciiDoc;
 using Modeler.Full.Sample.EventsFlow.Views.Markdown;
@@ -67,6 +71,9 @@ public class ViewsRegistry : ViewsRegistryBase
         
         AddElement(new OrganizationsMermaidView(modelsRegistry.GetModel<HRDataModel>()));
         AddElement(new OrganizationsPlantUmlView(modelsRegistry.GetModel<HRDataModel>()));
+        AddElement(new OrganizationsSchemaDetailsView(modelsRegistry.GetModel<HRDataModel>()));
+        AddElement(new SqlEmployeesTableView(modelsRegistry.GetModel<HRDataModel>()));
+        AddElement(new SqlOrganizationUnitTableView(modelsRegistry.GetModel<HRDataModel>()));
 
         AddElement(AbsenceStateMachineAsciiDocTableViewDefinition.Create(modelsRegistry.GetModel<HRStateStateMachineModel>()));
         AddElement(AbsenceStateMachineMarkdownTableViewDefinition.Create(modelsRegistry.GetModel<HRStateStateMachineModel>()));
@@ -78,5 +85,7 @@ public class ViewsRegistry : ViewsRegistryBase
         
         AddElement(ApiModelsAsciiDocViewDefinition.Create(elementsRegistry.GetElement<HRRestApiModel>()));
         AddElement(EndpointsAsciiDocViewDefinition.Create(elementsRegistry.GetElement<HRRestApiModel>()));
+        
+        
     }
 }
