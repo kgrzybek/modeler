@@ -46,8 +46,8 @@ public class ViewsRegistry : ViewsRegistryBase
     
     public void RegisterViews(ModelsRegistry modelsRegistry, ModelElementsRegistry elementsRegistry)
     {
-        AddElement(BasicSequenceView.Create(modelsRegistry.GetModel<HRSequencesModel>()));
-        AddElement(BasicSequencePartView.Create(modelsRegistry.GetModel<HRSequencesModel>()));
+        AddElement(new BasicSequenceView(elementsRegistry, modelsRegistry.GetModel<HRSequencesModel>()));
+        AddElement(new BasicSequencePartView(elementsRegistry, modelsRegistry.GetModel<HRSequencesModel>()));
         
         AddElement(new AsciiDocBackendComponentDetailsView(modelsRegistry.GetModel<SystemComponentsModel>()));
         AddElement(new AsciiDocFrontendComponentDetailsView(modelsRegistry.GetModel<SystemComponentsModel>()));

@@ -6,31 +6,28 @@ using Modeler.Full.Sample.Sequences.Flows;
 using Modeler.Full.Sample.Sequences.Participants;
 using Modeler.SequenceModel;
 using Modeler.SequenceModel.Participants;
+using Modeler.SequenceModel.Sequences;
 using Modeler.SequenceModel.Views.Shared;
 using Models.Elements;
 
 namespace Modeler.Full.Sample.Sequences.Views;
 
-public class BasicSequenceView
+public class BasicSequenceView :  SequenceDiagramView
 {
     public const string Id = "BasicSequence";
-    
-    public static SequenceDiagramView Create(HRSequencesModel model)
+
+    public BasicSequenceView(
+        ModelElementsRegistry elementsRegistry,
+        HRSequencesModel model)
+        : base(elementsRegistry.GetElement<HRSystemFlowSequence>(), true)
     {
-        var participantsToShow = new List<ISequenceParticipant>
-        {
+        ParticipantsToShow =
+        [
             model.GetParticipant<UserParticipant>(),
             model.GetParticipant<HRFrontendApplication>(),
             model.GetParticipant<HRBackendApplication>(),
             model.GetParticipant<HRDatabase>(),
             model.GetParticipant<CRM>()
-        };
-        var view = new SequenceDiagramView(
-            Id,
-            model.GetSequence<HRSystemFlowSequence>(),
-            participantsToShow,
-            autonumberMessages: true);
-
-        return view;
+        ];
     }
 }

@@ -213,15 +213,16 @@ void GenerateSequenceModels(string path)
     var sequencesModelPath = Path.Combine(path, "Models/Sequences");
     
     // Generate views
-    var fileSystemOutput = new FileSystemSequencesPlantUmlSequenceDiagramViewOutput<SequenceDiagramView>(sequencesModelPath);
+    
     var viewTranslator = new SequenceDiagramViewTranslator();
     var viewLayout = new DefaultViewLayout();
     
     // Generate PlantUml views
+    var fileSystemOutput = new PlantUmlSequenceDiagramsViewFileSystemViewsOutput(sequencesModelPath, viewsRegistry);
     new PlantUmlSequenceDiagramViewGenerator(fileSystemOutput, viewTranslator, viewLayout).Generate(sequenceDiagramViews);
     
     // Generate Mermaid views
-    var mermaidFilesOutput = new FileSystemSequencesMermaidSequenceDiagramViewOutput<SequenceDiagramView>(sequencesModelPath);
+    var mermaidFilesOutput = new MermaidSequenceDiagramsViewFileSystemViewsOutput(sequencesModelPath, viewsRegistry);
     new MermaidSequenceDiagramViewGenerator(mermaidFilesOutput, viewTranslator).Generate(sequenceDiagramViews);
 }
 

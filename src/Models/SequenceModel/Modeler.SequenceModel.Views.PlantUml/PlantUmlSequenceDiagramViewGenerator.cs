@@ -2,21 +2,22 @@
 using Modeler.SequenceModel.Messages.Types;
 using Modeler.SequenceModel.Participants;
 using Modeler.SequenceModel.Views.Shared;
+using Modeler.Views.Common;
 
 namespace Modeler.SequenceModel.Views.PlantUml;
 
 public class PlantUmlSequenceDiagramViewGenerator
 {
-    private readonly ISequenceDiagramViewsOutput<SequenceDiagramView> _sequenceDiagramViewsOutput;
+    private readonly IMultipleViewsOutput _viewsOutput;
     private readonly ISequenceDiagramViewTranslator _viewTranslator;
     private readonly ISequenceDiagramViewLayout _viewLayout;
 
     public PlantUmlSequenceDiagramViewGenerator(
-        ISequenceDiagramViewsOutput<SequenceDiagramView> sequenceDiagramViewsOutput,
+        IMultipleViewsOutput viewsOutput,
         ISequenceDiagramViewTranslator viewTranslator, 
         ISequenceDiagramViewLayout viewLayout)
     {
-        _sequenceDiagramViewsOutput = sequenceDiagramViewsOutput;
+        _viewsOutput = viewsOutput;
         _viewTranslator = viewTranslator;
         _viewLayout = viewLayout;
     }
@@ -24,7 +25,7 @@ public class PlantUmlSequenceDiagramViewGenerator
     public void Generate(
         List<SequenceDiagramView> views)
     {
-        var outputItems = new List<SequenceDiagramViewOutputItem<SequenceDiagramView>>();
+        var outputItems = new List<ViewOutputItem>();
         foreach (var view in views)
         {
             var sb = new StringBuilder();
@@ -48,10 +49,10 @@ public class PlantUmlSequenceDiagramViewGenerator
 
             var content = sb.ToString();
             
-            outputItems.Add(new SequenceDiagramViewOutputItem<SequenceDiagramView>(view.Id, view, content));
+            outputItems.Add(new ViewOutputItem(view, content));
         }
         
-        _sequenceDiagramViewsOutput.Execute(outputItems);
+        _viewsOutput.Execute(outputItems);
     }
     
     private void GenerateMessages(StringBuilder sb, SequenceDiagramView view)

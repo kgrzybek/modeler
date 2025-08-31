@@ -2,26 +2,27 @@
 using Modeler.SequenceModel.Messages.Types;
 using Modeler.SequenceModel.Participants;
 using Modeler.SequenceModel.Views.Shared;
+using Modeler.Views.Common;
 
 namespace Modeler.SequenceModel.Views.Mermaid;
 
 public class MermaidSequenceDiagramViewGenerator
 {
-    private readonly ISequenceDiagramViewsOutput<SequenceDiagramView> _sequenceDiagramViewsOutput;
+    private readonly IMultipleViewsOutput _viewsOutput;
     private readonly ISequenceDiagramViewTranslator _viewTranslator;
 
     public MermaidSequenceDiagramViewGenerator(
-        ISequenceDiagramViewsOutput<SequenceDiagramView> sequenceDiagramViewsOutput,
+        IMultipleViewsOutput viewsOutput,
         ISequenceDiagramViewTranslator viewTranslator)
     {
-        _sequenceDiagramViewsOutput = sequenceDiagramViewsOutput;
+        _viewsOutput = viewsOutput;
         _viewTranslator = viewTranslator;
     }
 
     public void Generate(
         List<SequenceDiagramView> views)
     {
-        var outputItems = new List<SequenceDiagramViewOutputItem<SequenceDiagramView>>();
+        var outputItems = new List<ViewOutputItem>();
         foreach (var view in views)
         {
             var sb = new StringBuilder();
@@ -43,10 +44,10 @@ public class MermaidSequenceDiagramViewGenerator
 
             var content = sb.ToString();
             
-            outputItems.Add(new SequenceDiagramViewOutputItem<SequenceDiagramView>(view.Id, view, content));
+            outputItems.Add(new ViewOutputItem(view, content));
         }
         
-        _sequenceDiagramViewsOutput.Execute(outputItems);
+        _viewsOutput.Execute(outputItems);
     }
     
     private void GenerateMessages(StringBuilder sb, SequenceDiagramView view)

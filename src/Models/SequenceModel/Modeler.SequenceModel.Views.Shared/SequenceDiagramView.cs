@@ -4,25 +4,19 @@ using Models.Elements;
 
 namespace Modeler.SequenceModel.Views.Shared;
 
-public class SequenceDiagramView : IView
+public abstract class SequenceDiagramView : IView
 {
-    public SequenceDiagramView(
-        string id,
+    protected SequenceDiagramView(
         Sequence sequence,
-        List<ISequenceParticipant> participantsToShow,
         bool autonumberMessages = false)
     {
-        Id = id;
         Sequence = sequence;
-        ParticipantsToShow = participantsToShow;
         AutonumberMessages = autonumberMessages;
     }
-    
-    public string Id { get; }
 
     public Sequence Sequence { get; }
     
     public bool AutonumberMessages { get; }
 
-    public List<ISequenceParticipant> ParticipantsToShow { get; }
+    public List<ISequenceParticipant> ParticipantsToShow { get; protected set; }
 }
