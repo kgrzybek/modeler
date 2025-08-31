@@ -1,6 +1,7 @@
 ﻿using System.Text;
-using Modeler.StateModel;
+using Modeler.Models.StateMachine;
 using Modeler.Views.Common;
+using Modeler.Views.Common.Outputs;
 
 namespace Modeler.Views.StateMachine.Diagram.PlantUml;
 

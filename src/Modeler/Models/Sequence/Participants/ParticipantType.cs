@@ -1,4 +1,4 @@
-﻿namespace Modeler.SequenceModel.Participants;
+﻿namespace Modeler.Models.Sequence.Participants;
 
 public abstract class ParticipantType
 {}

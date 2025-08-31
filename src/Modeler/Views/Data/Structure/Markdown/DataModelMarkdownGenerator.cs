@@ -1,6 +1,8 @@
 using System.Text;
-using Modeler.DataModel.Structure;
+using Modeler.Models.Data;
+using Modeler.Models.Data.Structure;
 using Modeler.Views.Common;
+using Modeler.Views.Common.Outputs;
 using Modeler.Views.Data.Shared;
 
 namespace Modeler.Views.Data.Structure.Markdown;
@@ -9,7 +11,7 @@ public static class DataModelMarkdownGenerator
 {
     public static void Generate(
         string modelName,
-        DataModel.DataModel model,
+        DataModel model,
         IViewTranslator viewTranslator,
         IMultipleViewsOutput multipleViewsOutput,
         List<DataModelSchemaDetailsView> views)
@@ -32,7 +34,7 @@ public static class DataModelMarkdownGenerator
 
     private static void GenerateTables(
         string modelName,
-        DataModel.DataModel model,
+        DataModel model,
         string schema,
         StringBuilder sb,
         IViewTranslator viewTranslator)
@@ -99,7 +101,7 @@ public static class DataModelMarkdownGenerator
 
     private static void GenerateViews(
         string modelName,
-        DataModel.DataModel model,
+        DataModel model,
         string schema,
         StringBuilder sb,
         IViewTranslator viewTranslator)

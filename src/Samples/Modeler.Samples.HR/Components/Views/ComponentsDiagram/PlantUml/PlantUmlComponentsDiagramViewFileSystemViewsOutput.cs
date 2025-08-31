@@ -1,0 +1,12 @@
+﻿using Modeler.Views.Common;
+using Modeler.Views.Common.Outputs;
+
+namespace Modeler.Samples.HR.Components.Views.ComponentsDiagram.PlantUml;
+
+public class PlantUmlComponentsDiagramViewFileSystemViewsOutput : FileSystemMultipleViewsOutput
+{
+    public PlantUmlComponentsDiagramViewFileSystemViewsOutput(string absoluteDirectoryPath, ViewsRegistry viewsRegistry) : base(absoluteDirectoryPath)
+    {
+        RelativePaths.Add(viewsRegistry.GetElement<PlantUmlHRSystemComponentsView>(), "SystemComponents_full.puml");
+    }
+}

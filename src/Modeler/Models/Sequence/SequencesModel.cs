@@ -1,22 +1,22 @@
-﻿using Modeler.SequenceModel.Participants;
-using Modeler.SequenceModel.Sequences;
-using Models.Elements;
+﻿using Modeler.Models.Common.Elements;
+using Modeler.Models.Common.Models;
+using Modeler.Models.Sequence.Participants;
 
-namespace Modeler.SequenceModel;
+namespace Modeler.Models.Sequence;
 
 public abstract class SequencesModel : IModel
 {
     private readonly List<ISequenceParticipant> _participants;
 
-    private readonly List<Sequence> _sequences;
+    private readonly List<Sequences.Sequence> _sequences;
 
     protected SequencesModel(ModelElementsRegistry elementsRegistry)
     {
         _participants = elementsRegistry.GetElements<ISequenceParticipant>().ToList();
-        _sequences = elementsRegistry.GetElements<Sequence>().ToList();
+        _sequences = elementsRegistry.GetElements<Sequences.Sequence>().ToList();
     }
     
-    public Sequence GetSequence<T>() where T: Sequence
+    public Sequences.Sequence GetSequence<T>() where T: Sequences.Sequence
     {
         var type = _sequences.OfType<T>().SingleOrDefault();
         

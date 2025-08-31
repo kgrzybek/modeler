@@ -1,11 +1,11 @@
-﻿using System.Reflection;
-using Modeler.DataModel.Relationships;
-using Modeler.DataModel.Relationships.Multiplicity;
-using Modeler.DataModel.Schemas;
-using Modeler.DataModel.Structure;
-using Models.Elements;
+﻿using Modeler.Models.Common.Elements;
+using Modeler.Models.Common.Models;
+using Modeler.Models.Data.Relationships;
+using Modeler.Models.Data.Relationships.Multiplicity;
+using Modeler.Models.Data.Schemas;
+using Modeler.Models.Data.Structure;
 
-namespace Modeler.DataModel;
+namespace Modeler.Models.Data;
 
 public class DataModel : IModel
 {

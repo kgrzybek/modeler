@@ -1,7 +1,7 @@
-﻿using Modeler.DataModel.Relationships.Multiplicity;
-using Modeler.DataModel.Structure;
+﻿using Modeler.Models.Data.Relationships.Multiplicity;
+using Modeler.Models.Data.Structure;
 
-namespace Modeler.DataModel.Relationships;
+namespace Modeler.Models.Data.Relationships;
 
 public class StructureElementRelationship
 {

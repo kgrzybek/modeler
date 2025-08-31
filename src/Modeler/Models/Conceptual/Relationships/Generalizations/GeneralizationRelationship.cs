@@ -1,4 +1,4 @@
-﻿namespace Modeler.ConceptualModel.Relationships.Generalizations;
+﻿namespace Modeler.Models.Conceptual.Relationships.Generalizations;
 
 public class GeneralizationRelationship : Relationship
 {

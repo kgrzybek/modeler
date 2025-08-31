@@ -1,4 +1,4 @@
-﻿namespace Modeler.SequenceModel.Messages.Types;
+﻿namespace Modeler.Models.Sequence.Messages.Types;
 
 public abstract class MessageType {
 

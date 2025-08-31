@@ -1,6 +1,7 @@
-﻿using Models.Elements;
+﻿using Modeler.Models.Common.Elements;
+using Modeler.Models.Common.Models;
 
-namespace Modeler.Messaging;
+namespace Modeler.Models.Messaging;
 
 public abstract class BrokerModel : IModel
 {

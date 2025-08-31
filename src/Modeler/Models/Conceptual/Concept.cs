@@ -1,6 +1,6 @@
-using Models.Elements;
+using Modeler.Models.Common.Elements;
 
-namespace Modeler.ConceptualModel;
+namespace Modeler.Models.Conceptual;
 
 public abstract class Concept : IElement
 {

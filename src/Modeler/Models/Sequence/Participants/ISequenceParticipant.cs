@@ -1,6 +1,6 @@
-﻿using Models.Elements;
+﻿using Modeler.Models.Common.Elements;
 
-namespace Modeler.SequenceModel.Participants;
+namespace Modeler.Models.Sequence.Participants;
 
 public interface ISequenceParticipant : IElement
 {

@@ -1,4 +1,4 @@
-namespace Modeler.RestApiModel.Types;
+namespace Modeler.Models.RestApi.Types;
 
 public class ArrayType : AttributeType
 {

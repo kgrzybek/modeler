@@ -1,4 +1,4 @@
-namespace Modeler.DataModel.Structure;
+namespace Modeler.Models.Data.Structure;
 
 public abstract class Column
 {

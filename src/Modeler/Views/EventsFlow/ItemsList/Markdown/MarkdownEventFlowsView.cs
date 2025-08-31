@@ -1,5 +1,6 @@
-using Modeler.EventsFlowModel;
-using Models.Elements;
+using Modeler.Models.Common;
+using Modeler.Models.EventsFlow;
+using Modeler.Views.Common;
 
 namespace Modeler.Views.EventsFlow.ItemsList.Markdown;
 

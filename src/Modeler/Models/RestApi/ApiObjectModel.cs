@@ -1,6 +1,6 @@
-using Modeler.RestApiModel.Types;
+using Modeler.Models.RestApi.Types;
 
-namespace Modeler.RestApiModel;
+namespace Modeler.Models.RestApi;
 
 public abstract class ApiObjectModel : IApiObjectModel
 {

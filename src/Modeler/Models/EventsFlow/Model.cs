@@ -1,6 +1,7 @@
-﻿using Models.Elements;
+﻿using Modeler.Models.Common.Elements;
+using Modeler.Models.Common.Models;
 
-namespace Modeler.EventsFlowModel;
+namespace Modeler.Models.EventsFlow;
 
 public abstract class Model : IModel
 {

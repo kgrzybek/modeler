@@ -1,6 +1,7 @@
 using System.Text;
-using Modeler.ComponentsModel;
+using Modeler.Models.Components;
 using Modeler.Views.Common;
+using Modeler.Views.Common.Outputs;
 
 namespace Modeler.Views.Components.ListTable.Markdown;
 

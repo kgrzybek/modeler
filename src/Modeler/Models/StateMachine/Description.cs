@@ -1,4 +1,4 @@
-﻿namespace Modeler.StateModel;
+﻿namespace Modeler.Models.StateMachine;
 
 public class Description : TransitionEvent
 {

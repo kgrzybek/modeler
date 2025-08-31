@@ -1,5 +1,6 @@
-﻿using Modeler.DataModel.Structure;
-using Models.Elements;
+﻿using Modeler.Models.Common;
+using Modeler.Models.Data.Structure;
+using Modeler.Views.Common;
 
 namespace Modeler.Views.Data.Sql;
 

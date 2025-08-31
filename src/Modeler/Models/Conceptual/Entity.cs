@@ -1,8 +1,8 @@
-﻿using Modeler.ConceptualModel.Attributes;
-using Models.Elements;
-using Attribute = Modeler.ConceptualModel.Attributes.Attribute;
+﻿using Modeler.Models.Common.Elements;
+using Modeler.Models.Conceptual.Attributes;
+using Attribute = Modeler.Models.Conceptual.Attributes.Attribute;
 
-namespace Modeler.ConceptualModel;
+namespace Modeler.Models.Conceptual;
 
 public abstract class Entity : Concept
 {

@@ -1,4 +1,4 @@
-using Modeler.ConceptualModel;
+using Modeler.Models.Conceptual;
 
 namespace Modeler.Views.Conceptual.ConceptDetails.Shared;
 

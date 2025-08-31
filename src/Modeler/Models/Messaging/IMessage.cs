@@ -1,6 +1,6 @@
-﻿using Models.Elements;
+﻿using Modeler.Models.Common.Elements;
 
-namespace Modeler.Messaging;
+namespace Modeler.Models.Messaging;
 
 public interface IMessage : IElement
 {

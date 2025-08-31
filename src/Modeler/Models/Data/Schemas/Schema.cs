@@ -1,6 +1,6 @@
-using Models.Elements;
+using Modeler.Models.Common.Elements;
 
-namespace Modeler.DataModel.Schemas;
+namespace Modeler.Models.Data.Schemas;
 
 public abstract class Schema : IElement
 {

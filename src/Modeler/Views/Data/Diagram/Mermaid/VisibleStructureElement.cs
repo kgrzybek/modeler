@@ -1,4 +1,4 @@
-using Modeler.DataModel.Structure;
+using Modeler.Models.Data.Structure;
 
 namespace Modeler.Views.Data.DataModelDiagrams.Mermaid;
 

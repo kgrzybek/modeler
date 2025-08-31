@@ -1,5 +1,6 @@
-﻿using Modeler.DataModel.Schemas;
-using Models.Elements;
+﻿using Modeler.Models.Common;
+using Modeler.Models.Data.Schemas;
+using Modeler.Views.Common;
 
 namespace Modeler.Views.Data.Shared;
 

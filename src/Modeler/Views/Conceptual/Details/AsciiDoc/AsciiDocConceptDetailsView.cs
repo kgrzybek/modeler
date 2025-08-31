@@ -1,5 +1,6 @@
-using Modeler.ConceptualModel;
-using Models.Elements;
+using Modeler.Models.Common;
+using Modeler.Models.Conceptual;
+using Modeler.Views.Common;
 
 namespace Modeler.Views.Conceptual.ConceptDetails.AsciiDoc;
 

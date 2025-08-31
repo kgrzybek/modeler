@@ -1,7 +1,7 @@
-﻿using Modeler.DataModel.Schemas;
-using Models.Elements;
+﻿using Modeler.Models.Common.Elements;
+using Modeler.Models.Data.Schemas;
 
-namespace Modeler.DataModel.Structure;
+namespace Modeler.Models.Data.Structure;
 
 public abstract class StructureElement : IElement
 {

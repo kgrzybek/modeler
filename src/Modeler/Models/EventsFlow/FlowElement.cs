@@ -1,6 +1,6 @@
-﻿using Models.Elements;
+﻿using Modeler.Models.Common.Elements;
 
-namespace Modeler.EventsFlowModel;
+namespace Modeler.Models.EventsFlow;
 
 public abstract class FlowElement : IElement
 {

@@ -1,19 +1,20 @@
-﻿using Modeler.SequenceModel.Participants;
-using Models.Elements;
+﻿using Modeler.Models.Common;
+using Modeler.Models.Sequence.Participants;
+using Modeler.Views.Common;
 
 namespace Modeler.Views.Sequence.Diagram.Shared;
 
 public abstract class SequenceDiagramView : IView
 {
     protected SequenceDiagramView(
-        SequenceModel.Sequences.Sequence sequence,
+        Models.Sequence.Sequences.Sequence sequence,
         bool autonumberMessages = false)
     {
         Sequence = sequence;
         AutonumberMessages = autonumberMessages;
     }
 
-    public SequenceModel.Sequences.Sequence Sequence { get; }
+    public Models.Sequence.Sequences.Sequence Sequence { get; }
     
     public bool AutonumberMessages { get; }
 

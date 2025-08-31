@@ -1,6 +1,8 @@
 ﻿using System.Text;
-using Modeler.DataModel.Structure;
+using Modeler.Models.Data;
+using Modeler.Models.Data.Structure;
 using Modeler.Views.Common;
+using Modeler.Views.Common.Outputs;
 using Modeler.Views.Data.Shared;
 
 namespace Modeler.Views.Data.DataModelDiagrams.PlantUml;
@@ -8,7 +10,7 @@ namespace Modeler.Views.Data.DataModelDiagrams.PlantUml;
 public static class PlantUmlDataModelGenerator
 {
     public static void Generate(
-        DataModel.DataModel model,
+        DataModel model,
         int indentSize,
         List<PlantUmlDataModelView> views, 
         IViewTranslator viewTranslator,
@@ -39,7 +41,7 @@ public static class PlantUmlDataModelGenerator
 
     private static void GenerateRelationships(
         StringBuilder sb,
-        DataModel.DataModel model,
+        DataModel model,
         PlantUmlDataModelView view,
         IViewTranslator viewTranslator)
     {
@@ -61,7 +63,7 @@ public static class PlantUmlDataModelGenerator
 
     private static void GenerateTables(
         StringBuilder sb,
-        DataModel.DataModel model,
+        DataModel model,
         int indentSize,
         PlantUmlDataModelView view)
     {
@@ -86,7 +88,7 @@ public static class PlantUmlDataModelGenerator
     
     private static void GenerateViews(
         StringBuilder sb,
-        DataModel.DataModel model,
+        DataModel model,
         int indentSize,
         PlantUmlDataModelView view)
     {

@@ -1,4 +1,4 @@
-﻿using Modeler.ComponentsModel;
+﻿using Modeler.Models.Components;
 
 namespace Modeler.Views.Components.ComponentsDiagram;
 

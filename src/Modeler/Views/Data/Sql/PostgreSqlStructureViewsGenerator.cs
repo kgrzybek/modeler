@@ -1,6 +1,7 @@
 ﻿using System.Text;
-using Modeler.DataModel.Structure;
+using Modeler.Models.Data.Structure;
 using Modeler.Views.Common;
+using Modeler.Views.Common.Outputs;
 
 namespace Modeler.Views.Data.Sql;
 

@@ -1,4 +1,4 @@
-namespace Modeler.DataModel.Relationships.Multiplicity;
+namespace Modeler.Models.Data.Relationships.Multiplicity;
 
 public abstract class RelationshipMultiplicity
 {

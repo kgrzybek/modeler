@@ -1,4 +1,4 @@
-﻿namespace Modeler.Messaging;
+﻿namespace Modeler.Models.Messaging;
 
 public class PublishedMessage
 {

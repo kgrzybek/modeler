@@ -1,6 +1,6 @@
-using Models.Elements;
+using Modeler.Models.Common.Elements;
 
-namespace Modeler.StateModel;
+namespace Modeler.Models.StateMachine;
 
 public abstract class StateMachine : IElement
 {
@@ -36,8 +36,8 @@ public abstract class StateMachine : IElement
 
     public List<State> GetStates()
     {
-        var fromStates = _transitions.Select(x => x.FromState).Where(x => x is not StateModel.InitialState).ToList();
-        var toStates = _transitions.Select(x => x.ToState).Where(x => x is not StateModel.EndState).ToList();
+        var fromStates = _transitions.Select(x => x.FromState).Where(x => x is not Models.StateMachine.InitialState).ToList();
+        var toStates = _transitions.Select(x => x.ToState).Where(x => x is not Models.StateMachine.EndState).ToList();
         
         return fromStates.Concat(toStates).Distinct().ToList();
     }

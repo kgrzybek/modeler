@@ -1,6 +1,6 @@
-using Models.Elements;
+using Modeler.Models.Common.Elements;
 
-namespace Modeler.RestApiModel;
+namespace Modeler.Models.RestApi;
 
 public class Endpoint : IElement
 {

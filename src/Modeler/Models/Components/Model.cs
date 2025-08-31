@@ -1,7 +1,7 @@
-﻿using System.Reflection;
-using Models.Elements;
+﻿using Modeler.Models.Common.Elements;
+using Modeler.Models.Common.Models;
 
-namespace Modeler.ComponentsModel;
+namespace Modeler.Models.Components;
 
 public abstract class Model : IModel
 {

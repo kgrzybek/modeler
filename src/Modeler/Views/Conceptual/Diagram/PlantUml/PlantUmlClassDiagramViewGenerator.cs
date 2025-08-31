@@ -1,11 +1,12 @@
 ﻿using System.Text;
-using Modeler.ConceptualModel;
-using Modeler.ConceptualModel.Attributes;
-using Modeler.ConceptualModel.Relationships.Associations;
-using Modeler.ConceptualModel.Relationships.Generalizations;
+using Modeler.Models.Conceptual;
+using Modeler.Models.Conceptual.Attributes;
+using Modeler.Models.Conceptual.Relationships.Associations;
+using Modeler.Models.Conceptual.Relationships.Generalizations;
 using Modeler.Views.Common;
+using Modeler.Views.Common.Outputs;
 using Modeler.Views.Conceptual.ConceptDetails.Shared;
-using Attribute = Modeler.ConceptualModel.Attributes.Attribute;
+using Attribute = Modeler.Models.Conceptual.Attributes.Attribute;
 
 namespace Modeler.Views.Conceptual.ConceptDiagrams.PlantUml;
 

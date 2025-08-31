@@ -1,6 +1,7 @@
 ﻿using System.Text;
-using Modeler.Messaging;
+using Modeler.Models.Messaging;
 using Modeler.Views.Common;
+using Modeler.Views.Common.Outputs;
 
 namespace Modeler.Views.Messaging.BrokerMessagesList.AsciiDoc;
 

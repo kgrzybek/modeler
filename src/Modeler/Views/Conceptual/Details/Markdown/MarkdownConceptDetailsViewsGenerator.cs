@@ -1,8 +1,9 @@
 using System.Text;
-using Modeler.ConceptualModel;
-using Modeler.ConceptualModel.Attributes;
-using Modeler.ConceptualModel.Relationships.Associations;
+using Modeler.Models.Conceptual;
+using Modeler.Models.Conceptual.Attributes;
+using Modeler.Models.Conceptual.Relationships.Associations;
 using Modeler.Views.Common;
+using Modeler.Views.Common.Outputs;
 using Modeler.Views.Conceptual.ConceptDetails.Shared;
 
 namespace Modeler.Views.Conceptual.ConceptDetails.Markdown;

@@ -1,6 +1,6 @@
-﻿using Models.Elements;
+﻿using Modeler.Models.Common.Elements;
 
-namespace Modeler.StateModel;
+namespace Modeler.Models.StateMachine;
 
 public abstract class State : IElement
 {

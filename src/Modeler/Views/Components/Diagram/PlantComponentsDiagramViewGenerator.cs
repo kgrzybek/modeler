@@ -1,7 +1,8 @@
 ﻿using System.Text;
-using Modeler.ComponentsModel;
-using Modeler.RestApiModel;
+using Modeler.Models.Components;
+using Modeler.Models.RestApi;
 using Modeler.Views.Common;
+using Modeler.Views.Common.Outputs;
 
 namespace Modeler.Views.Components.ComponentsDiagram;
 

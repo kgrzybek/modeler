@@ -1,4 +1,4 @@
-﻿namespace Modeler.EventsFlowModel;
+﻿namespace Modeler.Models.EventsFlow;
 
 public class CommandTrigger
 {

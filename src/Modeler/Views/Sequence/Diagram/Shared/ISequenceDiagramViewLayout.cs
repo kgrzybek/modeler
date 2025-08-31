@@ -1,4 +1,4 @@
-﻿using Modeler.SequenceModel.Participants;
+﻿using Modeler.Models.Sequence.Participants;
 
 namespace Modeler.Views.Sequence.Diagram.Shared;
 

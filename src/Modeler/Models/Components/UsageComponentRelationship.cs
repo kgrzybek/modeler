@@ -1,4 +1,4 @@
-﻿namespace Modeler.ComponentsModel;
+﻿namespace Modeler.Models.Components;
 
 public class UsageComponentRelationship : ComponentRelationship
 {

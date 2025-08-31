@@ -1,6 +1,6 @@
-using Modeler.ConceptualModel.Relationships.Associations.Multiplicity;
+using Modeler.Models.Conceptual.Relationships.Associations.Multiplicity;
 
-namespace Modeler.ConceptualModel.Relationships.Associations;
+namespace Modeler.Models.Conceptual.Relationships.Associations;
 
 public class AssociationDirectedRelationship
 {

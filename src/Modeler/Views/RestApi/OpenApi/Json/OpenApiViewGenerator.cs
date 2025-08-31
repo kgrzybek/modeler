@@ -1,7 +1,8 @@
 using System.Text.Json;
-using Modeler.RestApiModel;
-using Modeler.RestApiModel.Types;
+using Modeler.Models.RestApi;
+using Modeler.Models.RestApi.Types;
 using Modeler.Views.Common;
+using Modeler.Views.Common.Outputs;
 using Modeler.Views.RestApi.OpenApi.Shared;
 
 namespace Modeler.Views.RestApi.OpenApi.Json;

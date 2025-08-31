@@ -1,4 +1,4 @@
-﻿using Modeler.ConceptualModel.Relationships.Associations.Multiplicity;
+﻿using Modeler.Models.Conceptual.Relationships.Associations.Multiplicity;
 
 namespace Modeler.Views.Conceptual.ConceptDetails.Shared;
 

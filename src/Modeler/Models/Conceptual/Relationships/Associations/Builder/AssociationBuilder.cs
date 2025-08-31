@@ -1,6 +1,6 @@
-using Modeler.ConceptualModel.Relationships.Associations.Multiplicity;
+using Modeler.Models.Conceptual.Relationships.Associations.Multiplicity;
 
-namespace Modeler.ConceptualModel.Relationships.Associations.Builder;
+namespace Modeler.Models.Conceptual.Relationships.Associations.Builder;
 
 public static class AssociationBuilder
 {

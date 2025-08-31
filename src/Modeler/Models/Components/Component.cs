@@ -1,6 +1,6 @@
-﻿using Models.Elements;
+﻿using Modeler.Models.Common.Elements;
 
-namespace Modeler.ComponentsModel;
+namespace Modeler.Models.Components;
 
 public abstract class Component : Element, IComponent
 {

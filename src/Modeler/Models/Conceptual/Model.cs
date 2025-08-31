@@ -1,11 +1,12 @@
 ﻿using System.Reflection;
-using Modeler.ConceptualModel.Attributes;
-using Modeler.ConceptualModel.Relationships;
-using Modeler.ConceptualModel.Relationships.Associations;
-using Modeler.ConceptualModel.Relationships.Generalizations;
-using Models.Elements;
+using Modeler.Models.Common.Elements;
+using Modeler.Models.Common.Models;
+using Modeler.Models.Conceptual.Attributes;
+using Modeler.Models.Conceptual.Relationships;
+using Modeler.Models.Conceptual.Relationships.Associations;
+using Modeler.Models.Conceptual.Relationships.Generalizations;
 
-namespace Modeler.ConceptualModel;
+namespace Modeler.Models.Conceptual;
 
 public abstract class Model : IModel
 {

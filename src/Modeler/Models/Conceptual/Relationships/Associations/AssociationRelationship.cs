@@ -1,4 +1,4 @@
-namespace Modeler.ConceptualModel.Relationships.Associations;
+namespace Modeler.Models.Conceptual.Relationships.Associations;
 
 public class AssociationRelationship : Relationship
 {

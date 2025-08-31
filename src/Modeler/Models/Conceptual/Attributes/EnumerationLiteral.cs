@@ -1,4 +1,4 @@
-namespace Modeler.ConceptualModel.Attributes;
+namespace Modeler.Models.Conceptual.Attributes;
 
 public class EnumerationLiteral
 {

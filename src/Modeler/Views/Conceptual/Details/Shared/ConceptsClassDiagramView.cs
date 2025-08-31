@@ -1,4 +1,5 @@
-﻿using Models.Elements;
+﻿using Modeler.Models.Common;
+using Modeler.Views.Common;
 
 namespace Modeler.Views.Conceptual.ConceptDetails.Shared;
 
