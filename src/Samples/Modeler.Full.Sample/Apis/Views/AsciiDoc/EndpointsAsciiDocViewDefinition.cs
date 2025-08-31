@@ -1,13 +1,11 @@
 using Modeler.RestApiModel.Views.AsciiDoc;
+using Models.Elements;
 
 namespace Modeler.Full.Sample.Apis.Views.AsciiDoc;
 
-public class EndpointsAsciiDocViewDefinition
+public class EndpointsAsciiDocViewDefinition : AsciiDocEndpointsView
 {
-    public const string Id = "RestApiEndpoints";
-
-    public static AsciiDocEndpointsView Create(HRRestApiModel apisRegistry)
+    public EndpointsAsciiDocViewDefinition(ModelElementsRegistry elementsRegistry) : base(elementsRegistry.GetElement<HRRestApiModel>())
     {
-        return new AsciiDocEndpointsView(Id, apisRegistry);
     }
 }

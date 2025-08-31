@@ -2,7 +2,7 @@
 using Modeler.Full.Sample.EventsFlow.Commands;
 using Modeler.Full.Sample.EventsFlow.Events;
 
-namespace Modeler.Full.Sample.EventsFlow.Views.Mermaid;
+namespace Modeler.Full.Sample.EventsFlow.Views.EventsFlowDiagrams.Mermaid;
 
 public class HREventsFlowDiagramView : MermaidEventFlowsDiagramView
 {

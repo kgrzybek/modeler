@@ -1,19 +1,20 @@
 using System.Text;
+using Modeler.Views.Common;
 
 namespace Modeler.RestApiModel.Views.AsciiDoc;
 
 public class AsciiDocEndpointsViewGenerator
 {
-    private readonly IAsciiDocRestApiViewsOutput<AsciiDocEndpointsView> _viewsOutput;
+    private readonly IMultipleViewsOutput _viewsOutput;
 
-    public AsciiDocEndpointsViewGenerator(IAsciiDocRestApiViewsOutput<AsciiDocEndpointsView> viewsOutput)
+    public AsciiDocEndpointsViewGenerator(IMultipleViewsOutput viewsOutput)
     {
         _viewsOutput = viewsOutput;
     }
 
     public void Generate(List<AsciiDocEndpointsView> views)
     {
-        var outputItems = new List<AsciiDocRestApiViewsOutputItem<AsciiDocEndpointsView>>();
+        var outputItems = new List<ViewOutputItem>();
         foreach (var view in views)
         {
             var sb = new StringBuilder();
@@ -31,7 +32,7 @@ public class AsciiDocEndpointsViewGenerator
                 sb.AppendLine();
             }
             sb.AppendLine("|===");
-            outputItems.Add(new AsciiDocRestApiViewsOutputItem<AsciiDocEndpointsView>(view.Id, view, sb.ToString()));
+            outputItems.Add(new ViewOutputItem(view, sb.ToString()));
         }
         _viewsOutput.Execute(outputItems);
     }

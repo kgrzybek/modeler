@@ -1,7 +1,7 @@
 ﻿using Modeler.Messaging;
 using Models.Elements;
 
-namespace Modeler.Full.Sample.Messaging;
+namespace Modeler.Full.Sample.Messaging.HRBroker.Queues;
 
 public class SampleQueue : IQueue
 {

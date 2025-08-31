@@ -4,6 +4,7 @@ using Modeler.Full.Sample.Conceptual.Concepts;
 using Modeler.Full.Sample.Data.Structure;
 using Modeler.Full.Sample.EventsFlow;
 using Modeler.Full.Sample.Messaging;
+using Modeler.Full.Sample.Messaging.HRBroker;
 using Modeler.Full.Sample.Sequences;
 using Modeler.Full.Sample.State.Models;
 using Models.Elements;

@@ -1,6 +1,6 @@
 using Modeler.Views.Common;
 
-namespace Modeler.Full.Sample.EventsFlow.Views.Mermaid;
+namespace Modeler.Full.Sample.EventsFlow.Views.EventsFlowDiagrams.Mermaid;
 
 public class FileSystemMermaidEventsFlowDiagramViewOutput : FileSystemMultipleViewsOutput
 {

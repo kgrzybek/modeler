@@ -1,6 +1,6 @@
 using Modeler.Views.Common;
 
-namespace Modeler.Full.Sample.EventsFlow.Views.AsciiDoc;
+namespace Modeler.Full.Sample.EventsFlow.Views.TableList.AsciiDoc;
 
 public class FileSystemAsciiDocEventsFlowViewOutput : FileSystemMultipleViewsOutput
 {

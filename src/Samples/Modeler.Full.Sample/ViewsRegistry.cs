@@ -17,9 +17,9 @@ using Modeler.Full.Sample.Data.Views.DataModelDiagrams.PlantUml;
 using Modeler.Full.Sample.Data.Views.SchemaDetails;
 using Modeler.Full.Sample.Data.Views.Sql;
 using Modeler.Full.Sample.EventsFlow;
-using Modeler.Full.Sample.EventsFlow.Views.AsciiDoc;
-using Modeler.Full.Sample.EventsFlow.Views.Markdown;
-using Modeler.Full.Sample.EventsFlow.Views.Mermaid;
+using Modeler.Full.Sample.EventsFlow.Views.EventsFlowDiagrams.Mermaid;
+using Modeler.Full.Sample.EventsFlow.Views.TableList.AsciiDoc;
+using Modeler.Full.Sample.EventsFlow.Views.TableList.Markdown;
 using Modeler.Full.Sample.Sequences;
 using Modeler.Full.Sample.Sequences.Views;
 using Modeler.Full.Sample.State.Models;
@@ -83,8 +83,8 @@ public class ViewsRegistry : ViewsRegistryBase
         AddElement(new MarkdownHREventsFlowView(modelsRegistry.GetModel<HREventsFlowModel>()));
         AddElement(new HREventsFlowDiagramView(modelsRegistry.GetModel<HREventsFlowModel>()));
         
-        AddElement(ApiModelsAsciiDocViewDefinition.Create(elementsRegistry.GetElement<HRRestApiModel>()));
-        AddElement(EndpointsAsciiDocViewDefinition.Create(elementsRegistry.GetElement<HRRestApiModel>()));
+        AddElement(new ApiModelsAsciiDocViewDefinition(elementsRegistry.GetElement<HRRestApiModel>()));
+        AddElement(new EndpointsAsciiDocViewDefinition(elementsRegistry));
         
         
     }

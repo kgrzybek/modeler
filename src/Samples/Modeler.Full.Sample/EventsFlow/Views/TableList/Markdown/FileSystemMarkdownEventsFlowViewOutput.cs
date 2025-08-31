@@ -1,6 +1,6 @@
 using Modeler.Views.Common;
 
-namespace Modeler.Full.Sample.EventsFlow.Views.Markdown;
+namespace Modeler.Full.Sample.EventsFlow.Views.TableList.Markdown;
 
 public class FileSystemMarkdownEventsFlowViewOutput : FileSystemMultipleViewsOutput
 {

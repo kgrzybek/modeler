@@ -46,6 +46,8 @@
     <ItemGroup>
       <Folder Include="Components\Views\Details\" />
       <Folder Include="Conceptual\Views\ConceptDetails\" />
+      <Folder Include="EventsFlow\Views\EventsFlowDiagrams\" />
+      <Folder Include="EventsFlow\Views\TableList\" />
     </ItemGroup>
 
 </Project>

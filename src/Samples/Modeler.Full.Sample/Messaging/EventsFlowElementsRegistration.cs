@@ -1,5 +1,7 @@
 ﻿using Modeler.Full.Sample.EventsFlow.Commands;
 using Modeler.Full.Sample.EventsFlow.Events;
+using Modeler.Full.Sample.Messaging.HRBroker.Events;
+using Modeler.Full.Sample.Messaging.HRBroker.Queues;
 
 namespace Modeler.Full.Sample.Messaging;
 

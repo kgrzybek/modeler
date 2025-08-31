@@ -21,7 +21,7 @@ using Modeler.EventsFlowModel.Views.AsciiDoc;
 using Modeler.EventsFlowModel.Views.Markdown;
 using Modeler.Full.Sample;
 using Modeler.Full.Sample.Apis;
-using Modeler.Full.Sample.Apis.Views.AsciiDoc.Outputs;
+using Modeler.Full.Sample.Apis.Views.AsciiDoc;
 using Modeler.Full.Sample.Apis.Views.OpenApi;
 using Modeler.Full.Sample.Apis.Views.OpenApi.Outputs;
 using Modeler.Full.Sample.Components.Views.ComponentsDiagram.PlantUml;
@@ -34,10 +34,10 @@ using Modeler.Full.Sample.Conceptual.Views.ConceptDiagrams;
 using Modeler.Full.Sample.Conceptual.Views.Translations;
 using Modeler.Full.Sample.Data.Views.SchemaDetails;
 using Modeler.Full.Sample.Data.Views.Sql;
-using Modeler.Full.Sample.EventsFlow.Views.AsciiDoc;
-using Modeler.Full.Sample.EventsFlow.Views.Markdown;
-using Modeler.Full.Sample.EventsFlow.Views.Mermaid;
-using Modeler.Full.Sample.Messaging;
+using Modeler.Full.Sample.EventsFlow.Views.EventsFlowDiagrams.Mermaid;
+using Modeler.Full.Sample.EventsFlow.Views.TableList.AsciiDoc;
+using Modeler.Full.Sample.EventsFlow.Views.TableList.Markdown;
+using Modeler.Full.Sample.Messaging.HRBroker;
 using Modeler.Full.Sample.Sequences.Views.Layouts;
 using Modeler.Full.Sample.Sequences.Views.Outputs;
 using Modeler.Full.Sample.Sequences.Views.Translations;
@@ -338,10 +338,10 @@ void GenerateAsciiDocRestApiViews(string path)
 
     var viewsPath = Path.Combine(path, "Models/RestApi");
 
-    var endpointsOutput = new FileSystemAsciiDocRestApiViewOutput<AsciiDocEndpointsView>(viewsPath);
+    var endpointsOutput = new AsciiDocHRApiEndpointsFileSystemViewsOutput(viewsPath, viewsRegistry);
     new AsciiDocEndpointsViewGenerator(endpointsOutput).Generate(endpointsViews);
 
-    var modelsOutput = new FileSystemAsciiDocRestApiViewOutput<AsciiDocApiModelsView>(viewsPath);
+    var modelsOutput = new AsciiDocHRApiApiModelsFileSystemViewsOutput(viewsPath, viewsRegistry);
     new AsciiDocApiModelsViewGenerator(modelsOutput).Generate(apiModelViews);
 }
 

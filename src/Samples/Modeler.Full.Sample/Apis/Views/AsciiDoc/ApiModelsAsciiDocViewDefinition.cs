@@ -1,13 +1,13 @@
+using Modeler.RestApiModel;
 using Modeler.RestApiModel.Views.AsciiDoc;
 
 namespace Modeler.Full.Sample.Apis.Views.AsciiDoc;
 
-public class ApiModelsAsciiDocViewDefinition : AsciiDocApiModelsViewDefinition
+public class ApiModelsAsciiDocViewDefinition : AsciiDocApiModelsView
 {
     public const string Id = "RestApiModels";
 
-    public static AsciiDocApiModelsView Create(HRRestApiModel api)
+    public ApiModelsAsciiDocViewDefinition(IApiModel model) : base(model)
     {
-        return new AsciiDocApiModelsView(Id, api);
     }
 }
