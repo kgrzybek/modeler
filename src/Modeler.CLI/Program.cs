@@ -170,19 +170,19 @@ void GenerateDataModels(string path)
     var viewTranslator = new Modeler.DataModel.Sample.Views.Translations.ViewTranslator();
     
     PlantUmlDataModelGenerator.Generate(
-        path,
         model,
         4,
         plantUmlDataViews,
-        viewTranslator);
+        viewTranslator,
+        new FileSystemViewOutput(dataModelPath, "Organizations_data_model.puml"));
 
     var mermaidUmlDataViews = viewsRegistry.GetElements<MermaidDataModelView>();
     MermaidDataModelGenerator.Generate(
-        path,
         model,
         4,
         mermaidUmlDataViews,
-        viewTranslator);
+        viewTranslator,
+        new FileSystemViewOutput(dataModelPath, "Organizations_data_model.mmd"));
 
     // Generate ascii doc tables
     DataModelAsciiDocGenerator.Generate(dataModelPath, "organizations", model, viewTranslator);

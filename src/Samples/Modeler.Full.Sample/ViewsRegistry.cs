@@ -65,8 +65,8 @@ public class ViewsRegistry : ViewsRegistryBase
         
         AddElement(new OrganizationStructureConceptsView(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
         
-        AddElement(OrganizationsMermaidView.Create(modelsRegistry.GetModel<HRDataModel>()));
-        AddElement(OrganizationsPlantUmlView.Create(modelsRegistry.GetModel<HRDataModel>()));
+        AddElement(new OrganizationsMermaidView(modelsRegistry.GetModel<HRDataModel>()));
+        AddElement(new OrganizationsPlantUmlView(modelsRegistry.GetModel<HRDataModel>()));
 
         AddElement(AbsenceStateMachineAsciiDocTableViewDefinition.Create(modelsRegistry.GetModel<HRStateStateMachineModel>()));
         AddElement(AbsenceStateMachineMarkdownTableViewDefinition.Create(modelsRegistry.GetModel<HRStateStateMachineModel>()));

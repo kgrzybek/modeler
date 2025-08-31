@@ -1,17 +1,18 @@
 ﻿using System.Text;
 using Modeler.DataModel.PostgreSQL.Views.Shared;
 using Modeler.DataModel.Structure;
+using Modeler.Views.Common;
 
 namespace Modeler.DataModel.PostgreSQL.Views.PlantUml;
 
 public static class PlantUmlDataModelGenerator
 {
     public static void Generate(
-        string absoluteModelsPath,
         DataModel model,
         int indentSize,
         List<PlantUmlDataModelView> views, 
-        IViewTranslator viewTranslator)
+        IViewTranslator viewTranslator,
+        IViewOutput viewOutput)
     {
         foreach (var view in views)
         {
@@ -32,15 +33,7 @@ public static class PlantUmlDataModelGenerator
 
             var content = sb.ToString();
             
-            var path = Path.Combine(absoluteModelsPath, view.Path);
-            var directoryPath = Path.GetDirectoryName(path)!;
-            
-            if (!Directory.Exists(directoryPath))
-            {
-                Directory.CreateDirectory(directoryPath);
-            }
-
-            File.WriteAllText(path, content);
+            viewOutput.Execute(content);
         }
     }
 
