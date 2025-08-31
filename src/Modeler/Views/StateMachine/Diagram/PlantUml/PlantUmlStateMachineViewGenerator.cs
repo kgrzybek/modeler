@@ -1,7 +1,8 @@
 ﻿using System.Text;
+using Modeler.StateModel;
 using Modeler.Views.Common;
 
-namespace Modeler.StateModel.Views.PlantUml;
+namespace Modeler.Views.StateMachine.Diagram.PlantUml;
 
 public class PlantUmlStateMachineViewGenerator
 {

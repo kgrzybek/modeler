@@ -1,6 +1,7 @@
+using Modeler.EventsFlowModel;
 using Models.Elements;
 
-namespace Modeler.EventsFlowModel.Views.AsciiDoc;
+namespace Modeler.Views.EventsFlow.ItemsList.AsciiDoc;
 
 public abstract class AsciiDocEventFlowsView : IView
 {

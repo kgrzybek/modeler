@@ -1,15 +1,15 @@
 ﻿using System.Text;
-using Modeler.DataModel.PostgreSQL.Views.Shared;
 using Modeler.DataModel.Structure;
 using Modeler.Views.Common;
+using Modeler.Views.Data.Shared;
 
-namespace Modeler.DataModel.PostgreSQL.Views.AsciiDoc;
+namespace Modeler.Views.Data.Structure.AsciiDoc;
 
 public static class DataModelAsciiDocGenerator
 {
     public static void Generate(
         string modelName,
-        DataModel model,
+        DataModel.DataModel model,
         IViewTranslator viewTranslator,
         IMultipleViewsOutput multipleViewsOutput,
         List<DataModelSchemaDetailsView> views)
@@ -32,7 +32,7 @@ public static class DataModelAsciiDocGenerator
 
     private static void GenerateTables(
         string modelName,
-        DataModel model,
+        DataModel.DataModel model,
         string schema,
         StringBuilder sb,
         IViewTranslator viewTranslator)
@@ -126,7 +126,7 @@ public static class DataModelAsciiDocGenerator
 
     private static void GenerateViews(
         string modelName,
-        DataModel model,
+        DataModel.DataModel model,
         string schema,
         StringBuilder sb)
     {

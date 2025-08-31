@@ -2,7 +2,7 @@
 using Modeler.DataModel.Structure;
 using Modeler.Views.Common;
 
-namespace Modeler.DataModel.PostgreSQL.Views.SQL.Generator;
+namespace Modeler.Views.Data.Sql;
 
 public class PostgreSqlStructureViewsGenerator
 {

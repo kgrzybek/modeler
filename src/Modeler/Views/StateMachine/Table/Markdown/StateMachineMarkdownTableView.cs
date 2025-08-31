@@ -1,13 +1,13 @@
 using Models.Elements;
 
-namespace Modeler.StateModel.Views.Markdown;
+namespace Modeler.Views.StateMachine.Table.Markdown;
 
 public abstract class StateMachineMarkdownTableView : IView
 {
-    protected StateMachineMarkdownTableView(StateMachine stateMachine)
+    protected StateMachineMarkdownTableView(StateModel.StateMachine stateMachine)
     {
         StateMachine = stateMachine;
     }
 
-    public StateMachine StateMachine { get; }
+    public StateModel.StateMachine StateMachine { get; }
 }

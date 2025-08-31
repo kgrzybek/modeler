@@ -1,6 +1,6 @@
 ﻿using Modeler.DataModel.Relationships.Multiplicity;
 
-namespace Modeler.DataModel.PostgreSQL.Views.Shared;
+namespace Modeler.Views.Data.Shared;
 
 public interface IViewTranslator
 {

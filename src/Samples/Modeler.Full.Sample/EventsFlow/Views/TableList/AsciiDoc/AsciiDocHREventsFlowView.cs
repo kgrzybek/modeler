@@ -1,5 +1,5 @@
 using Modeler.EventsFlowModel;
-using Modeler.EventsFlowModel.Views.AsciiDoc;
+using Modeler.Views.EventsFlow.ItemsList.AsciiDoc;
 
 namespace Modeler.Full.Sample.EventsFlow.Views.TableList.AsciiDoc;
 

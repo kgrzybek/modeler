@@ -1,4 +1,4 @@
-using Modeler.RestApiModel.Views.AsciiDoc;
+using Modeler.Views.RestApi.EndpointsList.AsciiDoc;
 using Models.Elements;
 
 namespace Modeler.Full.Sample.Apis.Views.AsciiDoc;

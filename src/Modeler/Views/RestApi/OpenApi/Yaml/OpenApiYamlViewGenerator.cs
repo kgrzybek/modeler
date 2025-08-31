@@ -1,10 +1,11 @@
 using System.Text;
 using System.Text.Json;
+using Modeler.RestApiModel;
 using Modeler.RestApiModel.Types;
 using Modeler.Views.Common;
 using Modeler.Views.RestApi.OpenApi.Shared;
 
-namespace Modeler.RestApiModel.Views.OpenApi;
+namespace Modeler.Views.RestApi.OpenApi.Yaml;
 
 public class OpenApiYamlViewGenerator
 {

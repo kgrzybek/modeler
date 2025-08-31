@@ -1,6 +1,7 @@
+using Modeler.RestApiModel;
 using Models.Elements;
 
-namespace Modeler.RestApiModel.Views.AsciiDoc;
+namespace Modeler.Views.RestApi.EndpointsList.AsciiDoc;
 
 public abstract class AsciiDocEndpointsView : IView
 {

@@ -1,6 +1,6 @@
 using Modeler.ConceptualModel;
-using Modeler.ConceptualModel.Views.AsciiDoc.ConceptDetails;
 using Modeler.Full.Sample.Conceptual.Concepts.Types;
+using Modeler.Views.Conceptual.ConceptDetails.AsciiDoc;
 
 namespace Modeler.Full.Sample.Conceptual.Views.ConceptDetails.AsciiDoc;
 

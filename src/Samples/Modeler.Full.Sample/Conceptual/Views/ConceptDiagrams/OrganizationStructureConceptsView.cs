@@ -1,6 +1,6 @@
-using Modeler.ConceptualModel.Views.Shared;
 using Modeler.Full.Sample.Conceptual.Concepts;
 using Modeler.Full.Sample.Conceptual.Concepts.Entities;
+using Modeler.Views.Conceptual.ConceptDetails.Shared;
 
 namespace Modeler.Full.Sample.Conceptual.Views.ConceptDiagrams;
 

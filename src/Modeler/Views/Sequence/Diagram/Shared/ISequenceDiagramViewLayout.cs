@@ -1,6 +1,6 @@
 ﻿using Modeler.SequenceModel.Participants;
 
-namespace Modeler.SequenceModel.Views.Shared;
+namespace Modeler.Views.Sequence.Diagram.Shared;
 
 public interface ISequenceDiagramViewLayout
 {

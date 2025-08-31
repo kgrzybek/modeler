@@ -1,6 +1,6 @@
 ﻿using Modeler.ComponentsModel;
-using Modeler.ComponentsModel.Views.PlantUml;
 using Modeler.Full.Sample.Components.Types;
+using Modeler.Views.Components.ComponentsDiagram;
 
 namespace Modeler.Full.Sample.Components.Views.ComponentsDiagram.PlantUml;
 

@@ -1,7 +1,7 @@
 ﻿using Modeler.DataModel.Schemas;
 using Models.Elements;
 
-namespace Modeler.DataModel.PostgreSQL.Views.Shared;
+namespace Modeler.Views.Data.Shared;
 
 public abstract class DataModelSchemaDetailsView : IView
 {

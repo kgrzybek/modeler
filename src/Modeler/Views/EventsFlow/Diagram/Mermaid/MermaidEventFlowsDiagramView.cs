@@ -1,6 +1,7 @@
-﻿using Models.Elements;
+﻿using Modeler.EventsFlowModel;
+using Models.Elements;
 
-namespace Modeler.EventsFlowModel.Views.Mermaid;
+namespace Modeler.Views.EventsFlow.Diagram.Mermaid;
 
 public abstract class MermaidEventFlowsDiagramView : IView
 {

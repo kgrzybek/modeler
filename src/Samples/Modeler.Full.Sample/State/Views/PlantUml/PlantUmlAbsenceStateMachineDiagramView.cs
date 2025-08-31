@@ -1,6 +1,6 @@
 ﻿using Modeler.Full.Sample.State.Models;
 using Modeler.StateModel;
-using Modeler.StateModel.Views.PlantUml;
+using Modeler.Views.StateMachine.Diagram.PlantUml;
 
 namespace Modeler.Full.Sample.State.Views.PlantUml;
 

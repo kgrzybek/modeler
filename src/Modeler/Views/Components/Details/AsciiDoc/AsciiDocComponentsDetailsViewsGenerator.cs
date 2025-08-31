@@ -1,7 +1,8 @@
 ﻿using System.Text;
+using Modeler.ComponentsModel;
 using Modeler.Views.Common;
 
-namespace Modeler.ComponentsModel.Views.AsciiDoc.Details;
+namespace Modeler.Views.Components.Details.AsciiDoc;
 
 public class AsciiDocComponentsDetailsViewsGenerator
 {

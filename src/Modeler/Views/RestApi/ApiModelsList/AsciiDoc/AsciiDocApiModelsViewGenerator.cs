@@ -1,7 +1,7 @@
 using System.Text;
 using Modeler.Views.Common;
 
-namespace Modeler.RestApiModel.Views.AsciiDoc;
+namespace Modeler.Views.RestApi.ApiModelsList.AsciiDoc;
 
 public class AsciiDocApiModelsViewGenerator
 {

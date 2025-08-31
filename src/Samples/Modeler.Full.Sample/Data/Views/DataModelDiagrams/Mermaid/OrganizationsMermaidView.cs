@@ -1,5 +1,5 @@
-using Modeler.DataModel.PostgreSQL.Views.Mermaid;
 using Modeler.Full.Sample.Data.Structure.Tables;
+using Modeler.Views.Data.DataModelDiagrams.Mermaid;
 
 namespace Modeler.Full.Sample.Data.Views.DataModelDiagrams.Mermaid;
 

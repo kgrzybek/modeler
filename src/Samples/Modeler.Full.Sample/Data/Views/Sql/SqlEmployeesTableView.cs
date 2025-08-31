@@ -1,5 +1,5 @@
-﻿using Modeler.DataModel.PostgreSQL.Views.SQL.Generator;
-using Modeler.Full.Sample.Data.Structure.Tables;
+﻿using Modeler.Full.Sample.Data.Structure.Tables;
+using Modeler.Views.Data.Sql;
 
 namespace Modeler.Full.Sample.Data.Views.Sql;
 

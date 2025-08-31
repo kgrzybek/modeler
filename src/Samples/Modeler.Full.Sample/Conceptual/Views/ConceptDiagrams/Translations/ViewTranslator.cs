@@ -1,5 +1,5 @@
 ﻿using Modeler.ConceptualModel.Relationships.Associations.Multiplicity;
-using Modeler.ConceptualModel.Views.Shared;
+using Modeler.Views.Conceptual.ConceptDetails.Shared;
 
 namespace Modeler.Full.Sample.Conceptual.Views.Translations;
 

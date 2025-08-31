@@ -3,7 +3,7 @@ using Modeler.Full.Sample.Components.System.Database;
 using Modeler.Full.Sample.Components.System.Frontend;
 using Modeler.Full.Sample.Sequences.Flows;
 using Modeler.Full.Sample.Sequences.Participants;
-using Modeler.SequenceModel.Views.Shared;
+using Modeler.Views.Sequence.Diagram.Shared;
 using Models.Elements;
 
 namespace Modeler.Full.Sample.Sequences.Views;

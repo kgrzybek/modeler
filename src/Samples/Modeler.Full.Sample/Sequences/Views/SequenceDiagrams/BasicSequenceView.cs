@@ -7,7 +7,7 @@ using Modeler.Full.Sample.Sequences.Participants;
 using Modeler.SequenceModel;
 using Modeler.SequenceModel.Participants;
 using Modeler.SequenceModel.Sequences;
-using Modeler.SequenceModel.Views.Shared;
+using Modeler.Views.Sequence.Diagram.Shared;
 using Models.Elements;
 
 namespace Modeler.Full.Sample.Sequences.Views;

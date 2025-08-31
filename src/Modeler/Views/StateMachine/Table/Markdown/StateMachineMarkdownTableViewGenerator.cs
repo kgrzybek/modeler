@@ -1,7 +1,7 @@
 using System.Text;
 using Modeler.Views.Common;
 
-namespace Modeler.StateModel.Views.Markdown;
+namespace Modeler.Views.StateMachine.Table.Markdown;
 
 public class StateMachineMarkdownTableViewGenerator
 {

@@ -1,5 +1,5 @@
 using Modeler.EventsFlowModel;
-using Modeler.EventsFlowModel.Views.Markdown;
+using Modeler.Views.EventsFlow.ItemsList.Markdown;
 
 namespace Modeler.Full.Sample.EventsFlow.Views.TableList.Markdown;
 

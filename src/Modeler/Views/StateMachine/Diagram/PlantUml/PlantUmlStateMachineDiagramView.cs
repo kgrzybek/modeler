@@ -1,13 +1,13 @@
 ﻿using Models.Elements;
 
-namespace Modeler.StateModel.Views.PlantUml;
+namespace Modeler.Views.StateMachine.Diagram.PlantUml;
 
 public abstract class PlantUmlStateMachineDiagramView : IView
 {
-    protected PlantUmlStateMachineDiagramView(StateMachine stateMachine)
+    protected PlantUmlStateMachineDiagramView(StateModel.StateMachine stateMachine)
     {
         StateMachine = stateMachine;
     }
 
-    public StateMachine StateMachine { get; }
+    public StateModel.StateMachine StateMachine { get; }
 }

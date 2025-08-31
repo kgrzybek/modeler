@@ -1,5 +1,5 @@
 using Modeler.RestApiModel;
-using Modeler.RestApiModel.Views.AsciiDoc;
+using Modeler.Views.RestApi.ApiModelsList.AsciiDoc;
 
 namespace Modeler.Full.Sample.Apis.Views.AsciiDoc;
 

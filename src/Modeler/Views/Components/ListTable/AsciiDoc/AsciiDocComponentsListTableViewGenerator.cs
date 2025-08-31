@@ -1,7 +1,8 @@
 ﻿using System.Text;
+using Modeler.ComponentsModel;
 using Modeler.Views.Common;
 
-namespace Modeler.ComponentsModel.Views.AsciiDoc.ListTable;
+namespace Modeler.Views.Components.ListTable.AsciiDoc;
 
 public class AsciiDocComponentsListTableViewGenerator
 {

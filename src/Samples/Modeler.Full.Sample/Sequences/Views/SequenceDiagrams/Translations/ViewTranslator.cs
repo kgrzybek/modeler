@@ -1,7 +1,7 @@
 ﻿using Modeler.Full.Sample.Sequences.ParticipantTypes;
 using Modeler.SequenceModel;
 using Modeler.SequenceModel.Participants;
-using Modeler.SequenceModel.Views.Shared;
+using Modeler.Views.Sequence.Diagram.Shared;
 
 namespace Modeler.Full.Sample.Sequences.Views.Translations;
 

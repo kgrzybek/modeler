@@ -1,6 +1,7 @@
+using Modeler.ComponentsModel;
 using Models.Elements;
 
-namespace Modeler.ComponentsModel.Views.Markdown.Details;
+namespace Modeler.Views.Components.Details.Markdown;
 
 public abstract class MarkdownComponentDetailsView : IView
 {

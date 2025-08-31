@@ -1,7 +1,7 @@
 using System.Text;
 using Modeler.Views.Common;
 
-namespace Modeler.EventsFlowModel.Views.Markdown;
+namespace Modeler.Views.EventsFlow.ItemsList.Markdown;
 
 public class MarkdownEventsFlowViewGenerator
 {

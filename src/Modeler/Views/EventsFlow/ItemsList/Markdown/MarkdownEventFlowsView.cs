@@ -1,6 +1,7 @@
+using Modeler.EventsFlowModel;
 using Models.Elements;
 
-namespace Modeler.EventsFlowModel.Views.Markdown;
+namespace Modeler.Views.EventsFlow.ItemsList.Markdown;
 
 public abstract class MarkdownEventFlowsView : IView
 {

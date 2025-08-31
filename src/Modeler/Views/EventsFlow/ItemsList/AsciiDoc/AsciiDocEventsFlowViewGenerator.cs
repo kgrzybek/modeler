@@ -1,7 +1,7 @@
 using System.Text;
 using Modeler.Views.Common;
 
-namespace Modeler.EventsFlowModel.Views.AsciiDoc;
+namespace Modeler.Views.EventsFlow.ItemsList.AsciiDoc;
 
 public class AsciiDocEventsFlowViewGenerator
 {

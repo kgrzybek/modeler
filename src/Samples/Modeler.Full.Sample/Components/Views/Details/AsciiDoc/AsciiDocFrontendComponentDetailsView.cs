@@ -1,5 +1,5 @@
-﻿using Modeler.ComponentsModel.Views.AsciiDoc.Details;
-using Modeler.Full.Sample.Components.System.Frontend;
+﻿using Modeler.Full.Sample.Components.System.Frontend;
+using Modeler.Views.Components.Details.AsciiDoc;
 
 namespace Modeler.Full.Sample.Components.Views.Details.AsciiDoc;
 

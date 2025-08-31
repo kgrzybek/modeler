@@ -1,5 +1,5 @@
-﻿using Modeler.DataModel.PostgreSQL.Views.Shared;
-using Modeler.DataModel.Relationships.Multiplicity;
+﻿using Modeler.DataModel.Relationships.Multiplicity;
+using Modeler.Views.Data.Shared;
 
 namespace Modeler.Full.Sample.Data.Views.Translations;
 

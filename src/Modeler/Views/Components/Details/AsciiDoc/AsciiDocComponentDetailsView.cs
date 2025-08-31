@@ -1,6 +1,7 @@
-﻿using Models.Elements;
+﻿using Modeler.ComponentsModel;
+using Models.Elements;
 
-namespace Modeler.ComponentsModel.Views.AsciiDoc.Details;
+namespace Modeler.Views.Components.Details.AsciiDoc;
 
 public abstract class AsciiDocComponentDetailsView : IView
 {

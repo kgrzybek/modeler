@@ -1,6 +1,6 @@
 using Modeler.ConceptualModel;
-using Modeler.ConceptualModel.Views.Markdown.ConceptDetails;
 using Modeler.Full.Sample.Conceptual.Concepts.Enums;
+using Modeler.Views.Conceptual.ConceptDetails.Markdown;
 
 namespace Modeler.Full.Sample.Conceptual.Views.ConceptDetails.Markdown;
 

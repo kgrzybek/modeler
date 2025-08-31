@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using Modeler.Views.Common;
 
-namespace Modeler.StateModel.Views.AsciiDoc;
+namespace Modeler.Views.StateMachine.Table.AsciiDoc;
 
 public class StateMachineAsciiDocTableViewGenerator
 {

@@ -1,5 +1,5 @@
-using Modeler.ComponentsModel.Views.Markdown.Details;
 using Modeler.Full.Sample.Components.System.Frontend;
+using Modeler.Views.Components.Details.Markdown;
 
 namespace Modeler.Full.Sample.Components.Views.Details.Markdown;
 

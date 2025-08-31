@@ -1,10 +1,10 @@
 ﻿using System.Text;
 using Modeler.SequenceModel.Messages.Types;
 using Modeler.SequenceModel.Participants;
-using Modeler.SequenceModel.Views.Shared;
 using Modeler.Views.Common;
+using Modeler.Views.Sequence.Diagram.Shared;
 
-namespace Modeler.SequenceModel.Views.Mermaid;
+namespace Modeler.Views.Sequence.Diagram.Mermaid;
 
 public class MermaidSequenceDiagramViewGenerator
 {

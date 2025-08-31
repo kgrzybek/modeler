@@ -1,7 +1,8 @@
 ﻿using System.Text;
+using Modeler.Messaging;
 using Modeler.Views.Common;
 
-namespace Modeler.Messaging.Views.AsciiDoc;
+namespace Modeler.Views.Messaging.BrokerMessagesList.AsciiDoc;
 
 public static class AsciiDocBrokerMessagesListGenerator
 {

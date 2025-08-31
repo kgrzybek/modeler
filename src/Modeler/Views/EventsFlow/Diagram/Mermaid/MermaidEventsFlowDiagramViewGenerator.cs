@@ -1,7 +1,8 @@
 ﻿using System.Text;
+using Modeler.EventsFlowModel;
 using Modeler.Views.Common;
 
-namespace Modeler.EventsFlowModel.Views.Mermaid;
+namespace Modeler.Views.EventsFlow.Diagram.Mermaid;
 
 public class MermaidEventsFlowDiagramViewGenerator
 {

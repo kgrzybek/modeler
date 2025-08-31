@@ -1,7 +1,7 @@
 ﻿using Modeler.DataModel.Structure;
 using Models.Elements;
 
-namespace Modeler.DataModel.PostgreSQL.Views.SQL.Generator;
+namespace Modeler.Views.Data.Sql;
 
 public abstract class SqlStructureElementView : IView
 {

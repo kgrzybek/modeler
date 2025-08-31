@@ -1,13 +1,13 @@
 ﻿using Models.Elements;
 
-namespace Modeler.StateModel.Views.AsciiDoc;
+namespace Modeler.Views.StateMachine.Table.AsciiDoc;
 
 public abstract class StateMachineAsciiDocTableView : IView
 {
-    protected StateMachineAsciiDocTableView(StateMachine stateMachine)
+    protected StateMachineAsciiDocTableView(StateModel.StateMachine stateMachine)
     {
         StateMachine = stateMachine;
     }
 
-    public StateMachine StateMachine { get; }
+    public StateModel.StateMachine StateMachine { get; }
 }

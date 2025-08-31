@@ -1,6 +1,6 @@
-﻿using Modeler.EventsFlowModel.Views.Mermaid;
-using Modeler.Full.Sample.EventsFlow.Commands;
+﻿using Modeler.Full.Sample.EventsFlow.Commands;
 using Modeler.Full.Sample.EventsFlow.Events;
+using Modeler.Views.EventsFlow.Diagram.Mermaid;
 
 namespace Modeler.Full.Sample.EventsFlow.Views.EventsFlowDiagrams.Mermaid;
 
