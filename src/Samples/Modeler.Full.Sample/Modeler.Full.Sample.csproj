@@ -7,48 +7,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Modeler.Messaging.Views.AsciiDoc\Modeler.Messaging.Views.AsciiDoc.csproj" />
-      <ProjectReference Include="..\..\Modeler.Messaging\Modeler.Messaging.csproj" />
-      <ProjectReference Include="..\..\Models\Components\Modeler.ComponentsModel.Views.AsciiDoc\Modeler.ComponentsModel.Views.AsciiDoc.csproj" />
-      <ProjectReference Include="..\..\Models\Components\Modeler.ComponentsModel.Views.Markdown\Modeler.ComponentsModel.Views.Markdown.csproj" />
-      <ProjectReference Include="..\..\Models\Components\Modeler.ComponentsModel.Views.PlantUml\Modeler.ComponentsModel.Views.PlantUml.csproj" />
-      <ProjectReference Include="..\..\Models\Components\Modeler.ComponentsModel\Modeler.ComponentsModel.csproj" />
-      <ProjectReference Include="..\..\Models\Conceptual\ConceptualModel\Modeler.ConceptualModel.csproj" />
-      <ProjectReference Include="..\..\Models\Conceptual\Views\AsciiDoc\Modeler.ConceptualModel.Views.AsciiDoc.csproj" />
-      <ProjectReference Include="..\..\Models\Conceptual\Views\Markdown\Modeler.ConceptualModel.Views.Markdown.csproj" />
-      <ProjectReference Include="..\..\Models\Conceptual\Views\Mermaid\Modeler.ConceptualModel.Views.Mermaid.csproj" />
-      <ProjectReference Include="..\..\Models\Conceptual\Views\PlantUml\Modeler.ConceptualModel.Views.PlantUml.csproj" />
-      <ProjectReference Include="..\..\Models\Conceptual\Views\Shared\Modeler.ConceptualModel.Views.Shared.csproj" />
-      <ProjectReference Include="..\..\Models\DataModel\Modeler.DataModel.PostgreSQL.Views.AsciiDoc\Modeler.DataModel.PostgreSQL.Views.AsciiDoc.csproj" />
-      <ProjectReference Include="..\..\Models\DataModel\Modeler.DataModel.PostgreSQL.Views.Markdown\Modeler.DataModel.PostgreSQL.Views.Markdown.csproj" />
-      <ProjectReference Include="..\..\Models\DataModel\Modeler.DataModel.PostgreSQL.Views.Mermaid\Modeler.DataModel.PostgreSQL.Views.Mermaid.csproj" />
-      <ProjectReference Include="..\..\Models\DataModel\Modeler.DataModel.PostgreSQL.Views.PlantUml\Modeler.DataModel.PostgreSQL.Views.PlantUml.csproj" />
-      <ProjectReference Include="..\..\Models\DataModel\Modeler.DataModel.PostgreSQL.Views.Shared\Modeler.DataModel.PostgreSQL.Views.Shared.csproj" />
-      <ProjectReference Include="..\..\Models\DataModel\Modeler.DataModel.PostgreSQL.Views.SQL\Modeler.DataModel.PostgreSQL.Views.SQL.csproj" />
-      <ProjectReference Include="..\..\Models\DataModel\Modeler.DataModel\Modeler.DataModel.csproj" />
-      <ProjectReference Include="..\..\Models\EventsFlow\Modeler.EventsFlowModel.Views.AsciiDoc\Modeler.EventsFlowModel.Views.AsciiDoc.csproj" />
-      <ProjectReference Include="..\..\Models\EventsFlow\Modeler.EventsFlowModel.Views.Markdown\Modeler.EventsFlowModel.Views.Markdown.csproj" />
-      <ProjectReference Include="..\..\Models\EventsFlow\Modeler.EventsFlowModel.Views.Mermaid\Modeler.EventsFlowModel.Views.Mermaid.csproj" />
-      <ProjectReference Include="..\..\Models\EventsFlow\Modeler.EventsFlowModel\Modeler.EventsFlowModel.csproj" />
-      <ProjectReference Include="..\..\Models\RestApiModel\Modeler.RestApiModel.Views.AsciiDoc\Modeler.RestApiModel.Views.AsciiDoc.csproj" />
-      <ProjectReference Include="..\..\Models\RestApiModel\Modeler.RestApiModel.Views.OpenApi\Modeler.RestApiModel.Views.OpenApi.csproj" />
-      <ProjectReference Include="..\..\Models\RestApiModel\Modeler.RestApiModel\Modeler.RestApiModel.csproj" />
-      <ProjectReference Include="..\..\Models\SequenceModel\Modeler.SequenceModel.Views.Mermaid\Modeler.SequenceModel.Views.Mermaid.csproj" />
-      <ProjectReference Include="..\..\Models\SequenceModel\Modeler.SequenceModel.Views.PlantUml\Modeler.SequenceModel.Views.PlantUml.csproj" />
-      <ProjectReference Include="..\..\Models\SequenceModel\Modeler.SequenceModel.Views.Shared\Modeler.SequenceModel.Views.Shared.csproj" />
-      <ProjectReference Include="..\..\Models\SequenceModel\Modeler.SequenceModel\Modeler.SequenceModel.csproj" />
-      <ProjectReference Include="..\..\Models\StateModel\Modeler.StateModel.Views.AsciiDoc\Modeler.StateModel.Views.AsciiDoc.csproj" />
-      <ProjectReference Include="..\..\Models\StateModel\Modeler.StateModel.Views.Markdown\Modeler.StateModel.Views.Markdown.csproj" />
-      <ProjectReference Include="..\..\Models\StateModel\Modeler.StateModel.Views.PlantUml\Modeler.StateModel.Views.PlantUml.csproj" />
-      <ProjectReference Include="..\..\Models\StateModel\Modeler.StateModel\Modeler.StateModel.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Folder Include="Components\Views\Details\" />
       <Folder Include="Conceptual\Views\ConceptDetails\" />
       <Folder Include="EventsFlow\Views\EventsFlowDiagrams\" />
       <Folder Include="EventsFlow\Views\TableList\" />
       <Folder Include="State\Views\StateMachineTable\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Modeler\Modeler.csproj" />
     </ItemGroup>
 
 </Project>

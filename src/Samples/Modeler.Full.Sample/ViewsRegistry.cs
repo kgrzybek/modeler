@@ -1,5 +1,6 @@
 ﻿using Modeler.Full.Sample.Apis;
 using Modeler.Full.Sample.Apis.Views.AsciiDoc;
+using Modeler.Full.Sample.Apis.Views.OpenApi;
 using Modeler.Full.Sample.Components;
 using Modeler.Full.Sample.Components.Views;
 using Modeler.Full.Sample.Components.Views.ComponentsDiagram.PlantUml;
@@ -85,5 +86,7 @@ public class ViewsRegistry : ViewsRegistryBase
         
         AddElement(new ApiModelsAsciiDocViewDefinition(elementsRegistry.GetElement<HRRestApiModel>()));
         AddElement(new EndpointsAsciiDocViewDefinition(elementsRegistry));
+        
+        AddElement(new HROpenApiViewDefinition(elementsRegistry));
     }
 }

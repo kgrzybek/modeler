@@ -1,6 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using System.Reflection;
 using Modeler.ComponentsModel.Views.AsciiDoc.Details;
 using Modeler.ComponentsModel.Views.AsciiDoc.ListTable;
 using Modeler.ComponentsModel.Views.Markdown.Details;
@@ -20,10 +19,9 @@ using Modeler.EventsFlowModel.Views.Mermaid;
 using Modeler.EventsFlowModel.Views.AsciiDoc;
 using Modeler.EventsFlowModel.Views.Markdown;
 using Modeler.Full.Sample;
-using Modeler.Full.Sample.Apis;
 using Modeler.Full.Sample.Apis.Views.AsciiDoc;
-using Modeler.Full.Sample.Apis.Views.OpenApi;
-using Modeler.Full.Sample.Apis.Views.OpenApi.Outputs;
+using Modeler.Full.Sample.Apis.Views.OpenApi.Json;
+using Modeler.Full.Sample.Apis.Views.OpenApi.Yaml;
 using Modeler.Full.Sample.Components.Views.ComponentsDiagram.PlantUml;
 using Modeler.Full.Sample.Components.Views.Details.AsciiDoc;
 using Modeler.Full.Sample.Components.Views.Details.Markdown;
@@ -54,6 +52,7 @@ using Modeler.StateModel.Views.PlantUml;
 using Modeler.RestApiModel.Views.AsciiDoc;
 using Modeler.RestApiModel.Views.OpenApi;
 using Modeler.Views.Common;
+using Modeler.Views.RestApi.OpenApi.Shared;
 using HRDataModel = Modeler.Full.Sample.Data.Structure.HRDataModel;
 using MermaidClassDiagramViewGenerator = Modeler.ConceptualModel.Views.Mermaid.MermaidClassDiagramViewGenerator;
 using SystemComponentsModel = Modeler.Full.Sample.Components.SystemComponentsModel;
@@ -348,18 +347,9 @@ void GenerateAsciiDocRestApiViews(string path)
 
 void GenerateOpenApiRestApiViews(string path)
 {
-    var model = ElementsRegistry.GetInstance().GetElement<HRRestApiModel>();
-    var views = new OpenApiViewsFactory(
-        model,
-        Assembly.GetAssembly(typeof(OpenApiJsonViewDefinition))!).Views;
-
     var viewsPath = Path.Combine(path, "Models/RestApi");
 
-    var output = new FileSystemOpenApiRestApiViewOutput<OpenApiView>(viewsPath);
-
-    var jsonViews = views.Where(v => v.Id == OpenApiJsonViewDefinition.Id).ToList();
-    var yamlViews = views.Where(v => v.Id == OpenApiYamlViewDefinition.Id).ToList();
-
-    new OpenApiViewGenerator(output).Generate(jsonViews);
-    new OpenApiYamlViewGenerator(output).Generate(yamlViews);
+    var views = viewsRegistry.GetElements<OpenApiView>();
+    new OpenApiViewGenerator(new JsonOpenApiFileSystemViewsOutput(viewsPath, viewsRegistry)).Generate(views);
+    new OpenApiYamlViewGenerator(new YamlApiFileSystemViewsOutput(viewsPath, viewsRegistry)).Generate(views);
 }
