@@ -79,9 +79,9 @@ public class ViewsRegistry : ViewsRegistryBase
         AddElement(AbsenceStateMachineMarkdownTableViewDefinition.Create(modelsRegistry.GetModel<HRStateStateMachineModel>()));
         AddElement(AbsenceStateMachinePlantUmlViewDefinition.Create(modelsRegistry.GetModel<HRStateStateMachineModel>()));
         
-        AddElement(HREventsFlowAsciiDocViewDefinition.Create(modelsRegistry.GetModel<HREventsFlowModel>()));
-        AddElement(HREventsFlowMarkdownViewDefinition.Create(modelsRegistry.GetModel<HREventsFlowModel>()));
-        AddElement(HREventsFlowViewDefinition.Create(modelsRegistry.GetModel<HREventsFlowModel>()));
+        AddElement(new AsciiDocHREventsFlowView(modelsRegistry.GetModel<HREventsFlowModel>()));
+        AddElement(new MarkdownHREventsFlowView(modelsRegistry.GetModel<HREventsFlowModel>()));
+        AddElement(new HREventsFlowDiagramView(modelsRegistry.GetModel<HREventsFlowModel>()));
         
         AddElement(ApiModelsAsciiDocViewDefinition.Create(elementsRegistry.GetElement<HRRestApiModel>()));
         AddElement(EndpointsAsciiDocViewDefinition.Create(elementsRegistry.GetElement<HRRestApiModel>()));

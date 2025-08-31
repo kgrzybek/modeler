@@ -1,21 +1,22 @@
 ﻿using System.Text;
+using Modeler.Views.Common;
 
 namespace Modeler.EventsFlowModel.Views.Mermaid;
 
 public class MermaidEventsFlowDiagramViewGenerator
 {
-    private readonly IMermaidEventsFlowViewsOutput<MermaidEventFlowsView> _viewsOutput;
+    private readonly IMultipleViewsOutput _viewsOutput;
 
     public MermaidEventsFlowDiagramViewGenerator(
-        IMermaidEventsFlowViewsOutput<MermaidEventFlowsView> viewsOutput)
+        IMultipleViewsOutput viewsOutput)
     {
         _viewsOutput = viewsOutput;
     }
 
     public void Generate(
-        List<MermaidEventFlowsView> views)
+        List<MermaidEventFlowsDiagramView> views)
     {
-        var outputItems = new List<MermaidEventsFlowViewsOutputItem<MermaidEventFlowsView>>();
+        var outputItems = new List<ViewOutputItem>();
         foreach (var view in views)
         {
             var sb = new StringBuilder();
@@ -32,15 +33,15 @@ public class MermaidEventsFlowDiagramViewGenerator
 
             var content = sb.ToString();
             
-            outputItems.Add(new MermaidEventsFlowViewsOutputItem<MermaidEventFlowsView>(view.Id, view, content));
+            outputItems.Add(new ViewOutputItem(view, content));
         }
         
         _viewsOutput.Execute(outputItems);
     }
 
-    private void GenerateTriggers(StringBuilder sb, MermaidEventFlowsView view)
+    private void GenerateTriggers(StringBuilder sb, MermaidEventFlowsDiagramView diagramView)
     {
-        foreach (var flowElement in view.FlowElementsVisible)
+        foreach (var flowElement in diagramView.FlowElementsVisible)
         {
             if (flowElement is Command command)
             {
@@ -72,9 +73,9 @@ public class MermaidEventsFlowDiagramViewGenerator
 
     private void GenerateNodes(
         StringBuilder sb,
-        MermaidEventFlowsView view)
+        MermaidEventFlowsDiagramView diagramView)
     {
-        foreach (var flowElement in view.FlowElementsVisible)
+        foreach (var flowElement in diagramView.FlowElementsVisible)
         {
             if (flowElement is Command command)
             {

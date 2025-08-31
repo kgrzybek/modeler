@@ -1,31 +1,11 @@
-using Modeler.EventsFlowModel.Views.Markdown;
+using Modeler.Views.Common;
 
 namespace Modeler.Full.Sample.EventsFlow.Views.Markdown;
 
-public class FileSystemMarkdownEventsFlowViewOutput<T> : IMarkdownEventsFlowViewsOutput<T>
+public class FileSystemMarkdownEventsFlowViewOutput : FileSystemMultipleViewsOutput
 {
-    private readonly string _absoluteDirectoryPath;
-    private readonly IDictionary<string, string> _relativePaths;
-
-    public FileSystemMarkdownEventsFlowViewOutput(string absoluteDirectoryPath)
+    public FileSystemMarkdownEventsFlowViewOutput(string absoluteDirectoryPath, ViewsRegistry viewsRegistry) : base(absoluteDirectoryPath)
     {
-        _absoluteDirectoryPath = absoluteDirectoryPath;
-        _relativePaths = new Dictionary<string, string>();
-        _relativePaths.Add(HREventsFlowMarkdownViewDefinition.Id, "HREventsFlow.md");
-    }
-
-    public void Execute(List<MarkdownEventsFlowViewsOutputItem<T>> views)
-    {
-        if (!Directory.Exists(_absoluteDirectoryPath))
-        {
-            Directory.CreateDirectory(_absoluteDirectoryPath);
-        }
-
-        foreach (var outputItem in views)
-        {
-            var relativePath = _relativePaths[outputItem.Id];
-            var path = Path.Combine(_absoluteDirectoryPath, relativePath);
-            File.WriteAllText(path, outputItem.Content);
-        }
+        RelativePaths.Add(viewsRegistry.GetElement<MarkdownHREventsFlowView>(), "HREventsFlow.md");
     }
 }

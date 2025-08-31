@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Modeler.Views.Common\Modeler.Views.Common.csproj" />
     <ProjectReference Include="..\Modeler.EventsFlowModel\Modeler.EventsFlowModel.csproj" />
   </ItemGroup>
 </Project>

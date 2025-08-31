@@ -300,13 +300,13 @@ void GenerateMarkdownStateMachineTableViews(string path)
 void GenerateMermaidEventsFlowViews(string path)
 {
     // Get views
-    var views = viewsRegistry.GetElements<MermaidEventFlowsView>();
+    var views = viewsRegistry.GetElements<MermaidEventFlowsDiagramView>();
     
     // Set views path
     var viewsPath = Path.Combine(path, "Models/EventsFlows");
     
     // Generate views
-    var fileSystemOutput = new FileSystemMermaidEventsFlowViewOutput<MermaidEventFlowsView>(viewsPath);
+    var fileSystemOutput = new FileSystemMermaidEventsFlowDiagramViewOutput(viewsPath, viewsRegistry);
     new MermaidEventsFlowDiagramViewGenerator(fileSystemOutput).Generate(views);
 }
 
@@ -316,7 +316,7 @@ void GenerateMarkdownEventsFlowViews(string path)
 
     var viewsPath = Path.Combine(path, "Models/EventsFlows");
 
-    var fileSystemOutput = new FileSystemMarkdownEventsFlowViewOutput<MarkdownEventFlowsView>(viewsPath);
+    var fileSystemOutput = new FileSystemMarkdownEventsFlowViewOutput(viewsPath, viewsRegistry);
     new MarkdownEventsFlowViewGenerator(fileSystemOutput).Generate(views);
 }
 
@@ -326,7 +326,7 @@ void GenerateAsciiDocEventsFlowViews(string path)
 
     var viewsPath = Path.Combine(path, "Models/EventsFlows");
 
-    var fileSystemOutput = new FileSystemAsciiDocEventsFlowViewOutput<AsciiDocEventFlowsView>(viewsPath);
+    var fileSystemOutput = new FileSystemAsciiDocEventsFlowViewOutput(viewsPath, viewsRegistry);
     new AsciiDocEventsFlowViewGenerator(fileSystemOutput).Generate(views);
 }
 

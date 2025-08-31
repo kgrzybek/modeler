@@ -1,23 +1,24 @@
 using System.Text;
+using Modeler.Views.Common;
 
 namespace Modeler.EventsFlowModel.Views.Markdown;
 
 public class MarkdownEventsFlowViewGenerator
 {
-    private readonly IMarkdownEventsFlowViewsOutput<MarkdownEventFlowsView> _viewsOutput;
+    private readonly IMultipleViewsOutput _viewsOutput;
 
-    public MarkdownEventsFlowViewGenerator(IMarkdownEventsFlowViewsOutput<MarkdownEventFlowsView> viewsOutput)
+    public MarkdownEventsFlowViewGenerator(IMultipleViewsOutput viewsOutput)
     {
         _viewsOutput = viewsOutput;
     }
 
     public void Generate(List<MarkdownEventFlowsView> views)
     {
-        var outputItems = new List<MarkdownEventsFlowViewsOutputItem<MarkdownEventFlowsView>>();
+        var outputItems = new List<ViewOutputItem>();
         foreach (var view in views)
         {
             var content = Generate(view);
-            outputItems.Add(new MarkdownEventsFlowViewsOutputItem<MarkdownEventFlowsView>(view.Id, view, content));
+            outputItems.Add(new ViewOutputItem(view, content));
         }
         _viewsOutput.Execute(outputItems);
     }

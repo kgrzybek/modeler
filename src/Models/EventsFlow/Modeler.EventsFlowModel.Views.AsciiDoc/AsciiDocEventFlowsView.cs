@@ -2,19 +2,12 @@ using Models.Elements;
 
 namespace Modeler.EventsFlowModel.Views.AsciiDoc;
 
-public class AsciiDocEventFlowsView : IView
+public abstract class AsciiDocEventFlowsView : IView
 {
-    public AsciiDocEventFlowsView(string id, Model model)
+    protected AsciiDocEventFlowsView(Model model)
     {
-        Id = id;
         Model = model;
     }
 
-    public string Id { get; }
-
     public Model Model { get; }
-}
-
-public abstract class AsciiDocEventFlowsViewDefinition
-{
 }

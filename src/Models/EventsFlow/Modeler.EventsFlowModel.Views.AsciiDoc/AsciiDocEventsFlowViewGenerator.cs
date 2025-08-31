@@ -1,23 +1,24 @@
 using System.Text;
+using Modeler.Views.Common;
 
 namespace Modeler.EventsFlowModel.Views.AsciiDoc;
 
 public class AsciiDocEventsFlowViewGenerator
 {
-    private readonly IAsciiDocEventsFlowViewsOutput<AsciiDocEventFlowsView> _viewsOutput;
+    private readonly IMultipleViewsOutput _viewsOutput;
 
-    public AsciiDocEventsFlowViewGenerator(IAsciiDocEventsFlowViewsOutput<AsciiDocEventFlowsView> viewsOutput)
+    public AsciiDocEventsFlowViewGenerator(IMultipleViewsOutput viewsOutput)
     {
         _viewsOutput = viewsOutput;
     }
 
     public void Generate(List<AsciiDocEventFlowsView> views)
     {
-        var outputItems = new List<AsciiDocEventsFlowViewsOutputItem<AsciiDocEventFlowsView>>();
+        var outputItems = new List<ViewOutputItem>();
         foreach (var view in views)
         {
             var content = Generate(view);
-            outputItems.Add(new AsciiDocEventsFlowViewsOutputItem<AsciiDocEventFlowsView>(view.Id, view, content));
+            outputItems.Add(new ViewOutputItem(view, content));
         }
 
         _viewsOutput.Execute(outputItems);
