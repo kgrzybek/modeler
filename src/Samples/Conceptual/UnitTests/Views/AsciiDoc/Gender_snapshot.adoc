@@ -1,8 +1,0 @@
-.Values - Gender
-|===
-|Name
-
-|Female
-|Male
-|===
-
