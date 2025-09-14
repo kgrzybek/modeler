@@ -41,7 +41,9 @@ public class ViewsRegistry : ViewsRegistryBase
         AddElement(new AsciiDocFrontendComponentDetailsView(modelsRegistry.GetModel<SystemComponentsModel>()));
         AddElement(new MarkdownBackendComponentDetailsView(modelsRegistry.GetModel<SystemComponentsModel>()));
         AddElement(new MarkdownFrontendComponentDetailsView(modelsRegistry.GetModel<SystemComponentsModel>()));
+        AddElement(new PlantUmlHRSystemContextView(modelsRegistry.GetModel<SystemComponentsModel>()));
         AddElement(new PlantUmlHRSystemComponentsView(modelsRegistry.GetModel<SystemComponentsModel>()));
+        AddElement(new PlantUmlHRSystemModulesView(modelsRegistry.GetModel<SystemComponentsModel>()));
         
         AddElement(new AddressAsciiDocView(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
         AddElement(new EmployeeAsciiDocView(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));

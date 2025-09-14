@@ -4,13 +4,13 @@ using Modeler.Views.Components.Diagram;
 
 namespace Modeler.Samples.HR.Components.Views.ComponentsDiagram.PlantUml;
 
-public class PlantUmlHRSystemComponentsView : PlantUmlComponentsDiagramView
+public class PlantUmlHRSystemModulesView : PlantUmlComponentsDiagramView
 {
-    public PlantUmlHRSystemComponentsView(SystemComponentsModel model)
+    public PlantUmlHRSystemModulesView(SystemComponentsModel model)
     {
         VisibleComponents =
         [
-            new VisibleComponent(model.GetComponent<HRSystemBoundary>(), nestedComponentsLevel: 1),
+            new VisibleComponent(model.GetComponent<HRSystemBoundary>(), nestedComponentsLevel: 3),
             new VisibleComponent(model.GetComponent<CRM>())
         ];
     }

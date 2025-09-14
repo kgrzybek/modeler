@@ -1,10 +1,10 @@
 ﻿using System.Text;
 using Modeler.Models.Components;
 using Modeler.Models.RestApi;
-using Modeler.Views.Common;
 using Modeler.Views.Common.Outputs;
+using Modeler.Views.Components.ComponentsDiagram;
 
-namespace Modeler.Views.Components.ComponentsDiagram;
+namespace Modeler.Views.Components.Diagram;
 
 public class PlantComponentsDiagramViewGenerator
 {
@@ -14,6 +14,8 @@ public class PlantComponentsDiagramViewGenerator
 
     private readonly IComponentsDiagramViewLayout _viewLayout;
 
+    private List<IComponent> _components;
+
     public PlantComponentsDiagramViewGenerator(
         Model model,
         IMultipleViewsOutput viewsOutput,
@@ -22,14 +24,17 @@ public class PlantComponentsDiagramViewGenerator
         _viewsOutput = viewsOutput;
         _viewLayout = viewLayout;
         _model = model;
+        _components = new List<IComponent>();
     }
 
     public void Generate(
         List<PlantUmlComponentsDiagramView> views)
     {
         var outputItems = new List<ViewOutputItem>();
+
         foreach (var view in views)
         {
+            _components = new List<IComponent>();
             var sb = new StringBuilder();
 
             sb.AppendLine("@startuml");
@@ -47,29 +52,30 @@ public class PlantComponentsDiagramViewGenerator
                     sb.AppendLine($"{GetIndentText(1)}BackgroundColor<<{componentType.Name}>> {backgroundColor}");
                 }
             }
+
             sb.AppendLine("}");
             sb.AppendLine();
 
             GenerateComponents(sb, view);
-          //  GenerateInterfaces(sb, view);
+            //  GenerateInterfaces(sb, view);
             GenerateRelationships(sb, view);
             GenerateApisRelationships(sb, view);
-            
+
             sb.AppendLine();
             sb.AppendLine("@enduml");
             sb.AppendLine();
 
             var content = sb.ToString();
-            
+
             outputItems.Add(new ViewOutputItem(view, content));
         }
-        
+
         _viewsOutput.Execute(outputItems);
     }
 
     private void GenerateApisRelationships(StringBuilder sb, PlantUmlComponentsDiagramView view)
     {
-        var components = GetAllComponents(view);
+        var components = _components;
 
         foreach (var component in components)
         {
@@ -79,7 +85,7 @@ public class PlantComponentsDiagramViewGenerator
             //     sb.AppendLine(
             //         $"\"{component.Name}\" --> \"{apiProvider.ProvidedApi.Id}\" : {label}");
             // }
-            
+
             if (component is IApiConsumer apiConsumer)
             {
                 string label = "uses";
@@ -99,19 +105,19 @@ public class PlantComponentsDiagramViewGenerator
 
         return indentText;
     }
-    
+
     private void GenerateComponents(
         StringBuilder sb,
         PlantUmlComponentsDiagramView view)
     {
-        foreach (var component in view.Components.OrderBy(x => x.Name))
+        foreach (var visibleComponent in view.VisibleComponents.OrderBy(x => x.Component.Name))
         {
-            GenerateComponent(sb, component, -1);
+            GenerateComponent(sb, visibleComponent.Component, -1, visibleComponent.NestedComponentsLevel);
 
             sb.AppendLine();
         }
     }
-    
+
     // private void GenerateInterfaces(
     //     StringBuilder sb,
     //     ComponentsDiagramView view)
@@ -131,8 +137,8 @@ public class PlantComponentsDiagramViewGenerator
 
     private List<IComponent> GetAllComponents(PlantUmlComponentsDiagramView view)
     {
-        var components = view.Components.ToList();
-        foreach (var component in view.Components)
+        var components = view.VisibleComponents.Select(x => x.Component).ToList();
+        foreach (var component in view.VisibleComponents.Select(x => x.Component))
         {
             components.AddRange(_model.GetAllSubComponents(component));
         }
@@ -142,93 +148,89 @@ public class PlantComponentsDiagramViewGenerator
 
     private void GenerateComponent(
         StringBuilder sb,
-        IComponent component,
-        int indentLevel)
+        IComponent visibleComponent,
+        int indentLevel,
+        int nestedLevel)
     {
+        _components.Add(visibleComponent);
         indentLevel += 1;
+        nestedLevel -= 1;
         var indentText = GetIndentText(indentLevel);
-        sb.AppendLine($"{indentText}component \"{component.Name}\" <<{component.Type.Name}>>" + " {");
+        sb.AppendLine($"{indentText}component \"{visibleComponent.Name}\" <<{visibleComponent.Type.Name}>>" + " {");
 
-        if (component is IApiProvider apiProvider)
+        if (visibleComponent is IApiProvider apiProvider)
         {
             GenerateInterface(sb, apiProvider.ProvidedApi);
         }
 
-        var subComponents = _model.GetSubComponents(component);
-
-        foreach (var subComponent in subComponents)
+        if (nestedLevel >= 0)
         {
-            GenerateComponent(sb, subComponent, indentLevel);
+            var subComponents = _model.GetSubComponents(visibleComponent);
+            foreach (var subComponent in subComponents)
+            {
+                GenerateComponent(sb, subComponent, indentLevel, nestedLevel);
+            }
         }
 
         sb.AppendLine($"{indentText}}}");
     }
-    
+
     private void GenerateInterface(
         StringBuilder sb,
         IApiModel api)
     {
         sb.AppendLine($"interface \"{api.Name}\" as {api.Id}");
     }
-    
+
     private void GenerateRelationships(StringBuilder sb, PlantUmlComponentsDiagramView view)
     {
-        foreach (var relationship in _model.GetRelationships())
+        var allRelationships = _model.GetRelationships();
+        var relationshipsToShow = new List<ComponentRelationship>();
+        foreach (var component in _components)
         {
-            bool showSource = false;
-            
-            if (view.Components.Contains(relationship.Source))
-            {
-                showSource = true;
-            }
-            else
-            {
-                foreach (var viewComponent in view.Components)
-                {
-                    if(_model.GetAllSubComponents(viewComponent).Contains(relationship.Source))
-                    {
-                        showSource = true;
-                    }
-                }
-            }
-            
-            bool showTarget = false;
-            
-            if (view.Components.Contains(relationship.Target))
-            {
-                showTarget = true;
-            }
-            else
-            {
-                foreach (var viewComponent in view.Components)
-                {
-                    if(_model.GetAllSubComponents(viewComponent).Contains(relationship.Target))
-                    {
-                        showTarget = true;
-                    }
-                }
-            }
-            
-            if (!showSource || !showTarget)
-            {
-                continue;
-            }
+            var allSubComponents = _model.GetAllSubComponents(component);
 
-            if (relationship is UsageComponentRelationship usageComponentRelationship)
+            var componentRelationships = allRelationships.Where(x =>
+                    x.Source == component && _components.Select(y => y).Contains(x.Target))
+                .ToList();
+            foreach (var relationship in componentRelationships)
+            {
+                var relationshipForNestedComponent = false;
+                foreach (var subComponent in allSubComponents)
+                {
+                    if (allRelationships.Any(x => x.Source == subComponent &&
+                                                  x.Target == relationship.Target &&
+                                                  _components.Select(y => y).Contains(subComponent)) )
+                    {
+                        relationshipForNestedComponent = true;
+                        break;
+                    }
+                }
+
+                if (!relationshipForNestedComponent)
+                {
+                    relationshipsToShow.Add(relationship);
+                }
+            }
+        }
+
+        foreach (var componentRelationship in relationshipsToShow)
+        {
+            if (componentRelationship is UsageComponentRelationship usageComponentRelationship)
             {
                 GenerateForUsage(
                     sb,
                     usageComponentRelationship);
             }
-            
-            if (relationship is DependencyComponentRelationship dependencyComponentRelationship)
+
+            if (componentRelationship is DependencyComponentRelationship dependencyComponentRelationship)
             {
                 GenerateForDependency(
                     sb,
                     dependencyComponentRelationship);
             }
-            
-            if (relationship is AssociationComponentRelationship associationComponentRelationship)
+
+            if (componentRelationship is AssociationComponentRelationship associationComponentRelationship)
             {
                 GenerateForAssociation(
                     sb,
@@ -236,14 +238,14 @@ public class PlantComponentsDiagramViewGenerator
             }
         }
     }
-    
+
     private static void GenerateForAssociation(StringBuilder sb, AssociationComponentRelationship relationship)
     {
         string label = relationship.Name != null ? $": {relationship.Name}" : string.Empty;
         sb.AppendLine(
             $"\"{relationship.Source.Name}\" --> \"{relationship.Target.Name}\" {label}");
     }
-    
+
     private static void GenerateForUsage(StringBuilder sb, UsageComponentRelationship relationship)
     {
         if (relationship is {Source: IApiConsumer apiConsumer, Target: IApiProvider apiProvider})
@@ -253,11 +255,12 @@ public class PlantComponentsDiagramViewGenerator
                 return;
             }
         }
+
         string label = "use";
         sb.AppendLine(
             $"\"{relationship.Source.Name}\" --> \"{relationship.Target.Name}\" : {label}");
     }
-    
+
     private static void GenerateForDependency(StringBuilder sb, DependencyComponentRelationship relationship)
     {
         string label = "dependency";

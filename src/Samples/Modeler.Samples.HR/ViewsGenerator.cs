@@ -27,6 +27,7 @@ using Modeler.Views.Common.Outputs;
 using Modeler.Views.Components.ComponentsDiagram;
 using Modeler.Views.Components.Details.AsciiDoc;
 using Modeler.Views.Components.Details.Markdown;
+using Modeler.Views.Components.Diagram;
 using Modeler.Views.Components.ListTable.AsciiDoc;
 using Modeler.Views.Components.ListTable.Markdown;
 using Modeler.Views.Conceptual.ConceptDetails.AsciiDoc;
