@@ -7,7 +7,7 @@ namespace Modeler.Views.Messaging.BrokerMessagesList.AsciiDoc;
 
 public static class AsciiDocBrokerMessagesListGenerator
 {
-    public static void Generate(BrokerModel broker, IViewOutput output)
+    public static void Generate(BrokerComponent broker, IViewOutput output)
     {
         var sb = new StringBuilder();
 

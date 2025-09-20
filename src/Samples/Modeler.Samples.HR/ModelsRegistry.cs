@@ -4,9 +4,7 @@ using Modeler.Samples.HR.Apis;
 using Modeler.Samples.HR.Messaging;
 using Modeler.Samples.HR.Components;
 using Modeler.Samples.HR.Conceptual.Concepts;
-using Modeler.Samples.HR.Data.Structure;
 using Modeler.Samples.HR.EventsFlow;
-using Modeler.Samples.HR.Messaging.HRBroker;
 using Modeler.Samples.HR.Sequences;
 using Modeler.Samples.HR.State.Models;
 
@@ -19,9 +17,7 @@ public class ModelsRegistry : ModelsRegistryBase
         AddElement(new HRSequencesModel(elementsRegistry));
         AddElement(new SystemComponentsModel(elementsRegistry));
         AddElement(new OrganizationStructureConceptualModel(elementsRegistry));
-        AddElement(new HRDataModel(elementsRegistry));
         AddElement(new HRStateStateMachineModel(elementsRegistry));
         AddElement(new HREventsFlowModel(elementsRegistry));
-        AddElement(new HRBrokerModel(elementsRegistry));
     }
 }

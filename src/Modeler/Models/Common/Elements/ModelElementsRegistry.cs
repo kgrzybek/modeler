@@ -19,7 +19,7 @@ public class ModelElementsRegistry
         _elements.Add(element);
     }
     
-    public T GetElement<T>()
+    public T GetElement<T>() where T :  IElement
     {
         var model = _elements.OfType<T>().SingleOrDefault();
 

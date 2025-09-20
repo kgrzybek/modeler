@@ -1,7 +1,13 @@
-﻿using Modeler.Samples.HR.Apis.Views.AsciiDoc;
+﻿using Modeler.Models.Common.Elements;
+using Modeler.Samples.HR.Apis.Views.AsciiDoc;
 using Modeler.Samples.HR.Apis.Views.OpenApi.Json;
 using Modeler.Samples.HR.Apis.Views.OpenApi.Yaml;
 using Modeler.Samples.HR.Components;
+using Modeler.Samples.HR.Components.HRBroker;
+using Modeler.Samples.HR.Components.System.Database;
+using Modeler.Samples.HR.Components.System.Database.Views.SchemaDetails.AsciiDoc;
+using Modeler.Samples.HR.Components.System.Database.Views.SchemaDetails.Markdown;
+using Modeler.Samples.HR.Components.System.Database.Views.Sql;
 using Modeler.Samples.HR.Components.Views.ComponentsDiagram.PlantUml;
 using Modeler.Samples.HR.Components.Views.Details.AsciiDoc;
 using Modeler.Samples.HR.Components.Views.Details.Markdown;
@@ -10,13 +16,9 @@ using Modeler.Samples.HR.Conceptual.Views.ConceptDetails.AsciiDoc;
 using Modeler.Samples.HR.Conceptual.Views.ConceptDetails.Markdown;
 using Modeler.Samples.HR.Conceptual.Views.ConceptDiagrams;
 using Modeler.Samples.HR.Conceptual.Views.Translations;
-using Modeler.Samples.HR.Data.Structure;
-using Modeler.Samples.HR.Data.Views.SchemaDetails;
-using Modeler.Samples.HR.Data.Views.Sql;
 using Modeler.Samples.HR.EventsFlow.Views.EventsFlowDiagrams.Mermaid;
 using Modeler.Samples.HR.EventsFlow.Views.TableList.AsciiDoc;
 using Modeler.Samples.HR.EventsFlow.Views.TableList.Markdown;
-using Modeler.Samples.HR.Messaging.HRBroker;
 using Modeler.Samples.HR.Sequences.Views.Layouts;
 using Modeler.Samples.HR.Sequences.Views.Outputs;
 using Modeler.Samples.HR.Sequences.Views.Translations;
@@ -37,6 +39,7 @@ using Modeler.Views.Conceptual.ConceptDiagrams.Mermaid;
 using Modeler.Views.Conceptual.ConceptDiagrams.PlantUml;
 using Modeler.Views.Data.DataModelDiagrams.Mermaid;
 using Modeler.Views.Data.DataModelDiagrams.PlantUml;
+using Modeler.Views.Data.Diagram.PlantUml;
 using Modeler.Views.Data.Shared;
 using Modeler.Views.Data.Sql;
 using Modeler.Views.Data.Structure.AsciiDoc;
@@ -72,7 +75,7 @@ public static class ViewsGenerator
         var viewsRegistry = new ViewsRegistry();
         viewsRegistry.RegisterViews(modelsRegistry, elementsRegistry);
 
-        GenerateDataViews(documentationPath, modelsRegistry, viewsRegistry);
+        GenerateDataViews(documentationPath, elementsRegistry, viewsRegistry);
 
         GenerateSequenceViews(documentationPath, viewsRegistry);
 
@@ -86,7 +89,7 @@ public static class ViewsGenerator
 
         GenerateEventFlowsViews(documentationPath, viewsRegistry);
 
-        GenerateMessagingViews(documentationPath, modelsRegistry);
+        GenerateMessagingViews(documentationPath, elementsRegistry);
     }
     
     private static void GenerateEventFlowsViews(string documentationPath, ViewsRegistry viewsRegistry)
@@ -162,20 +165,21 @@ public static class ViewsGenerator
 
     private static void GenerateMessagingViews(
         string path,
-        ModelsRegistry modelsRegistry)
+        ElementsRegistry elementsRegistry)
     {
-        var model = modelsRegistry.GetModel<HRBrokerModel>();
+        var hrBrokerComponent = elementsRegistry.GetElement<HRBrokerComponent>();
         var dataModelPath = Path.Combine(path, "Models/Messaging");
         IViewOutput output = new FileSystemViewOutput(dataModelPath, "MessagesList.adoc");
-        AsciiDocBrokerMessagesListGenerator.Generate(model, output);
+        AsciiDocBrokerMessagesListGenerator.Generate(hrBrokerComponent, output);
     }
 
-    private static void GenerateDataViews(string path,
-        ModelsRegistry modelsRegistry,
+    private static void GenerateDataViews(
+        string path,
+        ModelElementsRegistry elementsRegistry,
         ViewsRegistry viewsRegistry)
     {
         // Get model
-        var model = modelsRegistry.GetModel<HRDataModel>();
+        var model = elementsRegistry.GetElement<HRDatabaseComponent>();
 
         // Generate database scripts
         var dataModelPath = Path.Combine(path, "Models/Data");
@@ -185,7 +189,7 @@ public static class ViewsGenerator
 
         // Generate data model diagrams
         var plantUmlDataViews = viewsRegistry.GetElements<PlantUmlDataModelView>();
-        var viewTranslator = new Modeler.Samples.HR.Data.Views.Translations.ViewTranslator();
+        var viewTranslator = new Components.System.Database.Views.Translations.ViewTranslator();
 
         PlantUmlDataModelGenerator.Generate(
             model,

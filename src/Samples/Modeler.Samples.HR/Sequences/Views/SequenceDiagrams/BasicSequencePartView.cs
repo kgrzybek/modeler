@@ -23,7 +23,7 @@ public class BasicSequencePartView :  SequenceDiagramView
             model.GetParticipant<UserParticipant>(),
             model.GetParticipant<HRFrontendApplication>(),
             model.GetParticipant<HRBackendApplication>(),
-            model.GetParticipant<HRDatabase>()
+            model.GetParticipant<HRDatabaseComponent>()
         ];
     }
 }

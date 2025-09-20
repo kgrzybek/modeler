@@ -1,5 +1,5 @@
-﻿using Modeler.Samples.HR.Components.Brokers;
-using Modeler.Samples.HR.Components.ExternalSystems;
+﻿using Modeler.Samples.HR.Components.ExternalSystems;
+using Modeler.Samples.HR.Components.HRBroker;
 using Modeler.Samples.HR.Components.Relationships;
 using Modeler.Samples.HR.Components.System;
 using Modeler.Samples.HR.Components.System.Backend;
@@ -16,13 +16,13 @@ public static class HRSystemRelationshipsModel
         var backendApplication = model.GetComponent<HRBackendApplication>();
         var api = model.GetComponent<HRBackendApiModule>();
         var frontendApplication = model.GetComponent<HRFrontendApplication>();
-        var database = model.GetComponent<HRDatabase>();
+        var database = model.GetComponent<HRDatabaseComponent>();
         var domain = model.GetComponent<HRBackendDomainModule>();
         var infrastructure = model.GetComponent<HRBackendInfrastructureModule>();
         var application = model.GetComponent<HRBackendApplicationModule>();
         var crm = model.GetComponent<CRM>();
-        var systemBoundary = model.GetComponent<HRSystemBoundary>();
-        var messagesBroker = model.GetComponent<MessagesBroker>();
+        var systemBoundary = model.GetComponent<HRSystem>();
+        var messagesBroker = model.GetComponent<HRBrokerComponent>();
 
         model.AddContainsRelationship(systemBoundary, frontendApplication);
         model.AddContainsRelationship(systemBoundary, backendApplication);

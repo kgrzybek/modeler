@@ -1,5 +1,5 @@
-using Modeler.Samples.HR.Components.Brokers;
 using Modeler.Samples.HR.Components.ExternalSystems;
+using Modeler.Samples.HR.Components.HRBroker;
 using Modeler.Samples.HR.Components.System;
 using Modeler.Samples.HR.Components.System.Backend.Modules;
 using Modeler.Samples.HR.Components.System.Frontend;
@@ -13,9 +13,9 @@ public class PlantUmlBackendModulesView : PlantUmlComponentsDiagramView
     {
         VisibleComponents =
         [
-            new VisibleComponent(model.GetComponent<HRSystemBoundary>(), nestedComponentsLevel: 3),
+            new VisibleComponent(model.GetComponent<HRSystem>(), nestedComponentsLevel: 3),
             new VisibleComponent(model.GetComponent<CRM>()),
-            new VisibleComponent(model.GetComponent<MessagesBroker>()),
+            new VisibleComponent(model.GetComponent<HRBrokerComponent>()),
         ];
 
         HiddenRelationships =

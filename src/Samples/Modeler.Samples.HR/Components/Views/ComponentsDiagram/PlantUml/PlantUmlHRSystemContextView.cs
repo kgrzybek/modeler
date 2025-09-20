@@ -10,7 +10,7 @@ public class PlantUmlHRSystemContextView : PlantUmlComponentsDiagramView
     {
         VisibleComponents =
         [
-            new VisibleComponent(model.GetComponent<HRSystemBoundary>()),
+            new VisibleComponent(model.GetComponent<HRSystem>()),
             new VisibleComponent(model.GetComponent<CRM>())
         ];
     }

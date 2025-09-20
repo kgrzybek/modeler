@@ -11,7 +11,7 @@ public static class DataModelAsciiDocGenerator
 {
     public static void Generate(
         string modelName,
-        DataModel model,
+        DatabaseComponent model,
         IViewTranslator viewTranslator,
         IMultipleViewsOutput multipleViewsOutput,
         List<DataModelSchemaDetailsView> views)
@@ -34,7 +34,7 @@ public static class DataModelAsciiDocGenerator
 
     private static void GenerateTables(
         string modelName,
-        DataModel model,
+        DatabaseComponent model,
         string schema,
         StringBuilder sb,
         IViewTranslator viewTranslator)
@@ -128,7 +128,7 @@ public static class DataModelAsciiDocGenerator
 
     private static void GenerateViews(
         string modelName,
-        DataModel model,
+        DatabaseComponent model,
         string schema,
         StringBuilder sb)
     {

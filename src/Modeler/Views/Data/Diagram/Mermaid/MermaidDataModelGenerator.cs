@@ -10,7 +10,7 @@ namespace Modeler.Views.Data.DataModelDiagrams.Mermaid;
 public static class MermaidDataModelGenerator
 {
     public static void Generate(
-        DataModel model,
+        DatabaseComponent model,
         int indentSize,
         List<MermaidDataModelView> views,
         IViewTranslator viewTranslator,
@@ -39,7 +39,7 @@ public static class MermaidDataModelGenerator
 
     private static void GenerateRelationships(
         StringBuilder sb,
-        DataModel model,
+        DatabaseComponent model,
         MermaidDataModelView view,
         IViewTranslator viewTranslator)
     {
@@ -61,7 +61,7 @@ public static class MermaidDataModelGenerator
 
     private static void GenerateTables(
         StringBuilder sb,
-        DataModel model,
+        DatabaseComponent model,
         int indentSize,
         MermaidDataModelView view)
     {
@@ -86,7 +86,7 @@ public static class MermaidDataModelGenerator
     
     private static void GenerateViews(
         StringBuilder sb,
-        DataModel model,
+        DatabaseComponent model,
         int indentSize,
         MermaidDataModelView view)
     {

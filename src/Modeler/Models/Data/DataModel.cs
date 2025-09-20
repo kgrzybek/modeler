@@ -1,5 +1,5 @@
 ﻿using Modeler.Models.Common.Elements;
-using Modeler.Models.Common.Models;
+using Modeler.Models.Components;
 using Modeler.Models.Data.Relationships;
 using Modeler.Models.Data.Relationships.Multiplicity;
 using Modeler.Models.Data.Schemas;
@@ -7,9 +7,9 @@ using Modeler.Models.Data.Structure;
 
 namespace Modeler.Models.Data;
 
-public class DataModel : IModel
+public abstract class DatabaseComponent : Component
 {
-    protected DataModel(ModelElementsRegistry elementsRegistry)
+    protected DatabaseComponent(ModelElementsRegistry elementsRegistry, string name, ComponentType componentType) : base(name, componentType)
     {
         _tables = elementsRegistry.GetElements<Table>();
         _views = elementsRegistry.GetElements<View>();

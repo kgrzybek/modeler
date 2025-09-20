@@ -1,11 +1,10 @@
 ﻿using Modeler.Models.Sequence.Sequences;
-using Modeler.Samples.HR.Messaging;
 using Modeler.Samples.HR.Apis.Endpoints;
 using Modeler.Samples.HR.Components.ExternalSystems;
+using Modeler.Samples.HR.Components.HRBroker.Events;
 using Modeler.Samples.HR.Components.System.Backend;
 using Modeler.Samples.HR.Components.System.Database;
 using Modeler.Samples.HR.Components.System.Frontend;
-using Modeler.Samples.HR.Messaging.HRBroker.Events;
 using Modeler.Samples.HR.Sequences.Participants;
 
 namespace Modeler.Samples.HR.Sequences.Flows;
@@ -17,7 +16,7 @@ public class HRSystemFlowSequence : Sequence
         var user = elementsRegistry.GetElement<UserParticipant>();
         var frontend = elementsRegistry.GetElement<HRFrontendApplication>();
         var backend = elementsRegistry.GetElement<HRBackendApplication>();
-        var backendDatabase = elementsRegistry.GetElement<HRDatabase>();
+        var backendDatabase = elementsRegistry.GetElement<HRDatabaseComponent>();
         var crm = elementsRegistry.GetElement<CRM>();
         var employeeAddedEvent = elementsRegistry.GetElement<EmployeeAddedEventMessage>();
         var addEmployeeEndpoint = elementsRegistry.GetElement<AddEmployeeEndpoint>();

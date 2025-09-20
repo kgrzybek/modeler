@@ -14,7 +14,7 @@ public class ModelsRegistryBase
         _models.Add(model);
     }
     
-    public T GetModel<T>()
+    public T GetModel<T>() where T: IModel
     {
         return _models.OfType<T>().Single();
     }
