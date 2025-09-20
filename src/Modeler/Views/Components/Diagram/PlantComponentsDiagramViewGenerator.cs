@@ -1,7 +1,6 @@
 ﻿using System.Text;
 using Modeler.Models.Components;
 using Modeler.Models.Components.Relationships;
-using Modeler.Models.RestApi;
 using Modeler.Views.Common.Outputs;
 using Modeler.Views.Components.Common;
 using Modeler.Views.Components.ComponentsDiagram;
@@ -19,16 +18,20 @@ public class PlantComponentsDiagramViewGenerator
     private List<IComponent> _components;
 
     private readonly IComponentsViewTranslator _translator;
+    
+    private readonly IPlantUmlComponentDiagramRelationshipGenerator _plantUmlComponentDiagramRelationshipGenerator;
 
     public PlantComponentsDiagramViewGenerator(
         Model model,
         IMultipleViewsOutput viewsOutput,
         IComponentsDiagramViewLayout viewLayout,
-        IComponentsViewTranslator translator)
+        IComponentsViewTranslator translator,
+        IPlantUmlComponentDiagramRelationshipGenerator plantUmlComponentDiagramRelationshipGenerator)
     {
         _viewsOutput = viewsOutput;
         _viewLayout = viewLayout;
         _translator = translator;
+        _plantUmlComponentDiagramRelationshipGenerator = plantUmlComponentDiagramRelationshipGenerator;
         _model = model;
         _components = new List<IComponent>();
     }
@@ -94,7 +97,10 @@ public class PlantComponentsDiagramViewGenerator
     {
         foreach (var visibleComponent in view.VisibleComponents.OrderBy(x => x.Component.Name))
         {
-            GenerateComponent(sb, visibleComponent.Component, -1, visibleComponent.NestedComponentsLevel);
+            GenerateComponent(
+                sb, 
+                view,
+                visibleComponent.Component, -1, visibleComponent.NestedComponentsLevel);
 
             sb.AppendLine();
         }
@@ -102,10 +108,16 @@ public class PlantComponentsDiagramViewGenerator
 
     private void GenerateComponent(
         StringBuilder sb,
+        PlantUmlComponentsDiagramView view,
         IComponent visibleComponent,
         int indentLevel,
         int nestedLevel)
     {
+        if (view.HiddenComponents.Contains(visibleComponent))
+        {
+            return;
+        }
+        
         _components.Add(visibleComponent);
         indentLevel += 1;
         nestedLevel -= 1;
@@ -117,7 +129,7 @@ public class PlantComponentsDiagramViewGenerator
             var subComponents = _model.GetSubComponents(visibleComponent);
             foreach (var subComponent in subComponents)
             {
-                GenerateComponent(sb, subComponent, indentLevel, nestedLevel);
+                GenerateComponent(sb, view, subComponent, indentLevel, nestedLevel);
             }
         }
 
@@ -137,6 +149,13 @@ public class PlantComponentsDiagramViewGenerator
                 .ToList();
             foreach (var relationship in componentRelationships)
             {
+                var isHidden = view.HiddenRelationships.Any(x =>
+                    x.Source == relationship.Source && x.Target == relationship.Target);
+                if (isHidden)
+                {
+                    continue;
+                }
+                
                 var relationshipForNestedComponent = false;
                 foreach (var subComponent in allSubComponents)
                 {
@@ -168,6 +187,11 @@ public class PlantComponentsDiagramViewGenerator
 
         foreach (var componentRelationship in relationshipsToShow)
         {
+            var generated = _plantUmlComponentDiagramRelationshipGenerator.Generate(componentRelationship, sb);
+            if (generated)
+            {
+                continue;
+            }
             if (componentRelationship is UsageComponentRelationship usageComponentRelationship)
             {
                 GenerateForUsage(
@@ -180,6 +204,13 @@ public class PlantComponentsDiagramViewGenerator
                 GenerateForDependency(
                     sb,
                     dependencyComponentRelationship);
+            }
+            
+            if (componentRelationship is PublishSubscribeRelationship publishSubscribeRelationship)
+            {
+                GenerateForPublishSubscribe(
+                    sb,
+                    publishSubscribeRelationship);
             }
 
             if (componentRelationship is AssociationComponentRelationship associationComponentRelationship)
@@ -196,6 +227,13 @@ public class PlantComponentsDiagramViewGenerator
         string label = relationship.Name != null ? $": {relationship.Name}" : string.Empty;
         sb.AppendLine(
             $"\"{relationship.Source.Name}\" --> \"{relationship.Target.Name}\" {label}");
+    }
+    
+    private void GenerateForPublishSubscribe(StringBuilder sb, PublishSubscribeRelationship relationship)
+    {
+        var label = _translator.TranslateSourceToTargetRelationshipName(relationship);
+        sb.AppendLine(
+            $"\"{relationship.Source.Name}\" ..> \"{relationship.Target.Name}\" : {label}");
     }
 
     private void GenerateForUsage(StringBuilder sb, UsageComponentRelationship relationship)

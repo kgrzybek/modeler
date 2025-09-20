@@ -11,5 +11,6 @@ public class PlantUmlComponentsDiagramViewFileSystemViewsOutput : FileSystemMult
         RelativePaths.Add(viewsRegistry.GetElement<PlantUmlHRSystemContextView>(), "SystemContext.puml");
         RelativePaths.Add(viewsRegistry.GetElement<PlantUmlHRSystemComponentsView>(), "SystemComponents.puml");
         RelativePaths.Add(viewsRegistry.GetElement<PlantUmlHRSystemModulesView>(), "SystemModules.puml");
+        RelativePaths.Add(viewsRegistry.GetElement<PlantUmlBackendModulesView>(), "BackendModules.puml");
     }
 }

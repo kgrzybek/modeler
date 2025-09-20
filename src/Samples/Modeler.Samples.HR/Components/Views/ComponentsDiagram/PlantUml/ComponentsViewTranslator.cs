@@ -1,6 +1,6 @@
 ﻿using Modeler.Models.Components.Relationships;
+using Modeler.Samples.HR.Components.Relationships;
 using Modeler.Views.Components.Common;
-using Modeler.Views.Components.Diagram;
 
 namespace Modeler.Samples.HR.Components.Views.ComponentsDiagram.PlantUml;
 
@@ -28,6 +28,16 @@ public class ComponentsViewTranslator : IComponentsViewTranslator
             return "contains";
         }
         
+        if (relationship is PublishSubscribeRelationship)
+        {
+            return "pub/sub";
+        }
+
+        if (relationship is SqlRelationshipComponentRelationship sqlRelationship)
+        {
+            return PlantUmlComponentDiagramRelationshipsGenerator.GetLabel(sqlRelationship);
+        }
+        
         throw new NotSupportedException(relationship.GetType().Name);
     }
 
@@ -51,6 +61,16 @@ public class ComponentsViewTranslator : IComponentsViewTranslator
         if (relationship is ContainsComponentRelationship)
         {
             return "Is contained by";
+        }
+        
+        if (relationship is PublishSubscribeRelationship)
+        {
+            return string.Empty;
+        }
+        
+        if (relationship is SqlRelationshipComponentRelationship)
+        {
+            return string.Empty;
         }
         
         throw new NotSupportedException(relationship.GetType().Name);

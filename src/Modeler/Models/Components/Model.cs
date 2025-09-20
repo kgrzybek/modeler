@@ -50,6 +50,16 @@ public abstract class Model : IModel
     {
         _relationships.Add(new UsageComponentRelationship(source, target));
     }
+    
+    public void AddPublishSubscribeRelationship(IComponent source, IComponent target)
+    {
+        _relationships.Add(new PublishSubscribeRelationship(source, target));
+    }
+    
+    public void AddRelationship(ComponentRelationship relationship)
+    {
+        _relationships.Add(relationship);
+    }
 
     public void AddDependencyRelationship(IComponent source, IComponent target)
     {

@@ -266,7 +266,8 @@ public static class ViewsGenerator
             systemComponentsModel, 
             fileSystemOutput,
             new ComponentsDiagramDefaultViewLayout(),
-            new ComponentsViewTranslator()).Generate(componentDiagramViews);
+            new ComponentsViewTranslator(),
+            new PlantUmlComponentDiagramRelationshipsGenerator()).Generate(componentDiagramViews);
 
         // Generate AsciiDoc components list view
         var fileSystemAsciiDocComponentsListTableViewOutput =

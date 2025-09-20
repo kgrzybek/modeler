@@ -1,4 +1,5 @@
-﻿using Modeler.Samples.HR.Components.ExternalSystems;
+﻿using Modeler.Samples.HR.Components.Brokers;
+using Modeler.Samples.HR.Components.ExternalSystems;
 using Modeler.Samples.HR.Components.System;
 using Modeler.Samples.HR.Components.System.Backend;
 using Modeler.Samples.HR.Components.System.Backend.Modules;
@@ -20,5 +21,6 @@ internal static class ComponentsElementsRegistration
         elementsRegistry.AddElement(HRDatabase.Create());
         elementsRegistry.AddElement(HRFrontendApplication.Create(elementsRegistry));
         elementsRegistry.AddElement(HRSystemBoundary.Create());
+        elementsRegistry.AddElement(new MessagesBroker());
     }
 }

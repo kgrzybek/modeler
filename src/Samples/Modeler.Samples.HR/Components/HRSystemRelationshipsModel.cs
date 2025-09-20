@@ -1,4 +1,6 @@
-﻿using Modeler.Samples.HR.Components.ExternalSystems;
+﻿using Modeler.Samples.HR.Components.Brokers;
+using Modeler.Samples.HR.Components.ExternalSystems;
+using Modeler.Samples.HR.Components.Relationships;
 using Modeler.Samples.HR.Components.System;
 using Modeler.Samples.HR.Components.System.Backend;
 using Modeler.Samples.HR.Components.System.Backend.Modules;
@@ -20,6 +22,7 @@ public static class HRSystemRelationshipsModel
         var application = model.GetComponent<HRBackendApplicationModule>();
         var crm = model.GetComponent<CRM>();
         var systemBoundary = model.GetComponent<HRSystemBoundary>();
+        var messagesBroker = model.GetComponent<MessagesBroker>();
 
         model.AddContainsRelationship(systemBoundary, frontendApplication);
         model.AddContainsRelationship(systemBoundary, backendApplication);
@@ -35,12 +38,16 @@ public static class HRSystemRelationshipsModel
         model.AddDependencyRelationship(application, domain);
         model.AddDependencyRelationship(infrastructure, domain);
         model.AddDependencyRelationship(infrastructure, application);
-        model.AddUsageRelationship(infrastructure, database);
+        model.AddRelationship(new SqlRelationshipComponentRelationship(infrastructure, database, true, true));
         model.AddUsageRelationship(infrastructure, crm);
         
         model.AddContainsRelationship(backendApplication, api);
         model.AddContainsRelationship(backendApplication, application);
         model.AddContainsRelationship(backendApplication, infrastructure);
         model.AddContainsRelationship(backendApplication, domain);
+        
+        model.AddPublishSubscribeRelationship(infrastructure, messagesBroker);
+        model.AddPublishSubscribeRelationship(backendApplication, messagesBroker);
+        model.AddPublishSubscribeRelationship(crm, messagesBroker);
     }
 }
