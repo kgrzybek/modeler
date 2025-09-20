@@ -23,10 +23,13 @@ public static class HRSystemRelationshipsModel
 
         model.AddContainsRelationship(systemBoundary, frontendApplication);
         model.AddContainsRelationship(systemBoundary, backendApplication);
+        model.AddContainsRelationship(systemBoundary, database);
         
         model.AddUsageRelationship(frontendApplication, api);
         model.AddUsageRelationship(systemBoundary, crm);
         model.AddUsageRelationship(backendApplication, crm);
+        model.AddUsageRelationship(backendApplication, database);
+        model.AddUsageRelationship(frontendApplication, backendApplication);
         model.AddDependencyRelationship(api, application);
         model.AddDependencyRelationship(api, infrastructure);
         model.AddDependencyRelationship(application, domain);

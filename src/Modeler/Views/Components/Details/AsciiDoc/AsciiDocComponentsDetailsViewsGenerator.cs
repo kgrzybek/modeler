@@ -1,7 +1,10 @@
 ﻿using System.Text;
 using Modeler.Models.Components;
+using Modeler.Models.Components.Relationships;
 using Modeler.Views.Common;
 using Modeler.Views.Common.Outputs;
+using Modeler.Views.Components.Common;
+using Modeler.Views.Components.Diagram;
 
 namespace Modeler.Views.Components.Details.AsciiDoc;
 
@@ -11,9 +14,12 @@ public class AsciiDocComponentsDetailsViewsGenerator
 
     private readonly Model _model;
 
-    public AsciiDocComponentsDetailsViewsGenerator(Model model, IMultipleViewsOutput viewsOutput)
+    private readonly IComponentsViewTranslator _translator;
+
+    public AsciiDocComponentsDetailsViewsGenerator(Model model, IMultipleViewsOutput viewsOutput, IComponentsViewTranslator translator)
     {
         _viewsOutput = viewsOutput;
+        _translator = translator;
         _model = model;
     }
 
@@ -74,21 +80,8 @@ public class AsciiDocComponentsDetailsViewsGenerator
 
     private string TranslateRelationshipName(ComponentRelationship relationship, bool isSource)
     {
-        if (relationship is UsageComponentRelationship)
-        {
-            return isSource ? "Use" : "Is used by";
-        }
-        
-        if (relationship is ContainsComponentRelationship)
-        {
-            return isSource ? "Contains" : "Is contained by";
-        }
-        
-        if (relationship is DependencyComponentRelationship)
-        {
-            return isSource ? "Depends on" : "Dependent of";
-        }
-        
-        return string.Empty;
+        return isSource ? 
+            _translator.TranslateSourceToTargetRelationshipName(relationship) : 
+            _translator.TranslateTargetToSourceRelationshipName(relationship);
     }
 }

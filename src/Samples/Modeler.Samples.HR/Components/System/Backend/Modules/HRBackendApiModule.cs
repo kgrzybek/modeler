@@ -1,5 +1,4 @@
-﻿using Modeler.Models.Common;
-using Modeler.Models.Common.Elements;
+﻿using Modeler.Models.Common.Elements;
 using Modeler.Models.Components;
 using Modeler.Models.RestApi;
 using Modeler.Samples.HR.Apis;

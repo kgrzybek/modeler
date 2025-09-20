@@ -1,5 +1,6 @@
 ﻿using Modeler.Models.Common.Elements;
 using Modeler.Models.Common.Models;
+using Modeler.Models.Components.Relationships;
 
 namespace Modeler.Models.Components;
 

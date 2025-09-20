@@ -262,8 +262,11 @@ public static class ViewsGenerator
         // Generate PlantUML views
         var fileSystemOutput =
             new PlantUmlComponentsDiagramViewFileSystemViewsOutput(componentsModelPath, viewsRegistry);
-        new PlantComponentsDiagramViewGenerator(systemComponentsModel, fileSystemOutput,
-            new ComponentsDiagramDefaultViewLayout()).Generate(componentDiagramViews);
+        new PlantComponentsDiagramViewGenerator(
+            systemComponentsModel, 
+            fileSystemOutput,
+            new ComponentsDiagramDefaultViewLayout(),
+            new ComponentsViewTranslator()).Generate(componentDiagramViews);
 
         // Generate AsciiDoc components list view
         var fileSystemAsciiDocComponentsListTableViewOutput =
@@ -276,7 +279,8 @@ public static class ViewsGenerator
         var fileSystemAsciiDocComponentsDetailsViewOutput =
             new AsciiDocComponentsDetailsFileSystemViewsOutput(componentsModelPath, viewsRegistry);
         new AsciiDocComponentsDetailsViewsGenerator(systemComponentsModel,
-            fileSystemAsciiDocComponentsDetailsViewOutput).Generate(asciiDocDetailsViews);
+            fileSystemAsciiDocComponentsDetailsViewOutput,
+            new ComponentsViewTranslator()).Generate(asciiDocDetailsViews);
 
         // Generate Markdown components list view
         var fileSystemMarkdownComponentsListTableViewOutput =
@@ -288,8 +292,10 @@ public static class ViewsGenerator
         var markdownDetailsViews = viewsRegistry.GetElements<MarkdownComponentDetailsView>();
         var fileSystemMarkdownComponentsDetailsViewOutput =
             new MarkdownComponentsDetailsFileSystemViewsOutput(componentsModelPath, viewsRegistry);
-        new MarkdownComponentsDetailsViewsGenerator(systemComponentsModel,
-            fileSystemMarkdownComponentsDetailsViewOutput).Generate(markdownDetailsViews);
+        new MarkdownComponentsDetailsViewsGenerator(
+            systemComponentsModel,
+            fileSystemMarkdownComponentsDetailsViewOutput,
+            new ComponentsViewTranslator()).Generate(markdownDetailsViews);
     }
 
     private static void GeneratePlantUmlStateMachineViews(
