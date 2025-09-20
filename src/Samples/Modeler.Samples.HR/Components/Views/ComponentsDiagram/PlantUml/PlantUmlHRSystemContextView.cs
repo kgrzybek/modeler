@@ -6,7 +6,7 @@ namespace Modeler.Samples.HR.Components.Views.ComponentsDiagram.PlantUml;
 
 public class PlantUmlHRSystemContextView : PlantUmlComponentsDiagramView
 {
-    public PlantUmlHRSystemContextView(SystemComponentsModel model)
+    public PlantUmlHRSystemContextView(HRSystemComponentsModel model)
     {
         VisibleComponents =
         [

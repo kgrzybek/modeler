@@ -1,6 +1,6 @@
 using Modeler.Models.Conceptual.Relationships.Associations.Multiplicity;
 
-namespace Modeler.Samples.HR.Conceptual.Views.Translations;
+namespace Modeler.Samples.HR.Conceptual.Views.ConceptDiagrams.Translations;
 
 public class MultiplicityTranslationItem
 {

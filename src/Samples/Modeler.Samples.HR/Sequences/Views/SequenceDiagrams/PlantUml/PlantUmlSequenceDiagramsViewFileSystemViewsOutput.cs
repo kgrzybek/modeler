@@ -1,7 +1,6 @@
-﻿using Modeler.Views.Common;
-using Modeler.Views.Common.Outputs;
+﻿using Modeler.Views.Common.Outputs;
 
-namespace Modeler.Samples.HR.Sequences.Views.Outputs;
+namespace Modeler.Samples.HR.Sequences.Views.SequenceDiagrams.PlantUml;
 
 public class PlantUmlSequenceDiagramsViewFileSystemViewsOutput : FileSystemMultipleViewsOutput
 {

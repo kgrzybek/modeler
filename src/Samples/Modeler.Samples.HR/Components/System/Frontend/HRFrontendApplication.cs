@@ -3,7 +3,7 @@ using Modeler.Models.Common.Elements;
 using Modeler.Models.Components;
 using Modeler.Models.RestApi;
 using Modeler.Models.Sequence.Participants;
-using Modeler.Samples.HR.Apis;
+using Modeler.Samples.HR.Components.System.Backend.Modules.Api;
 using Modeler.Samples.HR.Components.Types;
 using Modeler.Samples.HR.Sequences.ParticipantTypes;
 
@@ -22,7 +22,7 @@ public class HRFrontendApplication : IComponent, ISequenceParticipant, IApiConsu
         Id = ElementIdGenerator.GenerateElementId(GetType(), Name);
         Type = new ApplicationComponentType();
         ParticipantType = new Application();
-        ConsumingApi = elementsRegistry.GetElement<HRRestApiModel>();
+        ConsumingApi = elementsRegistry.GetElement<HRRestApiComponent>();
     }
     public string Name { get; }
     

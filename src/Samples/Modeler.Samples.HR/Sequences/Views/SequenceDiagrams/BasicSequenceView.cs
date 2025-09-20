@@ -1,4 +1,3 @@
-using Modeler.Models.Common;
 using Modeler.Models.Common.Elements;
 using Modeler.Samples.HR.Components.ExternalSystems;
 using Modeler.Samples.HR.Components.System.Backend;
@@ -8,7 +7,7 @@ using Modeler.Samples.HR.Sequences.Flows;
 using Modeler.Samples.HR.Sequences.Participants;
 using Modeler.Views.Sequence.Diagram.Shared;
 
-namespace Modeler.Samples.HR.Sequences.Views;
+namespace Modeler.Samples.HR.Sequences.Views.SequenceDiagrams;
 
 public class BasicSequenceView :  SequenceDiagramView
 {

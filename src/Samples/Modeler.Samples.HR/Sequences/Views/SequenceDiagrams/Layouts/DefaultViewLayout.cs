@@ -2,7 +2,7 @@
 using Modeler.Samples.HR.Sequences.ParticipantTypes;
 using Modeler.Views.Sequence.Diagram.Shared;
 
-namespace Modeler.Samples.HR.Sequences.Views.Layouts;
+namespace Modeler.Samples.HR.Sequences.Views.SequenceDiagrams.Layouts;
 
 public class DefaultViewLayout : ISequenceDiagramViewLayout
 {

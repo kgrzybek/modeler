@@ -5,7 +5,7 @@ namespace Modeler.Samples.HR.Components.Views.Details.AsciiDoc;
 
 public class AsciiDocBackendComponentDetailsView : AsciiDocComponentDetailsView
 {
-    public AsciiDocBackendComponentDetailsView(SystemComponentsModel model) : base(model.GetComponent<HRBackendApplication>())
+    public AsciiDocBackendComponentDetailsView(HRSystemComponentsModel model) : base(model.GetComponent<HRBackendApplication>())
     {
     }
 }

@@ -1,8 +1,9 @@
 ﻿using Modeler.Models.Common.Elements;
-using Modeler.Samples.HR.Apis;
-using Modeler.Samples.HR.Apis.Views.AsciiDoc;
-using Modeler.Samples.HR.Apis.Views.OpenApi;
 using Modeler.Samples.HR.Components;
+using Modeler.Samples.HR.Components.System.Backend.Modules.Api;
+using Modeler.Samples.HR.Components.System.Backend.Modules.Api.Views.ApiModelsList.AsciiDoc;
+using Modeler.Samples.HR.Components.System.Backend.Modules.Api.Views.EndpointsList.AsciiDoc;
+using Modeler.Samples.HR.Components.System.Backend.Modules.Api.Views.OpenApi;
 using Modeler.Samples.HR.Components.System.Database;
 using Modeler.Samples.HR.Components.System.Database.Views.DataModelDiagrams.Mermaid;
 using Modeler.Samples.HR.Components.System.Database.Views.DataModelDiagrams.PlantUml;
@@ -21,6 +22,7 @@ using Modeler.Samples.HR.EventsFlow.Views.TableList.AsciiDoc;
 using Modeler.Samples.HR.EventsFlow.Views.TableList.Markdown;
 using Modeler.Samples.HR.Sequences;
 using Modeler.Samples.HR.Sequences.Views;
+using Modeler.Samples.HR.Sequences.Views.SequenceDiagrams;
 using Modeler.Samples.HR.State.Models;
 using Modeler.Samples.HR.State.Views.PlantUml;
 using Modeler.Samples.HR.State.Views.StateMachineTable.AsciiDoc;
@@ -36,14 +38,14 @@ public class ViewsRegistry : ViewsRegistryBase
         AddElement(new BasicSequenceView(elementsRegistry, modelsRegistry.GetModel<HRSequencesModel>()));
         AddElement(new BasicSequencePartView(elementsRegistry, modelsRegistry.GetModel<HRSequencesModel>()));
         
-        AddElement(new AsciiDocBackendComponentDetailsView(modelsRegistry.GetModel<SystemComponentsModel>()));
-        AddElement(new AsciiDocFrontendComponentDetailsView(modelsRegistry.GetModel<SystemComponentsModel>()));
-        AddElement(new MarkdownBackendComponentDetailsView(modelsRegistry.GetModel<SystemComponentsModel>()));
-        AddElement(new MarkdownFrontendComponentDetailsView(modelsRegistry.GetModel<SystemComponentsModel>()));
-        AddElement(new PlantUmlHRSystemContextView(modelsRegistry.GetModel<SystemComponentsModel>()));
-        AddElement(new PlantUmlHRSystemComponentsView(modelsRegistry.GetModel<SystemComponentsModel>()));
-        AddElement(new PlantUmlHRSystemModulesView(modelsRegistry.GetModel<SystemComponentsModel>()));
-        AddElement(new PlantUmlBackendModulesView(modelsRegistry.GetModel<SystemComponentsModel>()));
+        AddElement(new AsciiDocBackendComponentDetailsView(modelsRegistry.GetModel<HRSystemComponentsModel>()));
+        AddElement(new AsciiDocFrontendComponentDetailsView(modelsRegistry.GetModel<HRSystemComponentsModel>()));
+        AddElement(new MarkdownBackendComponentDetailsView(modelsRegistry.GetModel<HRSystemComponentsModel>()));
+        AddElement(new MarkdownFrontendComponentDetailsView(modelsRegistry.GetModel<HRSystemComponentsModel>()));
+        AddElement(new PlantUmlHRSystemContextView(modelsRegistry.GetModel<HRSystemComponentsModel>()));
+        AddElement(new PlantUmlHRSystemComponentsView(modelsRegistry.GetModel<HRSystemComponentsModel>()));
+        AddElement(new PlantUmlHRSystemModulesView(modelsRegistry.GetModel<HRSystemComponentsModel>()));
+        AddElement(new PlantUmlBackendModulesView(modelsRegistry.GetModel<HRSystemComponentsModel>()));
         
         AddElement(new AddressAsciiDocView(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
         AddElement(new EmployeeAsciiDocView(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
@@ -73,7 +75,7 @@ public class ViewsRegistry : ViewsRegistryBase
         AddElement(new MarkdownHREventsFlowView(modelsRegistry.GetModel<HREventsFlowModel>()));
         AddElement(new HREventsFlowDiagramView(modelsRegistry.GetModel<HREventsFlowModel>()));
         
-        AddElement(new ApiModelsAsciiDocViewDefinition(elementsRegistry.GetElement<HRRestApiModel>()));
+        AddElement(new ApiModelsAsciiDocViewDefinition(elementsRegistry.GetElement<HRRestApiComponent>()));
         AddElement(new EndpointsAsciiDocViewDefinition(elementsRegistry));
         
         AddElement(new HROpenApiViewDefinition(elementsRegistry));

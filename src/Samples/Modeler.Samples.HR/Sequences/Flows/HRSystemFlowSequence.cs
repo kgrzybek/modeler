@@ -1,8 +1,8 @@
 ﻿using Modeler.Models.Sequence.Sequences;
-using Modeler.Samples.HR.Apis.Endpoints;
 using Modeler.Samples.HR.Components.ExternalSystems;
 using Modeler.Samples.HR.Components.HRBroker.Events;
 using Modeler.Samples.HR.Components.System.Backend;
+using Modeler.Samples.HR.Components.System.Backend.Modules.Api.Endpoints;
 using Modeler.Samples.HR.Components.System.Database;
 using Modeler.Samples.HR.Components.System.Frontend;
 using Modeler.Samples.HR.Sequences.Participants;

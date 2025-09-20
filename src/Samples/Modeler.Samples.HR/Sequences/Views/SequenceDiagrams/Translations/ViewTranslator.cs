@@ -2,7 +2,7 @@
 using Modeler.Samples.HR.Sequences.ParticipantTypes;
 using Modeler.Views.Sequence.Diagram.Shared;
 
-namespace Modeler.Samples.HR.Sequences.Views.Translations;
+namespace Modeler.Samples.HR.Sequences.Views.SequenceDiagrams.Translations;
 
 public class SequenceDiagramViewTranslator : ISequenceDiagramViewTranslator
 {

@@ -1,9 +1,10 @@
 ﻿using Modeler.Models.Common.Elements;
-using Modeler.Samples.HR.Apis.Views.AsciiDoc;
-using Modeler.Samples.HR.Apis.Views.OpenApi.Json;
-using Modeler.Samples.HR.Apis.Views.OpenApi.Yaml;
 using Modeler.Samples.HR.Components;
 using Modeler.Samples.HR.Components.HRBroker;
+using Modeler.Samples.HR.Components.System.Backend.Modules.Api.Views.ApiModelsList.AsciiDoc;
+using Modeler.Samples.HR.Components.System.Backend.Modules.Api.Views.EndpointsList.AsciiDoc;
+using Modeler.Samples.HR.Components.System.Backend.Modules.Api.Views.OpenApi.Json;
+using Modeler.Samples.HR.Components.System.Backend.Modules.Api.Views.OpenApi.Yaml;
 using Modeler.Samples.HR.Components.System.Database;
 using Modeler.Samples.HR.Components.System.Database.Views.SchemaDetails.AsciiDoc;
 using Modeler.Samples.HR.Components.System.Database.Views.SchemaDetails.Markdown;
@@ -15,13 +16,14 @@ using Modeler.Samples.HR.Conceptual.Concepts;
 using Modeler.Samples.HR.Conceptual.Views.ConceptDetails.AsciiDoc;
 using Modeler.Samples.HR.Conceptual.Views.ConceptDetails.Markdown;
 using Modeler.Samples.HR.Conceptual.Views.ConceptDiagrams;
-using Modeler.Samples.HR.Conceptual.Views.Translations;
+using Modeler.Samples.HR.Conceptual.Views.ConceptDiagrams.Translations;
 using Modeler.Samples.HR.EventsFlow.Views.EventsFlowDiagrams.Mermaid;
 using Modeler.Samples.HR.EventsFlow.Views.TableList.AsciiDoc;
 using Modeler.Samples.HR.EventsFlow.Views.TableList.Markdown;
-using Modeler.Samples.HR.Sequences.Views.Layouts;
-using Modeler.Samples.HR.Sequences.Views.Outputs;
-using Modeler.Samples.HR.Sequences.Views.Translations;
+using Modeler.Samples.HR.Sequences.Views.SequenceDiagrams.Layouts;
+using Modeler.Samples.HR.Sequences.Views.SequenceDiagrams.Mermaid;
+using Modeler.Samples.HR.Sequences.Views.SequenceDiagrams.PlantUml;
+using Modeler.Samples.HR.Sequences.Views.SequenceDiagrams.Translations;
 using Modeler.Samples.HR.State.Views.PlantUml;
 using Modeler.Samples.HR.State.Views.StateMachineTable.AsciiDoc;
 using Modeler.Samples.HR.State.Views.StateMachineTable.Markdown;
@@ -255,7 +257,7 @@ public static class ViewsGenerator
         ModelsRegistry modelsRegistry,
         ViewsRegistry viewsRegistry)
     {
-        var systemComponentsModel = modelsRegistry.GetModel<SystemComponentsModel>();
+        var systemComponentsModel = modelsRegistry.GetModel<HRSystemComponentsModel>();
 
         // Get views
         var componentDiagramViews = viewsRegistry.GetElements<PlantUmlComponentsDiagramView>();

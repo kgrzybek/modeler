@@ -5,7 +5,7 @@ namespace Modeler.Samples.HR.Components.Views.Details.Markdown;
 
 public class MarkdownFrontendComponentDetailsView : MarkdownComponentDetailsView
 {
-    public MarkdownFrontendComponentDetailsView(SystemComponentsModel model) : base(model.GetComponent<HRFrontendApplication>())
+    public MarkdownFrontendComponentDetailsView(HRSystemComponentsModel model) : base(model.GetComponent<HRFrontendApplication>())
     {
     }
 }

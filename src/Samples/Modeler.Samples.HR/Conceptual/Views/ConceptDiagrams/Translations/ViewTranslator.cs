@@ -1,7 +1,7 @@
 ﻿using Modeler.Models.Conceptual.Relationships.Associations.Multiplicity;
 using Modeler.Views.Conceptual.ConceptDetails.Shared;
 
-namespace Modeler.Samples.HR.Conceptual.Views.Translations;
+namespace Modeler.Samples.HR.Conceptual.Views.ConceptDiagrams.Translations;
 
 public class ViewTranslator : IViewTranslator
 {
