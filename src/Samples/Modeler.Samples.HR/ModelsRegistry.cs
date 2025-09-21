@@ -1,5 +1,4 @@
-﻿using Modeler.Models.Common;
-using Modeler.Models.Common.Models;
+﻿using Modeler.Models.Common.Models;
 using Modeler.Samples.HR.Components;
 using Modeler.Samples.HR.Conceptual.Concepts;
 using Modeler.Samples.HR.EventsFlow;

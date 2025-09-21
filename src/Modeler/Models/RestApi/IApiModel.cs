@@ -6,5 +6,5 @@ public interface IApiModel : IElement
 {
     public List<Endpoint> GetEndpoints();
 
-    public List<ApiObjectModel> GetApiObjectModels();
+    public List<IApiObjectModel> GetApiObjectModels();
 }

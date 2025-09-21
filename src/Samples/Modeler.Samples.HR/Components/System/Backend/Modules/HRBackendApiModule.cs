@@ -6,7 +6,7 @@ using Modeler.Samples.HR.Components.Types;
 
 namespace Modeler.Samples.HR.Components.System.Backend.Modules;
 
-public class HRBackendApiModule : Component, IApiProvider
+public class HRBackendApiModule : Component
 {
     public static IElement Create(ElementsRegistry elementsRegistry)
     {

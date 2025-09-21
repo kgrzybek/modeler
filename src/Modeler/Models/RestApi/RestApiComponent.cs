@@ -2,17 +2,18 @@
 
 namespace Modeler.Models.RestApi;
 
-public class RestApiComponent : Component, IApiModel
+public abstract class RestApiComponent : Component, IApiModel
 {
-    protected List<Endpoint> Endpoints { get; set; }
+    protected List<Endpoint> Endpoints { get; init; }
 
     protected RestApiComponent(string name, ComponentType type) : base(name, type)
     {
+        Endpoints = [];
     }
 
     public List<Endpoint> GetEndpoints() => Endpoints;
 
-    public List<ApiObjectModel> GetApiObjectModels()
+    public List<IApiObjectModel> GetApiObjectModels()
     {
         var requests = Endpoints
             .Where(x => x.RequestModel != null)

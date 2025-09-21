@@ -1,6 +1,6 @@
 ﻿using Modeler.Models.Components;
 
-namespace Modeler.Views.Components.ComponentsDiagram;
+namespace Modeler.Views.Components.Diagram;
 
 public interface IComponentsDiagramViewLayout
 {

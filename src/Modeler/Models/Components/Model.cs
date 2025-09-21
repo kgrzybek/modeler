@@ -6,7 +6,7 @@ namespace Modeler.Models.Components;
 
 public abstract class Model : IModel
 {
-    private List<IComponent> _components;
+    private readonly List<IComponent> _components;
 
     private readonly List<ComponentRelationship> _relationships;
 
@@ -88,7 +88,19 @@ public abstract class Model : IModel
             relationships.AddRange(subComponentRelationships);
         }
         
-        return relationships.Distinct().ToList();
+        var distinctRelationships = new List<ComponentRelationship>();
+
+        foreach (var relationship in relationships)
+        {
+            if (distinctRelationships.Any(x => x.Target == relationship.Target))
+            {
+                continue;
+            }
+            
+            distinctRelationships.Add(relationship);
+        }
+        
+        return distinctRelationships.ToList();
     }
 
     public bool Contains(IComponent component, IComponent childComponent)

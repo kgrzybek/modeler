@@ -9,7 +9,7 @@ using Modeler.Samples.HR.Sequences.ParticipantTypes;
 
 namespace Modeler.Samples.HR.Components.System.Frontend;
 
-public class HRFrontendApplication : IComponent, ISequenceParticipant, IApiConsumer
+public class HRFrontendApplication : IComponent, ISequenceParticipant
 {
     public static HRFrontendApplication Create(ElementsRegistry elementsRegistry)
     {

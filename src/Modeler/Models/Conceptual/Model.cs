@@ -67,27 +67,6 @@ public abstract class Model : IModel
 
         return generalizationRelationship?.General;
     }
-        
-    
-    private void InitializeRelationshipsModels()
-    {
-        var assembly = Assembly.GetAssembly(this.GetType())!;
-        var types = assembly
-            .GetTypes()
-            .Where(t =>
-                typeof(RelationshipsModel).IsAssignableFrom(t))
-            .ToList();
-
-        foreach (var type in types)
-        {
-            var staticMethod = type.GetMethod("Create", BindingFlags.Static | BindingFlags.Public);
-
-            if (staticMethod != null)
-            {
-                staticMethod.Invoke(null, new object?[]{ this });
-            }
-        }
-    }
 
     protected Model(ModelElementsRegistry elementsRegistry)
     {
@@ -97,7 +76,6 @@ public abstract class Model : IModel
         RegisterTypes<PrimitiveType>();
         RegisterTypes<EnumerationType>();
         RegisterTypes<ComplexAttributeType>();
-        InitializeRelationshipsModels();
     }
     
     private void RegisterTypes<T>() where T: AttributeType

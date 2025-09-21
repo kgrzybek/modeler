@@ -3,7 +3,6 @@ using Modeler.Models.Components;
 using Modeler.Models.Components.Relationships;
 using Modeler.Views.Common.Outputs;
 using Modeler.Views.Components.Common;
-using Modeler.Views.Components.ComponentsDiagram;
 
 namespace Modeler.Views.Components.Diagram;
 

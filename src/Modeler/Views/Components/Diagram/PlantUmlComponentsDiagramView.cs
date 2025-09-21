@@ -9,5 +9,5 @@ public abstract class PlantUmlComponentsDiagramView : IView
     
     public List<IComponent> HiddenComponents { get; protected init; } = [];
     
-    public List<HiddenRelationship>  HiddenRelationships { get; protected init; } = new List<HiddenRelationship>();
+    public List<HiddenRelationship>  HiddenRelationships { get; protected init; } = [];
 }

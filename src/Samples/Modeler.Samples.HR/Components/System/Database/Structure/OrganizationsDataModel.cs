@@ -5,7 +5,7 @@ using Modeler.Samples.HR.Components.System.Database.Structure.Tables;
 
 namespace Modeler.Samples.HR.Components.System.Database.Structure;
 
-public class OrganizationsDataModel : TableRelationshipsModel
+public class OrganizationsDataModel
 {
     public static void Create(DatabaseComponent model)
     {

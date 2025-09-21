@@ -16,11 +16,11 @@ public abstract class DatabaseComponent : Component
         _relationships = new List<StructureElementRelationship>();
     }
 
-    private List<Table> _tables;
+    private readonly List<Table> _tables;
 
-    private List<View> _views;
+    private readonly List<View> _views;
 
-    private List<StructureElementRelationship> _relationships;
+    private readonly List<StructureElementRelationship> _relationships;
 
     public T GetTable<T>()
         where T : Table

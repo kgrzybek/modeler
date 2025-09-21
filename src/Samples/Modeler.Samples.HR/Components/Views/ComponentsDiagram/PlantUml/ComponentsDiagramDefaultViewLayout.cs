@@ -1,6 +1,6 @@
 ﻿using Modeler.Models.Components;
 using Modeler.Samples.HR.Components.Types;
-using Modeler.Views.Components.ComponentsDiagram;
+using Modeler.Views.Components.Diagram;
 
 namespace Modeler.Samples.HR.Components.Views.ComponentsDiagram.PlantUml;
 

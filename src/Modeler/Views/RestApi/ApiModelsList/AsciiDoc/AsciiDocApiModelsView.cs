@@ -1,4 +1,3 @@
-using Modeler.Models.Common;
 using Modeler.Models.RestApi;
 using Modeler.Views.Common;
 

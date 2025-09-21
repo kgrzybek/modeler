@@ -2,9 +2,9 @@ using Modeler.Models.Common.Elements;
 
 namespace Modeler.Models.RestApi;
 
-public class Endpoint : IElement
+public abstract class Endpoint : IElement
 {
-    public Endpoint WithName(string name)
+    protected Endpoint WithName(string name)
     {
         Name = name;
         Id = name.Replace(" ", "_").ToLower();
@@ -23,7 +23,7 @@ public class Endpoint : IElement
         return this;
     }
 
-    public Endpoint WithRequestModel(ApiObjectModel objectModel)
+    public Endpoint WithRequestModel(IApiObjectModel objectModel)
     {
         RequestModel = objectModel;
         return this;
@@ -43,7 +43,7 @@ public class Endpoint : IElement
 
     public string Path { get; private set; } = "/";
 
-    public ApiObjectModel? RequestModel { get; private set; }
+    public IApiObjectModel? RequestModel { get; private set; }
 
-    public ApiObjectModel? ResponseModel { get; private set; }
+    public IApiObjectModel? ResponseModel { get; private set; }
 }
