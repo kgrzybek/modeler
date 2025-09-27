@@ -12,6 +12,8 @@ using Modeler.Samples.HR.Components.System.Database.Views.Sql;
 using Modeler.Samples.HR.Components.Views.ComponentsDiagram.PlantUml;
 using Modeler.Samples.HR.Components.Views.Details.AsciiDoc;
 using Modeler.Samples.HR.Components.Views.Details.Markdown;
+using Modeler.Samples.HR.Deployment;
+using Modeler.Samples.HR.Deployment.Views.PlantUml;
 using Modeler.Samples.HR.Conceptual.Concepts;
 using Modeler.Samples.HR.Conceptual.Views.ConceptDetails.AsciiDoc;
 using Modeler.Samples.HR.Conceptual.Views.ConceptDetails.Markdown;
@@ -46,6 +48,7 @@ public class ViewsRegistry : ViewsRegistryBase
         AddElement(new PlantUmlHRSystemComponentsView(modelsRegistry.GetModel<HRSystemComponentsModel>()));
         AddElement(new PlantUmlHRSystemModulesView(modelsRegistry.GetModel<HRSystemComponentsModel>()));
         AddElement(new PlantUmlBackendModulesView(modelsRegistry.GetModel<HRSystemComponentsModel>()));
+        AddElement(new PlantUmlHRDeploymentView(modelsRegistry.GetModel<HRDeploymentModel>()));
         
         AddElement(new AddressAsciiDocView(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
         AddElement(new EmployeeAsciiDocView(modelsRegistry.GetModel<OrganizationStructureConceptualModel>()));
