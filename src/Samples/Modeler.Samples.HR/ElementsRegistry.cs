@@ -7,6 +7,7 @@ using Modeler.Samples.HR.Components.System.Database;
 using Modeler.Samples.HR.Conceptual.Concepts;
 using Modeler.Samples.HR.Deployment;
 using Modeler.Samples.HR.EventsFlow;
+using Modeler.Samples.HR.Activities;
 using Modeler.Samples.HR.Sequences;
 using Modeler.Samples.HR.State;
 
@@ -23,7 +24,8 @@ public class ElementsRegistry : ModelElementsRegistry
         this.RegisterDeploymentElements();
         this.RegisterSequences();
         this.RegisterConcepts();
-        
+        this.RegisterActivityFlows();
+
         this.RegisterStateMachineElements();
         this.RegisterEventsFlowElements();
     }
