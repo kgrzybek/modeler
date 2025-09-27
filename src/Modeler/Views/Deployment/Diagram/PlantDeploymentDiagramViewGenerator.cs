@@ -4,6 +4,7 @@ using System.Text;
 using Modeler.Models.Components;
 using Modeler.Models.Deployment;
 using Modeler.Views.Common.Outputs;
+using Model = Modeler.Models.Deployment.Model;
 
 namespace Modeler.Views.Deployment.Diagram;
 
