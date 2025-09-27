@@ -27,6 +27,10 @@ public class HRDeploymentModel : Model
         AddServer(production, databaseServer);
         AddServer(production, integrationServer);
 
+        ConnectServers(frontendServer, backendServer, protocol: "HTTPS");
+        ConnectServers(backendServer, databaseServer, port: 5432);
+        ConnectServers(backendServer, integrationServer, port: 9092);
+
         var frontendRuntime = GetRuntimeEnvironment<ProductionFrontendRuntimeEnvironment>();
         var backendRuntime = GetRuntimeEnvironment<ProductionBackendRuntimeEnvironment>();
         var databaseRuntime = GetRuntimeEnvironment<ProductionDatabaseRuntimeEnvironment>();

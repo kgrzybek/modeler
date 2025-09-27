@@ -47,6 +47,8 @@ public class PlantDeploymentDiagramViewGenerator
                 sb.AppendLine();
             }
 
+            GenerateConnections(sb, view);
+
             sb.AppendLine("@enduml");
             sb.AppendLine();
 
@@ -146,5 +148,61 @@ public class PlantDeploymentDiagramViewGenerator
         }
 
         return new string(' ', indentLevel * _viewLayout.IndentSize);
+    }
+
+    private void GenerateConnections(StringBuilder sb, PlantUmlDeploymentDiagramView view)
+    {
+        var visibleServers = GetVisibleServers(view);
+
+        var connections = _model.GetServerConnections()
+            .Where(connection => visibleServers.Contains(connection.Source) && visibleServers.Contains(connection.Target))
+            .OrderBy(connection => connection.Source.Name)
+            .ThenBy(connection => connection.Target.Name)
+            .ThenBy(connection => connection.Protocol)
+            .ThenBy(connection => connection.Port)
+            .ToList();
+
+        foreach (var connection in connections)
+        {
+            var label = GetConnectionLabel(connection);
+            sb.AppendLine($"{connection.Source.Id} --> {connection.Target.Id}{label}");
+        }
+    }
+
+    private HashSet<DeploymentServer> GetVisibleServers(PlantUmlDeploymentDiagramView view)
+    {
+        var visibleServers = new HashSet<DeploymentServer>();
+
+        foreach (var visibleEnvironment in view.VisibleEnvironments.Where(environment => environment.NestedLevel >= 1))
+        {
+            var environmentServers = _model.GetServers(visibleEnvironment.Environment);
+
+            foreach (var server in environmentServers)
+            {
+                if (!view.HiddenServers.Contains(server))
+                {
+                    visibleServers.Add(server);
+                }
+            }
+        }
+
+        return visibleServers;
+    }
+
+    private string GetConnectionLabel(DeploymentServerConnection connection)
+    {
+        var labelParts = new List<string>();
+
+        if (!string.IsNullOrWhiteSpace(connection.Protocol))
+        {
+            labelParts.Add(connection.Protocol!);
+        }
+
+        if (connection.Port.HasValue)
+        {
+            labelParts.Add(connection.Port.Value.ToString());
+        }
+
+        return labelParts.Count > 0 ? $" : {string.Join(" ", labelParts)}" : string.Empty;
     }
 }
