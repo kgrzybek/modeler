@@ -16,6 +16,7 @@ public abstract class Model : IModel
     private readonly List<EnvironmentServerAssignment> _environmentServers;
     private readonly List<ServerRuntimeEnvironmentAssignment> _serverRuntimeEnvironments;
     private readonly List<RuntimeComponentAssignment> _runtimeComponents;
+    private readonly List<DeploymentServerConnection> _serverConnections;
 
     protected Model(ModelElementsRegistry elementsRegistry)
     {
@@ -26,6 +27,7 @@ public abstract class Model : IModel
         _environmentServers = new List<EnvironmentServerAssignment>();
         _serverRuntimeEnvironments = new List<ServerRuntimeEnvironmentAssignment>();
         _runtimeComponents = new List<RuntimeComponentAssignment>();
+        _serverConnections = new List<DeploymentServerConnection>();
     }
 
     public DeploymentEnvironment GetEnvironment<T>() where T : DeploymentEnvironment
@@ -94,6 +96,27 @@ public abstract class Model : IModel
         _runtimeComponents.Add(new RuntimeComponentAssignment(runtimeEnvironment, component));
     }
 
+    public void ConnectServers(
+        DeploymentServer source,
+        DeploymentServer target,
+        string? protocol = null,
+        int? port = null)
+    {
+        ValidateServer(source);
+        ValidateServer(target);
+
+        if (_serverConnections.Any(connection =>
+                connection.Source == source &&
+                connection.Target == target &&
+                connection.Protocol == protocol &&
+                connection.Port == port))
+        {
+            return;
+        }
+
+        _serverConnections.Add(new DeploymentServerConnection(source, target, protocol, port));
+    }
+
     public List<DeploymentEnvironment> GetEnvironments()
     {
         return _environments.ToList();
@@ -146,6 +169,11 @@ public abstract class Model : IModel
 
         return _serverRuntimeEnvironments
             .FirstOrDefault(x => x.RuntimeEnvironment == runtimeEnvironment)?.Server;
+    }
+
+    public List<DeploymentServerConnection> GetServerConnections()
+    {
+        return _serverConnections.ToList();
     }
 
     private static TElement GetElement<TElement>(IEnumerable<TElement> elements, Type type) where TElement : class
