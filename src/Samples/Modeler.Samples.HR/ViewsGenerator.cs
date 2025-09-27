@@ -17,6 +17,8 @@ using Modeler.Samples.HR.Conceptual.Views.ConceptDetails.AsciiDoc;
 using Modeler.Samples.HR.Conceptual.Views.ConceptDetails.Markdown;
 using Modeler.Samples.HR.Conceptual.Views.ConceptDiagrams;
 using Modeler.Samples.HR.Conceptual.Views.ConceptDiagrams.Translations;
+using Modeler.Samples.HR.Deployment;
+using Modeler.Samples.HR.Deployment.Views.PlantUml;
 using Modeler.Samples.HR.EventsFlow.Views.EventsFlowDiagrams.Mermaid;
 using Modeler.Samples.HR.EventsFlow.Views.TableList.AsciiDoc;
 using Modeler.Samples.HR.EventsFlow.Views.TableList.Markdown;
@@ -48,6 +50,7 @@ using Modeler.Views.Data.Structure.Markdown;
 using Modeler.Views.EventsFlow.Diagram.Mermaid;
 using Modeler.Views.EventsFlow.ItemsList.AsciiDoc;
 using Modeler.Views.EventsFlow.ItemsList.Markdown;
+using Modeler.Views.Deployment.Diagram;
 using Modeler.Views.Messaging.BrokerMessagesList.AsciiDoc;
 using Modeler.Views.RestApi.ApiModelsList.AsciiDoc;
 using Modeler.Views.RestApi.EndpointsList.AsciiDoc;
@@ -81,6 +84,8 @@ public static class ViewsGenerator
         GenerateSequenceViews(documentationPath, viewsRegistry);
 
         GenerateComponentsViews(documentationPath, modelsRegistry, viewsRegistry);
+
+        GenerateDeploymentViews(documentationPath, modelsRegistry, viewsRegistry);
 
         GenerateOpenApiViews(documentationPath, viewsRegistry);
 
@@ -302,6 +307,28 @@ public static class ViewsGenerator
             systemComponentsModel,
             fileSystemMarkdownComponentsDetailsViewOutput,
             new ComponentsViewTranslator()).Generate(markdownDetailsViews);
+    }
+
+    private static void GenerateDeploymentViews(
+        string path,
+        ModelsRegistry modelsRegistry,
+        ViewsRegistry viewsRegistry)
+    {
+        var deploymentModel = modelsRegistry.GetModel<HRDeploymentModel>();
+        var deploymentViews = viewsRegistry.GetElements<PlantUmlDeploymentDiagramView>();
+
+        if (deploymentViews.Count == 0)
+        {
+            return;
+        }
+
+        var deploymentPath = Path.Combine(path, "Models/Deployment");
+        var output = new PlantUmlDeploymentDiagramViewFileSystemViewsOutput(deploymentPath, viewsRegistry);
+
+        new PlantDeploymentDiagramViewGenerator(
+            deploymentModel,
+            output,
+            new DeploymentDiagramDefaultViewLayout()).Generate(deploymentViews);
     }
 
     private static void GeneratePlantUmlStateMachineViews(

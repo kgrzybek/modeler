@@ -5,6 +5,7 @@ using Modeler.Samples.HR.Components.HRBroker;
 using Modeler.Samples.HR.Components.System.Backend.Modules.Api;
 using Modeler.Samples.HR.Components.System.Database;
 using Modeler.Samples.HR.Conceptual.Concepts;
+using Modeler.Samples.HR.Deployment;
 using Modeler.Samples.HR.EventsFlow;
 using Modeler.Samples.HR.Sequences;
 using Modeler.Samples.HR.State;
@@ -19,6 +20,7 @@ public class ElementsRegistry : ModelElementsRegistry
         this.RegisterHRBrokerElements();
         this.RegisterHRDatabaseElements();
         this.RegisterComponents();
+        this.RegisterDeploymentElements();
         this.RegisterSequences();
         this.RegisterConcepts();
         
