@@ -14,8 +14,9 @@ public static class MermaidDataModelGenerator
         int indentSize,
         List<MermaidDataModelView> views,
         IViewTranslator viewTranslator,
-        IViewOutput viewOutput)
+        IMultipleViewsOutput viewsOutput)
     {
+        var outputItems = new List<ViewOutputItem>();
         foreach (var view in views)
         {
             var sb = new StringBuilder();
@@ -33,8 +34,10 @@ public static class MermaidDataModelGenerator
 
             var content = sb.ToString();
             
-            viewOutput.Execute(content);
+            outputItems.Add(new ViewOutputItem(view, content));
         }
+        
+        viewsOutput.Execute(outputItems);
     }
 
     private static void GenerateRelationships(

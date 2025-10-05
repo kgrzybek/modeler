@@ -6,6 +6,8 @@ using Modeler.Samples.HR.Components.System.Backend.Modules.Api.Views.EndpointsLi
 using Modeler.Samples.HR.Components.System.Backend.Modules.Api.Views.OpenApi.Json;
 using Modeler.Samples.HR.Components.System.Backend.Modules.Api.Views.OpenApi.Yaml;
 using Modeler.Samples.HR.Components.System.Database;
+using Modeler.Samples.HR.Components.System.Database.Views.DataModelDiagrams.Mermaid;
+using Modeler.Samples.HR.Components.System.Database.Views.DataModelDiagrams.PlantUml;
 using Modeler.Samples.HR.Components.System.Database.Views.SchemaDetails.AsciiDoc;
 using Modeler.Samples.HR.Components.System.Database.Views.SchemaDetails.Markdown;
 using Modeler.Samples.HR.Components.System.Database.Views.Sql;
@@ -202,7 +204,7 @@ public static class ViewsGenerator
             4,
             plantUmlDataViews,
             viewTranslator,
-            new FileSystemViewOutput(dataModelPath, "Organizations_data_model.puml"));
+            new PlantUmlDataDiagramViewFileSystemViewsOutput(dataModelPath, viewsRegistry));
 
         var mermaidUmlDataViews = viewsRegistry.GetElements<MermaidDataModelView>();
         MermaidDataModelGenerator.Generate(
@@ -210,7 +212,7 @@ public static class ViewsGenerator
             4,
             mermaidUmlDataViews,
             viewTranslator,
-            new FileSystemViewOutput(dataModelPath, "Organizations_data_model.mmd"));
+            new MermaidDataDiagramViewFileSystemViewsOutput(dataModelPath, viewsRegistry));
 
         var schemaViews = viewsRegistry.GetElements<DataModelSchemaDetailsView>();
         // Generate ascii doc tables

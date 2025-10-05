@@ -14,8 +14,9 @@ public static class PlantUmlDataModelGenerator
         int indentSize,
         List<PlantUmlDataModelView> views, 
         IViewTranslator viewTranslator,
-        IViewOutput viewOutput)
+        IMultipleViewsOutput viewsOutput)
     {
+        var outputItems = new List<ViewOutputItem>();
         foreach (var view in views)
         {
             var sb = new StringBuilder();
@@ -35,8 +36,10 @@ public static class PlantUmlDataModelGenerator
 
             var content = sb.ToString();
             
-            viewOutput.Execute(content);
+            outputItems.Add(new ViewOutputItem(view, content));
         }
+        
+        viewsOutput.Execute(outputItems);
     }
 
     private static void GenerateRelationships(
