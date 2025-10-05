@@ -1,16 +1,30 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using System.CommandLine;
 using Modeler.Samples.HR;
 
-if (args.Length != 1)
+var documentationPathOption = new Option<string>("--documentationPath")
 {
-    throw new Exception("Provide path to documentation output directory");
-}
+    Description = "Path to the source of documentation."
+};
 
-var documentationPath = args[0];
+var generateDocumentation = new RootCommand("Generate documentation");
 
-Console.WriteLine($"Documentation generation to {documentationPath} started.");
+var generateViewsCommand = new Command("generate-views","Generate views");
+generateViewsCommand.Options.Add(documentationPathOption);
+generateDocumentation.Subcommands.Add(generateViewsCommand);
 
-ViewsGenerator.Generate(documentationPath);
+generateViewsCommand.SetAction(parseResult =>
+{
+    if (parseResult.GetValue(documentationPathOption) is { } documentationPath)
+    {
+        Console.WriteLine($"Views generation to {documentationPath} started.");
+        ViewsGenerator.Generate(documentationPath);
+        Console.WriteLine("Views generated.");
+        
+        Console.WriteLine("Images generation started.");
+        ImagesGenerator.GenerateFromPlantUml(documentationPath, "svg");
+    }
+});
 
-Console.WriteLine("Documentation generated.");
+return generateDocumentation.Parse(args).Invoke();
