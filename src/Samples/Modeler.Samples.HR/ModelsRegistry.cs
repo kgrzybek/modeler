@@ -5,6 +5,7 @@ using Modeler.Samples.HR.Deployment;
 using Modeler.Samples.HR.EventsFlow;
 using Modeler.Samples.HR.Sequences;
 using Modeler.Samples.HR.State.Models;
+using Modeler.Samples.HR.Activities;
 
 namespace Modeler.Samples.HR;
 
@@ -18,5 +19,6 @@ public class ModelsRegistry : ModelsRegistryBase
         AddElement(new OrganizationStructureConceptualModel(elementsRegistry));
         AddElement(new HRStateStateMachineModel(elementsRegistry));
         AddElement(new HREventsFlowModel(elementsRegistry));
+        AddElement(new HRActivitiesModel(elementsRegistry));
     }
 }

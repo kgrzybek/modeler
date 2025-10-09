@@ -30,6 +30,8 @@ using Modeler.Samples.HR.State.Views.PlantUml;
 using Modeler.Samples.HR.State.Views.StateMachineTable.AsciiDoc;
 using Modeler.Samples.HR.State.Views.StateMachineTable.Markdown;
 using Modeler.Views.Common;
+using Modeler.Samples.HR.Activities;
+using Modeler.Samples.HR.Activities.Views.ActivityDiagrams;
 
 namespace Modeler.Samples.HR;
 
@@ -80,7 +82,8 @@ public class ViewsRegistry : ViewsRegistryBase
         
         AddElement(new ApiModelsAsciiDocViewDefinition(elementsRegistry.GetElement<HRRestApiComponent>()));
         AddElement(new EndpointsAsciiDocViewDefinition(elementsRegistry));
-        
+
         AddElement(new HROpenApiViewDefinition(elementsRegistry));
+        AddElement(new EmployeeOnboardingActivityDiagramView(modelsRegistry.GetModel<HRActivitiesModel>()));
     }
 }

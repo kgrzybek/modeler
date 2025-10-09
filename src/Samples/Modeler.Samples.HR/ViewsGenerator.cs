@@ -32,6 +32,9 @@ using Modeler.Samples.HR.State.Views.PlantUml;
 using Modeler.Samples.HR.State.Views.StateMachineTable.AsciiDoc;
 using Modeler.Samples.HR.State.Views.StateMachineTable.Markdown;
 using Modeler.Views.Common.Outputs;
+using Modeler.Samples.HR.Activities.Views.ActivityDiagrams.PlantUml;
+using Modeler.Views.Activity.Diagram.PlantUml;
+using Modeler.Views.Activity.Diagram.Shared;
 using Modeler.Views.Components.Details.AsciiDoc;
 using Modeler.Views.Components.Details.Markdown;
 using Modeler.Views.Components.Diagram;
@@ -84,6 +87,8 @@ public static class ViewsGenerator
         GenerateDataViews(documentationPath, elementsRegistry, viewsRegistry);
 
         GenerateSequenceViews(documentationPath, viewsRegistry);
+
+        GenerateActivityViews(documentationPath, viewsRegistry);
 
         GenerateComponentsViews(documentationPath, modelsRegistry, viewsRegistry);
 
@@ -257,6 +262,23 @@ public static class ViewsGenerator
         var mermaidFilesOutput =
             new MermaidSequenceDiagramsViewFileSystemViewsOutput(sequencesModelPath, viewsRegistry);
         new MermaidSequenceDiagramViewGenerator(mermaidFilesOutput, viewTranslator).Generate(sequenceDiagramViews);
+    }
+
+    private static void GenerateActivityViews(
+        string path,
+        ViewsRegistry viewsRegistry)
+    {
+        var activityDiagramViews = viewsRegistry.GetElements<ActivityDiagramView>();
+
+        if (activityDiagramViews.Count == 0)
+        {
+            return;
+        }
+
+        var activitiesPath = Path.Combine(path, "Models/Activities");
+        var fileSystemOutput = new PlantUmlActivityDiagramsViewFileSystemViewsOutput(activitiesPath, viewsRegistry);
+
+        new PlantUmlActivityDiagramViewGenerator(fileSystemOutput).Generate(activityDiagramViews);
     }
 
     private static void GenerateComponentsViews(string path,

@@ -1,0 +1,35 @@
+@startuml
+hide empty members
+
+abstract class ActivityNode {
+  +Name
+  +Id
+}
+
+class ActivityAction
+class ActivityDecision
+class ActivityDecisionBranch {
+  +Label
+}
+class ActivityTransition {
+  +Label
+}
+class ActivityFlow {
+  +Name
+  +StartNode
+}
+
+ActivityAction --|> ActivityNode
+ActivityDecision --|> ActivityNode
+
+ActivityFlow "1" o-- "*" ActivityAction
+ActivityFlow "1" o-- "*" ActivityDecision
+ActivityFlow "1" *-- "*" ActivityTransition
+
+ActivityAction "0..1" --> "1" ActivityNode : Next
+ActivityDecision "1" o-- "2..*" ActivityDecisionBranch
+ActivityDecisionBranch "*" --> "0..1" ActivityNode : Target
+ActivityTransition "1" --> "1" ActivityNode : Source
+ActivityTransition "1" --> "0..1" ActivityNode : Target
+
+@enduml

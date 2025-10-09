@@ -86,6 +86,10 @@ plantuml::Models/Sequences/BasicSequencePart.puml[svg]
 include::Models/Sequences/BasicSequencePart.mmd[]
 ----
 
+== Activity Model
+
+plantuml::Models/Activities/EmployeeOnboardingActivity.puml[svg]
+
 == Data Model
 
 plantuml::Models/Data/Organizations_data_model.puml[svg]

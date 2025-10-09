@@ -103,6 +103,18 @@ Describes interactions between objects or components in a time-ordered sequence.
 
 See [Sequence Documentation](docs/Models/Sequence).
 
+### Activity
+
+Models workflows built from activity blocks and decision points, similar to UML activity diagrams. Useful for documenting business processes and branching flows.
+
+#### Supported Views
+
+1. PlantUML Activity Diagram
+
+#### Documentation
+
+See [Activity Model Documentation](docs/Models/Activity).
+
 ### State machine
 
 Models the states of an object and the transitions between them based on events. Useful for describing system behavior over time.
